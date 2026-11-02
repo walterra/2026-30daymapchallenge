@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Austria’s mapped ski pistes and the gaps in open snowmaking data. Day 2: Lines.">
+  <title>Austria’s engineered winter · Day 2</title>
+  <link rel="stylesheet" href="../../assets/vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="../../assets/vendor/leaflet/leaflet.js"></script>
+  <script defer src="map.js"></script>
+</head>
+<body>
+  <header>
+    <a href="../../index.html">← All maps</a>
+    <p class="eyebrow">#30DayMapChallenge / 02 November 2026 / Lines</p>
+    <h1>Austria’s engineered winter</h1>
+    <p class="intro">Thousands of ski-piste lines. A much thinner record of where snow is made.</p>
+  </header>
+  <main>
+    <section class="layout" aria-label="Map explorer">
+      <aside>
+        <h2>A map of infrastructure.<br>And missing information.</h2>
+        <p>Explore Austrian downhill pistes. Gold lines have snowmaking recorded; pale lines have no recorded answer.</p>
+        <p id="status" role="status">Loading the local data snapshot…</p>
+        <dl id="stats"></dl>
+        <fieldset>
+          <legend>Visible layers</legend>
+          <label><input type="checkbox" id="yes" checked> <span class="swatch yes"></span> Snowmaking recorded</label>
+          <label><input type="checkbox" id="unknown" checked> <span class="swatch unknown"></span> Snowmaking unknown</label>
+          <label><input type="checkbox" id="no" checked> <span class="swatch no"></span> Explicitly tagged no</label>
+          <label><input type="checkbox" id="areas"> <span class="dot"></span> Ski-area locations</label>
+        </fieldset>
+        <label for="resort">Jump to a ski area</label>
+        <select id="resort" disabled><option value="">Choose a ski area…</option></select>
+        <button id="reset" type="button">Reset view</button>
+        <p class="small">Drag to pan, use + / − to zoom, or choose an area above. Select a piste for source details. Keyboard: focus the map, then use arrow keys and + / −.</p>
+      </aside>
+      <div id="map" role="region" aria-label="Interactive map of Austrian downhill pistes" aria-describedby="map-description"></div>
+    </section>
+    <section class="notes" aria-labelledby="reading">
+      <h2 id="reading">Read the gaps, not just the lines</h2>
+      <p id="map-description">The map shows operating downhill piste line features associated with Austria. Ski infrastructure follows the Alpine belt, especially in western and central Austria. Gold indicates a recorded snowmaking attribute, blue an explicit “no”, and pale gray an unknown value. Ski-area markers are optional.</p>
+      <p><strong>Unknown does not mean no snow cannons.</strong> This is not a map of all snowmaking equipment, water consumption, or current snow conditions. Individual cannon locations are not included in this proof of concept: attempts to retrieve them through Overpass failed.</p>
+      <p>Counts represent mapped <em>line segments</em>, not unique named runs or kilometers. Polygon pistes and non-operating features are excluded. Cross-border features associated with Austria are not clipped. Named ski areas can overlap; they are not an official resort census.</p>
+      <p id="snapshot"></p>
+      <p>Data from <a href="https://openskidata.org/">OpenSkiData / OpenSkiMap.org</a>,
+        © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>
+        (<a href="https://opendatacommons.org/licenses/odbl/1-0/">ODbL</a>),
+        <a href="https://skimap.org/">Skimap.org</a>,
+        <a href="https://whosonfirst.org/">Who's On First</a>,
+        © <a href="https://mapterhorn.com/">Mapterhorn</a>.
+        <a href="data/runs.geojson">Download piste data</a> ·
+        <a href="data/areas.geojson">Download ski-area data</a> ·
+        <a href="README.md">Method and limitations</a>.</p>
+      <p class="small">Built with plain HTML, CSS, JavaScript and Leaflet. AI assistance: research, data preparation, implementation and checks.</p>
+    </section>
+  </main>
+  <noscript><p>This interactive map requires JavaScript. The explanation and downloadable GeoJSON remain available above.</p></noscript>
+</body>
+</html>

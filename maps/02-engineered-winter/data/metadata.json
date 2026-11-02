@@ -1,0 +1,12 @@
+{
+  "downloadDate": "2026-11-02",
+  "source": "https://openskidata.org/",
+  "areas": 375,
+  "segments": 11002,
+  "snowmaking": {
+    "yes": 73,
+    "no": 36,
+    "unknown": 10893
+  },
+  "scope": "Operating Austrian downhill LineString features only; polygon pistes excluded. Country membership supplied by OpenSkiData. Cross-border geometries are not clipped."
+}

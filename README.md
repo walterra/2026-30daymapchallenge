@@ -42,9 +42,9 @@ Open http://localhost:8000. No package installation is required.
 
 Use relative asset and navigation URLs so the site also works beneath a GitHub Pages repository path. Do not assume it is hosted at the domain root.
 
-## First milestone
+## First entry
 
-Choose a day/theme and dataset, build one map, then add its link to the gallery. The first three 2026 themes are Points, Lines, and Polygons.
+[Day 02 — Austria’s engineered winter](maps/02-engineered-winter/) maps Austrian downhill piste lines and recorded snowmaking attributes. It is a proof of concept, not a complete inventory of snow cannons. See the [entry method](maps/02-engineered-winter/README.md) for sources, licensing, preparation, and limitations.
 
 ## Verification
 
