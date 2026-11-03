@@ -1,39 +1,43 @@
 'use strict';
 const status = document.querySelector('#status');
 async function start() {
-  if (!window.L || !window.searchableSelect) throw new Error('Local map library unavailable.');
-  const [areas, coverage, context, austria, tirol, annotationData, stateBorders, referenceLabels] = await Promise.all(
-    ['ski-areas.geojson', 'coverage.json', 'context.geojson', 'austria.geojson', 'tirol-boundaries.geojson', 'annotations.json?v=zillertal-1', 'state-borders.geojson', 'reference-labels.geojson'].map(async name => {
+  if (!window.L) throw new Error('Local map library unavailable.');
+  const [areas, coverage, context, austria, tirol, stateBorders, referenceLabels, ranking, matchReview] = await Promise.all(
+    ['ski-areas.geojson', 'coverage.json', 'context.geojson', 'austria.geojson', 'tirol-boundaries.geojson', 'state-borders.geojson', 'reference-labels.geojson', 'downhill-ranking.json?v=linked-1', 'polygon-matches.json?v=reviewed-1'].map(async name => {
       const response = await fetch('data/' + name);
       if (!response.ok) throw new Error(name + ' could not be loaded (HTTP ' + response.status + ').');
       return response.json();
     })
   );
-  document.querySelector('#polygon-count').textContent = coverage.polygonRecords;
+  document.querySelector('#ranking-count').textContent = ranking.top10.length;
+  document.querySelector('#length-count').textContent = ranking.metadata.recordsWithDownhillLength;
+  document.querySelector('#missing-length-count').textContent = ranking.metadata.recordsWithoutDownhillLength;
   document.querySelector('#omitted-count').textContent = coverage.omittedRecords;
-  document.querySelector('#total-count').textContent = coverage.selectedRecords;
-  document.querySelector('#tirol-count').textContent = tirol.metadata.records;
-  const records = [...areas.features, ...tirol.features];
-  const recordsById = new Map(records.map(f => [f.properties.id, f]));
-  const dataset = feature => feature.properties.dataset === 'tirol' ? 'tirol' : 'openskidata';
-  const sourceLabel = feature => dataset(feature) === 'tirol' ? 'Tirol planning boundary · 2011' : 'OpenSkiData outline · snapshot 2026-11-02';
-  const map = L.map('map', { preferCanvas: true, scrollWheelZoom: false, zoomSnap: .25 });
+  const container = document.querySelector('#map');
+  container.dataset.annotationCount = '1';
+  const map = L.map(container, {
+    preferCanvas: true, zoomSnap: .25,
+    dragging: false, scrollWheelZoom: false, doubleClickZoom: false,
+    touchZoom: false, boxZoom: false, keyboard: false, tapHold: false,
+    zoomControl: false, zoomAnimation: false, fadeAnimation: false, trackResize: false
+  });
   for (const [name, zIndex] of [['context', 250], ['political-labels', 310], ['resorts', 420]]) {
     map.createPane(name); map.getPane(name).style.zIndex = zIndex;
+    map.getPane(name).style.pointerEvents = 'none';
   }
-  map.getPane('context').style.pointerEvents = 'none';
   const basemap = L.geoJSON(context, {
     pane: 'context', interactive: false,
-    style: f => ({ color: '#c8cecb', weight: .7, fillColor: f.properties.iso === 'AUT' ? '#f0f2ef' : '#f8f9f6', fillOpacity: 1 })
+    style: f => ({ stroke: false, fillColor: f.properties.iso === 'AUT' ? '#f0f2ef' : '#f8f9f6', fillOpacity: 1 })
   }).addTo(map);
-  const border = L.geoJSON(austria, { pane: 'context', interactive: false, style: { color: '#9ca8a5', weight: 1.1, fill: false } }).addTo(map);
+  const border = L.geoJSON(austria, { pane: 'context', interactive: false,
+    style: { color: '#9ca8a5', weight: 1.1, fill: false }
+  }).addTo(map);
   const countryBounds = border.getBounds();
   map.attributionControl.addAttribution('Data: <a href="https://openskidata.org/">OpenSkiData</a> · © <a href="https://www.openstreetmap.org/copyright">OSM contributors</a> · <a href="https://skimap.org/">Skimap.org</a> · <a href="https://whosonfirst.org/">Who’s On First</a> · © <a href="https://mapterhorn.com/">Mapterhorn</a> · Tirol: <a href="https://www.arcgis.com/home/item.html?id=9fb23fac39034eadaff8054fdd35cbf6">Land Tirol – tiris</a> (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>) · Context: <a href="https://www.naturalearthdata.com/">Natural Earth</a>');
   L.control.scale({ imperial: false, position: 'bottomleft', maxWidth: 100 }).addTo(map);
-  L.geoJSON(stateBorders, { pane: 'context', interactive: false,
+  const stateLayer = L.geoJSON(stateBorders, { pane: 'context', interactive: false,
     style: { color: '#b1bcb7', weight: .7, opacity: .9, dashArray: '2 4', fill: false }
   }).addTo(map);
-  map.getPane('political-labels').style.pointerEvents = 'none';
   const politicalLabels = referenceLabels.features.sort((a, b) => a.properties.priority - b.properties.priority).map(feature => {
     const label = document.createElement('span'); label.textContent = feature.properties.name;
     const [lon, lat] = feature.geometry.coordinates;
@@ -43,17 +47,16 @@ async function start() {
     return { feature, marker };
   });
   function updatePoliticalLabels() {
-    const occupied = Array.from(map.getContainer().querySelectorAll('.annotation-note-content, .leaflet-control-zoom, .leaflet-popup-content-wrapper')).map(node => node.getBoundingClientRect());
-    const extent = map.getContainer().getBoundingClientRect();
-    // Test painted strokes, not their large bounding boxes: those would hide
-    // most useful city labels even when the line does not touch their text.
+    const attribution = container.querySelector('.leaflet-control-attribution');
+    const legend = container.querySelector('.source-legend');
+    legend.style.bottom = (attribution ? attribution.getBoundingClientRect().height + 12 : 24) + 'px';
+    const occupied = Array.from(container.querySelectorAll('.annotation-note-content, .source-legend')).map(node => node.getBoundingClientRect());
+    const extent = container.getBoundingClientRect();
     const strokePoints = [];
-    for (const path of map.getContainer().querySelectorAll('.annotation-connector path, .annotation-subject path, .annotation-note path')) {
+    for (const path of container.querySelectorAll('.annotation-connector path, .annotation-subject path, .annotation-note path')) {
       const matrix = path.getScreenCTM(); if (!matrix) continue;
       const length = path.getTotalLength();
-      for (let distance = 0; distance <= length; distance += 3) {
-        strokePoints.push(path.getPointAtLength(distance).matrixTransform(matrix));
-      }
+      for (let distance = 0; distance <= length; distance += 3) strokePoints.push(path.getPointAtLength(distance).matrixTransform(matrix));
     }
     for (const { feature, marker } of politicalLabels) {
       const element = marker.getElement(); if (!element) continue;
@@ -68,156 +71,177 @@ async function start() {
   }
   let politicalFrame;
   function schedulePoliticalLabels() {
-    map.getContainer().dataset.labelsReady = 'false';
+    container.dataset.labelsReady = 'false';
     if (politicalFrame !== undefined) return;
     politicalFrame = requestAnimationFrame(() => {
       politicalFrame = undefined;
       updatePoliticalLabels();
-      map.getContainer().dataset.labelsReady = 'true';
+      container.dataset.labelsReady = 'true';
     });
   }
   map.on('moveend zoomend resize storyannotationslayout', schedulePoliticalLabels);
   map.whenReady(schedulePoliticalLabels);
-  const background = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 18, attribution: 'Tiles © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  const planningFeatures = new Map(tirol.features.map(feature => [feature.properties.id, feature]));
+  const matches = new Map(matchReview.matches.map(match => [match.openSkiDataId, match]));
+  function vertices(coords) {
+    return typeof coords[0] === 'number' ? [coords.slice(0, 2)] : coords.flatMap(vertices);
+  }
+  const displayRows = ranking.top10.map(row => {
+    const match = matches.get(row.id);
+    if (row.mapReference.kind !== 'point' || !match) return row;
+    const points = match.polygonIds.flatMap(id => {
+      const feature = planningFeatures.get(id);
+      if (!feature) throw Error('Missing reviewed planning polygon: ' + id);
+      return vertices(feature.geometry.coordinates);
+    });
+    const [lon, lat] = row.mapReference.coordinates;
+    const anchor = points.reduce((best, p) => (p[0] - lon) ** 2 + (p[1] - lat) ** 2 < (best[0] - lon) ** 2 + (best[1] - lat) ** 2 ? p : best);
+    return { ...row, planningMatch: match, mapReference: { kind: 'planning-outline', coordinates: anchor, polygonIds: match.polygonIds } };
   });
-  background.on('tileerror', () => { document.querySelector('#context-status').textContent = 'Street-map tiles unavailable; the local polygons and country context still work.'; });
-  document.querySelector('#street-map').addEventListener('change', event => {
-    if (event.target.checked) { background.addTo(map); basemap.setStyle({ fillOpacity: .04 }); }
-    else { map.removeLayer(background); basemap.setStyle({ fillOpacity: 1 }); document.querySelector('#context-status').textContent = ''; }
-  });
-  const baseStyle = { color: '#087c83', weight: 1.3, fillColor: '#138c8c', fillOpacity: .28 };
-  const tirolStyle = { color: '#71549b', weight: 1.3, fillColor: '#9782b5', fillOpacity: .2 };
-  const styleFor = feature => dataset(feature) === 'tirol' ? tirolStyle : baseStyle;
-  const selectedStyle = { color: '#a8522b', weight: 2.5, fillColor: '#c67a48', fillOpacity: .35 };
-  const groups = { tirol: L.featureGroup().addTo(map), openskidata: L.featureGroup().addTo(map) };
-  const layers = new Map();
-  let selectedId;
-  let calloutBounds;
-  const select = document.querySelector('#resort');
-  const search = searchableSelect(select, 'ski areas');
-  const displayName = feature => (feature.properties.aliases?.length ? feature.properties.aliases.join(' / ') + ' · ' : '') + (feature.properties.name || 'Unnamed ski-area record');
-  const options = records.map(f => ({ value: f.properties.id, label: displayName(f) + ' [' + (dataset(f) === 'tirol' ? 'Tirol 2011 · ' + f.properties.officialObjectId : 'OpenSkiData') + ']' })).sort((a, b) => a.label.localeCompare(b.label));
-  search.setOptions(options, 'Choose a ski area…');
-  function safeLink(url, text) {
-    try {
-      const parsed = new URL(url);
-      if (!['https:', 'http:'].includes(parsed.protocol)) return null;
-      const link = document.createElement('a'); link.href = parsed.href; link.textContent = text; return link;
-    } catch { return null; }
+  const matchedPlanningIds = new Set(displayRows.flatMap(row => row.planningMatch?.polygonIds || []));
+  const rankedIds = new Set(ranking.top10.map(row => row.id));
+  const baseStyle = { color: '#a5adaa', weight: .65, fill: false, opacity: .4 };
+  const tirolStyle = { color: '#a5adaa', weight: .7, dashArray: '3 3', fill: false, opacity: .4 };
+  // Navigation stays disabled; ranking only highlights source geometry.
+  const tirolLayer = L.geoJSON(tirol, { pane: 'resorts', interactive: false, style: tirolStyle }).addTo(map);
+  const areaLayer = L.geoJSON(areas, { pane: 'resorts', interactive: false, style: baseStyle }).addTo(map);
+  const planningLayers = new Map();
+  tirolLayer.eachLayer(layer => planningLayers.set(layer.feature.properties.id, layer));
+  const outlineLayers = new Map();
+  areaLayer.eachLayer(layer => outlineLayers.set(layer.feature.properties.id, layer));
+  const referenceMarkers = new Map();
+  for (const row of displayRows) {
+    if (row.mapReference.kind !== 'point') continue;
+    const [lon, lat] = row.mapReference.coordinates;
+    referenceMarkers.set(row.id, L.circleMarker([lat, lon], { pane: 'resorts', interactive: false, radius: 5, weight: 1.5 }));
   }
-  function inspect(feature, zoom) {
-    calloutBounds = undefined;
-    if (selectedId) layers.get(selectedId)?.setStyle(styleFor(recordsById.get(selectedId)));
-    const p = feature.properties;
-    const key = dataset(feature);
-    if (!map.hasLayer(groups[key])) { groups[key].addTo(map); document.getElementById('layer-' + key).checked = true; }
-    selectedId = p.id;
-    const layer = layers.get(p.id);
-    layer.setStyle(selectedStyle); layer.bringToFront();
-    search.setValue(p.id);
-    document.querySelector('#selection-title').textContent = displayName(feature);
-    document.querySelector('#selection-description').textContent = key === 'tirol' ? 'An official Tirol planning boundary with reference date ' + p.referenceDate + '. This older envelope is not a verified current operational footprint or a piste surface.' : 'The full outline supplied by OpenSkiData. It is not a surveyed piste surface or an independently verified resort boundary.';
-    const facts = document.querySelector('#selection-facts'); facts.replaceChildren();
-    for (const [field, value] of [
-      ['Source and meaning', sourceLabel(feature)],
-      ['Original source name', p.originalName || p.name || 'Not recorded'],
-      ['Geometry', feature.geometry.type === 'MultiPolygon' ? 'MultiPolygon · several parts in one record' : 'Polygon'],
-      ['Source region labels', p.regions.join(', ') || 'Not recorded'],
-      ['Status / date qualification', key === 'tirol' ? 'Reference date: ' + p.referenceDate + ' · no live operating status supplied' : p.status + ' · not a live opening report'],
-      ['Snapshot downloaded', key === 'tirol' ? tirol.metadata.downloaded : coverage.snapshotDownloaded],
-      ['Source record ID', p.id]
-    ]) {
-      const dt = document.createElement('dt'); dt.textContent = field;
-      const dd = document.createElement('dd'); dd.textContent = value;
-      facts.append(dt, dd);
+  container.dataset.rankedOutlines = String(ranking.top10.filter(row => row.mapReference.kind === 'outline').length);
+  container.dataset.rankedPoints = String(referenceMarkers.size);
+  container.dataset.rankedPlanning = String(displayRows.filter(row => row.planningMatch).length);
+  container.dataset.rankedPlanningPolygons = String(matchedPlanningIds.size);
+  let activeRow;
+  let pointMarker;
+  function paintHighlight() {
+    if (pointMarker) { map.removeLayer(pointMarker); pointMarker = undefined; }
+    if (!activeRow) return;
+    const color = getComputedStyle(document.documentElement).getPropertyValue('--color-accent').trim();
+    if (activeRow.mapReference.kind === 'outline') {
+      const layer = outlineLayers.get(activeRow.id);
+      if (layer) { layer.setStyle({ color, fill: true, fillColor: color, weight: 3, opacity: 1, fillOpacity: .4 }); layer.bringToFront(); }
+    } else if (activeRow.planningMatch) {
+      for (const id of activeRow.planningMatch.polygonIds) {
+        const layer = planningLayers.get(id);
+        layer.setStyle({ color, fill: true, fillColor: color, weight: 3, opacity: 1, fillOpacity: .35, dashArray: '4 3' });
+        layer.bringToFront();
+      }
+    } else {
+      const [lon, lat] = activeRow.mapReference.coordinates;
+      pointMarker = L.circleMarker([lat, lon], { pane: 'resorts', interactive: false, radius: 7, color, weight: 2.5, fillColor: color, fillOpacity: .2 }).addTo(map);
     }
-    const links = document.querySelector('#selection-links'); links.replaceChildren();
-    if (p.sourceUrl) {
-      const a = safeLink(p.sourceUrl, 'Official Land Tirol source record'); if (a) links.append(a);
-      const license = safeLink('https://creativecommons.org/licenses/by/4.0/', 'License · CC BY 4.0'); links.append(license);
-    }
-    for (const source of p.sources) {
-      let url;
-      if (source.type === 'openstreetmap' && /^(node|way|relation)\/\d+$/.test(String(source.id))) url = 'https://www.openstreetmap.org/' + source.id;
-      if (source.type === 'skimap.org' && /^\d+$/.test(String(source.id))) url = 'https://skimap.org/SkiAreas/view/' + source.id;
-      const a = url && safeLink(url, 'Upstream source · ' + source.type + ' ' + source.id);
-      if (a) links.append(a);
-    }
-    for (const url of p.websites) {
-      const a = safeLink(url, 'Resort website'); if (a) links.append(a);
-    }
-    status.textContent = 'Selected: ' + displayName(feature) + '. ' + sourceLabel(feature) + '. Source layers overlap; they are not separate resort counts.';
-    if (zoom) map.fitBounds(layer.getBounds(), { padding: [45, 45], maxZoom: 14, animate: false });
-    layer.openPopup();
   }
-  for (const [key, features] of [['tirol', tirol.features], ['openskidata', areas.features]]) L.geoJSON({ type: 'FeatureCollection', features }, {
-    pane: 'resorts', style: styleFor,
-    onEachFeature(feature, layer) {
-      layers.set(feature.properties.id, layer);
-      const title = document.createElement('strong'); title.textContent = displayName(feature);
-      layer.bindTooltip(title);
-      const popup = document.createElement('div');
-      const heading = document.createElement('strong'); heading.textContent = displayName(feature);
-      const description = document.createElement('p'); description.textContent = sourceLabel(feature) + ' · ' + feature.geometry.type + '. Source details appear in the inspector.';
-      popup.append(heading, description); layer.bindPopup(popup);
-      layer.on('mouseover', () => { if (feature.properties.id !== selectedId) layer.setStyle({ weight: 2.5, color: styleFor(feature).color }); });
-      layer.on('mouseout', () => { if (feature.properties.id !== selectedId) layer.setStyle(styleFor(feature)); });
-      layer.on('click', () => inspect(feature, false));
-    }
-  }).addTo(groups[key]);
-  function overviewStatus() {
-    status.textContent = (map.hasLayer(groups.openskidata) ? coverage.polygonRecords : 0) + ' OpenSkiData outlines + ' + (map.hasLayer(groups.tirol) ? tirol.metadata.records : 0) + ' Tirol planning records visible. Overlaps are not deduplicated; do not sum these as resorts.';
+  function applyMapTheme() {
+    const styles = getComputedStyle(document.documentElement);
+    const token = name => styles.getPropertyValue(name).trim();
+    const dark = document.documentElement.dataset.theme === 'dark' || (!document.documentElement.dataset.theme && matchMedia('(prefers-color-scheme: dark)').matches);
+    const colors = dark
+      ? { land: '#262a2c', neighbor: '#1d1f20', country: '#697175', state: '#4c5559' }
+      : { land: '#f0f2f1', neighbor: '#fafafa', country: '#929c9c', state: '#bac1c0' };
+    basemap.setStyle(feature => ({ fillColor: feature.properties.iso === 'AUT' ? colors.land : colors.neighbor, color: colors.state }));
+    border.setStyle({ color: colors.country });
+    stateLayer.setStyle({ color: colors.state });
+    const contextColor = dark ? '#68716e' : '#adb5b2';
+    areaLayer.setStyle(feature => rankedIds.has(feature.properties.id)
+      ? { color: token('--color-link'), weight: 1.5, fill: true, fillColor: token('--color-link'), fillOpacity: dark ? .24 : .28, opacity: 1 }
+      : { color: contextColor, weight: .65, fill: false, fillOpacity: 0, opacity: .35 });
+    tirolLayer.setStyle(feature => matchedPlanningIds.has(feature.properties.id)
+      ? { color: token('--color-link'), weight: 1.5, dashArray: '4 3', fill: true, fillColor: token('--color-link'), fillOpacity: dark ? .18 : .2, opacity: 1 }
+      : { color: contextColor, weight: .7, dashArray: '3 3', fill: false, fillOpacity: 0, opacity: .4 });
+    for (const marker of referenceMarkers.values()) marker.setStyle({ color: token('--color-link'), fillColor: token('--color-global-bg'), fillOpacity: 1 });
+    paintHighlight();
+    map.fire('mapthemechange');
+    schedulePoliticalLabels();
   }
-  for (const [key, group] of Object.entries(groups)) {
-    const checkbox = document.getElementById('layer-' + key); checkbox.disabled = false;
-    checkbox.addEventListener('change', event => {
-      if (event.target.checked) group.addTo(map); else map.removeLayer(group);
-      overviewStatus();
+  applyMapTheme();
+  new MutationObserver(applyMapTheme).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  function fitOverview() {
+    if (!container.clientWidth || !container.clientHeight) return;
+    map.fitBounds(countryBounds, { padding: [25, 25], animate: false });
+  }
+  fitOverview();
+  for (const marker of referenceMarkers.values()) marker.addTo(map);
+  // Refit after layout settles, never recursively inside Leaflet's resize event.
+  // Ignore temporary zero-size states during viewport/capture transitions.
+  let resizeFrame;
+  function scheduleFit() {
+    if (resizeFrame !== undefined) return;
+    resizeFrame = requestAnimationFrame(() => {
+      resizeFrame = undefined;
+      if (!container.clientWidth || !container.clientHeight) return;
+      const size = map.getSize();
+      if (size.x === container.clientWidth && size.y === container.clientHeight) return;
+      map.invalidateSize({ pan: false, animate: false });
+      fitOverview();
     });
   }
-  function fitOverview() { map.fitBounds(countryBounds, { padding: [25, 25], animate: false }); }
-  fitOverview();
-  select.addEventListener('change', () => {
-    const feature = recordsById.get(select.value);
-    if (feature) inspect(feature, true);
+  if (window.ResizeObserver) new ResizeObserver(scheduleFit).observe(container);
+  else window.addEventListener('resize', scheduleFit);
+  map.on('moveend zoomend', () => {
+    const center = map.getCenter();
+    container.dataset.view = JSON.stringify([center.lat, center.lng, map.getZoom()]);
   });
-  document.querySelector('#overview').disabled = false;
-  document.querySelector('#overview').addEventListener('click', () => {
-    if (selectedId) layers.get(selectedId)?.setStyle(styleFor(recordsById.get(selectedId)));
-    selectedId = undefined; calloutBounds = undefined; map.closePopup(); search.setOptions(options, 'Choose a ski area…'); search.setValue('');
-    document.querySelector('#selection-title').textContent = 'Select a polygon to inspect it.';
-    document.querySelector('#selection-description').textContent = 'The national overview is restored. Toggle sources to compare; search also reaches small or overlapping records.';
-    document.querySelector('#selection-facts').replaceChildren(); document.querySelector('#selection-links').replaceChildren();
-    overviewStatus();
-    fitOverview();
-  });
-  const koessen = areas.features.find(f => f.properties.name === 'Hochkössen - Unterberghorn');
-  document.querySelector('#koessen').disabled = !koessen;
-  document.querySelector('#koessen').addEventListener('click', () => { if (koessen) inspect(koessen, true); });
-  const solden = tirol.features.find(f => f.properties.aliases.includes('Sölden'));
-  document.querySelector('#solden').disabled = !solden;
-  document.querySelector('#solden').addEventListener('click', () => { if (solden) inspect(solden, true); });
-  map.on('resize', () => {
-    if (!selectedId) fitOverview();
-    else map.fitBounds(calloutBounds || layers.get(selectedId).getBounds(), { padding: [45, 45], maxZoom: 14, animate: false });
-  });
-  skiMapAnnotations({ map, annotations: annotationData.annotations,
-    isVisible: spec => map.hasLayer(groups[spec.dataset]),
-    inspect: (id, memberIds) => {
-      const feature = recordsById.get(id);
-      if (!feature) return;
-      inspect(feature, false);
-      const bounds = L.latLngBounds([]);
-      for (const memberId of memberIds) bounds.extend(layers.get(memberId).getBounds());
-      calloutBounds = bounds;
-      map.fitBounds(bounds, { padding: [55, 55], maxZoom: 14, animate: false });
-      document.querySelector('#selection-description').append(' The callout groups nearby planning polygons; this inspector shows its reference record.');
+  const center = map.getCenter();
+  container.dataset.view = JSON.stringify([center.lat, center.lng, map.getZoom()]);
+  const story = skiMapAnnotations({ map });
+  const rankRows = new Map(displayRows.map(row => [row.id, row]));
+  const buttons = Array.from(document.querySelectorAll('.ranking-row'));
+  const firstId = buttons[0].dataset.sourceId;
+  const lastId = buttons.at(-1).dataset.sourceId;
+  let selectedId = firstId;
+  let renderedId;
+  function updateLinkedHighlight() {
+    const id = selectedId;
+    for (const button of buttons) {
+      button.classList.toggle('is-map-active', button.dataset.sourceId === id);
+      button.setAttribute('aria-pressed', String(button.dataset.sourceId === id));
     }
+    if (id === renderedId) return;
+    renderedId = id;
+    activeRow = rankRows.get(id);
+    container.dataset.activeResort = activeRow ? activeRow.id : '';
+    container.dataset.activeKind = activeRow ? activeRow.mapReference.kind : '';
+    applyMapTheme();
+    story.setHighlight(activeRow);
+    container.dataset.activePolygonIds = JSON.stringify(activeRow.planningMatch?.polygonIds || (activeRow.mapReference.kind === 'outline' ? [activeRow.id] : []));
+    const kind = document.querySelector('#selected-geometry-kind');
+    kind.textContent = activeRow.planningMatch ? '2011 planning' + (activeRow.planningMatch.qualification.startsWith('Partial') ? ' · partial' : '') : activeRow.mapReference.kind === 'point' ? 'Reference point' : 'Mapped outline';
+    kind.title = activeRow.planningMatch?.qualification || '';
+    document.querySelector('#ranking-map-status').textContent = 'Map: ' + activeRow.label + '. ' + (activeRow.planningMatch ? 'Matched Tirol planning polygons, reference date 2011-10-30. ' + activeRow.planningMatch.qualification : activeRow.mapReference.kind === 'point' ? 'Supplied reference point; no OpenSkiData outline.' : 'Source outline highlighted.');
+  }
+  for (const button of buttons) {
+    const id = button.dataset.sourceId;
+    button.disabled = false;
+    const select = () => { selectedId = id; updateLinkedHighlight(); };
+    button.addEventListener('pointerenter', event => { if (event.pointerType === 'mouse') select(); });
+    button.addEventListener('focus', select);
+    button.addEventListener('click', select);
+  }
+  document.querySelector('.downhill-ranking').addEventListener('pointerleave', event => {
+    if (event.pointerType !== 'mouse') return;
+    const bounds = event.currentTarget.getBoundingClientRect();
+    if (event.clientY <= bounds.top) selectedId = firstId;
+    else if (event.clientY >= bounds.bottom) selectedId = lastId;
+    // Horizontal exits and inter-row gaps preserve the last selected resort.
+    updateLinkedHighlight();
   });
-  overviewStatus();
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') { selectedId = firstId; updateLinkedHighlight(); }
+  });
+  updateLinkedHighlight();
+  container.dataset.ready = 'true';
+  status.hidden = true;
 }
 start().catch(error => {
-  status.textContent = 'Map unavailable: ' + error.message + ' Open this site through an HTTP server, not file://. The explanation and source downloads remain available.';
+  status.hidden = false;
+  status.textContent = 'Map unavailable: ' + error.message + ' The description and source downloads remain available.';
   console.error(error);
 });

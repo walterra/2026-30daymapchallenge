@@ -1,6 +1,6 @@
 # Day 03 · Polygons — Austria’s ski areas, outlined
 
-A polygon-only explorer combining OpenSkiData’s national coverage with a separately labeled official Tirol planning-boundary layer. Teal means OpenSkiData; violet means Tirol planning boundaries (reference date 2011). Searchable inspection and Hochkössen / Sölden shortcuts expose the original sources. No artificial resort boundaries are generated.
+A curated map with a national overview combining OpenSkiData’s coverage with official Tirol planning boundaries. Both sources are always visible; a bottom-right inline legend distinguishes them. A dense, linked ranking selects one resort on the map, initially Ski Arlberg. Pan/zoom, search, sidebar and optional tiles remain disabled. Chart selection only changes the persistent highlight. No artificial resort boundaries are generated.
 
 ## Snapshot and scope
 
@@ -36,13 +36,13 @@ https://gis.tirol.gv.at/arcgis/rest/services/Service_Public/ogd_sport/MapServer/
 - License confirmed in the ArcGIS service item’s licenseInfo: https://www.arcgis.com/sharing/rest/content/items/9fb23fac39034eadaff8054fdd35cbf6?f=json
 - Separate files: data/tirol-boundaries.geojson and data/tirol-coverage.json.
 
-These are planning envelopes, not verified current operational/piste footprints. They supplement the ODbL dataset without being dissolved into it. Both source layers can be toggled independently; their counts are not added as a resort census. Overlapping records are deliberately retained, not silently deduplicated. Selecting a hidden-source record enables that source so the chosen polygon is visible.
+These are planning envelopes, not verified current operational/piste footprints. They supplement the ODbL dataset without being dissolved into it. Both sources remain visible in the fixed composition; their counts are not added as a resort census. Overlapping records are deliberately retained, not silently deduplicated.
 
 ### Verified Sölden association
 
 OpenSkiData’s Sölden record is only a Point. The official polygon **Ötztaler Gletscher**, OBJECTID 102, contains that point. Using the cached piste snapshot associated with the same OpenSkiData ID, **219 of 223 piste records intersect** this planning polygon; 212 are wholly inside it. These are record counts, not distance/area-weighted coverage or proof of identical operational boundaries.
 
-The map adds the reviewed search alias **Sölden**, while retaining **Ötztaler Gletscher** as the original source name. No geometry is changed. Metadata stores the matching point, source ID and piste-record audit. Other resort names are not automatically fuzzy-matched or renamed.
+The data retains the reviewed alias **Sölden**, while retaining **Ötztaler Gletscher** as the original source name. No geometry is changed. Metadata stores the matching point, source ID and piste-record audit. Other resort names are not automatically fuzzy-matched or renamed.
 
 ## OpenSkiData source and ODbL
 
@@ -64,7 +64,7 @@ The preparation script filters the source and drops unused properties. Polygon/M
 
 Larger source envelopes are painted first so smaller overlapping records remain inspectable. This drawing order is not presented as an area ranking.
 
-Source region labels, operating status, official websites and upstream source identifiers are exposed in the inspector. They are not converted into a regional resort census.
+Source region labels, operating status, official websites and upstream source identifiers are retained in the downloadable data. They are not converted into a regional resort census.
 
 ## Geographic context
 
@@ -89,10 +89,7 @@ uv run scripts/prepare-political-basemap.py --states /tmp/ne_10m_admin_1_states_
 
 Outputs: `data/state-borders.geojson` and `data/reference-labels.geojson`, approximately 32 KB combined. Metadata records public-domain licensing and source hashes. These are topology-aware GeoJSON linework and label files, not a required TopoJSON runtime or an external map-tile service.
 
-Optional street-map tiles come from OpenStreetMap with visible attribution:
-https://operations.osmfoundation.org/policies/tiles/
-
-No tiles are requested by default. No tile prefetching or offline tile download is implemented.
+No street-map layer or external tiles are loaded. The complete basemap is local. The clipped neighboring-country polygons supply fill only, avoiding artificial strokes along the clipping rectangle; Austria’s separate outline supplies its national border.
 
 ## Reproduce
 
@@ -141,42 +138,69 @@ Hosting needs only HTML, CSS, JavaScript and local data. No build, server API, c
 - [Map design and customization](https://www.datawrapper.de/academy/how-to-create-a-symbol-map): restrained basemap, clear legends, useful tooltips, explicit annotation and mobile testing.
 - [Crop and context](https://www.datawrapper.de/blog/cropped-view-inset-maps): frame the geography relevant to the data without confusing empty areas with absent infrastructure.
 
-Source presence is categorical: teal for OpenSkiData outlines, violet for Tirol planning boundaries with their 2011 date explicit, not an unsupported choropleth. A separate orange highlight indicates selection, never resort quality or size. Opacity keeps overlaps visible; the caption explicitly warns that darker patches are not higher values.
+The map and chart emphasize the same ten reviewed resort areas. Six OpenSkiData outlines and five reviewed Tirol planning polygons (representing the other four ranked resorts) use the Cactus link color. The planning matches retain dashed borders and a visible 2011 qualification. The accent is reserved exclusively for the selected row, its geometry and local name label. Other mapped outlines are faint gray; unmatched historical Tirol planning boundaries are gray dashed outlines with no fill. The bottom-right legend distinguishes these roles and sits above attribution. Shapes locate resorts; only bar length encodes downhill kilometers.
 
-The national overview is intentionally incomplete rather than inventing shapes for point records. Zoom and a searchable native select expose small or overlapping shapes. All 188 OpenSkiData polygons and 102 Tirol polygons remain available during inspection. The sources are delivered as separate datasets under their respective licenses.
+The initial national overview is intentionally incomplete rather than inventing shapes for point records. All 188 OpenSkiData polygons and 102 Tirol polygons are shown together. One persistent resort label connects the ranking to the map; the old four regional annotations are no longer rendered or fetched. The sources are delivered as separate datasets under their respective licenses.
 
-## Geographic story callouts
+## Reviewed polygon fallbacks
 
-Four editorial polygon groups orient the national overview: **St. Anton** (Rendl and both Albonagrat records), **Ötztal / Sölden** (Ötztaler Gletscher, Hochgurgl, Obergurgl and Stablein–Vent), **Zillertal** (Spieljoch, Hochzillertal, Zell–Kreuzjochbahn, Gerlosstein, Penken, Ahorn, Rastkogel, Eggalm and Hintertux), and **Kitzbühel** (Hahnenkamm–Ehrenbachhöhe, Kitzbühler Horn, Bichlalm and Jochberg–Pass Thurn). These are selected clusters, **not a measured largest-resorts ranking or an exhaustive regional inventory**.
+The four point-only ranking records have manually reviewed display associations: SkiWelt → `tiris:76` + `tiris:89`; Serfaus–Fiss–Ladis → `tiris:43`; Ischgl–Samnaun → `tiris:41` (partial); Sölden → `tiris:102`. Every source point is contained in its matched group. Across all 102 candidate planning features, the audit finds no other intersecting candidates for these four resorts beyond the accepted polygons. The evidence, exclusions, dates and reproduction are in [POLYGON-MATCH-REVIEW.md](POLYGON-MATCH-REVIEW.md). No source geometry is modified or merged, and ranking numbers remain unchanged.
 
-[Susie Lu’s d3-annotation](https://d3-annotation.susielu.com/) draws SVG `annotationCalloutCircle` callouts. `scripts/prepare-ski-annotations.py` verifies the reference names and derives a geographic bounding box from each reviewed group’s actual polygons. At runtime the box is projected through Leaflet; its midpoint and half-diagonal define an enclosing circle, with five pixels of visual padding. Circles are editorial highlights, not new boundaries, skiable-area measurements or inferred resort footprints. No guessed town coordinates are used. Reproduce with `uv run scripts/prepare-ski-annotations.py` after preparing the Tirol layer. The derived anchor file is CC BY 4.0, attributed to Land Tirol – tiris.
+## Linked resort selection
 
-`annotations.js` uses straight connectors to avoid shared elbows cutting across neighboring callouts, and recalculates circle centers and radii on movement, zoom, resize and source visibility changes. Notes disappear when their source is hidden or their center leaves the viewport. Matching buttons fit the whole group rather than zooming only its reference polygon; the inspector explicitly identifies that reference record. Shorter labels and wrapping are used on narrow maps. The visual SVG is hidden from screen readers and does not intercept map interactions; four matching native buttons and a prose map description provide equivalent keyboard-accessible exploration.
+The first ranking row is selected on load. Hover, keyboard focus or tapping another row selects that resort. Selection persists in inter-row gaps and after horizontal exits. Leaving the entire chart above its top selects the first row; leaving below its bottom selects the last. Escape returns to the first row without moving the map. Exactly one row remains selected, with `aria-pressed` and a live textual status.
+
+[Susie Lu’s d3-annotation](https://d3-annotation.susielu.com/) draws one nearby name label with a short straight leader. The kilometer value is not duplicated on the map; a header badge identifies outline versus reference point. Six ranking records highlight their actual OpenSkiData polygon/MultiPolygon; four point-only records highlight reviewed Tirol planning polygons instead of reference dots. These are source-preserving display associations, not changes to the original point records or kilometer values. Ischgl–Samnaun is explicitly partial because Swiss planning geometry is not supplied. See [the manual review and evidence](POLYGON-MATCH-REVIEW.md), [crosswalk](data/polygon-matches.json) and [run-record audit](data/polygon-match-audit.json). No outline or area is invented for point records. OpenSkiData label anchors are actual source boundary vertices chosen near the supplied viewport center. Planning-match anchors are actual matched-polygon vertices nearest the original source point. These references are stored in the ODbL ranking JSON and checked against the original download. The historical four-group preparation files remain as unused research artifacts, not part of the page renderer.
+
+The national view stays fixed on selection, with no automatic pan or zoom. Re-selecting the same row skips repainting and label reconstruction, preventing flicker across gaps. Cactus styling follows the page theme. On wide screens the panels share a compact, equal-height row; all ten bars fit next to the map, with methodology below both cards. Narrow screens stack the panels. The visual SVG has a textual counterpart in the chart and live status.
 
 Vendored, version-pinned dependencies (no visitor-time CDN requests or new build step):
 - D3 **4.13.0**, BSD-3-Clause, with its license in `assets/vendor/d3/LICENSE`.
 - d3-svg-annotation **2.5.1**, Apache-2.0, with its license and provenance in `assets/vendor/d3-annotation/`.
 
+## Downhill-length ranking
+
+A dense horizontal bar chart sits beside the map on wide screens and below it on narrow screens. It shows the **top ten reviewed resort/destination areas by mapped downhill length**, not official advertised piste totals. It includes point-only ski-area records, including Sölden and SkiWelt. Tirol’s planning polygons and the editorial map circles are not used to calculate kilometers.
+
+Source field: `statistics.runs.byActivity.downhill.byDifficulty.*.lengthInKm`. Sum all downhill difficulty categories using `math.fsum`; exclude Nordic trails and lifts. Of the 375 qualifying source records, 355 have these statistics and 20 do not. Missing lengths are not zero. Full cross-border resort lengths are retained, not clipped to Austrian territory.
+
+The source mixes resort units, components and ticket regions. The explicit decisions in `data/ranking-review.json` exclude Ski amadé, the broader Schladming–Dachstein and Oberstdorf–Kleinwalsertal regions, the combined Damüls–Mellau–Faschina region, Lech/Zürs as an Arlberg component, and an uncertain Austrian association for Drei Zinnen. Official grouping pages are linked in that file and in the chart method. Their advertised kilometer totals are **not** imported. Every source record at or above the displayed cutoff must have an explicit review decision or preparation fails. The list is a reviewed comparison, not a definitive national league table or a claim that every destination is fully lift-connected.
+
+Datawrapper-informed presentation: descending order, a common **0–300 km** scale, one theme-aware base bar color, a selection-only accent, light vertical guides, complete names and direct one-decimal values. The chart has more horizontal space than the earlier paired layout. Geographic names use proportional type; numeric values and site chrome retain monospace. A visible qualification directly below the bars states that these are mapped kilometers, not advertised totals or an official national ranking. Names move above bars on narrow screens. Full-precision values remain in the downloadable CSV/JSON. Native list/button semantics expose each name, value and selected state; bar fills are decorative. The chart values and bars are static HTML/CSS, with lightweight JavaScript only for linking selection to the map. There is no external chart service or new runtime library.
+
+Reproduce from the existing pinned download:
+
+```sh
+python3 scripts/prepare-downhill-ranking.py --source /tmp/ski-areas.geojson
+python3 scripts/test-downhill-ranking.py --source /tmp/ski-areas.geojson
+```
+
+The optional preparation step writes ODbL chart data and replaces only the `downhill-ranking:start/end` generated block in `index.html`. The cached source hash is checked against the map manifest; a newer source requires a fresh review. Do not hand-edit that generated block. Static hosting still needs no build step.
+
+Outputs: `data/downhill-ranking.json` (values, source IDs, difficulty breakdowns, candidate decisions and licensing) and `data/downhill-ranking.csv`. `ranking.css` handles the responsive chart. `scripts/check-downhill-chart.js` verifies actual rendered widths, zero baseline, order, value/name placement and a single consistent color.
+
 ## Accessibility and dependencies
 
-Leaflet 1.9.4 is vendored with its BSD-2-Clause license. Native controls, labeled keyboard-searchable selection (including German ae/oe/ue spellings), textual coverage counts, a live selected-record panel, prose explanation and downloadable data supplement canvas rendering. Individual polygons are not keyboard-addressable; the selector is the equivalent inspection path. Source strings are rendered as text; external URLs are protocol-checked.
+Leaflet 1.9.4 is vendored with its BSD-2-Clause license and used only as a renderer. Drag, wheel, double-click, touch, box and keyboard zoom/pan are disabled; no zoom control, search or map-click popups are installed. Resort selection is driven by the accessible ranking buttons without moving the map. The map is not an unnecessary keyboard stop. Textual counts, legend, prose description and downloadable data supplement canvas rendering. The page theme toggle remains accessible. A ResizeObserver coalesces responsive refitting after layout settles and ignores temporary zero-sized containers. Map styling reacts to the page’s theme without changing source geometry.
 
 ## Verification · 2026-11-03
 
-- 16 ski-map tests passed, including exact geometry/source-name fidelity against both cached input downloads, valid geometries, separate IDs/licenses, the Sölden alias, its piste-record audit, all four annotation groups/source names and enclosing geographic bounds, and the political basemap’s nine-state/nine-city accounting and valid line geometry.
-- Existing 10 home-distance and 7 water-data tests passed.
-- Both JavaScript files passed `node --check`; site-resource and whitespace checks passed.
-- Browser checks at 1440px, 390px and 320px: no horizontal overflow; source toggles, hidden-source activation, Sölden search/native selection, no-match/Escape behavior and overview reset checked. No browser errors in the final clean session.
-- d3-annotation callouts checked at 1440px, 390px and 320px: no note collisions or clipping in the overview; geographic highlights follow actual drag/pan, labels update on zoom, hiding Tirol removes its notes, and the matching buttons activate the correct reference record. Circle-callout checks also verify four unfilled circle subjects, source visibility, whole-group zoom and no page overflow at 320px. The four-callout layout and Zillertal group selection were rechecked at 1440px and 320px; no mobile note collisions or clipping were detected.
-- Default map requests zero street-map tiles. Optional street-map context was checked separately.
-- Full rendered-layout regression: `scripts/check-ski-label-layout.js` passed at 320, 390, 600, 760, 800, 960, 1024, 1280, 1440 and 1920px, plus a desktop drag/pan. Checks cover note bounds/separation, other callouts’ strokes crossing annotation text, political labels versus annotation text/connectors/circles, basemap-label separation and page overflow. Earlier checks covered note boxes only and did not detect the reported Innsbruck/Salzburg conflicts; these broader geometry checks replace that incomplete assurance. Resize refitting is synchronous with Leaflet’s resize event, not delayed behind the label checks.
-- Axe WCAG 2 A/AA scan after popup transitions: no detected violations; contrast over map/canvas controls remains flagged for manual review. This is not a claim of full accessibility conformance.
+- 22 ski-map tests passed: pinned source/geometry fidelity, valid geometries, separate licenses/IDs, Sölden’s association and piste audit, all four annotation groups and bounding boxes, political context accounting, and the fixed-presentation contract.
+- Eleven downhill-ranking tests, eight theme-preference tests, 10 home-distance tests and seven water-data tests passed, alongside the 22 ski-map tests (58 total).
+- Map and annotation JavaScript passed `node --check`; site-resource and whitespace checks passed.
+- The linked-selection, bar geometry, label-layout and fixed-map browser regressions passed in light/dark mode at 320, 390, 600, 760, 800, 960, 1024, 1100, 1280, 1440 and 1920px (22 combinations). These include every resort, gap stability, horizontal exits, top/bottom endpoint selection, keyboard/tap persistence, matching desktop card heights and all ten rows fitting without chart scrolling. One selected-resort note remains present; checks cover text bounds/separation, connector/circle collisions, basemap labels, four-role legend placement, attribution clearance, proportional geographic labels, Cactus background, absent explorer controls, and fixed view under synthetic drag/wheel/double-click/keyboard input.
+- No sidebar, search, source switches, zoom control, popup or external tile requests remain. Ranking buttons drive persistent selection. The only page-level toggle is the light/dark theme.
+- Full-page captures and viewport changes were checked with ResizeObserver-based framing, including temporary-size guards. Final browser session: no console errors.
+- Axe WCAG 2 A/AA scan: no detected violations. Map/canvas contrast remains flagged for manual review; this is not a claim of full accessibility conformance.
 
 Run the rendered-layout regression in the named browser session after the map overview and labels settle:
 
 ```sh
 agent-browser wait --fn 'document.querySelector("#map").dataset.labelsReady === "true"'
 agent-browser eval --stdin < scripts/check-ski-label-layout.js
+agent-browser eval --stdin < scripts/check-ski-fixed-map.js
+agent-browser eval --stdin < scripts/check-downhill-chart.js
+agent-browser eval --stdin < scripts/check-linked-ski-chart.js
 ```
 
 To include input-fidelity checks:

@@ -110,6 +110,84 @@ class SkiPolygonTests(unittest.TestCase):
         self.assertEqual([audit[k] for k in ['associatedRecords', 'intersectingRecords', 'fullyContainedRecords']], [223, 219, 212])
         self.assertEqual(len(audit['runsSHA256']), 64)
 
+    def test_fixed_map_presentation_contract(self):
+        import re
+        page = (folder.parent / 'index.html').read_text()
+        script = (folder.parent / 'map.js').read_text()
+        self.assertNotIn('<aside', page)
+        self.assertNotIn('<select', page)
+        self.assertNotIn('searchable-select.js', page)
+        self.assertNotIn('Selected record</span>', page)
+        self.assertIn('class="source-legend"', page)
+        self.assertIn('id="map" role="group"', page)
+        for option in ['dragging', 'scrollWheelZoom', 'doubleClickZoom', 'touchZoom', 'boxZoom', 'keyboard', 'zoomControl']:
+            self.assertRegex(script, rf'\b{option}:\s*false')
+        self.assertNotIn('L.tileLayer(', script)
+        self.assertNotIn('bindPopup(', script)
+
+    def test_persistent_ranking_selection_contract(self):
+        page = (folder.parent / 'index.html').read_text()
+        script = (folder.parent / 'map.js').read_text()
+        annotations = (folder.parent / 'annotations.js').read_text()
+        self.assertNotIn("'annotations.json", script)
+        self.assertNotIn('Four familiar ski-area clusters', page)
+        self.assertIn('let selectedId = firstId', script)
+        self.assertIn("querySelector('.downhill-ranking').addEventListener('pointerleave'", script)
+        self.assertIn('event.clientY <= bounds.top', script)
+        self.assertIn('event.clientY >= bounds.bottom', script)
+        self.assertNotIn('annotationCalloutCircle', annotations)
+
+    def test_ranked_foreground_and_neutral_planning_context(self):
+        import re
+        ranking = json.loads((folder / 'downhill-ranking.json').read_text())['top10']
+        polygons = {f['properties']['id'] for f in areas}
+        self.assertEqual(sum(r['mapReference']['kind'] == 'point' for r in ranking), 4)
+        self.assertTrue(all(r['id'] in polygons for r in ranking if r['mapReference']['kind'] == 'outline'))
+        script = (folder.parent / 'map.js').read_text()
+        self.assertIn('rankedIds.has(feature.properties.id)', script)
+        style = re.search(r'tirolLayer\.setStyle\((.*?)\);', script, re.S).group(1)
+        self.assertIn('contextColor', style)
+        self.assertIn('dashArray', style)
+        self.assertNotIn('--color-accent', style)
+        page = (folder.parent / 'index.html').read_text()
+        self.assertIn('Where these ten are', page)
+        self.assertIn('OpenSkiData', page)
+
+    def test_reviewed_planning_matches_cover_all_four_point_records(self):
+        from shapely.ops import unary_union
+        rows = json.loads((folder / 'downhill-ranking.json').read_text())['top10']
+        review = json.loads((folder / 'polygon-matches.json').read_text())
+        polygons = {f['properties']['id']: f for f in json.loads((folder / 'tirol-boundaries.geojson').read_text())['features']}
+        points = {r['id']: r for r in rows if r['mapReference']['kind'] == 'point'}
+        self.assertEqual({r['openSkiDataId'] for r in review['matches']}, set(points))
+        self.assertEqual(len(review['matches']), 4)
+        self.assertEqual(sum(len(r['polygonIds']) for r in review['matches']), 5)
+        for match in review['matches']:
+            selected = [polygons[key] for key in match['polygonIds']]
+            self.assertTrue(all(f['properties']['referenceDate'] == review['referenceDate'] for f in selected))
+            point = shape({'type': 'Point', 'coordinates': points[match['openSkiDataId']]['mapReference']['coordinates']})
+            self.assertTrue(unary_union([shape(f['geometry']) for f in selected]).covers(point))
+
+    def test_reviewed_planning_audit_is_bound_to_inputs(self):
+        audit = json.loads((folder / 'polygon-match-audit.json').read_text())
+        self.assertEqual(audit['tirolSHA256'], hashlib.sha256((folder / 'tirol-boundaries.geojson').read_bytes()).hexdigest())
+        self.assertEqual(audit['reviewSHA256'], hashlib.sha256((folder / 'polygon-matches.json').read_bytes()).hexdigest())
+        self.assertEqual(audit['runsSHA256'], json.loads((folder / 'tirol-coverage.json').read_text())['reviewedAssociations'][0]['pisteRecordCheck']['runsSHA256'])
+        self.assertEqual(set(audit['matches']), {r['openSkiDataId'] for r in json.loads((folder / 'polygon-matches.json').read_text())['matches']})
+        expected = [(602, 592, 550), (464, 458, 424), (528, 399, 368), (223, 219, 212)]
+        for row, counts in zip(audit['matches'].values(), expected):
+            self.assertTrue(row['sourcePointCovered'])
+            self.assertEqual(tuple(row[key] for key in ['associatedRecords', 'intersectingRecords', 'fullyContainedRecords']), counts)
+
+    def test_partial_cross_border_match_is_explicit(self):
+        review = json.loads((folder / 'polygon-matches.json').read_text())['matches']
+        ischgl = next(r for r in review if r['label'] == 'Ischgl–Samnaun')
+        self.assertEqual(ischgl['polygonIds'], ['tiris:41'])
+        self.assertIn('Swiss', ischgl['qualification'])
+        self.assertIn('Partial', ischgl['qualification'])
+        skiwelt = next(r for r in review if r['label'].startswith('SkiWelt'))
+        self.assertEqual(skiwelt['polygonIds'], ['tiris:76', 'tiris:89'])
+
     def test_political_basemap_context(self):
         borders = json.loads((folder / 'state-borders.geojson').read_text())
         self.assertEqual(borders['metadata']['stateCount'], 9)

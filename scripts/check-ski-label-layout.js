@@ -8,8 +8,9 @@
   const groups = Array.from(map.querySelectorAll('g.annotation'));
   const notes = groups.map(group => ({ group, rect: group.querySelector('.annotation-note-content').getBoundingClientRect() }));
   const errors = [];
-  const expectedNotes = document.querySelectorAll('[data-annotation-feature]').length;
-  if (notes.length !== expectedNotes) errors.push('Expected all ' + expectedNotes + ' overview callouts; found ' + notes.length + '. Reset All Austria with Tirol enabled.');
+  const expectedNotes = Number(map.dataset.annotationCount);
+  if (!expectedNotes || notes.length !== expectedNotes) errors.push('Expected all ' + expectedNotes + ' fixed-map callouts; found ' + notes.length + '. Wait for the map to finish rendering.');
+  const legend = map.querySelector('.source-legend')?.getBoundingClientRect();
   const overlaps = (a, b, gap = 0) => a.left < b.right + gap && a.right > b.left - gap && a.top < b.bottom + gap && a.bottom > b.top - gap;
   const strokes = groups.flatMap(group => Array.from(group.querySelectorAll('.annotation-connector path, .annotation-subject path, .annotation-note path')).flatMap(path => {
     const matrix = path.getScreenCTM();
@@ -19,10 +20,12 @@
     return [{ group, points }];
   }));
   const crosses = (points, rect, gap = 0) => points.some(p => p.x > rect.left - gap && p.x < rect.right + gap && p.y > rect.top - gap && p.y < rect.bottom + gap);
+  if (legend && strokes.some(stroke => crosses(stroke.points, legend, 1))) errors.push('inline legend obscures an annotation stroke');
   for (let i = 0; i < notes.length; i++) {
     const { group, rect } = notes[i];
     const name = group.querySelector('.annotation-note-title').textContent;
     if (rect.left < extent.left || rect.right > extent.right || rect.top < extent.top || rect.bottom > extent.bottom) errors.push('clipped note: ' + name);
+    if (legend && overlaps(rect, legend, 2)) errors.push('inline legend overlaps annotation: ' + name);
     for (let j = 0; j < i; j++) if (overlaps(rect, notes[j].rect, 2)) errors.push('annotation text overlap: ' + name);
     for (const stroke of strokes) if (stroke.group !== group && crosses(stroke.points, rect)) errors.push('another callout crosses annotation text: ' + name);
   }
@@ -30,6 +33,7 @@
   const labelRects = labels.map(n => n.querySelector('span').getBoundingClientRect());
   labels.forEach((label, i) => {
     const rect = labelRects[i];
+    if (legend && overlaps(rect, legend, 2)) errors.push('inline legend overlaps basemap label: ' + label.textContent);
     if (notes.some(note => overlaps(rect, note.rect, 2))) errors.push('annotation text crosses basemap label: ' + label.textContent);
     if (strokes.some(stroke => crosses(stroke.points, rect, 1))) errors.push('connector/circle crosses basemap label: ' + label.textContent);
     for (let j = 0; j < i; j++) if (overlaps(rect, labelRects[j], 2)) errors.push('basemap labels overlap: ' + label.textContent);

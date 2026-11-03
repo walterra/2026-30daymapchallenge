@@ -1,0 +1,77 @@
+{
+  "runsSHA256": "05b3a180ffbe9ce7c398f6470baf4dd37915339b69b2579f21f9fca33b82660f",
+  "reviewSHA256": "edf86edb9c91d411c48faa03b1824e531166a1f2d591575866eb3d7abb7e1eff",
+  "tirolSHA256": "70f79702041a1782b1656d46d2f026767e5cf358e6f9f5e00758e278ef050f82",
+  "qualification": "Associated source run records; not distance/area-weighted coverage, current boundary equivalence or a polygon-generation method.",
+  "matches": {
+    "37ee9c6ba5b44864ba844f804938a8b815f8b717": {
+      "label": "SkiWelt Wilder Kaiser–Brixental",
+      "polygonIds": [
+        "tiris:76",
+        "tiris:89"
+      ],
+      "sourcePointCovered": true,
+      "associatedRecords": 602,
+      "intersectingRecords": 592,
+      "fullyContainedRecords": 550,
+      "candidateIntersections": {
+        "tiris:76": {
+          "name": "Schiwelt Wilder Kaiser - Brixental",
+          "records": 487
+        },
+        "tiris:89": {
+          "name": "Choralm - Westendorf, Kandleralm - Brixen",
+          "records": 106
+        }
+      }
+    },
+    "e587928ea763f20b3232a5069c5d2438d09b6908": {
+      "label": "Serfaus–Fiss–Ladis",
+      "polygonIds": [
+        "tiris:43"
+      ],
+      "sourcePointCovered": true,
+      "associatedRecords": 464,
+      "intersectingRecords": 458,
+      "fullyContainedRecords": 424,
+      "candidateIntersections": {
+        "tiris:43": {
+          "name": "Komperdell",
+          "records": 458
+        }
+      }
+    },
+    "7c2f2690d339d9df6f820e7c6e596a9b0ba3dce5": {
+      "label": "Ischgl–Samnaun",
+      "polygonIds": [
+        "tiris:41"
+      ],
+      "sourcePointCovered": true,
+      "associatedRecords": 528,
+      "intersectingRecords": 399,
+      "fullyContainedRecords": 368,
+      "candidateIntersections": {
+        "tiris:41": {
+          "name": "Silvretta Schiarena",
+          "records": 399
+        }
+      }
+    },
+    "78e5f98d8527df7216b08962f372659abcd4f711": {
+      "label": "Sölden",
+      "polygonIds": [
+        "tiris:102"
+      ],
+      "sourcePointCovered": true,
+      "associatedRecords": 223,
+      "intersectingRecords": 219,
+      "fullyContainedRecords": 212,
+      "candidateIntersections": {
+        "tiris:102": {
+          "name": "Ötztaler Gletscher",
+          "records": 219
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "reviewDate": "2026-11-03",
+  "policy": "Reviewed display associations only. Preserve both original datasets, geometry, IDs, licenses and ranking values. Prefer the original OpenSkiData outline; use these Tirol planning polygons only for the four point-only ranking records. Do not publish dissolved, buffered or invented boundaries; temporary unions are used only for auditing.",
+  "license": "ODbL-1.0",
+  "attribution": "OpenSkiData/OpenSkiMap, OpenStreetMap contributors, Skimap.org, Who’s On First, Mapterhorn; Land Tirol – tiris. Polygon geometry is delivered separately under CC BY 4.0.",
+  "referenceDate": "2011-10-30",
+  "geometrySource": "Land Tirol – tiris, Schigebietsgrenzen",
+  "geometryLicense": "CC BY 4.0",
+  "matches": [
+    {
+      "openSkiDataId": "37ee9c6ba5b44864ba844f804938a8b815f8b717",
+      "label": "SkiWelt Wilder Kaiser–Brixental",
+      "polygonIds": ["tiris:76", "tiris:89"],
+      "reason": "Direct named SkiWelt planning polygon plus the separately recorded Choralm/Westendorf–Kandleralm/Brixen component. Westendorf belongs to SkiWelt; omitting the southern polygon would miss this component.",
+      "qualification": "Historical planning envelopes, not a verified current operational boundary.",
+      "evidenceUrls": ["https://www.skiwelt.at/en/skiwelt-westendorf.html"]
+    },
+    {
+      "openSkiDataId": "e587928ea763f20b3232a5069c5d2438d09b6908",
+      "label": "Serfaus–Fiss–Ladis",
+      "polygonIds": ["tiris:43"],
+      "reason": "The Komperdell planning envelope contains the source resort point and spans the Serfaus/Fiss/Ladis mountain area. The association is checked against the resort's source run records rather than the historical name alone.",
+      "qualification": "Historical Komperdell planning envelope; not an assertion of complete current coverage.",
+      "evidenceUrls": ["https://www.serfaus-fiss-ladis.at/en/winter-holiday/ski-area-and-winter-activities/skiing-and-snowboarding"]
+    },
+    {
+      "openSkiDataId": "7c2f2690d339d9df6f820e7c6e596a9b0ba3dce5",
+      "label": "Ischgl–Samnaun",
+      "polygonIds": ["tiris:41"],
+      "reason": "Silvretta Schiarena is the matching Ischgl planning envelope, not neighboring Galtür, Kappl or See. The source point lies within it. The resort is cross-border, whereas this Tirol dataset does not supply a Swiss Samnaun boundary.",
+      "qualification": "Partial coverage: Tirol's 2011 planning envelope only; Samnaun/Swiss extent is not supplied. Chart length still includes the full cross-border resort.",
+      "evidenceUrls": ["https://www.ischgl.com/en/winter/silvretta-arena"]
+    },
+    {
+      "openSkiDataId": "78e5f98d8527df7216b08962f372659abcd4f711",
+      "label": "Sölden",
+      "polygonIds": ["tiris:102"],
+      "reason": "Previously reviewed Ötztaler Gletscher association: source point containment and source piste intersections establish the match. Do not add nearby Obergurgl, Hochgurgl or Vent merely because they share the valley.",
+      "qualification": "Historical Ötztaler Gletscher planning envelope, not an equivalent current Sölden resort boundary.",
+      "evidenceUrls": ["https://gis.tirol.gv.at/arcgis/rest/services/Service_Public/ogd_sport/MapServer/7"]
+    }
+  ]
+}

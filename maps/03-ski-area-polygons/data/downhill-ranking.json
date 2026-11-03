@@ -1,0 +1,1102 @@
+{
+  "metadata": {
+    "source": "https://tiles.openskimap.org/geojson/ski_areas.geojson",
+    "sourceSHA256": "496ac2f1379428f003c61fbfe5eb888fca69aea088bc06926363c53026bcd020",
+    "snapshotDownloaded": "2026-11-02",
+    "license": "ODbL 1.0",
+    "licenseUrl": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "attribution": "OpenSkiData / OpenSkiMap.org, © OpenStreetMap contributors (ODbL), Skimap.org, Who’s On First, © Mapterhorn",
+    "scope": "Named resort/destination areas with an Austrian association, not regional ticket alliances. Areas may contain multiple mountains and cross-border pistes; this is not a lift-connectedness classification.",
+    "reviewDate": "2026-11-03",
+    "selectedRecords": 375,
+    "recordsWithDownhillLength": 355,
+    "recordsWithoutDownhillLength": 20,
+    "method": "Sum source statistics.runs.byActivity.downhill.byDifficulty.*.lengthInKm; exclude Nordic trails and lifts. No official advertised totals substituted.",
+    "qualification": "Reviewed resort/destination areas, not a complete official resort census. Full cross-border lengths retained. No claim that every destination is lift-connected.",
+    "axisMinimum": 0,
+    "axisMaximum": 300,
+    "displayDecimals": 1
+  },
+  "top10": [
+    {
+      "mapReference": {
+        "kind": "outline",
+        "coordinates": [
+          10.1778674,
+          47.178556
+        ],
+        "method": "Actual source boundary vertex nearest supplied viewport center"
+      },
+      "id": "53410fc611922a26e32535c74bb1d9364cef4ecd",
+      "name": "Ski Arlberg",
+      "downhillLengthKm": 272.0656435228959,
+      "byDifficultyKm": {
+        "easy": 125.29358009130564,
+        "other": 0.16252924777066607,
+        "advanced": 43.977622697628114,
+        "intermediate": 102.63191148619151
+      },
+      "geometryType": "Polygon",
+      "sources": [
+        {
+          "id": "way/539407909",
+          "type": "openstreetmap"
+        },
+        {
+          "id": 627,
+          "type": "skimap.org"
+        }
+      ],
+      "decision": "include",
+      "reason": "Retain the broader resort-area polygon record; do not also rank Lech/Zürs or the duplicate point record.",
+      "label": "Ski Arlberg",
+      "rank": 1
+    },
+    {
+      "mapReference": {
+        "kind": "outline",
+        "coordinates": [
+          12.7123832,
+          47.4126976
+        ],
+        "method": "Actual source boundary vertex nearest supplied viewport center"
+      },
+      "id": "180faeea32aba7b22fbe1438b0a3a82f6a2a4ad8",
+      "name": "Skicircus Saalbach-Hinterglemm Leogang Fieberbrunn",
+      "downhillLengthKm": 267.12156462863413,
+      "byDifficultyKm": {
+        "easy": 146.9695645914662,
+        "other": 41.402434535974045,
+        "novice": 1.7475835562149906,
+        "advanced": 7.381099808412279,
+        "intermediate": 69.62088213656665
+      },
+      "geometryType": "Polygon",
+      "sources": [
+        {
+          "id": "way/342018770",
+          "type": "openstreetmap"
+        },
+        {
+          "id": 606,
+          "type": "skimap.org"
+        }
+      ],
+      "decision": "include",
+      "reason": "Retain the named Skicircus resort-area record.",
+      "label": "Saalbach–Hinterglemm–Leogang–Fieberbrunn",
+      "rank": 2
+    },
+    {
+      "mapReference": {
+        "kind": "point",
+        "coordinates": [
+          12.24011335636575,
+          47.46717147921509
+        ],
+        "method": "Supplied OpenSkiData reference point; no outline inferred"
+      },
+      "id": "37ee9c6ba5b44864ba844f804938a8b815f8b717",
+      "name": "SkiWelt Wilder Kaiser - Brixental",
+      "downhillLengthKm": 234.0073001066585,
+      "byDifficultyKm": {
+        "easy": 110.80495037747943,
+        "novice": 0.09252560585848939,
+        "advanced": 8.382195925719296,
+        "freeride": 10.83212633785838,
+        "intermediate": 103.89550185974291
+      },
+      "geometryType": "Point",
+      "sources": [
+        {
+          "id": "relation/4643831",
+          "type": "openstreetmap"
+        },
+        {
+          "id": 641,
+          "type": "skimap.org"
+        }
+      ],
+      "decision": "include",
+      "reason": "Retain the named SkiWelt resort-area record, including its point geometry; polygon availability is not an eligibility requirement.",
+      "label": "SkiWelt Wilder Kaiser–Brixental",
+      "rank": 3
+    },
+    {
+      "mapReference": {
+        "kind": "outline",
+        "coordinates": [
+          12.3433625,
+          47.4392385
+        ],
+        "method": "Actual source boundary vertex nearest supplied viewport center"
+      },
+      "id": "1eeb56a80185ff1dff644357f9f747842d0f620c",
+      "name": "KitzSki",
+      "downhillLengthKm": 185.71988593156354,
+      "byDifficultyKm": {
+        "easy": 91.20180120255995,
+        "other": 0.7390315414238453,
+        "expert": 1.4716302027039412,
+        "novice": 2.244815895627531,
+        "advanced": 28.991868989654506,
+        "intermediate": 61.07073809959377
+      },
+      "geometryType": "MultiPolygon",
+      "sources": [
+        {
+          "id": "relation/10938000",
+          "type": "openstreetmap"
+        },
+        {
+          "id": 17813,
+          "type": "skimap.org"
+        },
+        {
+          "id": 632,
+          "type": "skimap.org"
+        },
+        {
+          "id": 19092,
+          "type": "skimap.org"
+        }
+      ],
+      "decision": "include",
+      "reason": "Retain the resort-area record rather than separately ranking its mountain components.",
+      "label": "KitzSki",
+      "rank": 4
+    },
+    {
+      "mapReference": {
+        "kind": "point",
+        "coordinates": [
+          10.567274783138561,
+          47.05017455151525
+        ],
+        "method": "Supplied OpenSkiData reference point; no outline inferred"
+      },
+      "id": "e587928ea763f20b3232a5069c5d2438d09b6908",
+      "name": "Serfaus Fiss Ladis",
+      "downhillLengthKm": 169.25204031758057,
+      "byDifficultyKm": {
+        "easy": 36.20773231044191,
+        "other": 1.8063424503020218,
+        "advanced": 21.044904617271833,
+        "freeride": 21.074952930965537,
+        "intermediate": 89.11810800859925
+      },
+      "geometryType": "Point",
+      "sources": [
+        {
+          "id": "relation/5644297",
+          "type": "openstreetmap"
+        },
+        {
+          "id": 4544,
+          "type": "skimap.org"
+        }
+      ],
+      "decision": "include",
+      "reason": "Retain the named resort-area record.",
+      "label": "Serfaus–Fiss–Ladis",
+      "rank": 5
+    },
+    {
+      "mapReference": {
+        "kind": "point",
+        "coordinates": [
+          10.325127289488089,
+          46.97446930279399
+        ],
+        "method": "Supplied OpenSkiData reference point; no outline inferred"
+      },
+      "id": "7c2f2690d339d9df6f820e7c6e596a9b0ba3dce5",
+      "name": "Silvretta Arena Ischgl/Samnaun",
+      "downhillLengthKm": 163.1892034553773,
+      "byDifficultyKm": {
+        "easy": 41.974174040096095,
+        "other": 0.7109545618272294,
+        "novice": 1.311281887109105,
+        "advanced": 26.84322642453651,
+        "freeride": 9.063423597514209,
+        "intermediate": 83.28614294429417
+      },
+      "geometryType": "Point",
+      "sources": [
+        {
+          "id": "relation/3508010",
+          "type": "openstreetmap"
+        },
+        {
+          "id": 630,
+          "type": "skimap.org"
+        }
+      ],
+      "decision": "include",
+      "reason": "Retain the full named cross-border resort area; lengths are not clipped to Austrian territory.",
+      "label": "Ischgl–Samnaun",
+      "rank": 6
+    },
+    {
+      "mapReference": {
+        "kind": "outline",
+        "coordinates": [
+          12.0343423,
+          47.2250039
+        ],
+        "method": "Actual source boundary vertex nearest supplied viewport center"
+      },
+      "id": "bbbfaa27816f58cfdfecc5b692b0ee59dde891f5",
+      "name": "Zillertal Arena",
+      "downhillLengthKm": 119.59484877904967,
+      "byDifficultyKm": {
+        "easy": 41.921408959655885,
+        "other": 0.126779556244479,
+        "novice": 1.1573862143632354,
+        "advanced": 10.040109340681367,
+        "intermediate": 66.34916470810471
+      },
+      "geometryType": "Polygon",
+      "sources": [
+        {
+          "id": "way/539189765",
+          "type": "openstreetmap"
+        },
+        {
+          "id": 643,
+          "type": "skimap.org"
+        }
+      ],
+      "decision": "include",
+      "reason": "Retain this resort-area record, not an invented total for the entire Zillertal valley annotation.",
+      "label": "Zillertal Arena",
+      "rank": 7
+    },
+    {
+      "mapReference": {
+        "kind": "outline",
+        "coordinates": [
+          11.7845534,
+          47.1591397
+        ],
+        "method": "Actual source boundary vertex nearest supplied viewport center"
+      },
+      "id": "0e7ba1fd10a2afbc6e188d1f9936f843cc665583",
+      "name": "Mayrhofen Hippach",
+      "downhillLengthKm": 107.95982564461754,
+      "byDifficultyKm": {
+        "easy": 48.75267035156182,
+        "novice": 0.6407478985726843,
+        "advanced": 13.856688885606914,
+        "intermediate": 44.70971850887612
+      },
+      "geometryType": "Polygon",
+      "sources": [
+        {
+          "id": "way/539196496",
+          "type": "openstreetmap"
+        },
+        {
+          "id": 634,
+          "type": "skimap.org"
+        }
+      ],
+      "decision": "include",
+      "reason": "Retain the named destination/resort-area record, including its different mountains; no claim of complete lift-connectedness.",
+      "label": "Mayrhofen–Hippach",
+      "rank": 8
+    },
+    {
+      "mapReference": {
+        "kind": "point",
+        "coordinates": [
+          10.977113133167688,
+          46.95371083559911
+        ],
+        "method": "Supplied OpenSkiData reference point; no outline inferred"
+      },
+      "id": "78e5f98d8527df7216b08962f372659abcd4f711",
+      "name": "Sölden",
+      "downhillLengthKm": 103.00422348808945,
+      "byDifficultyKm": {
+        "easy": 54.55480178946547,
+        "other": 1.0489420659138458,
+        "novice": 0.2051250211000079,
+        "advanced": 14.5762742382692,
+        "intermediate": 32.61908037334092
+      },
+      "geometryType": "Point",
+      "sources": [
+        {
+          "id": "relation/15961562",
+          "type": "openstreetmap"
+        },
+        {
+          "id": 635,
+          "type": "skimap.org"
+        }
+      ],
+      "decision": "include",
+      "reason": "A point-only ski-area record still has downhill statistics; no polygon inference is needed for the ranking.",
+      "label": "Sölden",
+      "rank": 9
+    },
+    {
+      "mapReference": {
+        "kind": "outline",
+        "coordinates": [
+          9.9914217,
+          47.0146149
+        ],
+        "method": "Actual source boundary vertex nearest supplied viewport center"
+      },
+      "id": "e61adbd637839187e907618f82887995b324f482",
+      "name": "Silvretta Montafon",
+      "downhillLengthKm": 101.89098958180752,
+      "byDifficultyKm": {
+        "easy": 54.206293196599134,
+        "novice": 0.3773990462520032,
+        "advanced": 14.797924311096363,
+        "intermediate": 32.50937302786002
+      },
+      "geometryType": "Polygon",
+      "sources": [
+        {
+          "id": "way/539421257",
+          "type": "openstreetmap"
+        },
+        {
+          "id": 2709,
+          "type": "skimap.org"
+        }
+      ],
+      "decision": "include",
+      "reason": "Retain the named resort-area record.",
+      "label": "Silvretta Montafon",
+      "rank": 10
+    }
+  ],
+  "reviewedCandidates": [
+    {
+      "mapReference": {
+        "kind": "outline",
+        "coordinates": [
+          13.3991934,
+          47.2934216
+        ],
+        "method": "Actual source boundary vertex nearest supplied viewport center"
+      },
+      "id": "53a8bb068ae7f82160a4c6e2df63ee3a724b62dd",
+      "name": "Ski amadé",
+      "downhillLengthKm": 604.753971566255,
+      "byDifficultyKm": {
+        "easy": 292.9914909024841,
+        "other": 5.095249380689675,
+        "novice": 2.104599530699325,
+        "advanced": 33.498706765506256,
+        "freeride": 1.469726750133943,
+        "intermediate": 269.59419823674176
+      },
+      "geometryType": "MultiPolygon",
+      "sources": [
+        {
+          "id": "relation/8896547",
+          "type": "openstreetmap"
+        },
+        {
+          "id": 597,
+          "type": "skimap.org"
+        },
+        {
+          "id": 612,
+          "type": "skimap.org"
+        },
+        {
+          "id": 602,
+          "type": "skimap.org"
+        },
+        {
+          "id": 14610,
+          "type": "skimap.org"
+        },
+        {
+          "id": 12369,
+          "type": "skimap.org"
+        },
+        {
+          "id": 12370,
+          "type": "skimap.org"
+        },
+        {
+          "id": 14612,
+          "type": "skimap.org"
+        },
+        {
+          "id": 610,
+          "type": "skimap.org"
+        },
+        {
+          "id": 13534,
+          "type": "skimap.org"
+        },
+        {
+          "id": 623,
+          "type": "skimap.org"
+        },
+        {
+          "id": 17193,
+          "type": "skimap.org"
+        },
+        {
+          "id": 17194,
+          "type": "skimap.org"
+        },
+        {
+          "id": 608,
+          "type": "skimap.org"
+        },
+        {
+          "id": 17332,
+          "type": "skimap.org"
+        }
+      ],
+      "decision": "exclude",
+      "reason": "Multi-destination ticket alliance, not a single resort area; it includes regions and resorts ranked or reviewed separately.",
+      "evidenceUrl": "https://www.skiamade.com/en/ski-areas"
+    },
+    {
+      "mapReference": {
+        "kind": "outline",
+        "coordinates": [
+          10.1778674,
+          47.178556
+        ],
+        "method": "Actual source boundary vertex nearest supplied viewport center"
+      },
+      "id": "53410fc611922a26e32535c74bb1d9364cef4ecd",
+      "name": "Ski Arlberg",
+      "downhillLengthKm": 272.0656435228959,
+      "byDifficultyKm": {
+        "easy": 125.29358009130564,
+        "other": 0.16252924777066607,
+        "advanced": 43.977622697628114,
+        "intermediate": 102.63191148619151
+      },
+      "geometryType": "Polygon",
+      "sources": [
+        {
+          "id": "way/539407909",
+          "type": "openstreetmap"
+        },
+        {
+          "id": 627,
+          "type": "skimap.org"
+        }
+      ],
+      "decision": "include",
+      "reason": "Retain the broader resort-area polygon record; do not also rank Lech/Zürs or the duplicate point record.",
+      "label": "Ski Arlberg"
+    },
+    {
+      "mapReference": {
+        "kind": "outline",
+        "coordinates": [
+          12.7123832,
+          47.4126976
+        ],
+        "method": "Actual source boundary vertex nearest supplied viewport center"
+      },
+      "id": "180faeea32aba7b22fbe1438b0a3a82f6a2a4ad8",
+      "name": "Skicircus Saalbach-Hinterglemm Leogang Fieberbrunn",
+      "downhillLengthKm": 267.12156462863413,
+      "byDifficultyKm": {
+        "easy": 146.9695645914662,
+        "other": 41.402434535974045,
+        "novice": 1.7475835562149906,
+        "advanced": 7.381099808412279,
+        "intermediate": 69.62088213656665
+      },
+      "geometryType": "Polygon",
+      "sources": [
+        {
+          "id": "way/342018770",
+          "type": "openstreetmap"
+        },
+        {
+          "id": 606,
+          "type": "skimap.org"
+        }
+      ],
+      "decision": "include",
+      "reason": "Retain the named Skicircus resort-area record.",
+      "label": "Saalbach–Hinterglemm–Leogang–Fieberbrunn"
+    },
+    {
+      "mapReference": {
+        "kind": "point",
+        "coordinates": [
+          12.24011335636575,
+          47.46717147921509
+        ],
+        "method": "Supplied OpenSkiData reference point; no outline inferred"
+      },
+      "id": "37ee9c6ba5b44864ba844f804938a8b815f8b717",
+      "name": "SkiWelt Wilder Kaiser - Brixental",
+      "downhillLengthKm": 234.0073001066585,
+      "byDifficultyKm": {
+        "easy": 110.80495037747943,
+        "novice": 0.09252560585848939,
+        "advanced": 8.382195925719296,
+        "freeride": 10.83212633785838,
+        "intermediate": 103.89550185974291
+      },
+      "geometryType": "Point",
+      "sources": [
+        {
+          "id": "relation/4643831",
+          "type": "openstreetmap"
+        },
+        {
+          "id": 641,
+          "type": "skimap.org"
+        }
+      ],
+      "decision": "include",
+      "reason": "Retain the named SkiWelt resort-area record, including its point geometry; polygon availability is not an eligibility requirement.",
+      "label": "SkiWelt Wilder Kaiser–Brixental"
+    },
+    {
+      "mapReference": {
+        "kind": "outline",
+        "coordinates": [
+          12.3433625,
+          47.4392385
+        ],
+        "method": "Actual source boundary vertex nearest supplied viewport center"
+      },
+      "id": "1eeb56a80185ff1dff644357f9f747842d0f620c",
+      "name": "KitzSki",
+      "downhillLengthKm": 185.71988593156354,
+      "byDifficultyKm": {
+        "easy": 91.20180120255995,
+        "other": 0.7390315414238453,
+        "expert": 1.4716302027039412,
+        "novice": 2.244815895627531,
+        "advanced": 28.991868989654506,
+        "intermediate": 61.07073809959377
+      },
+      "geometryType": "MultiPolygon",
+      "sources": [
+        {
+          "id": "relation/10938000",
+          "type": "openstreetmap"
+        },
+        {
+          "id": 17813,
+          "type": "skimap.org"
+        },
+        {
+          "id": 632,
+          "type": "skimap.org"
+        },
+        {
+          "id": 19092,
+          "type": "skimap.org"
+        }
+      ],
+      "decision": "include",
+      "reason": "Retain the resort-area record rather than separately ranking its mountain components.",
+      "label": "KitzSki"
+    },
+    {
+      "mapReference": {
+        "kind": "outline",
+        "coordinates": [
+          13.6990965,
+          47.3933399
+        ],
+        "method": "Actual source boundary vertex nearest supplied viewport center"
+      },
+      "id": "1fd29b021584344dd3b8f2960fe561faf357bfe2",
+      "name": "Schladming Dachstein",
+      "downhillLengthKm": 179.23811122757337,
+      "byDifficultyKm": {
+        "easy": 94.0395695868081,
+        "other": 1.9709774116067569,
+        "novice": 1.2087106181874403,
+        "advanced": 8.400741204181525,
+        "intermediate": 73.61811240678955
+      },
+      "geometryType": "MultiPolygon",
+      "sources": [
+        {
+          "id": "relation/8896546",
+          "type": "openstreetmap"
+        },
+        {
+          "id": 14610,
+          "type": "skimap.org"
+        },
+        {
+          "id": 14612,
+          "type": "skimap.org"
+        },
+        {
+          "id": 13534,
+          "type": "skimap.org"
+        },
+        {
+          "id": 623,
+          "type": "skimap.org"
+        }
+      ],
+      "decision": "exclude",
+      "reason": "Tourism-region aggregate containing the four-mountain ski area and several additional ski areas; not the individual four-mountain resort.",
+      "evidenceUrl": "https://www.schladming-dachstein.at/en/activities/skiing"
+    },
+    {
+      "mapReference": {
+        "kind": "point",
+        "coordinates": [
+          10.567274783138561,
+          47.05017455151525
+        ],
+        "method": "Supplied OpenSkiData reference point; no outline inferred"
+      },
+      "id": "e587928ea763f20b3232a5069c5d2438d09b6908",
+      "name": "Serfaus Fiss Ladis",
+      "downhillLengthKm": 169.25204031758057,
+      "byDifficultyKm": {
+        "easy": 36.20773231044191,
+        "other": 1.8063424503020218,
+        "advanced": 21.044904617271833,
+        "freeride": 21.074952930965537,
+        "intermediate": 89.11810800859925
+      },
+      "geometryType": "Point",
+      "sources": [
+        {
+          "id": "relation/5644297",
+          "type": "openstreetmap"
+        },
+        {
+          "id": 4544,
+          "type": "skimap.org"
+        }
+      ],
+      "decision": "include",
+      "reason": "Retain the named resort-area record.",
+      "label": "Serfaus–Fiss–Ladis"
+    },
+    {
+      "mapReference": {
+        "kind": "point",
+        "coordinates": [
+          10.325127289488089,
+          46.97446930279399
+        ],
+        "method": "Supplied OpenSkiData reference point; no outline inferred"
+      },
+      "id": "7c2f2690d339d9df6f820e7c6e596a9b0ba3dce5",
+      "name": "Silvretta Arena Ischgl/Samnaun",
+      "downhillLengthKm": 163.1892034553773,
+      "byDifficultyKm": {
+        "easy": 41.974174040096095,
+        "other": 0.7109545618272294,
+        "novice": 1.311281887109105,
+        "advanced": 26.84322642453651,
+        "freeride": 9.063423597514209,
+        "intermediate": 83.28614294429417
+      },
+      "geometryType": "Point",
+      "sources": [
+        {
+          "id": "relation/3508010",
+          "type": "openstreetmap"
+        },
+        {
+          "id": 630,
+          "type": "skimap.org"
+        }
+      ],
+      "decision": "include",
+      "reason": "Retain the full named cross-border resort area; lengths are not clipped to Austrian territory.",
+      "label": "Ischgl–Samnaun"
+    },
+    {
+      "mapReference": {
+        "kind": "outline",
+        "coordinates": [
+          12.0343423,
+          47.2250039
+        ],
+        "method": "Actual source boundary vertex nearest supplied viewport center"
+      },
+      "id": "bbbfaa27816f58cfdfecc5b692b0ee59dde891f5",
+      "name": "Zillertal Arena",
+      "downhillLengthKm": 119.59484877904967,
+      "byDifficultyKm": {
+        "easy": 41.921408959655885,
+        "other": 0.126779556244479,
+        "novice": 1.1573862143632354,
+        "advanced": 10.040109340681367,
+        "intermediate": 66.34916470810471
+      },
+      "geometryType": "Polygon",
+      "sources": [
+        {
+          "id": "way/539189765",
+          "type": "openstreetmap"
+        },
+        {
+          "id": 643,
+          "type": "skimap.org"
+        }
+      ],
+      "decision": "include",
+      "reason": "Retain this resort-area record, not an invented total for the entire Zillertal valley annotation.",
+      "label": "Zillertal Arena"
+    },
+    {
+      "mapReference": {
+        "kind": "point",
+        "coordinates": [
+          10.124437194448847,
+          47.19439379389196
+        ],
+        "method": "Supplied OpenSkiData reference point; no outline inferred"
+      },
+      "id": "c5107fc2eb3f59b23211a3251a229b06d36f765c",
+      "name": "Lech/Zürs",
+      "downhillLengthKm": 119.58481318714526,
+      "byDifficultyKm": {
+        "easy": 48.75702536325472,
+        "other": 0.1032339611720143,
+        "advanced": 16.83707374938028,
+        "intermediate": 53.88748011333825
+      },
+      "geometryType": "Point",
+      "sources": [
+        {
+          "id": "relation/3506940",
+          "type": "openstreetmap"
+        },
+        {
+          "id": 627,
+          "type": "skimap.org"
+        }
+      ],
+      "decision": "exclude",
+      "reason": "Component of the retained Ski Arlberg record; both source records reference Skimap.org area 627."
+    },
+    {
+      "mapReference": {
+        "kind": "outline",
+        "coordinates": [
+          10.236577,
+          47.3779453
+        ],
+        "method": "Actual source boundary vertex nearest supplied viewport center"
+      },
+      "id": "95d07bbe7b52066bdd3653541ed114ac6d24ca93",
+      "name": "Kleinwalsertal-Oberstdorf",
+      "downhillLengthKm": 108.13163995785084,
+      "byDifficultyKm": {
+        "easy": 48.53799326695225,
+        "other": 0.10218275464928049,
+        "expert": 1.704374667861148,
+        "novice": 1.700957052706584,
+        "advanced": 12.775636785596722,
+        "intermediate": 43.310495430084856
+      },
+      "geometryType": "MultiPolygon",
+      "sources": [
+        {
+          "id": "relation/7772597",
+          "type": "openstreetmap"
+        },
+        {
+          "id": 981,
+          "type": "skimap.org"
+        }
+      ],
+      "decision": "exclude",
+      "reason": "Broader multi-destination regional grouping of several mountain ski areas rather than one destination/resort record.",
+      "evidenceUrl": "https://www.kleinwalsertal.com/en/discover-kleinwalsertal/ski-resorts-kleinwalsertal"
+    },
+    {
+      "mapReference": {
+        "kind": "outline",
+        "coordinates": [
+          11.7845534,
+          47.1591397
+        ],
+        "method": "Actual source boundary vertex nearest supplied viewport center"
+      },
+      "id": "0e7ba1fd10a2afbc6e188d1f9936f843cc665583",
+      "name": "Mayrhofen Hippach",
+      "downhillLengthKm": 107.95982564461754,
+      "byDifficultyKm": {
+        "easy": 48.75267035156182,
+        "novice": 0.6407478985726843,
+        "advanced": 13.856688885606914,
+        "intermediate": 44.70971850887612
+      },
+      "geometryType": "Polygon",
+      "sources": [
+        {
+          "id": "way/539196496",
+          "type": "openstreetmap"
+        },
+        {
+          "id": 634,
+          "type": "skimap.org"
+        }
+      ],
+      "decision": "include",
+      "reason": "Retain the named destination/resort-area record, including its different mountains; no claim of complete lift-connectedness.",
+      "label": "Mayrhofen–Hippach"
+    },
+    {
+      "mapReference": {
+        "kind": "outline",
+        "coordinates": [
+          12.2764062,
+          46.712914
+        ],
+        "method": "Actual source boundary vertex nearest supplied viewport center"
+      },
+      "id": "3768b8c925737d2bdad4ea978f036485c508a6b3",
+      "name": "Drei Zinnen - Tre Cime, Drei Zinnen, Tre Cime",
+      "downhillLengthKm": 105.37814132923069,
+      "byDifficultyKm": {
+        "easy": 49.292787909662664,
+        "other": 17.3958571114308,
+        "novice": 0.5135298008890485,
+        "advanced": 9.451266407797746,
+        "intermediate": 28.724700099450423
+      },
+      "geometryType": "MultiPolygon",
+      "sources": [
+        {
+          "id": "relation/7751878",
+          "type": "openstreetmap"
+        },
+        {
+          "id": 4405,
+          "type": "skimap.org"
+        },
+        {
+          "id": 2067,
+          "type": "skimap.org"
+        },
+        {
+          "id": 17831,
+          "type": "skimap.org"
+        },
+        {
+          "id": 17615,
+          "type": "skimap.org"
+        },
+        {
+          "id": 17614,
+          "type": "skimap.org"
+        },
+        {
+          "id": 17616,
+          "type": "skimap.org"
+        }
+      ],
+      "decision": "exclude",
+      "reason": "Austrian association is not independently established for this predominantly Italian source footprint; excluded rather than treating the source AT tag as proof of eligibility."
+    },
+    {
+      "mapReference": {
+        "kind": "point",
+        "coordinates": [
+          10.977113133167688,
+          46.95371083559911
+        ],
+        "method": "Supplied OpenSkiData reference point; no outline inferred"
+      },
+      "id": "78e5f98d8527df7216b08962f372659abcd4f711",
+      "name": "Sölden",
+      "downhillLengthKm": 103.00422348808945,
+      "byDifficultyKm": {
+        "easy": 54.55480178946547,
+        "other": 1.0489420659138458,
+        "novice": 0.2051250211000079,
+        "advanced": 14.5762742382692,
+        "intermediate": 32.61908037334092
+      },
+      "geometryType": "Point",
+      "sources": [
+        {
+          "id": "relation/15961562",
+          "type": "openstreetmap"
+        },
+        {
+          "id": 635,
+          "type": "skimap.org"
+        }
+      ],
+      "decision": "include",
+      "reason": "A point-only ski-area record still has downhill statistics; no polygon inference is needed for the ranking.",
+      "label": "Sölden"
+    },
+    {
+      "mapReference": {
+        "kind": "point",
+        "coordinates": [
+          9.88358464922085,
+          47.3011525376043
+        ],
+        "method": "Supplied OpenSkiData reference point; no outline inferred"
+      },
+      "id": "da710e6cc602f54dfb5e724d4758c5fb5384c8d6",
+      "name": "Skigebiet Damüls-Mellau-Faschina",
+      "downhillLengthKm": 102.4345509658939,
+      "byDifficultyKm": {
+        "easy": 35.41499311356948,
+        "other": 3.0387594010085945,
+        "expert": 7.103728652611502,
+        "novice": 4.983727699204969,
+        "advanced": 19.573592875546698,
+        "intermediate": 32.31974922395266
+      },
+      "geometryType": "Point",
+      "sources": [
+        {
+          "id": "relation/6940815",
+          "type": "openstreetmap"
+        },
+        {
+          "id": 2700,
+          "type": "skimap.org"
+        },
+        {
+          "id": 2702,
+          "type": "skimap.org"
+        }
+      ],
+      "decision": "exclude",
+      "reason": "Combined regional record including the separately described Faschina ski resort; the narrower Damüls–Mellau record is below this chart's cutoff.",
+      "evidenceUrl": "https://www.damuels.at/en/winter/ski-area-of-damuels-mellau-and-faschina-1.html"
+    },
+    {
+      "mapReference": {
+        "kind": "outline",
+        "coordinates": [
+          9.9914217,
+          47.0146149
+        ],
+        "method": "Actual source boundary vertex nearest supplied viewport center"
+      },
+      "id": "e61adbd637839187e907618f82887995b324f482",
+      "name": "Silvretta Montafon",
+      "downhillLengthKm": 101.89098958180752,
+      "byDifficultyKm": {
+        "easy": 54.206293196599134,
+        "novice": 0.3773990462520032,
+        "advanced": 14.797924311096363,
+        "intermediate": 32.50937302786002
+      },
+      "geometryType": "Polygon",
+      "sources": [
+        {
+          "id": "way/539421257",
+          "type": "openstreetmap"
+        },
+        {
+          "id": 2709,
+          "type": "skimap.org"
+        }
+      ],
+      "decision": "include",
+      "reason": "Retain the named resort-area record.",
+      "label": "Silvretta Montafon"
+    }
+  ],
+  "missingLengths": [
+    {
+      "id": "20390f86c90057da67c882acc691d0db87512c21",
+      "name": "Pfänder"
+    },
+    {
+      "id": "2983d154-34ed-4d3a-9783-e48b0a4be752",
+      "name": null
+    },
+    {
+      "id": "350a2e3d90bbf63db41ead104ea1c484934059ee",
+      "name": "Grünberg Obsteig"
+    },
+    {
+      "id": "49dab6ccd7cfd4d449d8463b704e0f2729d5f590",
+      "name": "Zwölferhorn (St Gilgen)"
+    },
+    {
+      "id": "62219c585e040c6e0481d5b9858bbf613665e260",
+      "name": "Bad Kleinkirchheim"
+    },
+    {
+      "id": "72153bf3e48aceda0c8826e2d4ee3fdc8558002a",
+      "name": "Hochkar"
+    },
+    {
+      "id": "7e523b170d98a2992eae57888d51b03a9217ceec",
+      "name": "Skiberg Mureck"
+    },
+    {
+      "id": "8760a888-0022-496a-90bd-078d25e78795",
+      "name": null
+    },
+    {
+      "id": "8ac028cc0ad9628f421ed616da37ea1253393131",
+      "name": "Mühlberg Scharnitz"
+    },
+    {
+      "id": "930f6b0d628111262cd86ddf392c7f56445a0bde",
+      "name": "Piller"
+    },
+    {
+      "id": "adde9b4aaab0f42dacef68907d6465ba01c8c03a",
+      "name": "Horsefeathers Superpark Planai"
+    },
+    {
+      "id": "b356fc1ac870a44989a4d92e4a4aefea4c78bf2f",
+      "name": "Untersberg"
+    },
+    {
+      "id": "b9ba7d7576731de18ea807786ce1eaa728544249",
+      "name": "Happylift – Semmering"
+    },
+    {
+      "id": "d5dc80bb685b8536670dca382305b704716e5f3a",
+      "name": "Salzstiegl"
+    },
+    {
+      "id": "da3b2d34-f843-4e96-8453-9b2683590991",
+      "name": null
+    },
+    {
+      "id": "dec54f7fb34259e2ff86037222b4a28868861971",
+      "name": "Kaunertal"
+    },
+    {
+      "id": "e08f4b5d2a40cc7ec9b530925728bf1eee79b213",
+      "name": "Goaß"
+    },
+    {
+      "id": "edc9f9b1e67cc733b8bdd804bdfb021557df31df",
+      "name": "Lachtal"
+    },
+    {
+      "id": "ef66980ee9d479d5a45e6208c1f15457ef8df289",
+      "name": "Tirolina Hinterthiersee"
+    },
+    {
+      "id": "f6ea0abf-4c1b-42b0-8a31-d58342f50a68",
+      "name": null
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "scope": "Named resort/destination areas with an Austrian association, not regional ticket alliances. Areas may contain multiple mountains and cross-border pistes; this is not a lift-connectedness classification.",
+  "reviewDate": "2026-11-03",
+  "decisions": [
+    {"id":"53410fc611922a26e32535c74bb1d9364cef4ecd","name":"Ski Arlberg","decision":"include","label":"Ski Arlberg","reason":"Retain the broader resort-area polygon record; do not also rank Lech/Zürs or the duplicate point record."},
+    {"id":"180faeea32aba7b22fbe1438b0a3a82f6a2a4ad8","name":"Skicircus Saalbach-Hinterglemm Leogang Fieberbrunn","decision":"include","label":"Saalbach–Hinterglemm–Leogang–Fieberbrunn","reason":"Retain the named Skicircus resort-area record."},
+    {"id":"37ee9c6ba5b44864ba844f804938a8b815f8b717","name":"SkiWelt Wilder Kaiser - Brixental","decision":"include","label":"SkiWelt Wilder Kaiser–Brixental","reason":"Retain the named SkiWelt resort-area record, including its point geometry; polygon availability is not an eligibility requirement."},
+    {"id":"1eeb56a80185ff1dff644357f9f747842d0f620c","name":"KitzSki","decision":"include","label":"KitzSki","reason":"Retain the resort-area record rather than separately ranking its mountain components."},
+    {"id":"e587928ea763f20b3232a5069c5d2438d09b6908","name":"Serfaus Fiss Ladis","decision":"include","label":"Serfaus–Fiss–Ladis","reason":"Retain the named resort-area record."},
+    {"id":"7c2f2690d339d9df6f820e7c6e596a9b0ba3dce5","name":"Silvretta Arena Ischgl/Samnaun","decision":"include","label":"Ischgl–Samnaun","reason":"Retain the full named cross-border resort area; lengths are not clipped to Austrian territory."},
+    {"id":"bbbfaa27816f58cfdfecc5b692b0ee59dde891f5","name":"Zillertal Arena","decision":"include","label":"Zillertal Arena","reason":"Retain this resort-area record, not an invented total for the entire Zillertal valley annotation."},
+    {"id":"0e7ba1fd10a2afbc6e188d1f9936f843cc665583","name":"Mayrhofen Hippach","decision":"include","label":"Mayrhofen–Hippach","reason":"Retain the named destination/resort-area record, including its different mountains; no claim of complete lift-connectedness."},
+    {"id":"78e5f98d8527df7216b08962f372659abcd4f711","name":"Sölden","decision":"include","label":"Sölden","reason":"A point-only ski-area record still has downhill statistics; no polygon inference is needed for the ranking."},
+    {"id":"e61adbd637839187e907618f82887995b324f482","name":"Silvretta Montafon","decision":"include","label":"Silvretta Montafon","reason":"Retain the named resort-area record."},
+    {"id":"53a8bb068ae7f82160a4c6e2df63ee3a724b62dd","name":"Ski amadé","decision":"exclude","reason":"Multi-destination ticket alliance, not a single resort area; it includes regions and resorts ranked or reviewed separately.","evidenceUrl":"https://www.skiamade.com/en/ski-areas"},
+    {"id":"1fd29b021584344dd3b8f2960fe561faf357bfe2","name":"Schladming Dachstein","decision":"exclude","reason":"Tourism-region aggregate containing the four-mountain ski area and several additional ski areas; not the individual four-mountain resort.","evidenceUrl":"https://www.schladming-dachstein.at/en/activities/skiing"},
+    {"id":"c5107fc2eb3f59b23211a3251a229b06d36f765c","name":"Lech/Zürs","decision":"exclude","reason":"Component of the retained Ski Arlberg record; both source records reference Skimap.org area 627."},
+    {"id":"95d07bbe7b52066bdd3653541ed114ac6d24ca93","name":"Kleinwalsertal-Oberstdorf","decision":"exclude","reason":"Broader multi-destination regional grouping of several mountain ski areas rather than one destination/resort record.","evidenceUrl":"https://www.kleinwalsertal.com/en/discover-kleinwalsertal/ski-resorts-kleinwalsertal"},
+    {"id":"3768b8c925737d2bdad4ea978f036485c508a6b3","name":"Drei Zinnen - Tre Cime, Drei Zinnen, Tre Cime","decision":"exclude","reason":"Austrian association is not independently established for this predominantly Italian source footprint; excluded rather than treating the source AT tag as proof of eligibility."},
+    {"id":"da710e6cc602f54dfb5e724d4758c5fb5384c8d6","name":"Skigebiet Damüls-Mellau-Faschina","decision":"exclude","reason":"Combined regional record including the separately described Faschina ski resort; the narrower Damüls–Mellau record is below this chart's cutoff.","evidenceUrl":"https://www.damuels.at/en/winter/ski-area-of-damuels-mellau-and-faschina-1.html"}
+  ]
+}
