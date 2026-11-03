@@ -18,7 +18,9 @@ Map subjects, datasets, and rendering libraries remain undecided. Choose them pe
 
 ```text
 index.html                  Entry gallery
-assets/style.css            Shared site styles
+assets/style.css            Gallery layout
+assets/theme.css            Shared Cactus-inspired visual styling
+assets/theme.js             Optional native light/dark toggle
 maps/                       One directory per completed entry
 ```
 
@@ -33,6 +35,20 @@ python3 -m http.server 8000
 ```
 
 Open http://localhost:8000. No package installation is required.
+
+## Visual theme
+
+The gallery and all map-page interfaces share the visual language of the Cactus-based site in `~/dev/walterra-dev-main/`: its exact light/dark color tokens, system monospace font stack, compact headings, accent navigation, underlined links and dashed separators. Reference files: `src/styles/global.css`, `src/layouts/Base.astro` and `src/components/layout/Header.astro` in that repository.
+
+Only the needed styling is adapted into plain `assets/theme.css`. There is **no Astro, Tailwind, Cactus package, build step, remote font or analytics dependency**. The upstream MIT notice is preserved in [assets/theme.LICENSE.txt](assets/theme.LICENSE.txt). The reference website is not modified.
+
+`assets/theme.js` selects the system theme before rendering and provides an accessible light/dark button. A manual choice is saved under `map-challenge-theme` and retained across challenge pages. Blocked storage is handled without breaking the site; without JavaScript, CSS follows the system preference and the toggle remains hidden.
+
+Map canvases, SVG maps, annotation fonts and data palettes deliberately stay light and unchanged. The page UI follows the selected theme without inverting geographic symbols or compromising map-label contrast. All shared assets and internal navigation use relative URLs for GitHub Pages subpaths.
+
+Verification: 8 theme-preference tests plus 33 existing map/data tests passed (41 total). All four pages passed light/dark palette, font, overflow and toolbar checks at 1440, 390 and 320px (24 page/theme/viewport combinations). The ski-map geometry/layout regression passed under both themes at ten widths from 320 to 1920px (20 checks), with all four annotations present. Final browser session: no console errors. Gallery and distance-page dark-mode axe scans detected no violations; map/canvas contrast still requires the existing manual review.
+
+Run `node --test scripts/test-theme.js`, `python3 scripts/check-site.py`, the existing data tests and `scripts/check-ski-label-layout.js` in the browser. New entries should load the shared theme CSS after their entry-specific styles and the small theme-preference script in the head. AI assistance: extracting visual conventions, implementing standalone styles/preferences and checking responsive layouts.
 
 ## GitHub Pages
 

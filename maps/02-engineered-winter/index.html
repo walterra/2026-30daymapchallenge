@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="../../assets/theme.js?v=1"></script>
   <meta name="description" content="Snowmaking-water infrastructure in Tirol’s public water register: reservoirs, facilities and documented associations.">
   <title>Where the snow begins · All Tirol districts</title>
   <link rel="stylesheet" href="../../assets/vendor/leaflet/leaflet.css">
@@ -10,15 +11,29 @@
   <script defer src="../../assets/vendor/leaflet/leaflet.js"></script>
   <script defer src="../../assets/searchable-select.js"></script>
   <script defer src="map.js"></script>
+  <link rel="stylesheet" href="../../assets/theme.css?v=3">
 </head>
-<body>
+<body class="map-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div>
+      <a class="site-title" href="https://www.walterra.dev/">walterra.dev</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="../../index.html">maps</a>
+        <a href="https://www.walterra.dev/blog">blog</a>
+        <a href="https://www.walterra.dev/code">code</a>
+        <a href="https://www.walterra.dev/about">about</a>
+      </nav>
+    </div>
+    <button class="theme-toggle" data-theme-toggle type="button" aria-label="Dark theme" aria-pressed="false" title="Switch to dark theme" hidden></button>
+  </header>
   <header>
     <a href="../../index.html">← All maps</a>
     <p class="eyebrow">#30DayMapChallenge / Research draft · Day unassigned / Tirol, Austria</p>
     <h1>Where the snow begins</h1>
     <p class="intro">148 mapped reservoirs help supply Tirol’s artificial winter. Circle size shows their recorded usable storage—not annual water consumption.</p>
   </header>
-  <main>
+  <main id="main">
     <p id="scope" class="scope">Loading the Tirol-wide register snapshot. This is a register extract, not a complete equipment census.</p>
     <dl class="key-figures" aria-label="Current selection">
       <div><dt>Snowmaking reservoirs</dt><dd id="reservoir-count">—</dd></div>
@@ -84,5 +99,9 @@
     </section>
   </main>
   <noscript><p>The explorer requires JavaScript. The scope, methodology and downloadable data remain available above.</p></noscript>
+  <footer class="site-footer">
+    <p>© walterra 2026 · #30DayMapChallenge</p>
+    <nav aria-label="Footer"><a href="../../index.html">all maps</a><a href="https://github.com/walterra">github</a></nav>
+  </footer>
 </body>
 </html>

@@ -8,6 +8,8 @@
   const groups = Array.from(map.querySelectorAll('g.annotation'));
   const notes = groups.map(group => ({ group, rect: group.querySelector('.annotation-note-content').getBoundingClientRect() }));
   const errors = [];
+  const expectedNotes = document.querySelectorAll('[data-annotation-feature]').length;
+  if (notes.length !== expectedNotes) errors.push('Expected all ' + expectedNotes + ' overview callouts; found ' + notes.length + '. Reset All Austria with Tirol enabled.');
   const overlaps = (a, b, gap = 0) => a.left < b.right + gap && a.right > b.left - gap && a.top < b.bottom + gap && a.bottom > b.top - gap;
   const strokes = groups.flatMap(group => Array.from(group.querySelectorAll('.annotation-connector path, .annotation-subject path, .annotation-note path')).flatMap(path => {
     const matrix = path.getScreenCTM();

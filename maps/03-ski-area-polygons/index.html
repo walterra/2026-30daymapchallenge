@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="../../assets/theme.js?v=1"></script>
   <meta name="description" content="OpenSkiData ski-area outlines combined with official Tirol planning boundaries, with source and date made explicit. Day 3 of the 30DayMapChallenge: Polygons.">
   <title>Austria’s ski areas, outlined · Day 03</title>
   <link rel="stylesheet" href="../../assets/vendor/leaflet/leaflet.css">
@@ -13,13 +14,27 @@
   <script defer src="../../assets/vendor/d3-annotation/d3-annotation.v2.5.1.min.js"></script>
   <script defer src="annotations.js?v=layout-2"></script>
   <script defer src="map.js?v=layout-4"></script>
+  <link rel="stylesheet" href="../../assets/theme.css?v=3">
 </head>
-<body>
-  <main>
+<body class="map-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div>
+      <a class="site-title" href="https://www.walterra.dev/">walterra.dev</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="../../index.html">maps</a>
+        <a href="https://www.walterra.dev/blog">blog</a>
+        <a href="https://www.walterra.dev/code">code</a>
+        <a href="https://www.walterra.dev/about">about</a>
+      </nav>
+    </div>
+    <button class="theme-toggle" data-theme-toggle type="button" aria-label="Dark theme" aria-pressed="false" title="Switch to dark theme" hidden></button>
+  </header>
+  <main id="main">
     <header>
       <a class="back" href="../../index.html">← All maps</a>
       <p class="eyebrow">#30DayMapChallenge · 03 November 2026 · Polygons</p>
-      <h1>Austria’s ski areas,<br>outlined.</h1>
+      <h1>Austria’s ski areas, outlined.</h1>
       <p class="intro">Mapped ski-area outlines across Austria, supplemented by official Tirol planning boundaries. Not lifts. Not individual pistes.</p>
       <p class="scope">Two sources, two meanings: OpenSkiData outlines from a 2 November 2026 download, and Tirol planning boundaries with a 30 October 2011 reference date. A partial map, not a national census.</p>
     </header>
@@ -75,5 +90,9 @@
     </section>
     <noscript><p>The interactive explorer requires JavaScript. Coverage counts, explanations and source-data downloads remain available above.</p></noscript>
   </main>
+  <footer class="site-footer">
+    <p>© walterra 2026 · #30DayMapChallenge</p>
+    <nav aria-label="Footer"><a href="../../index.html">all maps</a><a href="https://github.com/walterra">github</a></nav>
+  </footer>
 </body>
 </html>
