@@ -1,0 +1,23 @@
+{
+  "title": "Tiefenbach-/Rettenbachgletscher: water behind the snow",
+  "retrieved": "2026-11-02",
+  "systemId": "T20571970R3",
+  "postzahl": "2/1160",
+  "source": "https://wis.tirol.gv.at/wisSrvPublic/wis/wbo_wb_auszug.aspx?ATTR=Y&TREE=Y&PICTURE=N&ANL_ID=T20571970R3&GIS=WWW_GIS_URL",
+  "attribution": "Land Tirol, Wasserbuch / Wasserinformationssystem (WIS)",
+  "reuseStatus": "Publicly viewable register. No open bulk-data license verified; selected factual case-study transcription, not a claim of an openly licensed database.",
+  "crs": "EPSG:31254",
+  "crsEvidence": "Official tirisMaps linked from the Panorama record uses bboxSR=31254 and imageSR=31254. Checked 2026-11-02; coordinates interpreted as MGI / Austria GK West. No survey-grade positional accuracy claimed.",
+  "system": {"snowmakingHa": 47.9, "seasonStart": "01.09.", "seasonEnd": "31.03.", "status": "besteht", "note": "This record includes permission deadlines ending in 2025; status does not establish current permit validity. No observed water consumption or cannon inventory is provided."},
+  "nodes": [
+    {"id": "T20572011R3", "name": "Speicherteich Panorama", "kind": "reservoir", "rw": 45904.96, "hw": 198016.61, "usableM3": 416500, "detail": "Recorded usable storage: 416,500 m³. Dam crest: 2,919 m above sea level."},
+    {"id": "T20572068R3", "name": "Tiefenbach · southern intake", "originalName": "Tiefenbach linker Ast (Wasserfassung Süd)", "kind": "intake", "rw": 45764, "hw": 197552, "parent": "T20572011R3", "detail": "Recorded withdrawal permission: 80 l/s and 140,000 m³/year, May–September. A separate first-fill permission is not added to the recurring limit."},
+    {"id": "T20572078R3", "name": "Pirchlerbach · western intake", "originalName": "Pirchlerbach (Wasserfassung West)", "kind": "intake", "rw": 45814, "hw": 197744, "parent": "T20572011R3", "detail": "Recorded withdrawal permission: 80 l/s and 90,000 m³/year, May–September. Subject to residual-flow conditions."},
+    {"id": "T20572088R3", "name": "Northern glacier-stream intake", "originalName": "Kleinwasserfassung Nord (drei Gletscherabflussgerinne)", "kind": "intake", "rw": 45939, "hw": 198060, "parent": "T20572011R3", "detail": "Recorded withdrawal permission: 12 l/s and 30,000 m³/year, June–August. Three glacier outflow channels."},
+    {"id": "T20572097R3", "name": "Eastern intake / Tiefenbachferner II", "originalName": "Wasserfassung Ost - Speicherteich Tiefenbachferner, Pumpstation Tiefenbachferner II (Petznerbach)", "kind": "transfer", "rw": 46735.57, "hw": 198244.23, "parent": "T20572011R3", "detail": "Season-dependent permissions: 30 l/s October–April; 80 l/s and 10,000 m³/year May–September. Location is approximately at the withdrawal/pumping station. Nearly coincident with the UV facility."},
+    {"id": "T20572048R3", "name": "Tiefenbachferner · UV / pumping facility", "originalName": "PST - Schneiwasserentnahme Speicherteich Tiefenbachferner", "kind": "transfer", "rw": 46735.36, "hw": 198244.16, "detail": "Recorded as Sonderanlage / UV Anlage. Permission: 28 l/s and 8,000 m³ per season, September–December. Nearly coincident with the eastern intake; not an additional reservoir."},
+    {"id": "T20572001R3", "name": "Speicherteich Tiefenbachferner", "kind": "reservoir", "rw": 46733.02, "hw": 198284.76, "parent": "T20572048R3", "usableM3": 7000, "detail": "Recorded usable storage: 7,000 m³. A separate narrative states 9,000 m³ total volume; those are different measures, not interchangeable."},
+    {"id": "T20572042R3", "name": "Petznerbach tributary intake", "originalName": "Seitenzubringer Petznerbach", "kind": "intake", "rw": 47400.73, "hw": 198224.77, "parent": "T20572001R3", "detail": "Permission expressed as at most two thirds of stream flow, rather than a fixed annual volume. Cannot be added directly to m³/year permissions."},
+    {"id": "T20572057R3", "name": "Ötztaler Ache intake", "originalName": "Ötztaler Ache", "kind": "intake", "rw": 51493, "hw": 203888, "detail": "Recorded withdrawal permission: 35 l/s and 50,000 m³/year, September 15–December 31, only outside operating times of the Grünwald system. The register links this intake to the top-level system, which has no separate mapped point in this extract."}
+  ]
+}

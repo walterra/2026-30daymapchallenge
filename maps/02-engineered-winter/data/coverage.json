@@ -1,0 +1,6141 @@
+{
+  "retrieved": "2026-11-02",
+  "query": "Sparte=Nutzwasser für Beschneiungsanlagen; Status=<alle aktiven>; all nine Tirol districts; 50 rows/page; topanlage reports with tree",
+  "crs": "Official GIS EPSG:31254 → EPSG:4326; WIS raw coordinates have mixed zones",
+  "geometryService": "https://gis.tirol.gv.at/arcgis/rest/services/Service_Public/ogd_wasser/MapServer/",
+  "coordinateMethods": {
+    "Official GIS point": 553,
+    "Official GIS polygon centroid (symbol anchor, not an entrance)": 151
+  },
+  "rawCoordinateCrsChecks": {
+    "EPSG:31254": 369,
+    "EPSG:31255": 335
+  },
+  "attribution": "Land Tirol, Wasserbuch / WIS and official ogd_wasser GIS service",
+  "reuseStatus": "No open bulk-data license verified; research prototype, reuse clearance unresolved.",
+  "uniqueFacilities": 1140,
+  "mappedFacilities": 704,
+  "unmappedFacilities": 436,
+  "relationships": 426,
+  "reservoirs": 148,
+  "reservoirsWithVolume": 129,
+  "systems": [
+    {
+      "id": "T20571720R3",
+      "name": "2/1155 Beschneiungsanlage Grünwald und Löschwasserversorgung Ortsbereiche Sölden Reinstadl und Grünwald",
+      "districts": [
+        "Imst"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "26,6 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 26.6,
+      "facilities": 9,
+      "locatedFacilities": 2
+    },
+    {
+      "id": "T20571970R3",
+      "name": "2/1160 Beschneiungsanlage Tiefenbach- und Rettenbachgletscher",
+      "districts": [
+        "Imst"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "47,9 ha",
+        "Zeit frühester Beginn": "01.09.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 47.9,
+      "facilities": 10,
+      "locatedFacilities": 9
+    },
+    {
+      "id": "T20572950R3",
+      "name": "2/1216 Beschneiungsanlage Gaislachkogel und Löschwasserversorgung für die Ortsteile Kirchfeld, Unterwald und Innerwald.",
+      "districts": [
+        "Imst"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "45 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 45.0,
+      "facilities": 2,
+      "locatedFacilities": 1
+    },
+    {
+      "id": "T20572691R3",
+      "name": "2/1217 Beschneiungsanlage Hochgurgl",
+      "districts": [
+        "Imst"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "86,25 ha",
+        "Zeit frühester Beginn": "01.10.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 86.25,
+      "facilities": 14,
+      "locatedFacilities": 13
+    },
+    {
+      "id": "T20509981R3",
+      "name": "2/1249 Beschneiungsanlage Hochzeiger",
+      "districts": [
+        "Imst"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "72,1 ha",
+        "Zeit frühester Beginn": "15.10.",
+        "Zeit spätestes Ende": "31.03.",
+        "Seehöhe bis": "1800 m ü.A"
+      },
+      "snowmakingHa": 72.1,
+      "facilities": 11,
+      "locatedFacilities": 8
+    },
+    {
+      "id": "T20628868R3",
+      "name": "2/1278 Beschneiungsanlage Hochimst",
+      "districts": [
+        "Imst"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "28.809 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03.",
+        "Durchschnittliche Jahreswassermenge:": "300000 m³"
+      },
+      "snowmakingHa": 28809.0,
+      "facilities": 9,
+      "locatedFacilities": 8
+    },
+    {
+      "id": "T20628993R3",
+      "name": "2/1293 Beschneiungsanlage Kühtai",
+      "districts": [
+        "Imst"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "81,1 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 81.1,
+      "facilities": 16,
+      "locatedFacilities": 15
+    },
+    {
+      "id": "T20629190R3",
+      "name": "2/1319 Beschneiungsanlage Pitztaler Gletscher",
+      "districts": [
+        "Imst"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "16,25 ha",
+        "Zeit frühester Beginn": "01.09.",
+        "Zeit spätestes Ende": "30.04."
+      },
+      "snowmakingHa": 16.25,
+      "facilities": 5,
+      "locatedFacilities": 4
+    },
+    {
+      "id": "T20629297R3",
+      "name": "2/1330 Beschneiungsanlage Rifflsee",
+      "districts": [
+        "Imst"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "23,1 ha",
+        "Zeit frühester Beginn": "15.10.",
+        "Zeit spätestes Ende": "31.03.",
+        "Durchschnittliche Jahreswassermenge:": "90000 m³"
+      },
+      "snowmakingHa": 23.1,
+      "facilities": 3,
+      "locatedFacilities": 2
+    },
+    {
+      "id": "T20572362R3",
+      "name": "2/1363 Beschneiungsanlage Silberne Piste",
+      "districts": [
+        "Imst"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "10,9 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 10.9,
+      "facilities": 4,
+      "locatedFacilities": 3
+    },
+    {
+      "id": "T20527066R3",
+      "name": "2/1450 Beschneiungsanlage Obergurgl",
+      "districts": [
+        "Imst"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "86,24 ha",
+        "Zeit frühester Beginn": "10.10",
+        "Zeit spätestes Ende": "10.03.",
+        "Durchschnittliche Jahreswassermenge:": "353000 m³"
+      },
+      "snowmakingHa": 86.24,
+      "facilities": 8,
+      "locatedFacilities": 6
+    },
+    {
+      "id": "T20740709R3",
+      "name": "2/1536 Beschneiungsanlage Niederthai",
+      "districts": [
+        "Imst"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "3,5 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 3.5,
+      "facilities": 2,
+      "locatedFacilities": 1
+    },
+    {
+      "id": "T20845137R3",
+      "name": "2/1561 Beschneiungsanlage Stablein",
+      "districts": [
+        "Imst"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "14,1 ha",
+        "Zeit frühester Beginn": "15.10.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 14.1,
+      "facilities": 5,
+      "locatedFacilities": 4
+    },
+    {
+      "id": "T20947455R3",
+      "name": "2/1692 Beschneiungsanlage Hochötz",
+      "districts": [
+        "Imst"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "42,2 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03.",
+        "Durchschnittliche Jahreswassermenge:": "190000 m³"
+      },
+      "snowmakingHa": 42.2,
+      "facilities": 7,
+      "locatedFacilities": 6
+    },
+    {
+      "id": "T20954856R3",
+      "name": "2/1697 Beschneiungsanlage Kinderland in Mandarfen, Pitztal",
+      "districts": [
+        "Imst"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "1,45 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03.",
+        "Seehöhe von": "1 737 m ü.A",
+        "Seehöhe bis": "1 672 m ü.A"
+      },
+      "snowmakingHa": 1.45,
+      "facilities": 3,
+      "locatedFacilities": 1
+    },
+    {
+      "id": "T20984391R3",
+      "name": "2/1705 Beschneiungsanlage Gampen",
+      "districts": [
+        "Imst"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "0,43 ha",
+        "Zeit frühester Beginn": "15.10.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 0.43,
+      "facilities": 2,
+      "locatedFacilities": 1
+    },
+    {
+      "id": "T20955243R3",
+      "name": "2/1732 Beschneiungsanlage \"Rotkogel\"",
+      "districts": [
+        "Imst"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "58,5 ha",
+        "Zeit frühester Beginn": "15.10.",
+        "Zeit spätestes Ende": "31.03.",
+        "elektr. Anschlussleistung Beschneiungsanlage": "5480 kW"
+      },
+      "snowmakingHa": 58.5,
+      "facilities": 13,
+      "locatedFacilities": 5
+    },
+    {
+      "id": "T20963607R3",
+      "name": "2/1778 Beschneiungsanlage Brandachfeldlift, Längenfeld",
+      "districts": [
+        "Imst"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "1,1 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 1.1,
+      "facilities": 3,
+      "locatedFacilities": 1
+    },
+    {
+      "id": "T60894019",
+      "name": "2/2224 Beschneiungsanlage Rodelbahn Piburg, Ötz",
+      "districts": [
+        "Imst"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "0,12 ha"
+      },
+      "snowmakingHa": 0.12,
+      "facilities": 3,
+      "locatedFacilities": 0
+    },
+    {
+      "id": "T20608693R3",
+      "name": "3/3027 Beschneiungsanlage Stubaier Gletscher",
+      "districts": [
+        "Innsbruck-Land"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "60 ha",
+        "Zeit frühester Beginn": "15.09.",
+        "Zeit spätestes Ende": "30.04."
+      },
+      "snowmakingHa": 60.0,
+      "facilities": 9,
+      "locatedFacilities": 7
+    },
+    {
+      "id": "T20608952R3",
+      "name": "3/3106 Beschneiungsanlage Schlick 2000",
+      "districts": [
+        "Innsbruck-Land"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "58,04 ha",
+        "Zeit frühester Beginn": "02.11.",
+        "Zeit spätestes Ende": "10.03."
+      },
+      "snowmakingHa": 58.04,
+      "facilities": 8,
+      "locatedFacilities": 6
+    },
+    {
+      "id": "T20608870R3",
+      "name": "3/3108 Beschneiungsanlage Roßhütte Seefeld",
+      "districts": [
+        "Innsbruck-Land"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "52 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "10.03."
+      },
+      "snowmakingHa": 52.0,
+      "facilities": 5,
+      "locatedFacilities": 4
+    },
+    {
+      "id": "T20608489R3",
+      "name": "3/3119 Beschneiungsanlage Bergeralm",
+      "districts": [
+        "Innsbruck-Land"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "32,21 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03.",
+        "Durchschnittliche Jahreswassermenge:": "177000 m³"
+      },
+      "snowmakingHa": 32.21,
+      "facilities": 5,
+      "locatedFacilities": 4
+    },
+    {
+      "id": "T20608302R3",
+      "name": "3/3265 Beschneiungsanlage Vögelsberg",
+      "districts": [
+        "Innsbruck-Land"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "2,6 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "15.03.",
+        "elektr. Anschlussleistung Beschneiungsanlage": "110 kW"
+      },
+      "snowmakingHa": 2.6,
+      "facilities": 4,
+      "locatedFacilities": 1
+    },
+    {
+      "id": "T20561993R3",
+      "name": "3/3313 Beschneiungsanlage Patscherkofel",
+      "districts": [
+        "Innsbruck-Land"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "43 ha",
+        "Zeit frühester Beginn": "02.11.",
+        "Zeit spätestes Ende": "15.03."
+      },
+      "snowmakingHa": 43.0,
+      "facilities": 11,
+      "locatedFacilities": 2
+    },
+    {
+      "id": "T20517784R3",
+      "name": "3/3345 Beschneiungsanlage Serleslifte Mieders",
+      "districts": [
+        "Innsbruck-Land"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "14,3 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "15.03."
+      },
+      "snowmakingHa": 14.3,
+      "facilities": 9,
+      "locatedFacilities": 8
+    },
+    {
+      "id": "T20698562R3",
+      "name": "3/3450 Beschneiungsanlage Axamer Lizum",
+      "districts": [
+        "Innsbruck-Land"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "87,4 ha",
+        "Zeit frühester Beginn": "10.11.",
+        "Zeit spätestes Ende": "10.03."
+      },
+      "snowmakingHa": 87.4,
+      "facilities": 7,
+      "locatedFacilities": 5
+    },
+    {
+      "id": "T20711808R3",
+      "name": "3/3535 Beschneiungsanlage Kreithalmlift",
+      "districts": [
+        "Innsbruck-Land"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "5 ha",
+        "Zeit frühester Beginn": "02.11.",
+        "Zeit spätestes Ende": "15.03."
+      },
+      "snowmakingHa": 5.0,
+      "facilities": 5,
+      "locatedFacilities": 3
+    },
+    {
+      "id": "T20764385R3",
+      "name": "3/3551 Beschneiungsanlage Rinn, \"Archenstadl - Schlepplift\"",
+      "districts": [
+        "Innsbruck-Land"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "2,3 ha"
+      },
+      "snowmakingHa": 2.3,
+      "facilities": 3,
+      "locatedFacilities": 1
+    },
+    {
+      "id": "T20761587R3",
+      "name": "3/3566 Beschneiungsanlage Wilde Grube",
+      "districts": [
+        "Innsbruck-Land"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "2,5 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03.",
+        "elektr. Anschlussleistung Beschneiungsanlage": "110 kW"
+      },
+      "snowmakingHa": 2.5,
+      "facilities": 2,
+      "locatedFacilities": 1
+    },
+    {
+      "id": "T20857041R3",
+      "name": "3/3598 Beschneiungsanlage Sonnberg Lift",
+      "districts": [
+        "Innsbruck-Land"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "1,5 ha",
+        "Zeit frühester Beginn": "15.11.",
+        "Zeit spätestes Ende": "15.03."
+      },
+      "snowmakingHa": 1.5,
+      "facilities": 3,
+      "locatedFacilities": 1
+    },
+    {
+      "id": "T20962240R3",
+      "name": "3/3832 Beschneiungsanlage Rangger Köpfl",
+      "districts": [
+        "Innsbruck-Land"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "18,5 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "10.03."
+      },
+      "snowmakingHa": 18.5,
+      "facilities": 6,
+      "locatedFacilities": 5
+    },
+    {
+      "id": "T20976810R3",
+      "name": "3/3863 Beschneiungsanlage Muttereralm",
+      "districts": [
+        "Innsbruck-Land"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "30 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "15.03."
+      },
+      "snowmakingHa": 30.0,
+      "facilities": 5,
+      "locatedFacilities": 4
+    },
+    {
+      "id": "T16009996",
+      "name": "3/4823 Beschneiungsanlage Hoferlift, Kolsaßberg",
+      "districts": [
+        "Innsbruck-Land"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "3,2 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "10.03."
+      },
+      "snowmakingHa": 3.2,
+      "facilities": 8,
+      "locatedFacilities": 5
+    },
+    {
+      "id": "T60805921",
+      "name": "3/5286 Beschneiungsanlage Birkenlift, Seefeld",
+      "districts": [
+        "Innsbruck-Land"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Zeit frühester Beginn": "15.11.",
+        "Zeit spätestes Ende": "15.03."
+      },
+      "snowmakingHa": null,
+      "facilities": 3,
+      "locatedFacilities": 0
+    },
+    {
+      "id": "T60911893",
+      "name": "3/5305 Beschneiungsanlage Langlaufloipe Falbeson",
+      "districts": [
+        "Innsbruck-Land"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "0,8 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "30.03."
+      },
+      "snowmakingHa": 0.8,
+      "facilities": 4,
+      "locatedFacilities": 2
+    },
+    {
+      "id": "T61380987",
+      "name": "3/5359 Beschneiung Langlaufloipen Gschwandtkopf Seefeld",
+      "districts": [
+        "Innsbruck-Land"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "16,45 ha",
+        "Zeit frühester Beginn": "20.10.",
+        "Zeit spätestes Ende": "15.03."
+      },
+      "snowmakingHa": 16.45,
+      "facilities": 6,
+      "locatedFacilities": 4
+    },
+    {
+      "id": "T62532526",
+      "name": "3/5426 Beschneiungsanlage Langlaufloipe Leutasch",
+      "districts": [
+        "Innsbruck-Land"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "1,6 ha"
+      },
+      "snowmakingHa": 1.6,
+      "facilities": 3,
+      "locatedFacilities": 2
+    },
+    {
+      "id": "T65791040",
+      "name": "3/5531 Beschneiungsanlage Schlepplift Krößbach",
+      "districts": [
+        "Innsbruck-Land"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "1,6 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 1.6,
+      "facilities": 3,
+      "locatedFacilities": 0
+    },
+    {
+      "id": "T64728277",
+      "name": "3/5669 Beschneiungsanlage Glungezer",
+      "districts": [
+        "Innsbruck-Land"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "24 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "15.03.",
+        "Durchschnittliche Jahreswassermenge:": "100.000 m³"
+      },
+      "snowmakingHa": 24.0,
+      "facilities": 5,
+      "locatedFacilities": 3
+    },
+    {
+      "id": "T74560692",
+      "name": "3/5846 Beschneiungsanlage Schilift Trins",
+      "districts": [
+        "Innsbruck-Land"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "5,5 ha",
+        "Zeit frühester Beginn": "01.10.",
+        "Zeit spätestes Ende": "30.03.",
+        "Seehöhe von": "1.190 m ü.A",
+        "Seehöhe bis": "1.290 m ü.A"
+      },
+      "snowmakingHa": 5.5,
+      "facilities": 3,
+      "locatedFacilities": 2
+    },
+    {
+      "id": "T77540169",
+      "name": "3/5976 Beschneiungsanlage Geigenbühel",
+      "districts": [
+        "Innsbruck-Land"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "projektiert",
+      "attributes": {
+        "Ausmaß Schneifläche": "2,2 ha",
+        "Zeit frühester Beginn": "15.11.",
+        "Zeit spätestes Ende": "15.03.",
+        "Durchschnittliche Jahreswassermenge:": "6200 m³"
+      },
+      "snowmakingHa": 2.2,
+      "facilities": 2,
+      "locatedFacilities": 1
+    },
+    {
+      "id": "T20549766R3",
+      "name": "1/473 Beschneiung Patscherkofel",
+      "districts": [
+        "Innsbruck-Stadt"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Zeit frühester Beginn": "01.11."
+      },
+      "snowmakingHa": null,
+      "facilities": 1,
+      "locatedFacilities": 0
+    },
+    {
+      "id": "T20563278R3",
+      "name": "4/1728 Beschneiungsanlage Jochberg",
+      "districts": [
+        "Kitzbühel"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "47,4 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "15.03."
+      },
+      "snowmakingHa": 47.4,
+      "facilities": 5,
+      "locatedFacilities": 3
+    },
+    {
+      "id": "T20538874R3",
+      "name": "4/2123 Beschneiungsanlage Brixen im Thale",
+      "districts": [
+        "Kitzbühel",
+        "Kufstein"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "82,6 ha",
+        "Zeit frühester Beginn": "10.11.",
+        "Zeit spätestes Ende": "15.03.",
+        "Durchschnittliche Jahreswassermenge:": "280.000 m³"
+      },
+      "snowmakingHa": 82.6,
+      "facilities": 13,
+      "locatedFacilities": 12
+    },
+    {
+      "id": "T20558119R3",
+      "name": "4/2143 Beschneiungsanlage Skistar St. Johann",
+      "districts": [
+        "Kitzbühel"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "99,5 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03.",
+        "Durchschnittliche Jahreswassermenge:": "380.000 m³"
+      },
+      "snowmakingHa": 99.5,
+      "facilities": 11,
+      "locatedFacilities": 10
+    },
+    {
+      "id": "T20561507R3",
+      "name": "4/2242 Beschneiungsanlage Westendorf",
+      "districts": [
+        "Kitzbühel"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "112,2 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03.",
+        "Durchschnittliche Jahreswassermenge:": "402.000 m³"
+      },
+      "snowmakingHa": 112.2,
+      "facilities": 15,
+      "locatedFacilities": 12
+    },
+    {
+      "id": "T20557995R3",
+      "name": "4/2244 Beschneiungsanlage Unterberghornbahnen",
+      "districts": [
+        "Kitzbühel"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "45,3 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "15.03."
+      },
+      "snowmakingHa": 45.3,
+      "facilities": 8,
+      "locatedFacilities": 4
+    },
+    {
+      "id": "T20541693R3",
+      "name": "4/2255 Beschneiungsanlage Pillersee/Buchensteinwand",
+      "districts": [
+        "Kitzbühel"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "29,06 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "10.03."
+      },
+      "snowmakingHa": 29.06,
+      "facilities": 10,
+      "locatedFacilities": 8
+    },
+    {
+      "id": "T20561705R3",
+      "name": "4/2259 Beschneiungsanlage Streif - Kaser - Pengelstein - Gaisberg – Steinbergkogel",
+      "districts": [
+        "Kitzbühel"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "203 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 203.0,
+      "facilities": 39,
+      "locatedFacilities": 23
+    },
+    {
+      "id": "T20562308R3",
+      "name": "4/2275 Beschneiungsanlage Fieberbrunn \"Streuboden - Reckmoos\"",
+      "districts": [
+        "Kitzbühel"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "73,5 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "15.03."
+      },
+      "snowmakingHa": 73.5,
+      "facilities": 23,
+      "locatedFacilities": 10
+    },
+    {
+      "id": "T20562224R3",
+      "name": "4/2293 Beschneiung des unterster Abschnittes des Hofstattliftes",
+      "districts": [
+        "Kitzbühel"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "6 ha",
+        "Zeit frühester Beginn": "15.11.",
+        "Zeit spätestes Ende": "15.03.",
+        "elektr. Anschlussleistung Beschneiungsanlage": "240 kW"
+      },
+      "snowmakingHa": 6.0,
+      "facilities": 3,
+      "locatedFacilities": 1
+    },
+    {
+      "id": "T20558350R3",
+      "name": "4/2332 Beschneiunganlage Hohe Salve",
+      "districts": [
+        "Kitzbühel"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "75,2 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "15.03.",
+        "Durchschnittliche Jahreswassermenge:": "380000 m³"
+      },
+      "snowmakingHa": 75.2,
+      "facilities": 17,
+      "locatedFacilities": 9
+    },
+    {
+      "id": "T20578258R3",
+      "name": "4/2414 Beschneiungsanlage \"Rasterhöhe\"",
+      "districts": [
+        "Kitzbühel"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "84,6 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "15.03."
+      },
+      "snowmakingHa": 84.6,
+      "facilities": 11,
+      "locatedFacilities": 2
+    },
+    {
+      "id": "T20770799R3",
+      "name": "4/2534 Beschneiungsanlage Aschau, Kirchberg",
+      "districts": [
+        "Kitzbühel"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "3,3476 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "15.03."
+      },
+      "snowmakingHa": 3.3476,
+      "facilities": 4,
+      "locatedFacilities": 2
+    },
+    {
+      "id": "T20961784R3",
+      "name": "4/2592 Beschneiungsanlage Schatzberg/Niederau",
+      "districts": [
+        "Kitzbühel",
+        "Kufstein"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "55,4 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "15.03."
+      },
+      "snowmakingHa": 55.4,
+      "facilities": 11,
+      "locatedFacilities": 8
+    },
+    {
+      "id": "T20891250R3",
+      "name": "4/2642 Löschwasser- & Beschneiungsteichanlage Schipflalm, Hochfilzen",
+      "districts": [
+        "Kitzbühel"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "2 ha"
+      },
+      "snowmakingHa": 2.0,
+      "facilities": 4,
+      "locatedFacilities": 2
+    },
+    {
+      "id": "T20947672R3",
+      "name": "4/2714 Beschneiungsanlage Schusterbühel - Kandleralmabfahrt",
+      "districts": [
+        "Kitzbühel"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "11,8 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "15.03.",
+        "Durchschnittliche Jahreswassermenge:": "55.000 m³"
+      },
+      "snowmakingHa": 11.8,
+      "facilities": 6,
+      "locatedFacilities": 2
+    },
+    {
+      "id": "T21001351R3",
+      "name": "4/2951 Beschneiungsanlage Kirchdorf",
+      "districts": [
+        "Kitzbühel"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "18 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "15.03."
+      },
+      "snowmakingHa": 18.0,
+      "facilities": 6,
+      "locatedFacilities": 1
+    },
+    {
+      "id": "T20987664R3",
+      "name": "4/3054 Beschneiungsanlage Staffnerhof, Kössen",
+      "districts": [
+        "Kitzbühel"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "2 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "15.03."
+      },
+      "snowmakingHa": 2.0,
+      "facilities": 4,
+      "locatedFacilities": 2
+    },
+    {
+      "id": "T14399337",
+      "name": "4/3253 Depotbeschneiung Langlaufstrecke Skiclub St. Ulrich a.P.",
+      "districts": [
+        "Kitzbühel"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "15.03."
+      },
+      "snowmakingHa": null,
+      "facilities": 4,
+      "locatedFacilities": 1
+    },
+    {
+      "id": "T16008654",
+      "name": "4/3644 Beschneiungsanlage Lärchenhof, Kirchdorf",
+      "districts": [
+        "Kitzbühel"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "projektiert",
+      "attributes": {
+        "Ausmaß Schneifläche": "2,8 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "15.03."
+      },
+      "snowmakingHa": 2.8,
+      "facilities": 6,
+      "locatedFacilities": 4
+    },
+    {
+      "id": "T60805780",
+      "name": "4/4349 Beschneiungsanlage Kitzbüheler Horn",
+      "districts": [
+        "Kitzbühel"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "projektiert",
+      "attributes": {
+        "Ausmaß Schneifläche": "35,9 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03.",
+        "Seehöhe von": "1 960 m ü.A",
+        "Seehöhe bis": "1 270 m ü.A"
+      },
+      "snowmakingHa": 35.9,
+      "facilities": 8,
+      "locatedFacilities": 5
+    },
+    {
+      "id": "T20680671R3",
+      "name": "5/2079 Beschneiungsanlage Ellmau Going",
+      "districts": [
+        "Kitzbühel",
+        "Kufstein"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "131,3 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "15.03."
+      },
+      "snowmakingHa": 131.3,
+      "facilities": 12,
+      "locatedFacilities": 11
+    },
+    {
+      "id": "T20588016R3",
+      "name": "5/1859 Beschneiungsanlage Taxbodenlifte",
+      "districts": [
+        "Kufstein"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "2,1 ha",
+        "Zeit frühester Beginn": "15.11.",
+        "Zeit spätestes Ende": "15.03."
+      },
+      "snowmakingHa": 2.1,
+      "facilities": 3,
+      "locatedFacilities": 1
+    },
+    {
+      "id": "T20588421R3",
+      "name": "5/1863 Beschneiungsanlage Söll",
+      "districts": [
+        "Kufstein"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "79,5 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "15.03."
+      },
+      "snowmakingHa": 79.5,
+      "facilities": 24,
+      "locatedFacilities": 10
+    },
+    {
+      "id": "T20588241R3",
+      "name": "5/1895 Beschneiungsanlage Wiedersbergerhorn und Reiterkogel",
+      "districts": [
+        "Kufstein"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "75,7 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "28.02."
+      },
+      "snowmakingHa": 75.7,
+      "facilities": 17,
+      "locatedFacilities": 14
+    },
+    {
+      "id": "T20918052R3",
+      "name": "5/1904 Beschneiungsanlage Scheffau",
+      "districts": [
+        "Kufstein"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "59,5 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "10.03."
+      },
+      "snowmakingHa": 59.5,
+      "facilities": 15,
+      "locatedFacilities": 5
+    },
+    {
+      "id": "T20805715R3",
+      "name": "5/2112 Beschneiungsanlage Schatzbergbahn/Auffach",
+      "districts": [
+        "Kufstein"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "53,4 ha",
+        "Zeit frühester Beginn": "15.11.",
+        "Zeit spätestes Ende": "15.03."
+      },
+      "snowmakingHa": 53.4,
+      "facilities": 9,
+      "locatedFacilities": 7
+    },
+    {
+      "id": "T20811025R3",
+      "name": "5/2151 Beschneiungsanlage Zahmer Kaiser",
+      "districts": [
+        "Kufstein"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "14,1 ha",
+        "Zeit frühester Beginn": "15.11.",
+        "Zeit spätestes Ende": "15.03."
+      },
+      "snowmakingHa": 14.1,
+      "facilities": 4,
+      "locatedFacilities": 2
+    },
+    {
+      "id": "T20951304R3",
+      "name": "5/2385 Beschneiungsanlage für die Langlaufloipe in Scheffau am Wilden Kaiser",
+      "districts": [
+        "Kufstein"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "3 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "10.03."
+      },
+      "snowmakingHa": 3.0,
+      "facilities": 3,
+      "locatedFacilities": 1
+    },
+    {
+      "id": "T14624507",
+      "name": "5/3051 Beschneiungsanlage Schwoich - Hochfeld",
+      "districts": [
+        "Kufstein"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "5,5 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "15.03.",
+        "elektr. Anschlussleistung Beschneiungsanlage": "275 kW"
+      },
+      "snowmakingHa": 5.5,
+      "facilities": 6,
+      "locatedFacilities": 3
+    },
+    {
+      "id": "T16007624",
+      "name": "5/3197 Beschneiungsanlage Hinterthiersee",
+      "districts": [
+        "Kufstein"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "7,4 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "15.03."
+      },
+      "snowmakingHa": 7.4,
+      "facilities": 4,
+      "locatedFacilities": 2
+    },
+    {
+      "id": "T16269962",
+      "name": "5/3362 Beschneiungsanlage Schneeberg- und Hagerlifte - Schneeberglifte Thiersee GmbH",
+      "districts": [
+        "Kufstein"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "5,0 ha"
+      },
+      "snowmakingHa": 5.0,
+      "facilities": 4,
+      "locatedFacilities": 2
+    },
+    {
+      "id": "T60773273",
+      "name": "5/3728 Depotbeschneiung Nachtloipe Kramsach",
+      "districts": [
+        "Kufstein"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "1,36 ha",
+        "Zeit frühester Beginn": "15.11.",
+        "Zeit spätestes Ende": "15.03.",
+        "elektr. Anschlussleistung Beschneiungsanlage": "29 kW",
+        "Durchschnittliche Jahreswassermenge:": "245 m³"
+      },
+      "snowmakingHa": 1.36,
+      "facilities": 3,
+      "locatedFacilities": 1
+    },
+    {
+      "id": "T20572153R3",
+      "name": "6/1139 Beschneiungsanlage St. Anton St. Christoph",
+      "districts": [
+        "Landeck"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "153,9 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 153.9,
+      "facilities": 15,
+      "locatedFacilities": 13
+    },
+    {
+      "id": "T20572444R3",
+      "name": "6/1180 Beschneiungsanlage Nauders",
+      "districts": [
+        "Landeck"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "111 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 111.0,
+      "facilities": 6,
+      "locatedFacilities": 5
+    },
+    {
+      "id": "T20669040R3",
+      "name": "6/1228 Beschneiungsanlage Fiss Ladis",
+      "districts": [
+        "Landeck"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "164,2244 ha",
+        "Zeit frühester Beginn": "01.10.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 164.2244,
+      "facilities": 18,
+      "locatedFacilities": 16
+    },
+    {
+      "id": "T20522003R3",
+      "name": "6/1300 Beschneiungsanlage See",
+      "districts": [
+        "Landeck"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "65,5 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03.",
+        "Durchschnittliche Jahreswassermenge:": "260000 m³"
+      },
+      "snowmakingHa": 65.5,
+      "facilities": 6,
+      "locatedFacilities": 5
+    },
+    {
+      "id": "T20909196R3",
+      "name": "6/1308 Beschneiungsanlage Ischgl",
+      "districts": [
+        "Landeck"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "288,5 ha",
+        "Zeit frühester Beginn": "01.10.",
+        "Zeit spätestes Ende": "31.03.",
+        "Seehöhe bis": "1 800 m ü.A"
+      },
+      "snowmakingHa": 288.5,
+      "facilities": 18,
+      "locatedFacilities": 17
+    },
+    {
+      "id": "T20573166R3",
+      "name": "6/1309 Beschneiungsanlage Fendels",
+      "districts": [
+        "Landeck"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "32,55 ha"
+      },
+      "snowmakingHa": 32.55,
+      "facilities": 7,
+      "locatedFacilities": 6
+    },
+    {
+      "id": "T20604861R3",
+      "name": "6/1316 Beschneiungsanlage Komperdell",
+      "districts": [
+        "Landeck"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "177 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 177.0,
+      "facilities": 18,
+      "locatedFacilities": 16
+    },
+    {
+      "id": "T20571823R3",
+      "name": "6/1338 Beschneiung Dias einschließlich Erholungspark mit Kneipp und Fischteichanlage",
+      "districts": [
+        "Landeck"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "49,1 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 49.1,
+      "facilities": 15,
+      "locatedFacilities": 4
+    },
+    {
+      "id": "T20572592R3",
+      "name": "6/1339 Beschneiungsanlage Galtür",
+      "districts": [
+        "Landeck"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "64 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 64.0,
+      "facilities": 8,
+      "locatedFacilities": 5
+    },
+    {
+      "id": "T20522113R3",
+      "name": "6/1347 Beschneiungsanlage Kaunertaler Gletscher",
+      "districts": [
+        "Landeck"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "13 ha",
+        "Zeit frühester Beginn": "01.09.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 13.0,
+      "facilities": 8,
+      "locatedFacilities": 2
+    },
+    {
+      "id": "T20511754R3",
+      "name": "6/1399 Beschneiungsanlage Venet mit Speicherteich Zammeralm",
+      "districts": [
+        "Landeck"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "23,1 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 23.1,
+      "facilities": 9,
+      "locatedFacilities": 6
+    },
+    {
+      "id": "T20570398R3",
+      "name": "6/1431 Beschneiungsanlage Gondonal",
+      "districts": [
+        "Landeck"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "7,7 ha",
+        "Zeit frühester Beginn": "01.10.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 7.7,
+      "facilities": 5,
+      "locatedFacilities": 2
+    },
+    {
+      "id": "T21011297R3",
+      "name": "6/1858 Beschneiungsanlage für Übungslift/Schlepplift Mathon",
+      "districts": [
+        "Landeck"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "1,8 ha",
+        "Zeit frühester Beginn": "01.10.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 1.8,
+      "facilities": 4,
+      "locatedFacilities": 1
+    },
+    {
+      "id": "T21014679R3",
+      "name": "6/1871 Wasserentnahme aus der Trinkwasserversorgung Möseralm zum Zwecke der Schneeerzeugung Sommer Schneewelt",
+      "districts": [
+        "Landeck"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {},
+      "snowmakingHa": null,
+      "facilities": 3,
+      "locatedFacilities": 1
+    },
+    {
+      "id": "T59935591",
+      "name": "6/2229 Beschneiungsanlage Naturrodelbahn Ried",
+      "districts": [
+        "Landeck"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "30.04."
+      },
+      "snowmakingHa": null,
+      "facilities": 3,
+      "locatedFacilities": 1
+    },
+    {
+      "id": "T63905145",
+      "name": "6/2363 Mobile Beschneiungsanlage beim Dorflift Feichten – Kaunertaler Sport- und Hallenbad BetriebsgmbH",
+      "districts": [
+        "Landeck"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "0,6 ha"
+      },
+      "snowmakingHa": 0.6,
+      "facilities": 3,
+      "locatedFacilities": 0
+    },
+    {
+      "id": "T20610668R3",
+      "name": "7/3050 Beschneiungsanlage \"Hochstein am Schloßberg\"",
+      "districts": [
+        "Lienz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "40,4 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03.",
+        "Durchschnittliche Jahreswassermenge:": "120 000 m³"
+      },
+      "snowmakingHa": 40.4,
+      "facilities": 18,
+      "locatedFacilities": 7
+    },
+    {
+      "id": "T20598443R3",
+      "name": "7/3128 Beschneiungsanlage Brunnalm",
+      "districts": [
+        "Lienz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "68,71 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "10.03."
+      },
+      "snowmakingHa": 68.71,
+      "facilities": 9,
+      "locatedFacilities": 5
+    },
+    {
+      "id": "T20598111R3",
+      "name": "7/3175 Beschneiungsanlage Obertilliach Golzentipp",
+      "districts": [
+        "Lienz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "40 ha"
+      },
+      "snowmakingHa": 40.0,
+      "facilities": 10,
+      "locatedFacilities": 9
+    },
+    {
+      "id": "T20597995R3",
+      "name": "7/3196 Beschneiungsanlage Zettersfeld",
+      "districts": [
+        "Lienz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "58,7 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03.",
+        "Durchschnittliche Jahreswassermenge:": "222320 m³"
+      },
+      "snowmakingHa": 58.7,
+      "facilities": 4,
+      "locatedFacilities": 2
+    },
+    {
+      "id": "T20610502R3",
+      "name": "7/3303 Beschneiungsanlage Dorfberglift",
+      "districts": [
+        "Lienz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "15,08 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03.",
+        "Durchschnittliche Jahreswassermenge:": "48256 m³"
+      },
+      "snowmakingHa": 15.08,
+      "facilities": 6,
+      "locatedFacilities": 5
+    },
+    {
+      "id": "T20578612R3",
+      "name": "7/3422 Beschneiungsanlage Kals am Großglockner",
+      "districts": [
+        "Lienz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "41,93 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03.",
+        "Durchschnittliche Jahreswassermenge:": "176100 m³"
+      },
+      "snowmakingHa": 41.93,
+      "facilities": 7,
+      "locatedFacilities": 6
+    },
+    {
+      "id": "T20607956R3",
+      "name": "7/3452 Beschneiungsanlage Goldried",
+      "districts": [
+        "Lienz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "60,74 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03.",
+        "Durchschnittliche Jahreswassermenge:": "255.000 m³"
+      },
+      "snowmakingHa": 60.74,
+      "facilities": 5,
+      "locatedFacilities": 4
+    },
+    {
+      "id": "T20764043R3",
+      "name": "7/3658 Beschneiungsanlage Hochpustertal",
+      "districts": [
+        "Lienz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "60 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "15.03.",
+        "elektr. Anschlussleistung Beschneiungsanlage": "2.570 kW"
+      },
+      "snowmakingHa": 60.0,
+      "facilities": 4,
+      "locatedFacilities": 3
+    },
+    {
+      "id": "T20798836R3",
+      "name": "7/3689 Beschneiungsanlage Bichllifte und Langlaufloipe Losach",
+      "districts": [
+        "Lienz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "5,29 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 5.29,
+      "facilities": 4,
+      "locatedFacilities": 3
+    },
+    {
+      "id": "T20982981R3",
+      "name": "7/3694 Beschneiungsanlage - Naturrodelbahn Tristach samt Nebenanlagen",
+      "districts": [
+        "Lienz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "1,2 ha"
+      },
+      "snowmakingHa": 1.2,
+      "facilities": 4,
+      "locatedFacilities": 1
+    },
+    {
+      "id": "T20855479R3",
+      "name": "7/3750 Beschneiungsanlage Fellach Lift",
+      "districts": [
+        "Lienz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "2 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 2.0,
+      "facilities": 2,
+      "locatedFacilities": 1
+    },
+    {
+      "id": "T20873418R3",
+      "name": "7/3886 Beschneiungsanlage Langlauf und Biathlon Wettkampfstätten Obertilliach",
+      "districts": [
+        "Lienz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "11 ha",
+        "Durchschnittliche Jahreswassermenge:": "15000 m³"
+      },
+      "snowmakingHa": 11.0,
+      "facilities": 3,
+      "locatedFacilities": 2
+    },
+    {
+      "id": "T20931728R3",
+      "name": "7/4097 Beschneiungsanlage Langlaufloipe Golfplatz Lavant",
+      "districts": [
+        "Lienz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "2,4 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 2.4,
+      "facilities": 3,
+      "locatedFacilities": 1
+    },
+    {
+      "id": "T20960706R3",
+      "name": "7/4127 Beschneiungsanlage Lana Lift",
+      "districts": [
+        "Lienz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "2,5 ha",
+        "Zeit frühester Beginn": "15.11.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 2.5,
+      "facilities": 2,
+      "locatedFacilities": 1
+    },
+    {
+      "id": "T21012798R3",
+      "name": "7/4194 Beschneiungsanlage Mühlegg Schlepplift",
+      "districts": [
+        "Lienz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "1,62 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03.",
+        "Durchschnittliche Jahreswassermenge:": "4200 m³"
+      },
+      "snowmakingHa": 1.62,
+      "facilities": 2,
+      "locatedFacilities": 1
+    },
+    {
+      "id": "T59940472",
+      "name": "7/4611 Depot-Beschneiung Langlaufloipe St. Jakob",
+      "districts": [
+        "Lienz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "0,6 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 0.6,
+      "facilities": 2,
+      "locatedFacilities": 1
+    },
+    {
+      "id": "T60972322",
+      "name": "7/4678 Beschneiungsanlage Sportanlage Winterwichtelland, Sillian",
+      "districts": [
+        "Lienz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "1,2 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 1.2,
+      "facilities": 3,
+      "locatedFacilities": 1
+    },
+    {
+      "id": "T61146800",
+      "name": "7/4693 Beschneiungsanlage Rodelbahn Würfelehütte",
+      "districts": [
+        "Lienz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "projektiert",
+      "attributes": {
+        "Ausmaß Schneifläche": "1 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "28.02.",
+        "Durchschnittliche Jahreswassermenge:": "2550 m³"
+      },
+      "snowmakingHa": 1.0,
+      "facilities": 2,
+      "locatedFacilities": 1
+    },
+    {
+      "id": "T64558128",
+      "name": "7/4740 Langlaufloipe Beschneiung Pustertal Arnbach",
+      "districts": [
+        "Lienz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {},
+      "snowmakingHa": null,
+      "facilities": 8,
+      "locatedFacilities": 7
+    },
+    {
+      "id": "T65279674",
+      "name": "7/4783 Langlaufloipe samt mobiler Beschneiungsanlage in Nikolsdorf-Lengberg – Tourismusverband Osttirol",
+      "districts": [
+        "Lienz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "20.02."
+      },
+      "snowmakingHa": null,
+      "facilities": 3,
+      "locatedFacilities": 1
+    },
+    {
+      "id": "T75658059",
+      "name": "7/5018 Beschneiung Langlaufloipen Gschlöss",
+      "districts": [
+        "Lienz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "0,6 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "15.03."
+      },
+      "snowmakingHa": 0.6,
+      "facilities": 2,
+      "locatedFacilities": 1
+    },
+    {
+      "id": "T81487811",
+      "name": "7/5263 Schneedepot DRL WKA Bruggeralmbach zur Loipenbeschneiung",
+      "districts": [
+        "Lienz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "projektiert",
+      "attributes": {},
+      "snowmakingHa": null,
+      "facilities": 2,
+      "locatedFacilities": 0
+    },
+    {
+      "id": "T20580239R3",
+      "name": "8/1026 Beschneiungsanlage Höfen",
+      "districts": [
+        "Reutte"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "30,0 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 30.0,
+      "facilities": 10,
+      "locatedFacilities": 6
+    },
+    {
+      "id": "T20580404R3",
+      "name": "8/1035 Beschneiung Bichlbacher Almkopfliftabfahrt",
+      "districts": [
+        "Reutte"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "19,5 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03.",
+        "Durchschnittliche Jahreswassermenge:": "78.000 m³"
+      },
+      "snowmakingHa": 19.5,
+      "facilities": 4,
+      "locatedFacilities": 1
+    },
+    {
+      "id": "T20527892R3",
+      "name": "8/1043 Beschneiung Neunerköpfl Ressebichl",
+      "districts": [
+        "Reutte"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "10,5 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "15.03."
+      },
+      "snowmakingHa": 10.5,
+      "facilities": 4,
+      "locatedFacilities": 2
+    },
+    {
+      "id": "T20536619R3",
+      "name": "8/1044 Beschneiungsanlage Waldrastlift",
+      "districts": [
+        "Reutte"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "1,8 ha",
+        "Zeit frühester Beginn": "15.11.",
+        "Zeit spätestes Ende": "15.03.",
+        "elektr. Anschlussleistung Beschneiungsanlage": "95 kW",
+        "Durchschnittliche Jahreswassermenge:": "15.000 m³"
+      },
+      "snowmakingHa": 1.8,
+      "facilities": 3,
+      "locatedFacilities": 1
+    },
+    {
+      "id": "T20604269R3",
+      "name": "8/1054 Beschneiung Schlepplift Sonnenlift",
+      "districts": [
+        "Reutte"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "3,5 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 3.5,
+      "facilities": 4,
+      "locatedFacilities": 1
+    },
+    {
+      "id": "T20620927R3",
+      "name": "8/1064 Beschneiung Lermoos Grubigstein",
+      "districts": [
+        "Reutte"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "65,8 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 65.8,
+      "facilities": 10,
+      "locatedFacilities": 8
+    },
+    {
+      "id": "T20706739R3",
+      "name": "8/1083 Beschneiung Jöchlspitze",
+      "districts": [
+        "Reutte"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "8,7 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 8.7,
+      "facilities": 4,
+      "locatedFacilities": 2
+    },
+    {
+      "id": "T20872366R3",
+      "name": "8/1120 Beschneiung Stoamandl Lift",
+      "districts": [
+        "Reutte"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "1,8 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 1.8,
+      "facilities": 4,
+      "locatedFacilities": 2
+    },
+    {
+      "id": "T20908411R3",
+      "name": "8/1154 Beschneiung Wetterstein Sonnenhang",
+      "districts": [
+        "Reutte"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "40 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 40.0,
+      "facilities": 7,
+      "locatedFacilities": 5
+    },
+    {
+      "id": "T20992287R3",
+      "name": "8/1236 Beschneiung Langlaufloipe Lermooser Moos",
+      "districts": [
+        "Reutte"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "1,15 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "15.03."
+      },
+      "snowmakingHa": 1.15,
+      "facilities": 4,
+      "locatedFacilities": 1
+    },
+    {
+      "id": "T20989698R3",
+      "name": "8/1248 Beschneiung Thanellerkarlift",
+      "districts": [
+        "Reutte"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "projektiert",
+      "attributes": {
+        "Ausmaß Schneifläche": "20,6 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 20.6,
+      "facilities": 5,
+      "locatedFacilities": 3
+    },
+    {
+      "id": "T15940120",
+      "name": "8/1318 Beschneiungsanlage Schollenwiesenlift",
+      "districts": [
+        "Reutte"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "2 ha",
+        "Zeit frühester Beginn": "15.11.",
+        "Zeit spätestes Ende": "15.03."
+      },
+      "snowmakingHa": 2.0,
+      "facilities": 3,
+      "locatedFacilities": 1
+    },
+    {
+      "id": "T20580340R3",
+      "name": "8/83 Beschneiungsanlage Rohnenlifte",
+      "districts": [
+        "Reutte"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "9,75 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "15.03.",
+        "elektr. Anschlussleistung Beschneiungsanlage": "218 kW"
+      },
+      "snowmakingHa": 9.75,
+      "facilities": 5,
+      "locatedFacilities": 2
+    },
+    {
+      "id": "T20580128R3",
+      "name": "8/897 Beschneiung Marienberglifte",
+      "districts": [
+        "Reutte"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "40 ha"
+      },
+      "snowmakingHa": 40.0,
+      "facilities": 6,
+      "locatedFacilities": 3
+    },
+    {
+      "id": "T20579951R3",
+      "name": "8/952 Beschneiung Schigebiet der Nordflanke des Sorgschrofens",
+      "districts": [
+        "Reutte"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "45 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "10.03."
+      },
+      "snowmakingHa": 45.0,
+      "facilities": 12,
+      "locatedFacilities": 6
+    },
+    {
+      "id": "T20580577R3",
+      "name": "8/954 Beschneiung Füssener Jöchle",
+      "districts": [
+        "Reutte"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "22 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "15.03."
+      },
+      "snowmakingHa": 22.0,
+      "facilities": 14,
+      "locatedFacilities": 7
+    },
+    {
+      "id": "T20580775R3",
+      "name": "8/975 Beschneiung Ehrwalder Alm Gaistal",
+      "districts": [
+        "Reutte"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "60 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "15.03."
+      },
+      "snowmakingHa": 60.0,
+      "facilities": 16,
+      "locatedFacilities": 5
+    },
+    {
+      "id": "T20580192R3",
+      "name": "8/976 Beschneiung Wannenjoch",
+      "districts": [
+        "Reutte"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "9,1 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 9.1,
+      "facilities": 3,
+      "locatedFacilities": 1
+    },
+    {
+      "id": "T20580066R3",
+      "name": "8/998 Beschneiungsanlage Berwang Sonnalmbahn",
+      "districts": [
+        "Reutte"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "15,85 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03.",
+        "Durchschnittliche Jahreswassermenge:": "52000 m³"
+      },
+      "snowmakingHa": 15.85,
+      "facilities": 3,
+      "locatedFacilities": 2
+    },
+    {
+      "id": "T20598920R3",
+      "name": "9/1724 Beschneiungsanlage Penken",
+      "districts": [
+        "Schwaz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "137,9 ha",
+        "Zeit frühester Beginn": "20.10.",
+        "Zeit spätestes Ende": "10.03.",
+        "Durchschnittliche Jahreswassermenge:": "630000 m³"
+      },
+      "snowmakingHa": 137.9,
+      "facilities": 20,
+      "locatedFacilities": 17
+    },
+    {
+      "id": "T20583354R3",
+      "name": "9/1788 Beschneiungsanlage Finkenberger Almbahnen",
+      "districts": [
+        "Schwaz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "50 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "15.03."
+      },
+      "snowmakingHa": 50.0,
+      "facilities": 13,
+      "locatedFacilities": 7
+    },
+    {
+      "id": "T20587757R3",
+      "name": "9/1800 Beschneiung Gerlos",
+      "districts": [
+        "Schwaz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "87,3 ha",
+        "Zeit frühester Beginn": "01.10.",
+        "Zeit spätestes Ende": "15.03.",
+        "Seehöhe bis": "1.800 m ü.A"
+      },
+      "snowmakingHa": 87.3,
+      "facilities": 21,
+      "locatedFacilities": 19
+    },
+    {
+      "id": "T20587585R3",
+      "name": "9/1827 Beschneiungsanlage Zillertal Arena",
+      "districts": [
+        "Schwaz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "88,6 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "15.03.",
+        "Seehöhe bis": "1 800 m ü.A"
+      },
+      "snowmakingHa": 88.6,
+      "facilities": 21,
+      "locatedFacilities": 19
+    },
+    {
+      "id": "T20583584R3",
+      "name": "9/1841 Beschneiungsanlage Eggalm",
+      "districts": [
+        "Schwaz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "32,0 ha",
+        "Zeit frühester Beginn": "10.11.",
+        "Zeit spätestes Ende": "10.03.",
+        "Durchschnittliche Jahreswassermenge:": "150000 m³"
+      },
+      "snowmakingHa": 32.0,
+      "facilities": 16,
+      "locatedFacilities": 8
+    },
+    {
+      "id": "T20611203R3",
+      "name": "9/1846 Beschneiungsanlage Christlum, Achenkirch",
+      "districts": [
+        "Schwaz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "39 ha"
+      },
+      "snowmakingHa": 39.0,
+      "facilities": 8,
+      "locatedFacilities": 5
+    },
+    {
+      "id": "T20587349R3",
+      "name": "9/1883 Beschneiungsanlage Ahorn",
+      "districts": [
+        "Schwaz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "37,56 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "10.03.",
+        "Seehöhe von": "1.800 m ü.A"
+      },
+      "snowmakingHa": 37.56,
+      "facilities": 8,
+      "locatedFacilities": 7
+    },
+    {
+      "id": "T20611080R3",
+      "name": "9/1893 Beschneiungsanlage Hochfügen",
+      "districts": [
+        "Schwaz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "82 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "10.03."
+      },
+      "snowmakingHa": 82.0,
+      "facilities": 20,
+      "locatedFacilities": 8
+    },
+    {
+      "id": "T20587457R3",
+      "name": "9/1900 Beschneiungsanlage Hintertux",
+      "districts": [
+        "Schwaz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "76,8 ha",
+        "Zeit frühester Beginn": "01.09.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 76.8,
+      "facilities": 18,
+      "locatedFacilities": 10
+    },
+    {
+      "id": "T20645142R3",
+      "name": "9/1980 Beschneiungsanlage Hochzillertal & Retentionsmaßnahmen Aschauerbach",
+      "districts": [
+        "Schwaz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "148 ha",
+        "Zeit frühester Beginn": "15.10.",
+        "Zeit spätestes Ende": "31.03.",
+        "Seehöhe von": "1.700 m ü.A"
+      },
+      "snowmakingHa": 148.0,
+      "facilities": 18,
+      "locatedFacilities": 16
+    },
+    {
+      "id": "T20639545R3",
+      "name": "9/1981 Beschneiungsanlage Spieljoch, Fügenberg",
+      "districts": [
+        "Schwaz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "45 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "15.03.",
+        "elektr. Anschlussleistung Beschneiungsanlage": "2.600 kW"
+      },
+      "snowmakingHa": 45.0,
+      "facilities": 14,
+      "locatedFacilities": 8
+    },
+    {
+      "id": "T20691635R3",
+      "name": "9/1990 Beschneiung Rofan",
+      "districts": [
+        "Schwaz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "1,5 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "15.03."
+      },
+      "snowmakingHa": 1.5,
+      "facilities": 6,
+      "locatedFacilities": 3
+    },
+    {
+      "id": "T20887141R3",
+      "name": "9/2108 Beschneiungsanlage Burglift I",
+      "districts": [
+        "Schwaz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "4 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03."
+      },
+      "snowmakingHa": 4.0,
+      "facilities": 4,
+      "locatedFacilities": 2
+    },
+    {
+      "id": "T21014257R3",
+      "name": "9/2341 Beschneiungsanlage Skigebiet Rastkogel",
+      "districts": [
+        "Schwaz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "50 ha",
+        "Zeit frühester Beginn": "01.11.",
+        "Zeit spätestes Ende": "31.03.",
+        "elektr. Anschlussleistung Beschneiungsanlage": "4.200 kW"
+      },
+      "snowmakingHa": 50.0,
+      "facilities": 7,
+      "locatedFacilities": 5
+    },
+    {
+      "id": "T21001946R3",
+      "name": "9/2355 Beschneiungsanlage Hüttegg, Weerberg",
+      "districts": [
+        "Schwaz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "5,5 ha",
+        "Zeit frühester Beginn": "02.11.",
+        "Zeit spätestes Ende": "10.03."
+      },
+      "snowmakingHa": 5.5,
+      "facilities": 5,
+      "locatedFacilities": 3
+    },
+    {
+      "id": "T59533506",
+      "name": "9/2747 Beschneiungsanlage Schiwiese Kleinschlepplift, Eben",
+      "districts": [
+        "Schwaz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "besteht",
+      "attributes": {
+        "Ausmaß Schneifläche": "1,2 ha"
+      },
+      "snowmakingHa": 1.2,
+      "facilities": 3,
+      "locatedFacilities": 1
+    },
+    {
+      "id": "T67897846",
+      "name": "9/3051 Beschneiungsanlage Kellerjoch",
+      "districts": [
+        "Schwaz"
+      ],
+      "type": "Sportanlage - Schneeanlage",
+      "status": "projektiert",
+      "attributes": {
+        "Ausmaß Schneifläche": "17,17 ha",
+        "Durchschnittliche Jahreswassermenge:": "47.900 m³",
+        "Seehöhe von": "1.345,00 m ü.A",
+        "Seehöhe bis": "2.018,00 m ü.A"
+      },
+      "snowmakingHa": 17.17,
+      "facilities": 5,
+      "locatedFacilities": 3
+    }
+  ],
+  "districts": [
+    {
+      "district": "Imst",
+      "searchRows": 22,
+      "reports": 19,
+      "uniqueFacilities": 129,
+      "mappedFacilities": 90,
+      "reservoirs": 17
+    },
+    {
+      "district": "Innsbruck-Land",
+      "searchRows": 40,
+      "reports": 23,
+      "uniqueFacilities": 119,
+      "mappedFacilities": 71,
+      "reservoirs": 16
+    },
+    {
+      "district": "Innsbruck-Stadt",
+      "searchRows": 1,
+      "reports": 1,
+      "uniqueFacilities": 1,
+      "mappedFacilities": 0,
+      "reservoirs": 0
+    },
+    {
+      "district": "Kitzbühel",
+      "searchRows": 40,
+      "reports": 21,
+      "uniqueFacilities": 220,
+      "mappedFacilities": 132,
+      "reservoirs": 36
+    },
+    {
+      "district": "Kufstein",
+      "searchRows": 20,
+      "reports": 14,
+      "uniqueFacilities": 128,
+      "mappedFacilities": 79,
+      "reservoirs": 24
+    },
+    {
+      "district": "Landeck",
+      "searchRows": 31,
+      "reports": 16,
+      "uniqueFacilities": 146,
+      "mappedFacilities": 100,
+      "reservoirs": 17
+    },
+    {
+      "district": "Lienz",
+      "searchRows": 35,
+      "reports": 22,
+      "uniqueFacilities": 105,
+      "mappedFacilities": 63,
+      "reservoirs": 10
+    },
+    {
+      "district": "Reutte",
+      "searchRows": 26,
+      "reports": 19,
+      "uniqueFacilities": 121,
+      "mappedFacilities": 59,
+      "reservoirs": 13
+    },
+    {
+      "district": "Schwaz",
+      "searchRows": 34,
+      "reports": 17,
+      "uniqueFacilities": 207,
+      "mappedFacilities": 141,
+      "reservoirs": 27
+    }
+  ],
+  "statusCounts": {
+    "besteht": 1115,
+    "projektiert": 25
+  },
+  "unresolvedParents": 8,
+  "unmappedRecords": [
+    {
+      "id": "T20571720R3",
+      "name": "2/1155 Beschneiungsanlage Grünwald und Löschwasserversorgung Ortsbereiche Sölden Reinstadl und Grünwald",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T20571776R3",
+      "name": "Beschneiung Talabfahrt Grünwald (Bes.Nr.1)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T20571781R3",
+      "name": "Beschneiung Giggijoch - Abfahrt (Bes.Nr.2)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T20571786R3",
+      "name": "Beschneiung Ropkirpl - Abfahrt (Bes.Nr.3)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T20571791R3",
+      "name": "Beschneiung Rotkogel - Abfahrt (Bes.Nr.4)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T20571796R3",
+      "name": "Beschneiung Grünwald 5 - Rote Piste Nr. 19 Oberer Teil (Bes.Nr.5)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T20571772R3",
+      "name": "Pumpstation \"Grünwald\" (Beh.Nr.1)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T20571970R3",
+      "name": "2/1160 Beschneiungsanlage Tiefenbach- und Rettenbachgletscher",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T20572950R3",
+      "name": "2/1216 Beschneiungsanlage Gaislachkogel und Löschwasserversorgung für die Ortsteile Kirchfeld, Unterwald und Innerwald.",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T20572691R3",
+      "name": "2/1217 Beschneiungsanlage Hochgurgl",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T20509981R3",
+      "name": "2/1249 Beschneiungsanlage Hochzeiger",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T20510155R3",
+      "name": "Übernahme von 2/787 WVA Jerzens nach 2/1249",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T20510160R3",
+      "name": "Übernahme 2/1360 nach 2/1249",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T20628868R3",
+      "name": "2/1278 Beschneiungsanlage Hochimst",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T20628993R3",
+      "name": "2/1293 Beschneiungsanlage Kühtai",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T20629190R3",
+      "name": "2/1319 Beschneiungsanlage Pitztaler Gletscher",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T20629297R3",
+      "name": "2/1330 Beschneiungsanlage Rifflsee",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T20572362R3",
+      "name": "2/1363 Beschneiungsanlage Silberne Piste",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T20527066R3",
+      "name": "2/1450 Beschneiungsanlage Obergurgl",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T20527134R3",
+      "name": "Beschneiung Obergurgl",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T20740709R3",
+      "name": "2/1536 Beschneiungsanlage Niederthai",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T20845137R3",
+      "name": "2/1561 Beschneiungsanlage Stablein",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T20947455R3",
+      "name": "2/1692 Beschneiungsanlage Hochötz",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T20954856R3",
+      "name": "2/1697 Beschneiungsanlage Kinderland in Mandarfen, Pitztal",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T20954876R3",
+      "name": "Beschneiung Kinderland",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T20984391R3",
+      "name": "2/1705 Beschneiungsanlage Gampen",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T20955243R3",
+      "name": "2/1732 Beschneiungsanlage \"Rotkogel\"",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T20955271R3",
+      "name": "Rotkogel 1 - Blaue Piste Nr.13 Silberbrünnl - Abfahrt (Bes.Nr.1)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T20955278R3",
+      "name": "Rotkogel 2 - Blaue Piste Nr.15 Giggijoch-Abfahrt (Bes.Nr.2)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T20955285R3",
+      "name": "Rotkogel 3 - Rote Piste Nr.11 + 12 Gampen - Abfahrt Oberer Teil (Bes.Nr.3)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T20955292R3",
+      "name": "Rotkogel 4 - Rote Piste Nr.12 Hainbachkar - Abfahrt (Bes.Nr.4)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T20955299R3",
+      "name": "Rotkogel 5 - Blaue Piste Nr.23 Seekogel - Abfahrt (Bes.Nr.5)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T20955306R3",
+      "name": "Rotkogel 6 - Blaue Piste Nr.24 Einzeiger - Abfahrt (Bes.Nr.6)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T20955256R3",
+      "name": "Pumpstation Giggijoch (Beh.Nr.1)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T20963607R3",
+      "name": "2/1778 Beschneiungsanlage Brandachfeldlift, Längenfeld",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T20963626R3",
+      "name": "Beschneiung Brandachfeld",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T60894019",
+      "name": "2/2224 Beschneiungsanlage Rodelbahn Piburg, Ötz",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T60894040",
+      "name": "Beschneiung Rodelbahn",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T60894044",
+      "name": "WVA Piburg",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Imst"
+      ]
+    },
+    {
+      "id": "T20608693R3",
+      "name": "3/3027 Beschneiungsanlage Stubaier Gletscher",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T72100970",
+      "name": "WF + Füllpumpstation Fernau",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T20608952R3",
+      "name": "3/3106 Beschneiungsanlage Schlick 2000",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T20608983R3",
+      "name": "Tagesspeicher - wird aufgelassen!",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T20608870R3",
+      "name": "3/3108 Beschneiungsanlage Roßhütte Seefeld",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T20608489R3",
+      "name": "3/3119 Beschneiungsanlage Bergeralm",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T20608302R3",
+      "name": "3/3265 Beschneiungsanlage Vögelsberg",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T20608327R3",
+      "name": "Beschneiungsanlage Vögelsberg (Bes.Nr.1)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T20608323R3",
+      "name": "Zwischenbehälter (3 Stück) (Beh.Nr.1)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T20561993R3",
+      "name": "3/3313 Beschneiungsanlage Patscherkofel",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T20562047R3",
+      "name": "BA 01 Ausbaustufe I/96, Olympia-Abfahrt unterer Teil",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T20562068R3",
+      "name": "BA 01 Ausbau IV/97, Familien-Abfahrt oberer Teil",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T20562061R3",
+      "name": "BA 01 Ausbaustufe III/96, Olympia-Abfahrt oberer Teil",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T20562054R3",
+      "name": "BA 01 Ausbaustufe II/96, Familien-Abfahrt unterer Teil",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T20562080R3",
+      "name": "BA 02 - Unteres System Familienabfahrt (Patscher Wiesen, Nasser Gang)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T20562075R3",
+      "name": "BA 02 - Unteres System Olympiaabfahrt (neue Kurve am Bäreneck 1/2)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T14364599",
+      "name": "Wasseraufbereitungsanlage",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T20562029R3",
+      "name": "Pumpstation mit Tagesspeicher Ochsenalm",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T20517784R3",
+      "name": "3/3345 Beschneiungsanlage Serleslifte Mieders",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T20698562R3",
+      "name": "3/3450 Beschneiungsanlage Axamer Lizum",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T20698607R3",
+      "name": "Speicherteich Lizum Tal",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T20711808R3",
+      "name": "3/3535 Beschneiungsanlage Kreithalmlift",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T20711828R3",
+      "name": "Beschneiung Kreithalmlifte",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T20764385R3",
+      "name": "3/3551 Beschneiungsanlage Rinn, \"Archenstadl - Schlepplift\"",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T20764403R3",
+      "name": "Archenstadl - Schlepplift der Beschneiungsanlage Rinn",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T20761587R3",
+      "name": "3/3566 Beschneiungsanlage Wilde Grube",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T20857041R3",
+      "name": "3/3598 Beschneiungsanlage Sonnberg Lift",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T20857056R3",
+      "name": "Beschneiungsanlage Sonnberg Lift (Bes.Nr.1)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T20962240R3",
+      "name": "3/3832 Beschneiungsanlage Rangger Köpfl",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T20976810R3",
+      "name": "3/3863 Beschneiungsanlage Muttereralm",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T16009996",
+      "name": "3/4823 Beschneiungsanlage Hoferlift, Kolsaßberg",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T16010012",
+      "name": "Beschneiung Hoferlift",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T16010017",
+      "name": "Beschneiung Übungshang Zauberteppich",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T60805921",
+      "name": "3/5286 Beschneiungsanlage Birkenlift, Seefeld",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T60805937",
+      "name": "Beschneiung Birkenlift",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T60805941",
+      "name": "WVA Seefeld",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T60911893",
+      "name": "3/5305 Beschneiungsanlage Langlaufloipe Falbeson",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T60911909",
+      "name": "Loipenbeschneiung",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T61380987",
+      "name": "3/5359 Beschneiung Langlaufloipen Gschwandtkopf Seefeld",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T61380999",
+      "name": "Loipenbeschneiung",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T62532526",
+      "name": "3/5426 Beschneiungsanlage Langlaufloipe Leutasch",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T65791040",
+      "name": "3/5531 Beschneiungsanlage Schlepplift Krößbach",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T65791050",
+      "name": "Schlepplift Krößbach",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T65791060",
+      "name": "WVA Gasteig",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T64728277",
+      "name": "3/5669 Beschneiungsanlage Glungezer",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T70231796",
+      "name": "Wasserentnahme \"Eckhartquellen-neu\"",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T74560692",
+      "name": "3/5846 Beschneiungsanlage Schilift Trins",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T77540169",
+      "name": "3/5976 Beschneiungsanlage Geigenbühel",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Land"
+      ]
+    },
+    {
+      "id": "T20549766R3",
+      "name": "1/473 Beschneiung Patscherkofel",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Innsbruck-Stadt"
+      ]
+    },
+    {
+      "id": "T20563278R3",
+      "name": "4/1728 Beschneiungsanlage Jochberg",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20563344R3",
+      "name": "Beschneiung Jochberg - Hausleiten - Wagstätt - Wurzhöhe - Talsen - Bärenbadkogel",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20538874R3",
+      "name": "4/2123 Beschneiungsanlage Brixen im Thale",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel",
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T20558119R3",
+      "name": "4/2143 Beschneiungsanlage Skistar St. Johann",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20561507R3",
+      "name": "4/2242 Beschneiungsanlage Westendorf",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20561662R3",
+      "name": "Betriebswasserentnahme Schneeerzeugung",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T50911984",
+      "name": "Beschneiung Westendorf (Gesamt-Schneifläche)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20557995R3",
+      "name": "4/2244 Beschneiungsanlage Unterberghornbahnen",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20558050R3",
+      "name": "Beschneiung Unterberghornbahnen",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20558043R3",
+      "name": "Pumpstation PS3 mit Tagesspeicher",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20558037R3",
+      "name": "Speicher Parkplatz - wird aufgelassen !",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20541693R3",
+      "name": "4/2255 Beschneiungsanlage Pillersee/Buchensteinwand",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20541747R3",
+      "name": "Beschneiung Pillersee/Buchensteinwand",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20561705R3",
+      "name": "4/2259 Beschneiungsanlage Streif - Kaser - Pengelstein - Gaisberg – Steinbergkogel",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20561842R3",
+      "name": "Beschneiung PST Kitzbühel-Tal (Kitzbüheler Skiwiese, Ganslern & Kampen unterer Teil)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T59662895",
+      "name": "Beschneiung PST Seidlalm ALT Mitteldruck (Streif-Rennstrecke mittl. Teil, Streif-Familienabf. mittl. Teil & Kampen oberer Teil)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T59662900",
+      "name": "Beschneiung PST Seidlalm NEU Eigendruck (Streif-Familienabfahr unterer Teil & Rennstrecke)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T59662906",
+      "name": "Beschneiung PST Seidlalm Hochdruck (Kapellenabfahrt, Strei-Rennstrecke & Streif-Familienabfahrt oberer Teil, Hahnenkamm, Melkalm & Direttissima unterer Teil)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20561857R3",
+      "name": "Beschneiung PST Ehrenbachhöhe Mitteldruck (Fleck oberer Teil, Fleck, Kaser oberer Teil & Kaser nord)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20561867R3",
+      "name": "Beschneiung PST Ehrenbachhöhe Hochdruck (Sonnenrast)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20561872R3",
+      "name": "Beschneiung PST Röhrmoos (Fleck unterer Teil & Kaser unterer Teil)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20561887R3",
+      "name": "Beschneiung PST Penglstein Niederdruck (Penglstein II & Hieslegg)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20561892R3",
+      "name": "Beschneiung PST Penglstein Hochdruck (Streiteck, Silberstube, Kasereck, Penglstein II & Hieselegg)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20561882R3",
+      "name": "Beschneiung PST Usterkar Niederdruck (Schroll-Skirast & Kälberwald jeweils Schneifläche 2008)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20561847R3",
+      "name": "Beschneiung PST Usterkar Hochdruck (Streiteck, Jufensteilhang, Griesalm, Jufen, Griesalm & Hieslegg jeweils Schneiflächen 2008)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20561862R3",
+      "name": "Beschneiung PST Gaisberg (Gaisberg & Rennstrecke Gaisberg)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20561778R3",
+      "name": "PS Ehrenbachhöhe mit Tagesspeicher und Kühlturm [Anlage Kaser]",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T51019791",
+      "name": "Beschneiung - Erweiterung Brunn (Piste 27 Pengelstein-Brunn Piste 27a Kälberwald)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20561897R3",
+      "name": "Beschneiung Rodelbahn Gaisberg (Depotbeschneiung) (BA 12)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20562308R3",
+      "name": "4/2275 Beschneiungsanlage Fieberbrunn \"Streuboden - Reckmoos\"",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20562384R3",
+      "name": "Streubodenabfahrt, Piste 2 - Anlage Streuboden",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20562389R3",
+      "name": "Beschneiung Wildalmgatterpiste, Piste 3 - Anlage Streuboden",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20562394R3",
+      "name": "Beschneiung Zillstattabfahrt, Piste 4 - Anlage Streuboden",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20562399R3",
+      "name": "Beschneiung Doischberg, Piste 8 - Anlage Streuboden und Reckmoos",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20562404R3",
+      "name": "Beschneiung Maiskopf, Piste 8a - Anlage Streuboden und Reckmoos",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20562409R3",
+      "name": "Beschneiung Lärchfilzen, Piste 9 - Anlage Reckmoos",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20562414R3",
+      "name": "Beschneiung Lärchfilzkogel, Piste 1 (2) - Anlage Reckmoos",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20562419R3",
+      "name": "Erweiterung Lärchfilzen, Piste 7 - Anlage Reckmoos",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20562424R3",
+      "name": "Beschneiung Reckmoosabfahrt, Piste 10 - Anlage Reckmoos",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20562429R3",
+      "name": "Beschneiung Hochhörndle, Piste 11 - Anlage Reckmoos",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20562434R3",
+      "name": "Beschneiung Reckmoos - Süd",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T59562420",
+      "name": "Beschneiung Schiverbindung Fiberbrunn - Saalbach",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20562224R3",
+      "name": "4/2293 Beschneiung des unterster Abschnittes des Hofstattliftes",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20562256R3",
+      "name": "Beschneiung unterster Abschnitt des Hofstattliftes (Bes.Nr.1)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20558350R3",
+      "name": "4/2332 Beschneiunganlage Hohe Salve",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20558427R3",
+      "name": "Beschneiung Hohe Salve - Foisching - Kasbichl - Itter - Rigi",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20558450R3",
+      "name": "Beschneiung BA 02 - Pistenerweiterung Foischinglift",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T15967642",
+      "name": "Beschneiung Pistenerweiterung Schernthann",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T15967645",
+      "name": "Beschneiung Bereich Rigi - Mittelstation",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T15967648",
+      "name": "Beschneiung Bereich Zwischenausstieg - Talstation",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20558455R3",
+      "name": "Beschneiung Mödlinglift - Högerfeld (Babylift) - Bodenschmiedfeld",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T15798467",
+      "name": "Brixentaler Ache bzw. PS Mödling",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20578258R3",
+      "name": "4/2414 Beschneiungsanlage \"Rasterhöhe\"",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20578304R3",
+      "name": "Beschneiung Piste Hollersbach (Bes.Nr.1)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20578309R3",
+      "name": "Beschneiung Piste Pass Thurn (Bes.Nr.2)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20578314R3",
+      "name": "Beschneiung Pisten Resterkogel (Bes.Nr.3)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20578319R3",
+      "name": "Beschneiung Piste Speicher - Hanglalm (Bes.Nr.4)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20578324R3",
+      "name": "Beschneiung Piste Hanglalm (Bes.Nr.5)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20578329R3",
+      "name": "Beschneiung Pisten Hartkaser (Bes.Nr.6)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20578334R3",
+      "name": "Beschneiung Trattenbach - Bärenbadkogel (Bes.Nr.7)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20578339R3",
+      "name": "Beschneiung Bärenbadkogel (Bes.Nr.8)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20770799R3",
+      "name": "4/2534 Beschneiungsanlage Aschau, Kirchberg",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20770815R3",
+      "name": "Beschneiung Übungswiese Schlepplift Aschau und Schwarzkogelabfahrt",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20961784R3",
+      "name": "4/2592 Beschneiungsanlage Schatzberg/Niederau",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel",
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T20961841R3",
+      "name": "Beschneiung „Tennladen – Mittermoos – Kopfraderjoch - Markbachjoch und Guggwiesen“",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel",
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T20961846R3",
+      "name": "Beschneiung „Hochberg – Lanerköpfl mit Verbindung zur Markbachjochabfahrt“, „Ungnadenliftabfahrt“ und „Stenzerliftabfahrt“",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel",
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T20891250R3",
+      "name": "4/2642 Löschwasser- & Beschneiungsteichanlage Schipflalm, Hochfilzen",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20891276R3",
+      "name": "Beschneiung Schipflalm - Depotbeschneiung",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20947672R3",
+      "name": "4/2714 Beschneiungsanlage Schusterbühel - Kandleralmabfahrt",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20947695R3",
+      "name": "Beschneiung Schleppliftpiste Schusterbühel",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20947700R3",
+      "name": "Beschneiung Kandleralmabfahrt",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T53214770",
+      "name": "Gemeinde-WVA Brixen",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T21001351R3",
+      "name": "4/2951 Beschneiungsanlage Kirchdorf",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T21001366R3",
+      "name": "Beschneiungsanlage Bestand (Piste Leitenlift, Piste Babylift) (Bes.Nr.1)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T21001371R3",
+      "name": "Beschneiungsanlage Erweiterung 2008 (Piste Kirchdorfer Sessellift u. Verbindungswege) (Bes.Nr.2)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T14552690",
+      "name": "Pumpstation",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T14552681",
+      "name": "UV-Anlage",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20987664R3",
+      "name": "4/3054 Beschneiungsanlage Staffnerhof, Kössen",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20987691R3",
+      "name": "Beschneiung Staffnerhof",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T14399337",
+      "name": "4/3253 Depotbeschneiung Langlaufstrecke Skiclub St. Ulrich a.P.",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T14399353",
+      "name": "Beschneiung",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T14399349",
+      "name": "UV-Anlage",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T16008654",
+      "name": "4/3644 Beschneiungsanlage Lärchenhof, Kirchdorf",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T16008666",
+      "name": "Beschneiung Schiliftanlage Lärchenhof",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T60805780",
+      "name": "4/4349 Beschneiungsanlage Kitzbüheler Horn",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T60805797",
+      "name": "Beschneiung Kitzbüheler Horn",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T63668349",
+      "name": "Beschneiung PST „Raintal-Abfahrt“, Rote Piste Nr. 4",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel"
+      ]
+    },
+    {
+      "id": "T20680671R3",
+      "name": "5/2079 Beschneiungsanlage Ellmau Going",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kitzbühel",
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T20588016R3",
+      "name": "5/1859 Beschneiungsanlage Taxbodenlifte",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T20588060R3",
+      "name": "Taxbodenlifte (Übungslift) (Bes.Nr.1)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T20588421R3",
+      "name": "5/1863 Beschneiungsanlage Söll",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T20588496R3",
+      "name": "Beschneiung \"Grundried\" über P4 Hexen",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T14363406",
+      "name": "Pumpstation P4-Hexen",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T20588489R3",
+      "name": "Beschneiung \"Hochsöll\"",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T14363402",
+      "name": "Pumpstation P3-Hochsöll mit UV-Anlage",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T14363400",
+      "name": "Pumpstation P2-Lehen mit Kühlanlage",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T14363398",
+      "name": "Pumpstation P1-Stampfanger",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T20588506R3",
+      "name": "Beschneiung Pisten \"Hohe Salve\" H614-H630 über P7-Hohe Salve, Druckerhöhungsstation",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T14363412",
+      "name": "Druckerhöhungsstation P7-Hohe Salve",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T20588501R3",
+      "name": "Beschneiung Pisten \"Silleralm\" H501-H558 über P5/6-Innerkeat",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T14363410",
+      "name": "Pumpstation P5/6-Innerkeat mit UV-Anlage",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T75316064",
+      "name": "Verwendungsfläche 1, 2 und 3",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T75316068",
+      "name": "Speicherteich Kraftalm",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T75316070",
+      "name": "Pumpstation Kraftalm",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T20588241R3",
+      "name": "5/1895 Beschneiungsanlage Wiedersbergerhorn und Reiterkogel",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T20588341R3",
+      "name": "Beschneiung Wiedersbergerhorn, Alpbach",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T20588346R3",
+      "name": "Beschneiung Reiterkogel, Reith",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T20918052R3",
+      "name": "5/1904 Beschneiungsanlage Scheffau",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T20918122R3",
+      "name": "Beschneiung Muldenlift",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T20918127R3",
+      "name": "Beschneiung Aualmbahn",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T20918130R3",
+      "name": "Beschneiung Eiberglift",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T20918133R3",
+      "name": "Beschneiung Osthangbahn",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T20918136R3",
+      "name": "Beschneiung Talabfahrt oben",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T20918139R3",
+      "name": "Beschneiung Talabfahrt",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T20918142R3",
+      "name": "Beschneiung Südhanglift",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T20918145R3",
+      "name": "Beschneiung Kummereralm",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T16086772",
+      "name": "Beschneiung Piste 60 - Brandstadlbahn",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T20805715R3",
+      "name": "5/2112 Beschneiungsanlage Schatzbergbahn/Auffach",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T20805742R3",
+      "name": "Beschneiung Schatzbergbahn",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T20811025R3",
+      "name": "5/2151 Beschneiungsanlage Zahmer Kaiser",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T20811072R3",
+      "name": "Beschneiungsanlage Zahmer Kaiser BA 01, BA 02 (Bes.Nr.1)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T20951304R3",
+      "name": "5/2385 Beschneiungsanlage für die Langlaufloipe in Scheffau am Wilden Kaiser",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T20951321R3",
+      "name": "Beschneiung Langlaufloipe",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T14624507",
+      "name": "5/3051 Beschneiungsanlage Schwoich - Hochfeld",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T14624525",
+      "name": "Beschneiung Hochfeld",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T14624521",
+      "name": "Schwoicherbach - Einleitung von Überlauf- und Entleerungswässer Speicher Hochfeld",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T16007624",
+      "name": "5/3197 Beschneiungsanlage Hinterthiersee",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T16007648",
+      "name": "Beschneiung Hinterthiersee",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T16269962",
+      "name": "5/3362 Beschneiungsanlage Schneeberg- und Hagerlifte - Schneeberglifte Thiersee GmbH",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T16269986",
+      "name": "Beschneiung Schneeberg- und Hagerlifte",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T60773273",
+      "name": "5/3728 Depotbeschneiung Nachtloipe Kramsach",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T60773289",
+      "name": "Nacht-Langlaufloipe Kramsach",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Kufstein"
+      ]
+    },
+    {
+      "id": "T20572153R3",
+      "name": "6/1139 Beschneiungsanlage St. Anton St. Christoph",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T20572217R3",
+      "name": "Mehrtagesspeicher Zammer Moos II",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T20572444R3",
+      "name": "6/1180 Beschneiungsanlage Nauders",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T20669040R3",
+      "name": "6/1228 Beschneiungsanlage Fiss Ladis",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T20669101R3",
+      "name": "Tagesspeicher und HPS Fiss Tal",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T20522003R3",
+      "name": "6/1300 Beschneiungsanlage See",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T20909196R3",
+      "name": "6/1308 Beschneiungsanlage Ischgl",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T20573166R3",
+      "name": "6/1309 Beschneiungsanlage Fendels",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T20604861R3",
+      "name": "6/1316 Beschneiungsanlage Komperdell",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T20604925R3",
+      "name": "Beschneiung Komperdell",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T20571823R3",
+      "name": "6/1338 Beschneiung Dias einschließlich Erholungspark mit Kneipp und Fischteichanlage",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T20571905R3",
+      "name": "Beschneiung Piste Alblitt - Abfahrt 5 und 6 (Bes.Nr.1)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T20571910R3",
+      "name": "Beschneiung Piste Mardina - Abfahrt 1a (Bes.Nr.2)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T20571915R3",
+      "name": "Beschneiung Piste Grube - Abfahrt 2 (Bes.Nr.3)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T20571920R3",
+      "name": "Beschneiung Piste Talabfahrt - Piste 4 (Bes.Nr.4)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T20571925R3",
+      "name": "Beschneiung Skiweg Hirschenbad - Gongall (Bes.Nr.5)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T20571930R3",
+      "name": "Beschneiung Piste 9, Gongall-Laub (Bes.Nr.6)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T20571935R3",
+      "name": "Beschneiung Piste 3 und 9a (Gongall) (Bes.Nr.7)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T20571940R3",
+      "name": "Beschneiung Piste 5 a (Dias) (Bes.Nr.8)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T20571945R3",
+      "name": "Beschneiung der Piste 7 - 7a (Bes.Nr.9)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T20571879R3",
+      "name": "Tages Zwischenspeicher (Beh.Nr.1)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T20572592R3",
+      "name": "6/1339 Beschneiungsanlage Galtür",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T20572629R3",
+      "name": "Beschneiung Galtür",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T16090099",
+      "name": "Kühlturm & PS Kops",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T20522113R3",
+      "name": "6/1347 Beschneiungsanlage Kaunertaler Gletscher",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T20522171R3",
+      "name": "Abschnitt 4-SB Ochsenalmbahn II (Bes.Nr.1)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T20522176R3",
+      "name": "Abschnitt 4-SB Ochsenalmbahn I (Bes.Nr.2)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T20522181R3",
+      "name": "Abschnitt DSB Wiesejaggl (Bes.Nr.3)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T20522186R3",
+      "name": "Abschnitt SL Karlesspitz mit Verbindungsstrang Karlesspitz - Wiesejaggl (Bes.Nr.4)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T20522191R3",
+      "name": "Erweiterung 2008 (Bes.Nr.5)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T20511754R3",
+      "name": "6/1399 Beschneiungsanlage Venet mit Speicherteich Zammeralm",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T20511828R3",
+      "name": "Schneifläche Zammer Alm Rifenal (Bestand)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T20511833R3",
+      "name": "Schneifläche Weinberg",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T20570398R3",
+      "name": "6/1431 Beschneiungsanlage Gondonal",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T20570429R3",
+      "name": "Beschneiung Piste Nr. 40 - Gondonal",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T20570434R3",
+      "name": "Beschneiung Piste Nr. 38 - Gampen",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T21011297R3",
+      "name": "6/1858 Beschneiungsanlage für Übungslift/Schlepplift Mathon",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T21011315R3",
+      "name": "Beschneiung für Übungslift-Schlepplift Mathon (Bes.Nr.1)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T21011312R3",
+      "name": "Vorlageschacht (Beh.Nr.1)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T21014679R3",
+      "name": "6/1871 Wasserentnahme aus der Trinkwasserversorgung Möseralm zum Zwecke der Schneeerzeugung Sommer Schneewelt",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T21014691R3",
+      "name": "Aufbringen des erzeugten Eises auf 400 m² für Sommer Schneewelt",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T59935591",
+      "name": "6/2229 Beschneiungsanlage Naturrodelbahn Ried",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T59935602",
+      "name": "Beschneiung Rodelbahn",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T63905145",
+      "name": "6/2363 Mobile Beschneiungsanlage beim Dorflift Feichten – Kaunertaler Sport- und Hallenbad BetriebsgmbH",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T63905155",
+      "name": "Beschneiung",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T63905478",
+      "name": "WVA Gemeinde Kaunertal - Wasserentnahme",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Landeck"
+      ]
+    },
+    {
+      "id": "T20610668R3",
+      "name": "7/3050 Beschneiungsanlage \"Hochstein am Schloßberg\"",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T20610738R3",
+      "name": "Beschneiungsanlage Hochstein",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T81051471",
+      "name": "Beschneiungspeicherteich 2 - Sternalm",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T81051475",
+      "name": "Kopie von Speicherteich 1 - Sternalm",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T81051523",
+      "name": "Kopie von Speicherteich 2 - Sternalm",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T81051501",
+      "name": "Kopie von 3 Rundbehälter im Bereich U6 - WVA Lienz",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T81051519",
+      "name": "Kopie von Überwasser aus der Wasserversorgungsanlage Lienz (U6)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T81051548",
+      "name": "Kopie von Beschneiungspeicherteich 2 - Sternalm",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T81051552",
+      "name": "Kopie von Kopie von Speicherteich 1 - Sternalm",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T81051600",
+      "name": "Kopie von Kopie von Speicherteich 2 - Sternalm",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T81051578",
+      "name": "Kopie von Kopie von 3 Rundbehälter im Bereich U6 - WVA Lienz",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T20598443R3",
+      "name": "7/3128 Beschneiungsanlage Brunnalm",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T20598533R3",
+      "name": "Beschneiungsanlage „Berg“ (Erweiterung II, Weißspitz, Mooserberg)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T20598548R3",
+      "name": "Beschneiungsanlage „Berg“ (Erweiterung III - Brunnalm)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T20598526R3",
+      "name": "Beschneiungsanlage „Tal“ (Brunnalm Stammanlage und Erweiterung I abzüglich Ast Weißspitz)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T20598111R3",
+      "name": "7/3175 Beschneiungsanlage Obertilliach Golzentipp",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T20597995R3",
+      "name": "7/3196 Beschneiungsanlage Zettersfeld",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T20598048R3",
+      "name": "Pufferspeicher",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T20610502R3",
+      "name": "7/3303 Beschneiungsanlage Dorfberglift",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T20578612R3",
+      "name": "7/3422 Beschneiungsanlage Kals am Großglockner",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T20607956R3",
+      "name": "7/3452 Beschneiungsanlage Goldried",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T20764043R3",
+      "name": "7/3658 Beschneiungsanlage Hochpustertal",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T20798836R3",
+      "name": "7/3689 Beschneiungsanlage Bichllifte und Langlaufloipe Losach",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T20982981R3",
+      "name": "7/3694 Beschneiungsanlage - Naturrodelbahn Tristach samt Nebenanlagen",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T20982998R3",
+      "name": "Beschneiungsanlage für die Naturrodelbahn",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T20982994R3",
+      "name": "Speicherbehälter",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T20855479R3",
+      "name": "7/3750 Beschneiungsanlage Fellach Lift",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T20873418R3",
+      "name": "7/3886 Beschneiungsanlage Langlauf und Biathlon Wettkampfstätten Obertilliach",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T20931728R3",
+      "name": "7/4097 Beschneiungsanlage Langlaufloipe Golfplatz Lavant",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T78959760",
+      "name": "Beschneiungsanlage Langlaufloipe Golfplatz Lavant zu WVA Lavant",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T20960706R3",
+      "name": "7/4127 Beschneiungsanlage Lana Lift",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T21012798R3",
+      "name": "7/4194 Beschneiungsanlage Mühlegg Schlepplift",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T59940472",
+      "name": "7/4611 Depot-Beschneiung Langlaufloipe St. Jakob",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T60972322",
+      "name": "7/4678 Beschneiungsanlage Sportanlage Winterwichtelland, Sillian",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T60972346",
+      "name": "Beschneiung Winterwichtelland",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T61146800",
+      "name": "7/4693 Beschneiungsanlage Rodelbahn Würfelehütte",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T64558128",
+      "name": "7/4740 Langlaufloipe Beschneiung Pustertal Arnbach",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T65279674",
+      "name": "7/4783 Langlaufloipe samt mobiler Beschneiungsanlage in Nikolsdorf-Lengberg – Tourismusverband Osttirol",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T65279897",
+      "name": "Beschneiung Langlaufloipe Nikolsdorf-Lengberg",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T75658059",
+      "name": "7/5018 Beschneiung Langlaufloipen Gschlöss",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T81487811",
+      "name": "7/5263 Schneedepot DRL WKA Bruggeralmbach zur Loipenbeschneiung",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T81487830",
+      "name": "Entnahme von Kraftwerk Lichtgenossenschaft Druckrohrleitung",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Lienz"
+      ]
+    },
+    {
+      "id": "T20580239R3",
+      "name": "8/1026 Beschneiungsanlage Höfen",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T14360270",
+      "name": "UV-Anlage - abgeschaltet!",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T76678764",
+      "name": "Jochhaldenquelle",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T76678878",
+      "name": "Tobiasquelle",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20580404R3",
+      "name": "8/1035 Beschneiung Bichlbacher Almkopfliftabfahrt",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20580440R3",
+      "name": "Familienabfahrt (Schwierigkeitsgrad leicht) und SL Sonnbichl (Bes.Nr.1)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20580445R3",
+      "name": "Sportabfahrt (Schwierigkeitsgrad mittelschwer) (Bes.Nr.2)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20527892R3",
+      "name": "8/1043 Beschneiung Neunerköpfl Ressebichl",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20527918R3",
+      "name": "Beschneiung Ressebichl Neunerköpfl",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20536619R3",
+      "name": "8/1044 Beschneiungsanlage Waldrastlift",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20536641R3",
+      "name": "Beschneiungsanlage Waldrastlift (Bes.Nr.1)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20604269R3",
+      "name": "8/1054 Beschneiung Schlepplift Sonnenlift",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20604294R3",
+      "name": "Schlepplift Sonnenlift (Bes.Nr.1)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20604290R3",
+      "name": "6 Stahltanks a 30 m³ (Beh.Nr.1)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20620927R3",
+      "name": "8/1064 Beschneiung Lermoos Grubigstein",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20620986R3",
+      "name": "Beschneiung Lermoos-Grubigstein",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20706739R3",
+      "name": "8/1083 Beschneiung Jöchlspitze",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20706770R3",
+      "name": "Beschneiung Jöchlspitze",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20872366R3",
+      "name": "8/1120 Beschneiung Stoamandl Lift",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20872386R3",
+      "name": "Beschneiung Schiabfahrt Stoamandllift",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20908411R3",
+      "name": "8/1154 Beschneiung Wetterstein Sonnenhang",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20908464R3",
+      "name": "Beschneiungsanlage Wettersteinbahnen - Sonnenhang (Bes.Nr.1)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20992287R3",
+      "name": "8/1236 Beschneiung Langlaufloipe Lermooser Moos",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20992308R3",
+      "name": "Langlaufloipen Beschneiung",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T53006025",
+      "name": "Mobile Schneemaschine",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20989698R3",
+      "name": "8/1248 Beschneiung Thanellerkarlift",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20989724R3",
+      "name": "Beschneiung Thanellerkarlift",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T15940120",
+      "name": "8/1318 Beschneiungsanlage Schollenwiesenlift",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T15940129",
+      "name": "Beschneiung",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20580340R3",
+      "name": "8/83 Beschneiungsanlage Rohnenlifte",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20580374R3",
+      "name": "Beschneiung Erweiterung Rohnenlift 2009 - Oberer Abschnitt FIS-Abfahrt",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20580367R3",
+      "name": "Beschneiung Unterer Bereich Rohnen- und Mühlhanglift",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20580128R3",
+      "name": "8/897 Beschneiung Marienberglifte",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20580174R3",
+      "name": "Beschneiung Marienberglifte 1985",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20580177R3",
+      "name": "Beschneiung Marienberglifte Erweiterung 2003",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20579951R3",
+      "name": "8/952 Beschneiung Schigebiet der Nordflanke des Sorgschrofens",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20580002R3",
+      "name": "Ausbaustufe I; Schipiste Sorgschrofen unterer Teil (Bes.Nr.1)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20580009R3",
+      "name": "Ausbaustufe II; Schipiste Bischlag Übungshang (Bes.Nr.2)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20580016R3",
+      "name": "Ausbaustufe III; Schipiste Adler Übungshang (Bes.Nr.3)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20580023R3",
+      "name": "Ausbaustufe IV; Schipiste Sorgschrofen oberer Teil (Bes.Nr.4)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20580030R3",
+      "name": "Erweiterung - Einreichprojekt 2007 (Bes.Nr.5)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20580577R3",
+      "name": "8/954 Beschneiung Füssener Jöchle",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20580651R3",
+      "name": "Talabfahrt Füssener Jöchl unterhalb Logbachquerung (Bes.Nr.1)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20580658R3",
+      "name": "Schachenlift - Talstation 8 EUB Füssener Jöchl (Bes.Nr.2)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20580665R3",
+      "name": "Schachenlift - Unterer Teil Märchenwiese (Bes.Nr.3)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20580672R3",
+      "name": "Talabfahrt Füssener Jöchl oberhalb Logbachquerung (Bes.Nr.4)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20580679R3",
+      "name": "Talabfahrt Füssener Jöchl Bergstation d. 8 EUB (Bes.Nr.5)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20580686R3",
+      "name": "Erweiterung der Beschneiung im Bereich des Schachenliftes (Bes.Nr.6)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20580775R3",
+      "name": "8/975 Beschneiung Ehrwalder Alm Gaistal",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20580839R3",
+      "name": "Beschneiung \"Talabfahrt bis Steilhang\"",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20580844R3",
+      "name": "Beschneiung \"Jägerhütte\"",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20580849R3",
+      "name": "Beschneiung \"Ehrwalder Almbereich ober Steilhang\"",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20580854R3",
+      "name": "Beschneiung \"Klämmli\"",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20580859R3",
+      "name": "Beschneiung \"Hochbrand - alt\"",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20580864R3",
+      "name": "Beschneiung \"Hochbrand - neu\"",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20580869R3",
+      "name": "Beschneiung \"Issentalkopf\"",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20580874R3",
+      "name": "Beschneiung \"Grüner Platz\"",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20580879R3",
+      "name": "Beschneiung Piste Gaistal",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T15940344",
+      "name": "Beschneiung Bereich Hochfeldernalm",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20580192R3",
+      "name": "8/976 Beschneiung Wannenjoch",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20580223R3",
+      "name": "Beschneiungsanlage Schattwald (Bes.Nr.1)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20580066R3",
+      "name": "8/998 Beschneiungsanlage Berwang Sonnalmbahn",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Reutte"
+      ]
+    },
+    {
+      "id": "T20598920R3",
+      "name": "9/1724 Beschneiungsanlage Penken",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T59562783",
+      "name": "Drainagewässer aus dem Drainage-System des Speicherteiches Pangert",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T63434095",
+      "name": "Oberflächenwasser",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20583354R3",
+      "name": "9/1788 Beschneiungsanlage Finkenberger Almbahnen",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20583423R3",
+      "name": "Beschneiung Gspielkopfabfahrt und Verbindungsskiweg",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20583413R3",
+      "name": "Beschneiung Panoramaabfahrt",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20583418R3",
+      "name": "Beschneiung Zweite Piste Nordhang",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20583408R3",
+      "name": "Ergänzende Schneiflächen auf der Südseite, Abfahrt Hasenmulde sowie westseitiger Teil der Hauptabfahrt und der ostseitige Skiweg im unteren Teil",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20583403R3",
+      "name": "Beschneiung Katzenmoos",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20587757R3",
+      "name": "9/1800 Beschneiung Gerlos",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T16124564",
+      "name": "Schneifläche Piste Vorkogel",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20587585R3",
+      "name": "9/1827 Beschneiungsanlage Zillertal Arena",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20587652R3",
+      "name": "Beschneiung Rosenalm",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20583584R3",
+      "name": "9/1841 Beschneiungsanlage Eggalm",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20583636R3",
+      "name": "Schneifläche I/1995+1999 - Waldabfahrt und Standardabfahrt",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20583643R3",
+      "name": "Schneifläche II/1995 - Lattenalmabfahrt",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20583650R3",
+      "name": "Schneifläche IIa/1997 inkl. Erweiterung 2004 + 2005 - Zufahrt zur Lattenalmabfahrt",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20583657R3",
+      "name": "Schneifläche III/2003 - Talabfahrt nach Vorderlanersbach",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20583664R3",
+      "name": "Schneifläche IV/2003 - Verbindungsabfahrt Rastkogel - Vogelaue",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20583671R3",
+      "name": "Schneifläche Ia/2006 -Umfahrung der Wald-Abfahrt",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T14624824",
+      "name": "Schneiflächen \"Projekt 2011 - Ausbaustufen V - VII\"",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20611203R3",
+      "name": "9/1846 Beschneiungsanlage Christlum, Achenkirch",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20611243R3",
+      "name": "Beschneiung Christlum \"Stammanlage\" (Ausbaustufen 1, 2, 2a, 3, 4, 5 und 6)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20611248R3",
+      "name": "Beschneiung Christlum \"Erweiterung 2009\" (Ausbaustufen 3a, 3b, 7a, 7b, 7c und 8)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20587349R3",
+      "name": "9/1883 Beschneiungsanlage Ahorn",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20611080R3",
+      "name": "9/1893 Beschneiungsanlage Hochfügen",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20611124R3",
+      "name": "Beschneiung Holzalm Pisten 2 und 3",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20611129R3",
+      "name": "Beschneiung Lamarklifte I - IV",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20611134R3",
+      "name": "Beschneiung Pfaffenbühelabfahrt unterer Teil Piste 6",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20611139R3",
+      "name": "Beschneiung Pfaffenbühelabfahrt unterer Teil Piste 8",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20611144R3",
+      "name": "Beschneiung Talabfahrt Lamark Piste 13",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20611149R3",
+      "name": "Beschneiung oberer Teil Piste 6 und 12",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20611154R3",
+      "name": "Beschneiung Piste 7 und Piste 10",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20611159R3",
+      "name": "Beschneiung aller Pisten 4, SB, Hochfügen 2000 (Pisten 11)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20611164R3",
+      "name": "Beschneiung Piste 1 - Anbindungen Zillertal Shuttle",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T14829339",
+      "name": "Beschneiung Karabfahrt - Projekt 2011",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T60084363",
+      "name": "Beschneiung Lamark - Abfahrt 11a",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20587457R3",
+      "name": "9/1900 Beschneiungsanlage Hintertux",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20587541R3",
+      "name": "Abfahrt Gefrorene Wand - Pisten oberhalb Tuxer Fernerhaus (zum Teil am Gletscher)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20587531R3",
+      "name": "Schwarze Pfanne",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20587511R3",
+      "name": "Spannaglabfahrt",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20587516R3",
+      "name": "Piste Ramsmoos",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20587521R3",
+      "name": "Piste Lärmstange",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20587526R3",
+      "name": "Tuxerjoch Pisten",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T66335452",
+      "name": "Unterer Kaserweg",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20645142R3",
+      "name": "9/1980 Beschneiungsanlage Hochzillertal & Retentionsmaßnahmen Aschauerbach",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T60929040",
+      "name": "Beschneiung Hochzillertal (Gesamtanlage)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20639545R3",
+      "name": "9/1981 Beschneiungsanlage Spieljoch, Fügenberg",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20639591R3",
+      "name": "Beschneiung Abfahrt Speicherteich - Mittelstation",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20639596R3",
+      "name": "Beschneiung Pistel Vogeltenn - Onkeljoch - Geols",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20639601R3",
+      "name": "Beschneiung Talabfahrt und neue Piste oberhalb Mitterweg",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20639606R3",
+      "name": "Beschneiung der Pistenfläche oberhalb Bergstation EUB",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20639611R3",
+      "name": "Beschneiung Übungsgelände Talstation",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20691635R3",
+      "name": "9/1990 Beschneiung Rofan",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20691673R3",
+      "name": "Beschneiung Rotspitzabfahrt (Bes.Nr.1)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20691678R3",
+      "name": "Beschneiung Rotspitzabfahrt im unteren Bereich (Bes.Nr.2)",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20887141R3",
+      "name": "9/2108 Beschneiungsanlage Burglift I",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T20887163R3",
+      "name": "Schneeerzeugung Burglift",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T21014257R3",
+      "name": "9/2341 Beschneiungsanlage Skigebiet Rastkogel",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T21014286R3",
+      "name": "Beschneiung Rastkogel",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T21001946R3",
+      "name": "9/2355 Beschneiungsanlage Hüttegg, Weerberg",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T21001973R3",
+      "name": "Beschneiung Hüttegg",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T59533506",
+      "name": "9/2747 Beschneiungsanlage Schiwiese Kleinschlepplift, Eben",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T59533527",
+      "name": "Beschneiung Schiwiese",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T67897846",
+      "name": "9/3051 Beschneiungsanlage Kellerjoch",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    },
+    {
+      "id": "T67897889",
+      "name": "Sammelbehälter Naunzquelle HB Naunz; Beh. Nr. 4",
+      "reason": "No unique authoritative geometry match in queried GIS layers 28 / 14",
+      "districts": [
+        "Schwaz"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "annotations": [
+    {
+      "featureId": "tiris:72",
+      "sourceName": "Rendl - St. Anton a.A.",
+      "title": "St. Anton",
+      "featureIds": [
+        "tiris:72",
+        "tiris:74",
+        "tiris:31"
+      ],
+      "label": "Rendl and the Albonagrat planning areas.",
+      "compactLabel": "Rendl + Albonagrat",
+      "coordinates": [
+        10.268317629096835,
+        47.10897632068356
+      ],
+      "bounds": [
+        10.167028610548634,
+        47.09070053829,
+        10.28643931064325,
+        47.16288544482339
+      ],
+      "members": [
+        {
+          "id": "tiris:72",
+          "name": "Rendl - St. Anton a.A."
+        },
+        {
+          "id": "tiris:74",
+          "name": "Albonagrat - St. Anton"
+        },
+        {
+          "id": "tiris:31",
+          "name": "Albonagrat - St. Anton"
+        }
+      ],
+      "referenceDate": "2011-10-30",
+      "dataset": "tirol"
+    },
+    {
+      "featureId": "tiris:102",
+      "sourceName": "Ötztaler Gletscher",
+      "title": "Ötztal / Sölden",
+      "featureIds": [
+        "tiris:102",
+        "tiris:40",
+        "tiris:37",
+        "tiris:6"
+      ],
+      "label": "Sölden, Gurgl and Vent: a cluster along the valley.",
+      "compactLabel": "Sölden, Gurgl, Vent",
+      "coordinates": [
+        10.987277080648575,
+        46.95020036194919
+      ],
+      "bounds": [
+        10.885503998121445,
+        46.84674491390883,
+        11.085954359673538,
+        46.98742962409502
+      ],
+      "members": [
+        {
+          "id": "tiris:102",
+          "name": "Ötztaler Gletscher"
+        },
+        {
+          "id": "tiris:40",
+          "name": "Hochgurgl"
+        },
+        {
+          "id": "tiris:37",
+          "name": "Obergurgl"
+        },
+        {
+          "id": "tiris:6",
+          "name": "Stablein - Vent"
+        }
+      ],
+      "referenceDate": "2011-10-30",
+      "dataset": "tirol"
+    },
+    {
+      "featureId": "tiris:77",
+      "sourceName": "Hahnenkamm - Ehrenbachhöhe",
+      "title": "Kitzbühel",
+      "featureIds": [
+        "tiris:77",
+        "tiris:79",
+        "tiris:1",
+        "tiris:55"
+      ],
+      "label": "Hahnenkamm, Horn and the areas toward Pass Thurn.",
+      "compactLabel": "Hahnenkamm + Horn",
+      "coordinates": [
+        12.364184027576847,
+        47.41161310808957
+      ],
+      "bounds": [
+        12.306254081558892,
+        47.31130869592288,
+        12.464603607761171,
+        47.47592777721689
+      ],
+      "members": [
+        {
+          "id": "tiris:77",
+          "name": "Hahnenkamm - Ehrenbachhöhe"
+        },
+        {
+          "id": "tiris:79",
+          "name": "Kitzbühler Horn"
+        },
+        {
+          "id": "tiris:1",
+          "name": "Bichlalm - Kitzbühel"
+        },
+        {
+          "id": "tiris:55",
+          "name": "Jochberg - Pass Thurn"
+        }
+      ],
+      "referenceDate": "2011-10-30",
+      "dataset": "tirol"
+    }
+  ],
+  "metadata": {
+    "selection": "Editorial examples requested by the map author; not a largest-resorts ranking.",
+    "anchors": "Interior points identify reference records; circle centers and radii are derived at runtime from the projected bounds of each reviewed polygon group. Circles are visual highlights, not resort boundaries.",
+    "meaning": "Circle callouts group nearby Tirol planning polygons with reference date 2011-10-30. Membership is editorial, not an exhaustive resort or valley inventory.",
+    "attribution": "Land Tirol – tiris, Schigebietsgrenzen",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/"
+  }
+}

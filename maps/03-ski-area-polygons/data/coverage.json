@@ -1,0 +1,1149 @@
+{
+  "source": "https://tiles.openskimap.org/geojson/ski_areas.geojson",
+  "sourceDocumentation": "https://openskidata.org/",
+  "snapshotDownloaded": "2026-11-02",
+  "sourceSHA256": "496ac2f1379428f003c61fbfe5eb888fca69aea088bc06926363c53026bcd020",
+  "selection": "Source places contains AT; status operating; activities includes downhill. Country association is supplied by OpenSkiData, not reclassified here.",
+  "selectedRecords": 375,
+  "polygonRecords": 188,
+  "geometryCounts": {
+    "MultiPolygon": 11,
+    "Polygon": 177
+  },
+  "omittedRecords": 187,
+  "omitted": [
+    {
+      "name": "Schneeberglifte Thiersee",
+      "id": "016865724e85f65e6827febfc59b564629bd617d",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Hinterfeldlift Mösern",
+      "id": "01caecb7e613ccd38645dfaa350daf70ff899b8f",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Nordkette",
+      "id": "05f2a87af29f8bfb62a2f603adca4b58fd9bc94b",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Skigebiet Fontanella-Faschina",
+      "id": "09da652053c09ec6d50a52de55085b40ec9fac74",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Hagenberg",
+      "id": "0d9ba95c9f923a638abdb09784e0775c0194b406",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "0e7a2a64-ea02-4156-9f8c-15c518969c6f",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "0f64511f-6d24-4350-9eb0-4ef9421ecae1",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "0f890dc6-c57d-4c97-90ac-254bdadbf791",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Hoch-Imst",
+      "id": "106ff779bed3c65a2564741a2aedaba3689390d0",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Niederthai",
+      "id": "1089db19143902726b1dae91204f1909f684ba98",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "13d1b8da-3c5f-4878-8898-4adc19623e37",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "11er Neustift/Neder",
+      "id": "14e44f003d9b6e9b2b4b0558cb95b247b4008b3c",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Gries",
+      "id": "16eb53f0a2b7880bf05a51423f5aa1bdef2fd0b3",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Sonnenbergbahn",
+      "id": "1b21cecdeda7bf3f89a3dc77c86536951a3e19d8",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "1d4d9316-ea77-44c0-9f28-a7fdc44b87b6",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Ski Arlberg",
+      "id": "1dc7dcce3657b7b83a9395ed3bdfaf16986c8432",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Alberschwende",
+      "id": "1ee6ad865d52676e22e9fcfb5795e8eed37b8178",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "204b25b4-67cf-4819-a22a-281070d955dd",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "St. Martin im Tennengebirge",
+      "id": "21db0b5154d844b5fd07f335ee13c980a4109cf2",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Skigebiet Heuberg Arena/Walmendingerhorn",
+      "id": "21def33c68a75c001d3342fc3e711e0f1e997637",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Schlick 2000",
+      "id": "222578468bd24884d04bf5d8d29f7e2fe76a5198",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "23aec354-369f-4f53-b557-b6979fca66be",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Skilift Kronberg",
+      "id": "261e5a3a878c3d3fccca5261e7fd3d6c5f381cc2",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "26e9655c-5639-4787-b342-61907c5bb5a4",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Skigebiet Almenwelt Lofer",
+      "id": "2774ee9df926487819e252679b539a79fd2024a0",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Skigebiet Ifen",
+      "id": "27a930db3d838e9aa8ce0d4da3ada523dd4ce740",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Patschiedlift",
+      "id": "284bdbb259edc36b7e2e2a720b9ef1bf8d0b4084",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Warth-Schröcken",
+      "id": "29248afecbb89253d31145bb08025956c1bfb71a",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "2983d154-34ed-4d3a-9783-e48b0a4be752",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "2b20f2f9-91e1-4eb4-abf0-89a4a41fa3c3",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Tobadill",
+      "id": "2d7f4baab801e162750bc4a26e0d4dbac55ddd25",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Kienleiten - Brandenberg",
+      "id": "2f6f00860fdeef30a09e47da11e070729f8595c9",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Lammertallift",
+      "id": "2fb7fc21af6e0068eda6e286e7a22cb5f63eec88",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Bergbahnen Werfenweng",
+      "id": "2fede7b59c44a1e3b56e9de3001562b9da83b757",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "31d743eb-7695-4102-be2b-b8124b878ab2",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Grünberg Obsteig",
+      "id": "350a2e3d90bbf63db41ead104ea1c484934059ee",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "3637b1f2-e2fa-47b7-b5ed-93c7a70e3e2e",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Skigebiet Schetteregg",
+      "id": "36bc358d431cb7fd632426431496f57bdda76df9",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Skigebiet Söllereck",
+      "id": "36caeeb99dd1cc8a496f145ee01dbaeb1635545b",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "SkiWelt Wilder Kaiser - Brixental",
+      "id": "37ee9c6ba5b44864ba844f804938a8b815f8b717",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Kesselmannlifte",
+      "id": "393262ceb57cf0e377917c166ecd4293940eb2c3",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Hütegglift Weerberg",
+      "id": "3a0d559c6a32e948d816796f02ed3d92133beeab",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Ehrwalder Alm",
+      "id": "3b83b24cb810ad7699ad3a62b183cf3617da125e",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "3bb5f1df-9ccf-4a71-8795-e674923f18d1",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Postalm",
+      "id": "41a61af9eb6193fe3536bd83f2351cce286cd294",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "42b73963-38ef-4e9a-bdfa-03abd03ee59e",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Graukogel",
+      "id": "44685c49517f5a52c35d765c5defd207be75edbf",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "4549118e-a6bd-4bca-93f9-9cce8f9e7a32",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "46cf1d47-68e5-4bd2-8700-b68404432841",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Lechnerberglifte",
+      "id": "4873cce0505b1f0ae19b312116de4795cabec0e7",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Mariazell - Bürgeralpe",
+      "id": "488b327436140a3150fa8c6e12c292b7a62f943f",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Zwölferhorn (St Gilgen)",
+      "id": "49dab6ccd7cfd4d449d8463b704e0f2729d5f590",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "4ac0cb92-4e55-41ff-98e6-b00986f701c0",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Ski Juwel Alpbachtal-Wildschönau",
+      "id": "4ae8be1df66f9e30fd3ba0b03cd191cda44665bc",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Axamer Lizum - Muttereralm",
+      "id": "4d065e674fc26a1c1142f9449bee9528e741468b",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Skigebiet Niedere (Andelsbuch-Bezau)",
+      "id": "4d8598fc6bfc5fe53b2017e5ba153c2c84f94f69",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Schuttannen",
+      "id": "4ec7517ac64d334bd8902b5f795510ff1cfab932",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Damüls",
+      "id": "4f8cc7c822ff08fe15a457cfd10dacbe603a16cf",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "50435457-7d15-4cc4-9bc7-613a08e20f32",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Innerkrems",
+      "id": "51f6e42428d24b4c79a9206a8b32a40515bff554",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "5295bd7e-ff56-4ce1-abe6-af7c08d18b95",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "53bc6f8f-dd73-4dcc-b29b-4f5f66ceaba2",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Tallifte",
+      "id": "5914446e8ccdf73cfd86d6d02e0285bed400d9ca",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "5935eca0-f28f-4ea6-9772-e7ae8267a7da",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Skilift Eberschwang",
+      "id": "5a6b7412f0f8504db56a9e159ea22c77b6a1ed49",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Bad Kleinkirchheim",
+      "id": "62219c585e040c6e0481d5b9858bbf613665e260",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "63fa6e14-4094-4970-8bf6-a8f793f9b9b8",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Kasberg Grünau - Almtal",
+      "id": "64a4879a2a2c802d498419c7f97401156810641a",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Gries in Sellraintal",
+      "id": "66d9a7d3fe3a5741967ee4026b85e9a40d252a1c",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Glungezer",
+      "id": "66e1d0ae483a9bd09595416815d2a6cecfede47f",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "St. Anton/St. Christoph/Stuben",
+      "id": "66e672470add74c3e6a2bd8d4c1bb07cc4721728",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Skilift Zederhaus",
+      "id": "6b1b21c89a4617b9d7d4a052af89914b50f0d839",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Tirolina - Haltjochlift",
+      "id": "6cf06dd44411dacb87d18fda0fcfef18f38dc2aa",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Radstadt - Altenmarkt",
+      "id": "6d993fe595f830217b5c7abac769ea432a6cc300",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Kolsassberg",
+      "id": "6e1f78191ff843c168957080f7b5eb3ca32857b2",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "706ebafe-b3ea-4ba1-940b-e0b7d40f48b8",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Turnau",
+      "id": "7090b53f143db22fb28d1a39b3c4dd80363e682a",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Hochkar",
+      "id": "72153bf3e48aceda0c8826e2d4ee3fdc8558002a",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Patscherkofel Ski",
+      "id": "739e56f4ddfccf3bd929635d4e743ebc5e417b35",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Wildstättlift Wattenberg",
+      "id": "73caf2915eb067edd1d298671696d4066b2d4b01",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "750f3bbd-cdd9-4a9d-a21d-ebbd61d904bb",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Sölden",
+      "id": "78e5f98d8527df7216b08962f372659abcd4f711",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Hittisberglift Hittisau",
+      "id": "7a42f72190d06f8d408c53508e7a21576cd32e2d",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "St Johann in Tirol",
+      "id": "7bbe4370de755694437795af4d89234c73ed73d4",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Hahnenkamm",
+      "id": "7bf9fd707a69cba7cf6dd9355bd4fa9d731d8376",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Oberwaldlifte",
+      "id": "7c2babfada81f2585ffdc9b1c8765122518dede3",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Silvretta Arena Ischgl/Samnaun",
+      "id": "7c2f2690d339d9df6f820e7c6e596a9b0ba3dce5",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "7e3a0779-2483-4a72-ad34-a66a05cc3b71",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "806e2d65-2e7a-4328-9a1d-4b904629f56b",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Weißbriach",
+      "id": "82e4b4594f0796aaf16a4b4c0c1e9fd88da393bb",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Mellau",
+      "id": "832501429324467c9e75359846177def5f5208e5",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Virgen",
+      "id": "834391e351bc688fb289da5dc02ee041496bc88d",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Rossfeld",
+      "id": "8394e228c6499b01b1159b31d00a9347ead9499e",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Sonnberglifte Wald am Schoberpass",
+      "id": "83d8a114e6644d948ee9aa0cb376fd71b277d378",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Skigebiet Hochhäderich",
+      "id": "8639092db09f5fff043b95ff05a654b8e3f879e3",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "8760a888-0022-496a-90bd-078d25e78795",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Hochlecken",
+      "id": "879d04eb35f379fc6e9107be3a1fc67bdc3c1f96",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Grünberglift Navis",
+      "id": "885bf673a8a940ac5f52b3616152c225d06512de",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Skigebiet Fellhorn/Kanzelwand",
+      "id": "8a5063e32476ab3ab529dd524a0debe563e08f28",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Salzstiegl",
+      "id": "8a63343a3b61d2fd5cafa8525e017c62d3bfdece",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "8b36160e-95a7-4c5b-8687-61b4397fa6f9",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "8c89cc29-a1de-4538-83c7-6992552e7bef",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Sibratsgfäll",
+      "id": "8cc0b451acca60b540f1438ff8af5413dfb30d0b",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Gaißau -Hintersee",
+      "id": "8dae48151fbc7ef6accac12dbba09664eac2d709",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Nauders Bergkastel",
+      "id": "8ebb23da67e4e5ad4059d78ad442e7694eccfb2f",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Ski Gastein - Schlossalm/Angertal/Stubnerkogel",
+      "id": "8ebbe708c3f7b24aac9cd9d3293dc3b53d405f92",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Schönfeld - Thomatal",
+      "id": "8ed77005f27348ef87ec0e622cd67eaf2692d5a4",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Rofanlifte Steinberg",
+      "id": "8eefd1c545d9d0e3648e56d582e7974e571baf80",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Biberwier - Marienberg",
+      "id": "8f63ee82162e69c39d10e6a73b73d005b4028fcd",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Skigebiet Diedamskopf",
+      "id": "9159a8a28bc8accd268e8eeb330ae53c379b1391",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Venet",
+      "id": "923cbc11a5682a2722026757ae291a64c7774928",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Piller",
+      "id": "930f6b0d628111262cd86ddf392c7f56445a0bde",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Schneiderkopflifte",
+      "id": "932d7e1051c2fb77625cad8c23a8f211bf6f62d2",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "93375680-12e7-4add-a1ba-efa2cf63be94",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "98cf607a-1e44-4dc0-ba1c-6987273a3ca4",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Hochzillertal-Hochfügen",
+      "id": "99cef648d8c6f7231b60448092fb29de26069d0f",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "9a4c9a35-8ce1-49d7-b424-2a0e9fa4a36a",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Piesendorf - Nagelköpfl",
+      "id": "9dabacfaad26eadc92afa95e33be54a3189fcd11",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "9e7b73ba-e007-4f28-88f6-4657b711e427",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Gletscher-Skigebiet Zugspitze, Ski resort Zugspitze",
+      "id": "9e8a091097aeb5af7c87b5f53922e3db043a9849",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Skilifte Prägraten am Großvenediger",
+      "id": "a06bf754527b97dc982543f00fff3219c4475e9b",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "a342d0a9-cbf2-4495-9abb-cbf77cef7419",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Skigebiet Petzen",
+      "id": "a654d2ce9e67040e03edcb1b31c8df2abb5100b3",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "a8106803-1b85-4fe0-816b-bd99eedd1fbf",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Skilifte Stanzach",
+      "id": "a989c16623559cff327690c1b89c30ec0be0dcd6",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Sonnenlift Axams",
+      "id": "aa2eb186c26bf32a6977dd96c6c51b97d23851dd",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "ac3a5ae2-d827-4a61-a628-d06872757af9",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Petersbründllift St. Michael",
+      "id": "afd6b8f003591c36f6202d4bac387cfb3ccc0df4",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "aff1c6df-5244-4f6d-bcd8-923a8963d487",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Obertauern",
+      "id": "b28af962323890eb2dc4f2705ed7b6893d894add",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Untersberg",
+      "id": "b356fc1ac870a44989a4d92e4a4aefea4c78bf2f",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Gurtis",
+      "id": "b4acfbd08acc8fb366ffb233e30ff36ac24e489e",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "b621786c-61c1-4902-a8a3-dcc11e293887",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Schmiedhornlift",
+      "id": "b639d49309ab090cab74a19972dd716bb844c143",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Sportgastein",
+      "id": "b6b13fdcf2309d393d1de3f774fa865e4f351ade",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Lärchenhof",
+      "id": "b7e4306ead8b3ef060c28802ca40494804734e5c",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "b94d8806-a2ec-4497-9dbe-6ef4d522036d",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "bb8a0000-1a1c-4afc-9c79-76c6ae3a624c",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Kaprun - Kitzsteinhorn/Maiskogel",
+      "id": "bc0361849d0e6e33ef5d9cd035522200a3125df1",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "c2220c40-0b49-42ed-a4bf-6aaaa67e5f60",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Preggrabenhöhe",
+      "id": "c2e2b36f1897c19cfc4a820791efee98cfd36523",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Lech/Zürs",
+      "id": "c5107fc2eb3f59b23211a3251a229b06d36f765c",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Karkogel - Abtenau",
+      "id": "c7acae6ebc2262c0bf920b83428398b5e1826b05",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Scheidegg",
+      "id": "c7e7dc289f512708b9480901ed748b812514db94",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "c85377c8-04d9-4875-b4bf-af137dfb8ee2",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Ski Juwel - Oberau (Wildschönau)",
+      "id": "c9629aeb0e6471f9278b086332bb2ae16dd39099",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "ce6ae266-6539-4fd1-a598-45356d1afa39",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Mahdlift Neuleutasch",
+      "id": "d27a2e43a3ee9875ef85abe6d0de2a0aa19033a4",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Embach",
+      "id": "d432acfab1cd765b3606d4ff0b76bb159293c0d3",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Lermoos Grubigstein",
+      "id": "d5a7de306263a468a29d6d1c9fa093ed27b6452d",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Salzstiegl",
+      "id": "d5dc80bb685b8536670dca382305b704716e5f3a",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "d67bb032-99d9-440c-b3d7-a75e365b797f",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Vögelsberg - Wattens",
+      "id": "d72042aaa28205941f77ba967c9fe8421c715401",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "da3b2d34-f843-4e96-8453-9b2683590991",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Skigebiet Damüls-Mellau-Faschina",
+      "id": "da710e6cc602f54dfb5e724d4758c5fb5384c8d6",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "db7d2e64-23b9-4c09-a3c7-bcb2f752a61e",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Sulzberg",
+      "id": "dd92418e2339f01d9ac627d37d2f4400f2c8cf52",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Kaunertal",
+      "id": "dec54f7fb34259e2ff86037222b4a28868861971",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Wildkogel",
+      "id": "df2bd5abc7c60af896261373af4d7b9d6085e5bf",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "e0f0cbec-ba08-48cc-8dd9-f63d098fda12",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "e1af3d18-487b-4188-8f44-89bd933aa898",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "e36ccfc2-0367-45bc-a704-cec1b24b642c",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Skilift Compedal",
+      "id": "e52db497da69da24a5fdd99ba1e81c75280103b4",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Serfaus Fiss Ladis",
+      "id": "e587928ea763f20b3232a5069c5d2438d09b6908",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Lanalift Anras",
+      "id": "e69973de5f8c537d9da518f4b19e68109559d286",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "ebabb853-bfc7-4ea4-ad37-975e82f6b69f",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Hochfeld - Schwoich",
+      "id": "ec351df80c613efab5dfa46c84291076d91195e4",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Lachtal",
+      "id": "edc9f9b1e67cc733b8bdd804bdfb021557df31df",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Skigebiet Ehrwalder Wettersteinbahnen",
+      "id": "f0287cd7d10f61a4bdce90120aa9055593b0f55f",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "f0767fa9-79f2-41fc-83a6-111782ffe534",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "f1a2f499-8ca7-4ea5-adb3-789299fceb9c",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Pitztaler Gletscher",
+      "id": "f1ae030e9b17ac258bb0eb30a0f769106518dfcd",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "f1b14b18-956e-44c6-8570-60b1ee3b690e",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Ski Juwel - Roggenboden",
+      "id": "f294677a642dea21db25738746af8bb69478a162",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "f2e0df13-d92f-402a-85db-5b4f7b1fa928",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Brandtnerlifte",
+      "id": "f46ca7193939a4e0d188346c93481a86ada9208b",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Hochkeil",
+      "id": "f5d90b41611cc3be054334192fd94b69ae2cf280",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "f6ea0abf-4c1b-42b0-8a31-d58342f50a68",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "f6eacb07-0f25-464c-b17b-4b8d85f77623",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Skigebiet Damüls-Mellau",
+      "id": "f83cb97ace9308e949a7638a1922ba589f5cc40d",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Waldrastlift – Ehenbichl (Reutte)",
+      "id": "f99cde1b9847c84a8164a6b429681296a8ea8684",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "See",
+      "id": "fb20868f99b43dbfe8cf7195c47619680ac21f37",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Wennser Gletscher",
+      "id": "fce8c79e5ee4380c8d25c0d311e3db301cf3fcf0",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "fde502cf-99e8-410a-8db9-c4ae3eb7616d",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": null,
+      "id": "fe70a850-6e7e-4e30-b4c4-0d902688a6d7",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Serlesbahnen",
+      "id": "fea767bea99cf55ec9f8d38639d9f916bab9c9cd",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    },
+    {
+      "name": "Skilift Zirkitzen",
+      "id": "feecc1f77bbda78b046e32fa9f0ddb03f6ceff45",
+      "geometryType": "Point",
+      "reason": "No polygon supplied; no substitute boundary created"
+    }
+  ],
+  "namedPolygonRecords": 187,
+  "license": "ODbL 1.0",
+  "licenseUrl": "https://opendatacommons.org/licenses/odbl/1-0/",
+  "attribution": "OpenSkiData / OpenSkiMap.org, © OpenStreetMap contributors (ODbL), Skimap.org, Who’s On First, © Mapterhorn",
+  "limitations": [
+    "Not a complete Austrian resort inventory. Counts are source records, not unique resorts.",
+    "Outlines can overlap, be coarse, span borders or have imperfect country/region classification.",
+    "Source outlines are preserved without clipping, buffering, convex hulls or boundary invention.",
+    "Polygons are broad mapped ski-area outlines, not piste surfaces, land ownership or legal boundaries.",
+    "Operating is a source category, not a live lift/piste opening report."
+  ]
+}

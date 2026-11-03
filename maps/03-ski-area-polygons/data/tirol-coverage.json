@@ -1,0 +1,37 @@
+{
+  "source": "https://gis.tirol.gv.at/arcgis/rest/services/Service_Public/ogd_sport/MapServer/7",
+  "sourceItem": "https://www.arcgis.com/home/item.html?id=9fb23fac39034eadaff8054fdd35cbf6",
+  "sourceSHA256": "4365d4dfc99e5594a25d7963e411e0b40df1ccf6ec7860f5be8ff8df6a065273",
+  "downloaded": "2026-11-03",
+  "referenceDates": [
+    "2011-10-30"
+  ],
+  "records": 102,
+  "uniqueNames": 100,
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "Land Tirol – tiris, Schigebietsgrenzen",
+  "meaning": "Official ski-area planning boundaries, not verified current piste surfaces or live operational footprints.",
+  "reviewedAssociations": [
+    {
+      "officialObjectId": 102,
+      "officialName": "Ötztaler Gletscher",
+      "alias": "Sölden",
+      "openSkiDataId": "78e5f98d8527df7216b08962f372659abcd4f711",
+      "sourcePoint": [
+        10.977113133167688,
+        46.95371083559911
+      ],
+      "pointContained": true,
+      "qualification": "Association, not a claim of identical current operational boundaries.",
+      "pisteRecordCheck": {
+        "runsSHA256": "05b3a180ffbe9ce7c398f6470baf4dd37915339b69b2579f21f9fca33b82660f",
+        "associatedRecords": 223,
+        "intersectingRecords": 219,
+        "fullyContainedRecords": 212,
+        "qualification": "Record counts, not distance-weighted or area-weighted coverage."
+      }
+    }
+  ],
+  "mergePolicy": "Separate supplementary source layer. No geometric dissolve, clipping, deduplication or combined resort count."
+}

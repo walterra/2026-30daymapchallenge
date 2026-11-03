@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Kyiv felt far away. But from Kössen, Tirol, Lisboa is 647 kilometers farther from home. Two calculated distances, one personal perspective.">
+  <title>Closer than it felt · Day 02: Lines</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <a class="back" href="../../index.html">← All maps</a>
+      <p class="eyebrow">#30DayMapChallenge · 02 November 2026 · Lines</p>
+      <h1>Closer than it felt</h1>
+      <p class="standfirst">Kyiv felt far away.<br>Lisboa is farther from home.</p>
+      <p class="story">When Russia launched its full-scale invasion of Ukraine in February 2022, I was in Lisboa. Kyiv felt so far away. But measured from my home in Kössen, Tirol, Lisboa is the more distant city.</p>
+    </header>
+    <figure aria-labelledby="map-title">
+      <div class="figure-heading">
+        <h2 id="map-title">Two lines from Kössen</h2>
+        <p>Shortest surface distances · WGS84</p>
+      </div>
+      <picture>
+        <source media="(max-width: 640px)" srcset="map-mobile.svg?v=b4b51b72200b">
+        <img src="map.svg?v=abd71e0b20ed" width="1000" height="570" alt="Two lines share an origin in Kössen, Tirol: one goes southwest to Lisboa, 2,003 km away; the other northeast to Kyiv, 1,356 km away.">
+      </picture>
+      <figcaption>Both lines start in <strong>Kössen</strong>—not Lisboa. This projection preserves distances from that shared origin.</figcaption>
+    </figure>
+    <section class="comparison" aria-label="Calculated distance comparison">
+      <div class="destination lisboa"><h2>Lisboa <span>Portugal</span></h2><p><strong>2,003</strong> <span>km from Kössen</span></p></div>
+      <div class="destination kyiv"><h2>Kyiv <span>Ukraine</span></h2><p><strong>1,356</strong> <span>km from Kössen</span></p></div>
+    </section>
+    <p class="takeaway">Lisboa is <strong>647 km farther</strong> from Kössen than Kyiv.<br><span>Distance on a map and distance in the mind are not always the same.</span></p>
+    <footer>
+      <p><strong>Calculation, not an estimate.</strong> WGS84 ellipsoidal geodesics calculated with Python’s <code>pyproj.Geod</code>: Lisboa <strong>2,002.934 km</strong>; Kyiv <strong>1,356.105 km</strong>. Main labels rounded to the nearest kilometer. These are distances between published place reference coordinates, not a home address, road route or flight path.</p>
+      <p><strong>Projection:</strong> ellipsoidal azimuthal equidistant, centered on Kössen. Distances and directions from Kössen are preserved; the coast is generalized. The map does not measure Lisboa–Kyiv distance or claim to quantify a feeling.</p>
+      <details>
+        <summary>Coordinates, sources &amp; reproducibility</summary>
+        <div class="table-scroll" role="region" aria-label="Reference coordinates" tabindex="0">
+          <table>
+            <thead><tr><th scope="col">Place</th><th scope="col">Latitude</th><th scope="col">Longitude</th></tr></thead>
+            <tbody>
+              <tr><th scope="row"><a href="https://geloky.com/geocoding/place/K%C3%B6ssen+Austria">Kössen</a></th><td>47.6691941</td><td>12.4048306</td></tr>
+              <tr><th scope="row"><a href="https://www.latlong.net/place/lisbon-portugal-804.html">Lisboa</a></th><td>38.736946</td><td>−9.142685</td></tr>
+              <tr><th scope="row"><a href="https://www.latlong.net/place/kyiv-ukraine-27597.html">Kyiv</a></th><td>50.450001</td><td>30.523333</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Sources checked 2 November 2026. Extra calculation decimals describe the arithmetic for these coordinates, not survey-level positional accuracy.</p>
+        <p>Coastline: <a href="https://www.naturalearthdata.com/">Natural Earth</a>, 1:10m land, <a href="https://www.naturalearthdata.com/about/terms-of-use/">public domain</a>. Land only: no political borders or territorial claims are drawn.</p>
+        <p><a href="data/calculations.json">Calculated results</a> · <a href="data/routes.geojson">Geodesic lines</a> · <a href="data/locations.json">Input coordinates</a> · <a href="README.md">Method and reproduction</a></p>
+      </details>
+      <p class="credit">Personal account supplied by the author. AI assistance: editing, calculations, map generation and implementation. Static HTML, CSS and SVG; no tracking, external tiles or runtime libraries.</p>
+    </footer>
+  </main>
+</body>
+</html>

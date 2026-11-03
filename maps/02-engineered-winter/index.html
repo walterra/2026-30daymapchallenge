@@ -3,59 +3,86 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Austria’s mapped ski pistes and the gaps in open snowmaking data. Day 2: Lines.">
-  <title>Austria’s engineered winter · Day 2</title>
+  <meta name="description" content="Snowmaking-water infrastructure in Tirol’s public water register: reservoirs, facilities and documented associations.">
+  <title>Where the snow begins · All Tirol districts</title>
   <link rel="stylesheet" href="../../assets/vendor/leaflet/leaflet.css">
   <link rel="stylesheet" href="style.css">
   <script defer src="../../assets/vendor/leaflet/leaflet.js"></script>
+  <script defer src="../../assets/searchable-select.js"></script>
   <script defer src="map.js"></script>
 </head>
 <body>
   <header>
     <a href="../../index.html">← All maps</a>
-    <p class="eyebrow">#30DayMapChallenge / 02 November 2026 / Lines</p>
-    <h1>Austria’s engineered winter</h1>
-    <p class="intro">Thousands of ski-piste lines. A much thinner record of where snow is made.</p>
+    <p class="eyebrow">#30DayMapChallenge / Research draft · Day unassigned / Tirol, Austria</p>
+    <h1>Where the snow begins</h1>
+    <p class="intro">148 mapped reservoirs help supply Tirol’s artificial winter. Circle size shows their recorded usable storage—not annual water consumption.</p>
   </header>
   <main>
-    <section class="layout" aria-label="Map explorer">
+    <p id="scope" class="scope">Loading the Tirol-wide register snapshot. This is a register extract, not a complete equipment census.</p>
+    <dl class="key-figures" aria-label="Current selection">
+      <div><dt>Snowmaking reservoirs</dt><dd id="reservoir-count">—</dd></div>
+      <div><dt>With usable-volume value</dt><dd id="volume-count">—</dd></div>
+      <div><dt>Located facilities in selection</dt><dd id="mapped-count">—</dd></div>
+    </dl>
+    <section class="layout" aria-label="Water infrastructure explorer">
       <aside>
-        <h2>A map of infrastructure.<br>And missing information.</h2>
-        <p>Explore Austrian downhill pistes. Gold lines have snowmaking recorded; pale lines have no recorded answer.</p>
-        <p id="status" role="status">Loading the local data snapshot…</p>
-        <dl id="stats"></dl>
+        <h2>Explore the data</h2>
+        <p class="small">Start with a district or jump to a snowmaking system. Search accepts names without accents.</p>
+        <label for="district">District search scope</label>
+        <select id="district" disabled><option>Loading…</option></select>
+        <label for="system">Snowmaking system / report</label>
+        <select id="system" disabled><option>Loading…</option></select>
+        <details class="layer-options">
+        <summary>Map layers &amp; display</summary>
         <fieldset>
-          <legend>Visible layers</legend>
-          <label><input type="checkbox" id="yes" checked> <span class="swatch yes"></span> Snowmaking recorded</label>
-          <label><input type="checkbox" id="unknown" checked> <span class="swatch unknown"></span> Snowmaking unknown</label>
-          <label><input type="checkbox" id="no" checked> <span class="swatch no"></span> Explicitly tagged no</label>
-          <label><input type="checkbox" id="areas"> <span class="dot"></span> Ski-area locations</label>
+          <legend>Show on map</legend>
+          <label><input type="checkbox" id="connections" checked><span class="line"></span> Schematic associations</label>
+          <label><input type="checkbox" id="reservoirs" checked><span class="dot reservoir"></span> Snowmaking reservoirs</label>
+          <label><input type="checkbox" id="facilities"><span class="dot intake"></span> Intakes / other facilities</label>
+          <label><input type="checkbox" id="background"> Detailed street map</label>
         </fieldset>
-        <label for="resort">Jump to a ski area</label>
-        <select id="resort" disabled><option value="">Choose a ski area…</option></select>
-        <button id="reset" type="button">Reset view</button>
-        <p class="small">Drag to pan, use + / − to zoom, or choose an area above. Select a piste for source details. Keyboard: focus the map, then use arrow keys and + / −.</p>
+        <p class="small" id="connection-note">Schematic associations appear when zoomed in. They do not show pipe routes or flow directions.</p>
+        </details>
+        <label for="facility">Inspect a facility</label>
+        <select id="facility" disabled><option>Loading…</option></select>
+        <p id="status" role="status">Loading local records…</p>
+        <p id="tile-status" class="small" role="status"></p>
       </aside>
-      <div id="map" role="region" aria-label="Interactive map of Austrian downhill pistes" aria-describedby="map-description"></div>
+      <div class="map-stage">
+        <div class="map-toolbar"><p>Tirol <span>· Austria</span></p><div><button id="case-study" type="button">Explore Sölden</button><button id="reset" type="button">Fit selection</button><button id="overview" type="button">All Tirol</button></div></div>
+        <div id="map" role="region" aria-label="Map of Tirol snowmaking-water infrastructure" aria-describedby="map-description"></div>
+        <div class="map-key" role="group" aria-label="Map legend">
+          <div><h3>Usable reservoir storage, m³</h3><svg id="size-legend" viewBox="0 0 220 96" role="img" aria-label="Circle areas represent 10,000, 100,000 and 400,000 cubic meters"></svg></div>
+          <ul class="category-key"><li><span class="dot unknown"></span> Usable volume unknown</li><li><span class="dot intake"></span> Other facility · optional</li><li><span class="line"></span> Association · zoom in</li></ul>
+        </div>
+        <p class="map-caption">Circle <strong>area</strong> represents storage, not reservoir footprint. Symbols overlap; zoom in to separate them. The size scale stays fixed across selections.</p>
+      </div>
+    </section>
+    <section class="detail" aria-labelledby="detail-title">
+      <p class="eyebrow">Selected record</p>
+      <h2 id="detail-title">Inspect a facility</h2>
+      <p id="detail-text">Select a map point or search the facility list. Lists with 10 or more choices have a searchable filter; accents are optional.</p>
+      <dl id="detail-facts"></dl>
+      <p id="detail-source"></p>
     </section>
     <section class="notes" aria-labelledby="reading">
-      <h2 id="reading">Read the gaps, not just the lines</h2>
-      <p id="map-description">The map shows operating downhill piste line features associated with Austria. Ski infrastructure follows the Alpine belt, especially in western and central Austria. Gold indicates a recorded snowmaking attribute, blue an explicit “no”, and pale gray an unknown value. Ski-area markers are optional.</p>
-      <p><strong>Unknown does not mean no snow cannons.</strong> This is not a map of all snowmaking equipment, water consumption, or current snow conditions. Individual cannon locations are not included in this proof of concept: attempts to retrieve them through Overpass failed.</p>
-      <p>Counts represent mapped <em>line segments</em>, not unique named runs or kilometers. Polygon pistes and non-operating features are excluded. Cross-border features associated with Austria are not clipped. Named ski areas can overlap; they are not an official resort census.</p>
-      <p id="snapshot"></p>
-      <p>Data from <a href="https://openskidata.org/">OpenSkiData / OpenSkiMap.org</a>,
-        © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>
-        (<a href="https://opendatacommons.org/licenses/odbl/1-0/">ODbL</a>),
-        <a href="https://skimap.org/">Skimap.org</a>,
-        <a href="https://whosonfirst.org/">Who's On First</a>,
-        © <a href="https://mapterhorn.com/">Mapterhorn</a>.
-        <a href="data/runs.geojson">Download piste data</a> ·
-        <a href="data/areas.geojson">Download ski-area data</a> ·
-        <a href="README.md">Method and limitations</a>.</p>
-      <p class="small">Built with plain HTML, CSS, JavaScript and Leaflet. AI assistance: research, data preparation, implementation and checks.</p>
+      <h2 id="reading">Nine districts queried. Coverage made visible.</h2>
+      <p id="map-description">Teal circles show snowmaking reservoirs. Other facilities can be enabled as small ochre points; they are hidden initially to keep the overview legible. Dashed lines connect documented parent and child records. Choose a district, then a system, to inspect its local infrastructure. Only features matched by source ID to official GIS point or reservoir layers are mapped. Reservoir positions are derived polygon centroids; schematic circles are not their outlines. Unmatched records are not assigned invented locations.</p>
+      <p id="coverage-summary"></p>
+      <div class="table-scroll" role="region" aria-label="District coverage table; scroll horizontally to see all columns" tabindex="0"><table>
+        <caption>Extraction coverage by district query. Shared facilities can appear in multiple district rows; do not sum these into unique Tirol totals.</caption>
+        <thead><tr><th scope="col">District</th><th scope="col">Search rows</th><th scope="col">Reports</th><th scope="col">Unique facilities</th><th scope="col">Mapped</th><th scope="col">Reservoirs</th></tr></thead>
+        <tbody id="coverage-body"></tbody>
+      </table></div>
+      <p>Scope: the register’s <em>Nutzwasser für Beschneiungsanlagen</em> category, <em>&lt;alle aktiven&gt;</em> search status, all nine Tirol districts. Each returned enclosing report is expanded to include child records, which may have different statuses and functions. District filters describe the search/report association, not a new administrative-boundary survey.</p>
+      <p><strong>Permissions are not measurements.</strong> Rates, annual limits, seasonal conditions and one-time filling rights cannot be added into actual water consumption. No cannon counts, pipeline routes, environmental-impact estimates, or live snow conditions are inferred.</p>
+      <p><strong>Register status is not current permit clearance.</strong> The inspected Sölden example is marked “besteht” but includes permission deadlines ending in 2025. The expanded extract does not independently validate legal or operating status.</p>
+      <p>Source: <a href="https://wis.tirol.gv.at/wisSrvPublic/wis/wbo_wb_search.aspx">Land Tirol · Wasserbuch / WIS</a>. Each mapped facility links to its official source. Public inspection does not establish an open bulk-data license; reuse clearance remains unresolved. This is a research prototype, not a cleared open-data release.</p>
+      <p><a href="data/water.geojson">Derived GeoJSON</a> · <a href="data/coverage.json">Coverage and unmapped records</a> · <a href="data/tirol-source.json">Extracted factual attributes</a> · <a href="README.md">Method and limitations</a></p>
+      <p class="small">Plain HTML, CSS, JavaScript and local Leaflet. No live register queries. AI assistance: source inspection, extraction, transformation, implementation and checks.</p>
     </section>
   </main>
-  <noscript><p>This interactive map requires JavaScript. The explanation and downloadable GeoJSON remain available above.</p></noscript>
+  <noscript><p>The explorer requires JavaScript. The scope, methodology and downloadable data remain available above.</p></noscript>
 </body>
 </html>

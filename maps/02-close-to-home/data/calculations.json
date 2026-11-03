@@ -1,0 +1,45 @@
+{
+  "method": "WGS84 ellipsoidal geodesic, pyproj.Geod.inv (PROJ)",
+  "projection": "+proj=aeqd +lat_0=47.6691941 +lon_0=12.4048306 +datum=WGS84 +units=m +no_defs",
+  "origin": {
+    "name": "Kössen",
+    "region": "Tirol, Austria",
+    "coordinates": [
+      12.4048306,
+      47.6691941
+    ],
+    "source": "https://geloky.com/geocoding/place/K%C3%B6ssen+Austria"
+  },
+  "destinations": [
+    {
+      "name": "Lisboa",
+      "country": "Portugal",
+      "coordinates": [
+        -9.142685,
+        38.736946
+      ],
+      "source": "https://www.latlong.net/place/lisbon-portugal-804.html",
+      "color": "#24658b",
+      "origin": "Kössen",
+      "distance_m": 2002934.227,
+      "initialAzimuthDegrees": 248.2215562197997,
+      "displayKm": 2003
+    },
+    {
+      "name": "Kyiv",
+      "country": "Ukraine",
+      "coordinates": [
+        30.523333,
+        50.450001
+      ],
+      "source": "https://www.latlong.net/place/kyiv-ukraine-27597.html",
+      "color": "#a85432",
+      "origin": "Kössen",
+      "distance_m": 1356104.53,
+      "initialAzimuthDegrees": 70.09187451797773,
+      "displayKm": 1356
+    }
+  ],
+  "difference_m": 646829.697,
+  "qualification": "Published place reference coordinates, not a home address. Display rounded to nearest kilometer. Neither roads, flights nor Lisboa–Kyiv distance."
+}

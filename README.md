@@ -44,7 +44,15 @@ Use relative asset and navigation URLs so the site also works beneath a GitHub P
 
 ## First entry
 
-[Day 02 — Austria’s engineered winter](maps/02-engineered-winter/) maps Austrian downhill piste lines and recorded snowmaking attributes. It is a proof of concept, not a complete inventory of snow cannons. See the [entry method](maps/02-engineered-winter/README.md) for sources, licensing, preparation, and limitations.
+[Day 02 — Closer than it felt](maps/02-close-to-home/) compares two calculated distances from Kössen: Lisboa, 2,003 km, and Kyiv, 1,356 km. A personal story about distance and perception, rendered as static HTML/CSS/SVG with a distance-preserving projection. See the [method](maps/02-close-to-home/README.md).
+
+## Day 03 · Polygons
+
+[Austria’s ski areas, outlined](maps/03-ski-area-polygons/) shows the 188 polygon records supplied by OpenSkiData for Austrian-associated, operating downhill ski areas in the 2 November snapshot. An additional 102 official Tirol planning polygons (reference date 2011, CC BY 4.0) supplement the OpenSkiData layer without dissolving or deduplicating their different boundaries. Sölden is available through the reviewed alias for Tirol’s Ötztaler Gletscher polygon. The map offers source toggles, searchable inspection and Hochkössen/Sölden shortcuts without inventing boundaries for point-only records. See the [method and license](maps/03-ski-area-polygons/README.md).
+
+## Saved for another day
+
+[Where the snow begins](maps/02-engineered-winter/) preserves the Tirol snowmaking-water prototype: 704 verified locations and 148 mapped snowmaking reservoirs. Its challenge day is unassigned and source reuse clearance remains unresolved. See its [method](maps/02-engineered-winter/README.md).
 
 ## Verification
 

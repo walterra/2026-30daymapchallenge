@@ -1,0 +1,26 @@
+{
+  "retrieved": "2026-11-02",
+  "coordinateOrder": "longitude, latitude",
+  "origin": {
+    "name": "Kössen",
+    "region": "Tirol, Austria",
+    "coordinates": [12.4048306, 47.6691941],
+    "source": "https://geloky.com/geocoding/place/K%C3%B6ssen+Austria"
+  },
+  "destinations": [
+    {
+      "name": "Lisboa",
+      "country": "Portugal",
+      "coordinates": [-9.142685, 38.736946],
+      "source": "https://www.latlong.net/place/lisbon-portugal-804.html",
+      "color": "#24658b"
+    },
+    {
+      "name": "Kyiv",
+      "country": "Ukraine",
+      "coordinates": [30.523333, 50.450001],
+      "source": "https://www.latlong.net/place/kyiv-ukraine-27597.html",
+      "color": "#a85432"
+    }
+  ]
+}
