@@ -31,6 +31,22 @@ def records(path):
 
 states = [(p, g) for p, g in records(args.states) if p.get('adm0_a3') == 'AUT']
 assert len(states) == 9 and all(g.is_valid and not g.is_empty for _, g in states)
+# Regional composition uses real admin-1 bounds, not a hand-drawn resort extent.
+focus_states = [(p, g) for p, g in states if (p.get('name_en') or p['name']) in ('Vorarlberg', 'Tyrol', 'Salzburg')]
+assert len(focus_states) == 3
+(folder / 'region-context.geojson').write_text(json.dumps({
+    'type': 'FeatureCollection',
+    'features': [{'type': 'Feature', 'properties': {'name': 'Tirol' if p['name_en'] == 'Tyrol' else p['name_en']}, 'geometry': mapping(g)} for p, g in focus_states],
+    'metadata': {'source': 'Natural Earth 1:10m admin-1 states/provinces', 'license': 'Public domain', 'sourceSHA256': hashlib.sha256(args.states.read_bytes()).hexdigest()}
+}, ensure_ascii=False, separators=(',', ':')) + '\n')
+(folder / 'region-bounds.json').write_text(json.dumps({
+    'states': ['Vorarlberg', 'Tirol', 'Salzburg'],
+    'bbox': list(unary_union([g for _, g in focus_states]).bounds),
+    'source': 'Natural Earth 1:10m admin-1 states/provinces',
+    'sourceSHA256': hashlib.sha256(args.states.read_bytes()).hexdigest(),
+    'license': 'Public domain',
+    'qualification': 'Rectangular framing of three states; neighboring country context and cross-border resort geometry are retained.'
+}, ensure_ascii=False, indent=2) + '\n')
 # Intersect adjacent polygon boundaries, then dissolve duplicate line segments.
 # This avoids independently simplified polygons creating gaps or double edges.
 edges = []

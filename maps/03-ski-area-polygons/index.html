@@ -7,13 +7,11 @@
   <meta name="description" content="OpenSkiData ski-area outlines combined with official Tirol planning boundaries, with source and date made explicit. Day 3 of the 30DayMapChallenge: Polygons.">
   <title>Austria’s ski areas, outlined · Day 03</title>
   <link rel="stylesheet" href="../../assets/vendor/leaflet/leaflet.css">
-  <link rel="stylesheet" href="style.css?v=reviewed-matches-2">
-  <link rel="stylesheet" href="ranking.css?v=hierarchy-4">
+  <link rel="stylesheet" href="style.css?v=regional-2">
+  <link rel="stylesheet" href="ranking.css?v=regional-2">
   <script defer src="../../assets/vendor/leaflet/leaflet.js"></script>
-  <script defer src="../../assets/vendor/d3/d3.v4.13.0.min.js"></script>
-  <script defer src="../../assets/vendor/d3-annotation/d3-annotation.v2.5.1.min.js"></script>
-  <script defer src="annotations.js?v=camera-1"></script>
-  <script defer src="map.js?v=reviewed-matches-1"></script>
+  <script defer src="annotations.js?v=permanent-1"></script>
+  <script defer src="map.js?v=regional-2"></script>
   <link rel="stylesheet" href="../../assets/theme.css?v=3">
 </head>
 <body class="map-page">
@@ -45,14 +43,16 @@
     </dl>
     <div class="map-ranking-layout">
     <figure class="map-card" aria-labelledby="map-heading">
-      <h2 id="map-heading" class="map-heading">Where these ten are <span id="selected-geometry-kind">Mapped outline</span></h2>
-      <div id="map" role="group" aria-label="Fixed map highlighting the resort selected in the downhill ranking" aria-describedby="map-description">
+      <h2 id="map-heading" class="map-heading">Where these ten are <span>Vorarlberg · Tirol · Salzburg</span></h2>
+      <div class="map-scene">
+      <div id="map" role="group" aria-label="Fixed regional map with all ten resort labels; ranking hover changes highlight color" aria-describedby="map-description">
         <div class="source-legend" role="group" aria-label="Visible map sources">
           <span><i class="swatch" aria-hidden="true"></i> OpenSkiData</span>
           <span><i class="swatch selected" aria-hidden="true"></i> Selected</span>
           <span><i class="swatch context" aria-hidden="true"></i> Other areas</span>
           <span><i class="swatch historical" aria-hidden="true"></i> Tirol <small>· 2011</small></span>
         </div>
+      </div>
       </div>
       <figcaption>
         <p class="annotation-context">Six OpenSkiData outlines and four reviewed Tirol planning matches (2011) locate the ranked resorts—not their piste lengths. Ischgl–Samnaun’s planning coverage is partial; the Swiss extent is not supplied.</p>
@@ -159,7 +159,7 @@
     <p id="status" class="small" role="status">Loading the local map…</p>
     <section class="notes" aria-labelledby="reading">
       <h2 id="reading">An outline is not a piste.</h2>
-      <p id="map-description">The map emphasizes the same ten resort areas as the chart: six OpenSkiData outlines and four manually reviewed associations with five original Tirol planning polygons. These planning envelopes date to 2011 and are not equivalent current resort boundaries. Ischgl–Samnaun has partial planning coverage without the Swiss extent; its chart length still includes the full cross-border resort. Other OpenSkiData and Tirol polygons are muted context. The accent color is reserved for the selected resort. The neutral political basemap shows Austria and neighboring countries, with fine dashed Austrian state boundaries and scale-aware country, state and city labels. The map stays in a fixed national view with Ski Arlberg selected initially. Hover, keyboard focus or tapping a ranking row highlights the resort without moving the map. Escape selects the first resort. Point-only source records use the reviewed planning polygons for display; no boundary is invented. Source geometry and ranking values remain unchanged. Pan and zoom remain disabled. Selection persists between rows and on horizontal exit; leaving above or below the ranking selects its first or last resort respectively.</p>
+      <p id="map-description">The map emphasizes the same ten resort areas as the chart: six OpenSkiData outlines and four manually reviewed associations with five original Tirol planning polygons. These planning envelopes date to 2011 and are not equivalent current resort boundaries. Ischgl–Samnaun has partial planning coverage without the Swiss extent; its chart length still includes the full cross-border resort. Other OpenSkiData and Tirol polygons are muted context. The accent color is reserved for the selected resort. The neutral political basemap shows Austria and neighboring countries, with fine dashed Austrian state boundaries and scale-aware country, state and city labels. The fixed view frames Vorarlberg, Tirol and Salzburg. All ten resort names and their leaders remain visible and stationary. Ski Arlberg is selected initially; hover, keyboard focus or tapping a ranking row changes highlight color only. Escape selects the first resort. Point-only source records use the reviewed planning polygons for display; no boundary is invented. Source geometry and ranking values remain unchanged. Pan and zoom remain disabled. Selection persists between rows and on horizontal exit; leaving above or below the ranking selects its first or last resort respectively.</p>
       <p>A ski-area outline can include forest, rock, buildings and land between pistes. It is not a measurement of skiable terrain, cleared land, ownership, or a legal resort boundary. Some records overlap or represent parts of larger connected areas.</p>
       <p><strong>Missing geometry is not missing skiing.</strong> Of 375 source records tagged as operating downhill areas with an Austrian country association, 188 have Polygon or MultiPolygon geometry. The other <span id="omitted-count">187</span> are points and are not converted into invented polygons. Some of those ski areas can be represented by the independent Tirol layer. Neither source’s record count is a count of unique resorts; overlaps are retained, not deduplicated.</p>
       <p><strong>Sölden is included through Tirol.</strong> The official polygon is named <em>Ötztaler Gletscher</em>. It contains OpenSkiData’s Sölden reference point; 219 of 223 associated piste records intersect it. This supports the association—not a claim that the older planning envelope equals today’s operational footprint. The original source name is retained in the downloadable data.</p>
@@ -173,7 +173,7 @@
         <p>Design follows <a href="https://www.datawrapper.de/academy/how-to-create-a-symbol-map">Datawrapper’s guidance</a> on restrained backgrounds, clear legends, useful labels and narrow-screen testing. Source colors are categorical; fill does not encode resort size, quality or activity.</p>
         <p><a href="data/ski-areas.geojson">OpenSkiData polygons (ODbL)</a> · <a href="data/tirol-boundaries.geojson">Tirol polygons (CC BY 4.0)</a> · <a href="data/coverage.json">OpenSkiData coverage</a> · <a href="data/tirol-coverage.json">Tirol dates and Sölden match</a> · <a href="POLYGON-MATCH-REVIEW.md">Manual polygon matching review</a> · <a href="data/polygon-matches.json">Reviewed crosswalk</a> · <a href="data/polygon-match-audit.json">Spatial audit</a> · <a href="README.md">Full method and reproduction</a></p>
       </details>
-      <p class="credit">AI assistance: source inspection, preparation, implementation and checks. Static HTML, CSS, JavaScript and local Leaflet. Geographic callouts use <a href="https://d3-annotation.susielu.com/">d3-annotation by Susie Lu</a>. No visitor-time OpenSkiData queries.</p>
+      <p class="credit">AI assistance: source inspection, preparation, implementation and checks. Static HTML, CSS, JavaScript and local Leaflet. Permanent SVG labels use measured text and dedicated leader gutters. No visitor-time OpenSkiData queries.</p>
     </section>
     <noscript><p>Rendering the map requires JavaScript. The downhill ranking, coverage counts, explanations and source-data downloads remain available above.</p></noscript>
   </main>

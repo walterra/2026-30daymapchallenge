@@ -188,6 +188,28 @@ class SkiPolygonTests(unittest.TestCase):
         skiwelt = next(r for r in review if r['label'].startswith('SkiWelt'))
         self.assertEqual(skiwelt['polygonIds'], ['tiris:76', 'tiris:89'])
 
+    def test_regional_framing_matches_three_real_states(self):
+        from shapely.ops import unary_union
+        region = json.loads((folder / 'region-bounds.json').read_text())
+        context = json.loads((folder / 'region-context.geojson').read_text())
+        self.assertEqual(region['states'], ['Vorarlberg', 'Tirol', 'Salzburg'])
+        self.assertEqual({f['properties']['name'] for f in context['features']}, set(region['states']))
+        self.assertEqual(list(unary_union([shape(f['geometry']) for f in context['features']]).bounds), region['bbox'])
+        self.assertEqual(region['sourceSHA256'], context['metadata']['sourceSHA256'])
+        west, south, east, north = region['bbox']
+        frame = shape({'type': 'Polygon', 'coordinates': [[[west, south], [east, south], [east, north], [west, north], [west, south]]]})
+        ranking = json.loads((folder / 'downhill-ranking.json').read_text())['top10']
+        ids = {r['id'] for r in ranking}
+        self.assertTrue(all(frame.covers(shape(f['geometry'])) for f in areas if f['properties']['id'] in ids))
+
+    def test_permanent_labels_change_color_without_relayout(self):
+        script = (folder.parent / 'annotations.js').read_text()
+        self.assertIn('groups = rows.map', script)
+        self.assertIn('setHighlight(value) { selectedId = value?.id; color(); }', script)
+        self.assertIn("map.on('mapthemechange', color)", script)
+        self.assertNotIn('root.selectAll', script)
+        self.assertIn('map.fitBounds(regionBounds', (folder.parent / 'map.js').read_text())
+
     def test_political_basemap_context(self):
         borders = json.loads((folder / 'state-borders.geojson').read_text())
         self.assertEqual(borders['metadata']['stateCount'], 9)

@@ -4,12 +4,13 @@
 */
 (() => {
   const map = document.querySelector('#map');
-  const extent = map.getBoundingClientRect();
-  const groups = Array.from(map.querySelectorAll('g.annotation'));
+  const scene = map.closest('.map-scene');
+  const extent = scene.getBoundingClientRect();
+  const groups = Array.from(scene.querySelectorAll('g.annotation'));
   const notes = groups.map(group => ({ group, rect: group.querySelector('.annotation-note-content').getBoundingClientRect() }));
   const errors = [];
   const expectedNotes = Number(map.dataset.annotationCount);
-  if (!expectedNotes || notes.length !== expectedNotes) errors.push('Expected all ' + expectedNotes + ' fixed-map callouts; found ' + notes.length + '. Wait for the map to finish rendering.');
+  if (expectedNotes !== 10 || notes.length !== expectedNotes) errors.push('Expected all ' + expectedNotes + ' fixed-map callouts; found ' + notes.length + '. Wait for the map to finish rendering.');
   const legend = map.querySelector('.source-legend')?.getBoundingClientRect();
   const overlaps = (a, b, gap = 0) => a.left < b.right + gap && a.right > b.left - gap && a.top < b.bottom + gap && a.bottom > b.top - gap;
   const strokes = groups.flatMap(group => Array.from(group.querySelectorAll('.annotation-connector path, .annotation-subject path, .annotation-note path')).flatMap(path => {
@@ -20,6 +21,19 @@
     return [{ group, points }];
   }));
   const crosses = (points, rect, gap = 0) => points.some(p => p.x > rect.left - gap && p.x < rect.right + gap && p.y > rect.top - gap && p.y < rect.bottom + gap);
+  const paths = groups.flatMap(group => Array.from(group.querySelectorAll('.annotation-connector path')).map(path => {
+    const numbers = path.getAttribute('d').match(/-?\d+(?:\.\d+)?(?:e[+-]?\d+)?/gi).map(Number);
+    const matrix = path.getScreenCTM(), points = [];
+    for (let i = 0; i < numbers.length; i += 2) points.push(new DOMPoint(numbers[i], numbers[i + 1]).matrixTransform(matrix));
+    return points;
+  }));
+  const cross = (p, q, r) => (q.x - p.x) * (r.y - p.y) - (q.y - p.y) * (r.x - p.x);
+  for (let i = 0; i < paths.length; i++) for (let j = 0; j < i; j++) {
+    for (let a = 1; a < paths[i].length; a++) for (let b = 1; b < paths[j].length; b++) {
+      const p = paths[i][a - 1], q = paths[i][a], r = paths[j][b - 1], s = paths[j][b];
+      if (cross(p, q, r) * cross(p, q, s) < -1e-6 && cross(r, s, p) * cross(r, s, q) < -1e-6) errors.push('annotation leaders cross');
+    }
+  }
   if (legend && strokes.some(stroke => crosses(stroke.points, legend, 1))) errors.push('inline legend obscures an annotation stroke');
   for (let i = 0; i < notes.length; i++) {
     const { group, rect } = notes[i];

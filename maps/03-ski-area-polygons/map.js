@@ -2,8 +2,8 @@
 const status = document.querySelector('#status');
 async function start() {
   if (!window.L) throw new Error('Local map library unavailable.');
-  const [areas, coverage, context, austria, tirol, stateBorders, referenceLabels, ranking, matchReview] = await Promise.all(
-    ['ski-areas.geojson', 'coverage.json', 'context.geojson', 'austria.geojson', 'tirol-boundaries.geojson', 'state-borders.geojson', 'reference-labels.geojson', 'downhill-ranking.json?v=linked-1', 'polygon-matches.json?v=reviewed-1'].map(async name => {
+  const [areas, coverage, context, austria, tirol, stateBorders, referenceLabels, ranking, matchReview, region, regionContext] = await Promise.all(
+    ['ski-areas.geojson', 'coverage.json', 'context.geojson', 'austria.geojson', 'tirol-boundaries.geojson', 'state-borders.geojson', 'reference-labels.geojson', 'downhill-ranking.json?v=linked-1', 'polygon-matches.json?v=reviewed-1', 'region-bounds.json', 'region-context.geojson'].map(async name => {
       const response = await fetch('data/' + name);
       if (!response.ok) throw new Error(name + ' could not be loaded (HTTP ' + response.status + ').');
       return response.json();
@@ -14,7 +14,7 @@ async function start() {
   document.querySelector('#missing-length-count').textContent = ranking.metadata.recordsWithoutDownhillLength;
   document.querySelector('#omitted-count').textContent = coverage.omittedRecords;
   const container = document.querySelector('#map');
-  container.dataset.annotationCount = '1';
+  container.dataset.annotationCount = '10';
   const map = L.map(container, {
     preferCanvas: true, zoomSnap: .25,
     dragging: false, scrollWheelZoom: false, doubleClickZoom: false,
@@ -29,10 +29,15 @@ async function start() {
     pane: 'context', interactive: false,
     style: f => ({ stroke: false, fillColor: f.properties.iso === 'AUT' ? '#f0f2ef' : '#f8f9f6', fillOpacity: 1 })
   }).addTo(map);
+  const focusLand = L.geoJSON(regionContext, { pane: 'context', interactive: false,
+    style: { stroke: false, fillColor: '#f0f2f1', fillOpacity: 1 }
+  }).addTo(map);
   const border = L.geoJSON(austria, { pane: 'context', interactive: false,
     style: { color: '#9ca8a5', weight: 1.1, fill: false }
   }).addTo(map);
-  const countryBounds = border.getBounds();
+  const [west, south, east, north] = region.bbox;
+  const regionBounds = L.latLngBounds([south, west], [north, east]);
+  container.dataset.region = region.states.join(', ');
   map.attributionControl.addAttribution('Data: <a href="https://openskidata.org/">OpenSkiData</a> · © <a href="https://www.openstreetmap.org/copyright">OSM contributors</a> · <a href="https://skimap.org/">Skimap.org</a> · <a href="https://whosonfirst.org/">Who’s On First</a> · © <a href="https://mapterhorn.com/">Mapterhorn</a> · Tirol: <a href="https://www.arcgis.com/home/item.html?id=9fb23fac39034eadaff8054fdd35cbf6">Land Tirol – tiris</a> (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>) · Context: <a href="https://www.naturalearthdata.com/">Natural Earth</a>');
   L.control.scale({ imperial: false, position: 'bottomleft', maxWidth: 100 }).addTo(map);
   const stateLayer = L.geoJSON(stateBorders, { pane: 'context', interactive: false,
@@ -50,10 +55,10 @@ async function start() {
     const attribution = container.querySelector('.leaflet-control-attribution');
     const legend = container.querySelector('.source-legend');
     legend.style.bottom = (attribution ? attribution.getBoundingClientRect().height + 12 : 24) + 'px';
-    const occupied = Array.from(container.querySelectorAll('.annotation-note-content, .source-legend')).map(node => node.getBoundingClientRect());
+    const occupied = Array.from(container.closest('.map-scene').querySelectorAll('.annotation-note-content, .source-legend')).map(node => node.getBoundingClientRect());
     const extent = container.getBoundingClientRect();
     const strokePoints = [];
-    for (const path of container.querySelectorAll('.annotation-connector path, .annotation-subject path, .annotation-note path')) {
+    for (const path of container.closest('.map-scene').querySelectorAll('.annotation-connector path, .annotation-subject path, .annotation-note path')) {
       const matrix = path.getScreenCTM(); if (!matrix) continue;
       const length = path.getTotalLength();
       for (let distance = 0; distance <= length; distance += 3) strokePoints.push(path.getPointAtLength(distance).matrixTransform(matrix));
@@ -127,12 +132,11 @@ async function start() {
     const color = getComputedStyle(document.documentElement).getPropertyValue('--color-accent').trim();
     if (activeRow.mapReference.kind === 'outline') {
       const layer = outlineLayers.get(activeRow.id);
-      if (layer) { layer.setStyle({ color, fill: true, fillColor: color, weight: 3, opacity: 1, fillOpacity: .4 }); layer.bringToFront(); }
+      if (layer) { layer.setStyle({ color, fillColor: color }); }
     } else if (activeRow.planningMatch) {
       for (const id of activeRow.planningMatch.polygonIds) {
         const layer = planningLayers.get(id);
-        layer.setStyle({ color, fill: true, fillColor: color, weight: 3, opacity: 1, fillOpacity: .35, dashArray: '4 3' });
-        layer.bringToFront();
+        layer.setStyle({ color, fillColor: color });
       }
     } else {
       const [lon, lat] = activeRow.mapReference.coordinates;
@@ -146,7 +150,8 @@ async function start() {
     const colors = dark
       ? { land: '#262a2c', neighbor: '#1d1f20', country: '#697175', state: '#4c5559' }
       : { land: '#f0f2f1', neighbor: '#fafafa', country: '#929c9c', state: '#bac1c0' };
-    basemap.setStyle(feature => ({ fillColor: feature.properties.iso === 'AUT' ? colors.land : colors.neighbor, color: colors.state }));
+    basemap.setStyle({ fillColor: colors.neighbor, color: colors.state });
+    focusLand.setStyle({ fillColor: colors.land });
     border.setStyle({ color: colors.country });
     stateLayer.setStyle({ color: colors.state });
     const contextColor = dark ? '#68716e' : '#adb5b2';
@@ -165,7 +170,11 @@ async function start() {
   new MutationObserver(applyMapTheme).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
   function fitOverview() {
     if (!container.clientWidth || !container.clientHeight) return;
-    map.fitBounds(countryBounds, { padding: [25, 25], animate: false });
+    if (container.clientWidth < 420) {
+      const credits = container.querySelector('.leaflet-control-attribution').getBoundingClientRect().height;
+      const legend = container.querySelector('.source-legend').getBoundingClientRect().height;
+      map.fitBounds(regionBounds, { paddingTopLeft: [16, 12], paddingBottomRight: [16, credits + legend + 24], animate: false });
+    } else map.fitBounds(regionBounds, { padding: [25, 25], animate: false });
   }
   fitOverview();
   for (const marker of referenceMarkers.values()) marker.addTo(map);
@@ -191,7 +200,7 @@ async function start() {
   });
   const center = map.getCenter();
   container.dataset.view = JSON.stringify([center.lat, center.lng, map.getZoom()]);
-  const story = skiMapAnnotations({ map });
+  const story = skiMapAnnotations({ map, rows: displayRows });
   const rankRows = new Map(displayRows.map(row => [row.id, row]));
   const buttons = Array.from(document.querySelectorAll('.ranking-row'));
   const firstId = buttons[0].dataset.sourceId;
@@ -212,9 +221,6 @@ async function start() {
     applyMapTheme();
     story.setHighlight(activeRow);
     container.dataset.activePolygonIds = JSON.stringify(activeRow.planningMatch?.polygonIds || (activeRow.mapReference.kind === 'outline' ? [activeRow.id] : []));
-    const kind = document.querySelector('#selected-geometry-kind');
-    kind.textContent = activeRow.planningMatch ? '2011 planning' + (activeRow.planningMatch.qualification.startsWith('Partial') ? ' · partial' : '') : activeRow.mapReference.kind === 'point' ? 'Reference point' : 'Mapped outline';
-    kind.title = activeRow.planningMatch?.qualification || '';
     document.querySelector('#ranking-map-status').textContent = 'Map: ' + activeRow.label + '. ' + (activeRow.planningMatch ? 'Matched Tirol planning polygons, reference date 2011-10-30. ' + activeRow.planningMatch.qualification : activeRow.mapReference.kind === 'point' ? 'Supplied reference point; no OpenSkiData outline.' : 'Source outline highlighted.');
   }
   for (const button of buttons) {

@@ -17,7 +17,7 @@
   if (legend.bottom > attribution.top - 8 || legend.top < extent.top || legend.left < extent.left) errors.push('Legend overlaps credits or escapes map');
   const body = getComputedStyle(document.body);
   if (getComputedStyle(map).backgroundColor !== body.backgroundColor) errors.push('Map background does not match Cactus theme');
-  if (!getComputedStyle(map.querySelector('.annotation-note-title')).fontFamily.includes('system-ui')) errors.push('Geographic labels should use proportional type');
+  if (!getComputedStyle(map.closest('.map-scene').querySelector('.annotation-note-title')).fontFamily.includes('system-ui')) errors.push('Geographic labels should use proportional type');
   const view = map.dataset.view;
   map.dispatchEvent(new WheelEvent('wheel', { deltaY: -600, bubbles: true, cancelable: true }));
   map.dispatchEvent(new MouseEvent('dblclick', { clientX: extent.left + 80, clientY: extent.top + 80, bubbles: true }));

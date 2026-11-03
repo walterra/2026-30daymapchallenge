@@ -1,0 +1,17 @@
+{
+  "states": [
+    "Vorarlberg",
+    "Tirol",
+    "Salzburg"
+  ],
+  "bbox": [
+    9.52115482500011,
+    46.651210429000045,
+    13.939335564984333,
+    48.033244126914894
+  ],
+  "source": "Natural Earth 1:10m admin-1 states/provinces",
+  "sourceSHA256": "efc59726337323058f9446210adc96673179cd344e053666ee3d28cb58ba2b05",
+  "license": "Public domain",
+  "qualification": "Rectangular framing of three states; neighboring country context and cross-border resort geometry are retained."
+}

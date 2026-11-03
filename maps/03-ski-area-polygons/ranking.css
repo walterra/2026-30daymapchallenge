@@ -38,7 +38,7 @@ body .ranking-row:disabled { cursor: default; opacity: 1; }
 @media (min-width: 1100px) {
  .map-ranking-layout { align-items: stretch; }
  .map-ranking-layout .map-card { display: flex; flex-direction: column; }
- .map-ranking-layout #map { flex: 1 0 420px; height: auto; min-height: 420px; }
+ .map-ranking-layout #map { flex: 1 0 clamp(320px, 22vw, 420px); height: auto; min-height: clamp(320px, 22vw, 420px); }
  .map-ranking-layout .downhill-ranking { border-top-style: dashed; }
  .map-ranking-layout .ranking-subtitle, .map-ranking-layout .ranking-interaction { margin-block: .6rem; }
 }

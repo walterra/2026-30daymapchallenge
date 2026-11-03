@@ -1,6 +1,7 @@
 /* Run via agent-browser eval --stdin once map.dataset.ready is true. */
 (async () => {
   const map = document.querySelector('#map');
+  const scene = map.closest('.map-scene');
   const chart = document.querySelector('.downhill-ranking');
   const buttons = Array.from(chart.querySelectorAll('.ranking-row'));
   const nextFrame = () => new Promise(resolve => requestAnimationFrame(resolve));
@@ -10,14 +11,15 @@
   }
   const enter = button => button.dispatchEvent(new PointerEvent('pointerenter', { pointerType: 'mouse' }));
   const leave = button => button.dispatchEvent(new PointerEvent('pointerleave', { pointerType: 'mouse' }));
-  const label = () => map.querySelector('.annotation-note-title')?.textContent;
-  const selected = button => map.dataset.activeResort === button.dataset.sourceId && map.querySelectorAll('.annotation-note-title').length === 1 && label()?.replace(/\s/g, '') === button.querySelector('.ranking-name').textContent.replace(/\s/g, '') && map.dataset.labelsReady === 'true';
+  const group = button => scene.querySelector(`g.annotation[data-resort-id="${button.dataset.sourceId}"]`);
+  const selected = button => map.dataset.activeResort === button.dataset.sourceId && scene.querySelectorAll(".annotation-note-title").length === 10 && group(button)?.querySelector(".annotation-note-title").textContent.replace(/\s/g, "") === button.querySelector(".ranking-name").textContent.replace(/\s/g, "") && group(button).classList.contains("is-map-active") && map.dataset.labelsReady === "true";
   const escape = () => document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
   // Let pending viewport ResizeObserver/refit work finish before checking node identity.
   await nextFrame(); await nextFrame(); await nextFrame();
   escape();
   await wait(() => selected(buttons[0]));
   const view = map.dataset.view;
+  const paths = Array.from(scene.querySelectorAll('.annotation-connector path')).map(path => path.getAttribute('d'));
   const review = await (await fetch('data/polygon-matches.json')).json();
   const matches = new Map(review.matches.map(row => [row.openSkiDataId, row]));
   const planningFeatures = new Map((await (await fetch('data/tirol-boundaries.geojson')).json()).features.map(f => [f.properties.id, f]));
@@ -28,11 +30,11 @@
     if (map.dataset.activeKind === 'planning-outline') {
       planning++;
       if (JSON.stringify(matches.get(button.dataset.sourceId)?.polygonIds) !== map.dataset.activePolygonIds) throw Error('Wrong reviewed polygon selection');
-      if (!document.querySelector('#selected-geometry-kind').textContent.includes('2011')) throw Error('Missing historical qualification');
+      if (!document.querySelector('.annotation-context').textContent.includes('2011')) throw Error('Missing historical qualification');
     } else if (map.dataset.activeKind === 'point') points++; else outlines++;
     if (map.dataset.view !== view) throw Error('Selection changed map framing');
-    const note = map.querySelector('.annotation-note-content').getBoundingClientRect();
-    const extent = map.getBoundingClientRect();
+    const note = group(button).querySelector('.annotation-note-content').getBoundingClientRect();
+    const extent = scene.getBoundingClientRect();
     const legend = map.querySelector('.source-legend').getBoundingClientRect();
     if (note.left < extent.left || note.right > extent.right || note.top < extent.top || note.bottom > extent.bottom) throw Error('Clipped selected label: ' + button.dataset.sourceId);
     if (note.left < legend.right && note.right > legend.left && note.top < legend.bottom && note.bottom > legend.top) throw Error('Selected label overlaps legend');
@@ -44,16 +46,17 @@
         const coordinates = geometry.coordinates.flat(geometry.type === 'MultiPolygon' ? 2 : 1);
         for (const [lon, lat] of coordinates) {
           const point = L.CRS.EPSG3857.latLngToPoint(L.latLng(lat, lon), zoom).subtract(center);
-          const x = extent.left + map.clientWidth / 2 + point.x, y = extent.top + map.clientHeight / 2 + point.y;
+          const x = map.getBoundingClientRect().left + map.clientWidth / 2 + point.x, y = map.getBoundingClientRect().top + map.clientHeight / 2 + point.y;
           if (x > legend.left - 2 && x < legend.right + 2 && y > legend.top - 2 && y < legend.bottom + 2) throw Error('Matched polygon is hidden by legend: ' + id);
         }
       }
     }
-    const node = map.querySelector('g.annotation');
+    if (Array.from(scene.querySelectorAll('.annotation-connector path')).some((path, i) => path.getAttribute('d') !== paths[i])) throw Error('Hover repositioned labels or leaders');
+    const node = group(button);
     leave(button); await nextFrame(); await nextFrame();
-    if (!selected(button) || map.querySelector('g.annotation') !== node) throw Error('Selection flickers in an inter-row gap');
+    if (!selected(button) || group(button) !== node) throw Error('Selection flickers in an inter-row gap');
     enter(button); await nextFrame(); await nextFrame();
-    if (map.querySelector('g.annotation') !== node) throw Error('Unchanged resort redraws its label');
+    if (group(button) !== node) throw Error('Unchanged resort redraws its label');
   }
   const middle = buttons[4];
   enter(middle); await wait(() => selected(middle));
