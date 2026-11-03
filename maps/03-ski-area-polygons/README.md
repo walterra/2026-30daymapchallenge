@@ -77,7 +77,7 @@ Public-domain Natural Earth data, kept separate from the ODbL ski-area dataset:
 
 Neighboring countries are clipped and simplified only for background rendering. The neutral, tile-free political basemap adds shared internal boundaries for **all nine Austrian states**: adjacent boundaries are intersected, unioned and line-merged before simplification, so shared edges are drawn once rather than as independent polygon outlines. National borders are solid; state borders are fine dashed lines. The separate Austria outline remains the overview extent.
 
-Scale-aware country, state and city labels use public-domain Natural Earth positions (nine Austrian city records). Label collisions, clipped labels and collisions with annotation text or controls are suppressed. Labels sit beneath resort geometry and callouts, never above them. The background is not used to validate, classify or clip resort polygons.
+Scale-aware country, state and city labels use public-domain Natural Earth positions (nine Austrian city records). Label collisions, clipped labels and collisions with annotation text, connectors, circle outlines or controls are suppressed. Stroke collisions use sampled screen-space SVG paths, not oversized path bounding boxes. Labels sit beneath resort geometry and callouts, never above them. The background is not used to validate, classify or clip resort polygons.
 
 Reproduce this additional context:
 
@@ -147,11 +147,11 @@ The national overview is intentionally incomplete rather than inventing shapes f
 
 ## Geographic story callouts
 
-Three editorial polygon groups orient the national overview: **St. Anton** (Rendl and both Albonagrat records), **Ötztal / Sölden** (Ötztaler Gletscher, Hochgurgl, Obergurgl and Stablein–Vent), and **Kitzbühel** (Hahnenkamm–Ehrenbachhöhe, Kitzbühler Horn, Bichlalm and Jochberg–Pass Thurn). These are selected clusters, **not a measured largest-resorts ranking or an exhaustive regional inventory**.
+Four editorial polygon groups orient the national overview: **St. Anton** (Rendl and both Albonagrat records), **Ötztal / Sölden** (Ötztaler Gletscher, Hochgurgl, Obergurgl and Stablein–Vent), **Zillertal** (Spieljoch, Hochzillertal, Zell–Kreuzjochbahn, Gerlosstein, Penken, Ahorn, Rastkogel, Eggalm and Hintertux), and **Kitzbühel** (Hahnenkamm–Ehrenbachhöhe, Kitzbühler Horn, Bichlalm and Jochberg–Pass Thurn). These are selected clusters, **not a measured largest-resorts ranking or an exhaustive regional inventory**.
 
 [Susie Lu’s d3-annotation](https://d3-annotation.susielu.com/) draws SVG `annotationCalloutCircle` callouts. `scripts/prepare-ski-annotations.py` verifies the reference names and derives a geographic bounding box from each reviewed group’s actual polygons. At runtime the box is projected through Leaflet; its midpoint and half-diagonal define an enclosing circle, with five pixels of visual padding. Circles are editorial highlights, not new boundaries, skiable-area measurements or inferred resort footprints. No guessed town coordinates are used. Reproduce with `uv run scripts/prepare-ski-annotations.py` after preparing the Tirol layer. The derived anchor file is CC BY 4.0, attributed to Land Tirol – tiris.
 
-`annotations.js` recalculates circle centers and radii on movement, zoom, resize and source visibility changes. Notes disappear when their source is hidden or their center leaves the viewport. Matching buttons fit the whole group rather than zooming only its reference polygon; the inspector explicitly identifies that reference record. Shorter labels and wrapping are used on narrow maps. The visual SVG is hidden from screen readers and does not intercept map interactions; three matching native buttons and a prose map description provide equivalent keyboard-accessible exploration.
+`annotations.js` uses straight connectors to avoid shared elbows cutting across neighboring callouts, and recalculates circle centers and radii on movement, zoom, resize and source visibility changes. Notes disappear when their source is hidden or their center leaves the viewport. Matching buttons fit the whole group rather than zooming only its reference polygon; the inspector explicitly identifies that reference record. Shorter labels and wrapping are used on narrow maps. The visual SVG is hidden from screen readers and does not intercept map interactions; four matching native buttons and a prose map description provide equivalent keyboard-accessible exploration.
 
 Vendored, version-pinned dependencies (no visitor-time CDN requests or new build step):
 - D3 **4.13.0**, BSD-3-Clause, with its license in `assets/vendor/d3/LICENSE`.
@@ -163,13 +163,21 @@ Leaflet 1.9.4 is vendored with its BSD-2-Clause license. Native controls, labele
 
 ## Verification · 2026-11-03
 
-- 15 ski-map tests passed, including exact geometry/source-name fidelity against both cached input downloads, valid geometries, separate IDs/licenses, the Sölden alias, its piste-record audit all three annotation groups/source names and enclosing geographic bounds, and the political basemap’s nine-state/nine-city accounting and valid line geometry.
+- 16 ski-map tests passed, including exact geometry/source-name fidelity against both cached input downloads, valid geometries, separate IDs/licenses, the Sölden alias, its piste-record audit, all four annotation groups/source names and enclosing geographic bounds, and the political basemap’s nine-state/nine-city accounting and valid line geometry.
 - Existing 10 home-distance and 7 water-data tests passed.
 - Both JavaScript files passed `node --check`; site-resource and whitespace checks passed.
 - Browser checks at 1440px, 390px and 320px: no horizontal overflow; source toggles, hidden-source activation, Sölden search/native selection, no-match/Escape behavior and overview reset checked. No browser errors in the final clean session.
-- d3-annotation callouts checked at 1440px, 390px and 320px: no note collisions or clipping in the overview; geographic highlights follow actual drag/pan, labels update on zoom, hiding Tirol removes its notes, and the matching buttons activate the correct reference record. Circle-callout checks also verify three unfilled circle subjects, source visibility, whole-group zoom and no page overflow at 320px.
+- d3-annotation callouts checked at 1440px, 390px and 320px: no note collisions or clipping in the overview; geographic highlights follow actual drag/pan, labels update on zoom, hiding Tirol removes its notes, and the matching buttons activate the correct reference record. Circle-callout checks also verify four unfilled circle subjects, source visibility, whole-group zoom and no page overflow at 320px. The four-callout layout and Zillertal group selection were rechecked at 1440px and 320px; no mobile note collisions or clipping were detected.
 - Default map requests zero street-map tiles. Optional street-map context was checked separately.
+- Full rendered-layout regression: `scripts/check-ski-label-layout.js` passed at 320, 390, 600, 760, 800, 960, 1024, 1280, 1440 and 1920px, plus a desktop drag/pan. Checks cover note bounds/separation, other callouts’ strokes crossing annotation text, political labels versus annotation text/connectors/circles, basemap-label separation and page overflow. Earlier checks covered note boxes only and did not detect the reported Innsbruck/Salzburg conflicts; these broader geometry checks replace that incomplete assurance. Resize refitting is synchronous with Leaflet’s resize event, not delayed behind the label checks.
 - Axe WCAG 2 A/AA scan after popup transitions: no detected violations; contrast over map/canvas controls remains flagged for manual review. This is not a claim of full accessibility conformance.
+
+Run the rendered-layout regression in the named browser session after the map overview and labels settle:
+
+```sh
+agent-browser wait --fn 'document.querySelector("#map").dataset.labelsReady === "true"'
+agent-browser eval --stdin < scripts/check-ski-label-layout.js
+```
 
 To include input-fidelity checks:
 

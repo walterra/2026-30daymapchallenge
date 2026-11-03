@@ -3,7 +3,7 @@ const status = document.querySelector('#status');
 async function start() {
   if (!window.L || !window.searchableSelect) throw new Error('Local map library unavailable.');
   const [areas, coverage, context, austria, tirol, annotationData, stateBorders, referenceLabels] = await Promise.all(
-    ['ski-areas.geojson', 'coverage.json', 'context.geojson', 'austria.geojson', 'tirol-boundaries.geojson', 'annotations.json', 'state-borders.geojson', 'reference-labels.geojson'].map(async name => {
+    ['ski-areas.geojson', 'coverage.json', 'context.geojson', 'austria.geojson', 'tirol-boundaries.geojson', 'annotations.json?v=zillertal-1', 'state-borders.geojson', 'reference-labels.geojson'].map(async name => {
       const response = await fetch('data/' + name);
       if (!response.ok) throw new Error(name + ' could not be loaded (HTTP ' + response.status + ').');
       return response.json();
@@ -45,18 +45,39 @@ async function start() {
   function updatePoliticalLabels() {
     const occupied = Array.from(map.getContainer().querySelectorAll('.annotation-note-content, .leaflet-control-zoom, .leaflet-popup-content-wrapper')).map(node => node.getBoundingClientRect());
     const extent = map.getContainer().getBoundingClientRect();
+    // Test painted strokes, not their large bounding boxes: those would hide
+    // most useful city labels even when the line does not touch their text.
+    const strokePoints = [];
+    for (const path of map.getContainer().querySelectorAll('.annotation-connector path, .annotation-subject path, .annotation-note path')) {
+      const matrix = path.getScreenCTM(); if (!matrix) continue;
+      const length = path.getTotalLength();
+      for (let distance = 0; distance <= length; distance += 3) {
+        strokePoints.push(path.getPointAtLength(distance).matrixTransform(matrix));
+      }
+    }
     for (const { feature, marker } of politicalLabels) {
       const element = marker.getElement(); if (!element) continue;
       element.setAttribute('aria-hidden', 'true'); element.style.display = '';
       const rect = element.querySelector('span').getBoundingClientRect();
       const collides = occupied.some(b => rect.left < b.right + 8 && rect.right > b.left - 8 && rect.top < b.bottom + 5 && rect.bottom > b.top - 5);
+      const crossesStroke = strokePoints.some(p => p.x >= rect.left - 4 && p.x <= rect.right + 4 && p.y >= rect.top - 4 && p.y <= rect.bottom + 4);
       const outside = rect.left < extent.left + 7 || rect.right > extent.right - 7 || rect.top < extent.top + 7 || rect.bottom > extent.bottom - 22;
-      if (map.getZoom() < feature.properties.minZoom || collides || outside) element.style.display = 'none';
+      if (map.getZoom() < feature.properties.minZoom || collides || crossesStroke || outside) element.style.display = 'none';
       else occupied.push(rect);
     }
   }
-  map.on('moveend zoomend resize storyannotationslayout', () => requestAnimationFrame(updatePoliticalLabels));
-  map.whenReady(() => requestAnimationFrame(updatePoliticalLabels));
+  let politicalFrame;
+  function schedulePoliticalLabels() {
+    map.getContainer().dataset.labelsReady = 'false';
+    if (politicalFrame !== undefined) return;
+    politicalFrame = requestAnimationFrame(() => {
+      politicalFrame = undefined;
+      updatePoliticalLabels();
+      map.getContainer().dataset.labelsReady = 'true';
+    });
+  }
+  map.on('moveend zoomend resize storyannotationslayout', schedulePoliticalLabels);
+  map.whenReady(schedulePoliticalLabels);
   const background = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 18, attribution: 'Tiles © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   });
@@ -177,13 +198,9 @@ async function start() {
   const solden = tirol.features.find(f => f.properties.aliases.includes('Sölden'));
   document.querySelector('#solden').disabled = !solden;
   document.querySelector('#solden').addEventListener('click', () => { if (solden) inspect(solden, true); });
-  let resizeTimer;
   map.on('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      if (!selectedId) fitOverview();
-      else map.fitBounds(calloutBounds || layers.get(selectedId).getBounds(), { padding: [45, 45], maxZoom: 14, animate: false });
-    }, 100);
+    if (!selectedId) fitOverview();
+    else map.fitBounds(calloutBounds || layers.get(selectedId).getBounds(), { padding: [45, 45], maxZoom: 14, animate: false });
   });
   skiMapAnnotations({ map, annotations: annotationData.annotations,
     isVisible: spec => map.hasLayer(groups[spec.dataset]),

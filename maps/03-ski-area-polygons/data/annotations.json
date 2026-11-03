@@ -10,7 +10,7 @@
         "tiris:31"
       ],
       "label": "Rendl and the Albonagrat planning areas.",
-      "compactLabel": "Rendl + Albonagrat",
+      "compactLabel": "Rendl",
       "coordinates": [
         10.268317629096835,
         47.10897632068356
@@ -49,7 +49,7 @@
         "tiris:6"
       ],
       "label": "Sölden, Gurgl and Vent: a cluster along the valley.",
-      "compactLabel": "Sölden, Gurgl, Vent",
+      "compactLabel": "Gurgl + Vent",
       "coordinates": [
         10.987277080648575,
         46.95020036194919
@@ -82,6 +82,74 @@
       "dataset": "tirol"
     },
     {
+      "featureId": "tiris:93",
+      "sourceName": "Hochzillertal - Kaltenbach - Aschau",
+      "title": "Zillertal",
+      "featureIds": [
+        "tiris:98",
+        "tiris:93",
+        "tiris:48",
+        "tiris:23",
+        "tiris:21",
+        "tiris:45",
+        "tiris:20",
+        "tiris:57",
+        "tiris:44"
+      ],
+      "label": "Spieljoch, Hochzillertal, Zell, Mayrhofen and the Tux valley.",
+      "compactLabel": "Zell + Tux",
+      "coordinates": [
+        11.785663563321544,
+        47.267007142751204
+      ],
+      "bounds": [
+        11.641523048853578,
+        47.048287228603165,
+        12.108726012234632,
+        47.34211513213759
+      ],
+      "members": [
+        {
+          "id": "tiris:98",
+          "name": "Spieljoch"
+        },
+        {
+          "id": "tiris:93",
+          "name": "Hochzillertal - Kaltenbach - Aschau"
+        },
+        {
+          "id": "tiris:48",
+          "name": "Schi Zell - Kreuzjochbahn"
+        },
+        {
+          "id": "tiris:23",
+          "name": "Gerlossteinbahn"
+        },
+        {
+          "id": "tiris:21",
+          "name": "Penken"
+        },
+        {
+          "id": "tiris:45",
+          "name": "Ahornbahn - Mayrhofen"
+        },
+        {
+          "id": "tiris:20",
+          "name": "Lämmerbichl-Rastkogel - Tux"
+        },
+        {
+          "id": "tiris:57",
+          "name": "Eggalm - Tux"
+        },
+        {
+          "id": "tiris:44",
+          "name": "Hintertuxer Gletscher"
+        }
+      ],
+      "referenceDate": "2011-10-30",
+      "dataset": "tirol"
+    },
+    {
       "featureId": "tiris:77",
       "sourceName": "Hahnenkamm - Ehrenbachhöhe",
       "title": "Kitzbühel",
@@ -92,7 +160,7 @@
         "tiris:55"
       ],
       "label": "Hahnenkamm, Horn and the areas toward Pass Thurn.",
-      "compactLabel": "Hahnenkamm + Horn",
+      "compactLabel": "Horn + Thurn",
       "coordinates": [
         12.364184027576847,
         47.41161310808957

@@ -132,7 +132,7 @@ class SkiPolygonTests(unittest.TestCase):
         from shapely.geometry import Point
         notes = json.loads((folder / 'annotations.json').read_text())
         tirol = {f['properties']['id']: f for f in json.loads((folder / 'tirol-boundaries.geojson').read_text())['features']}
-        self.assertEqual({n['featureId'] for n in notes['annotations']}, {'tiris:72', 'tiris:102', 'tiris:77'})
+        self.assertEqual({n['featureId'] for n in notes['annotations']}, {'tiris:72', 'tiris:102', 'tiris:93', 'tiris:77'})
         for note in notes['annotations']:
             feature = tirol[note['featureId']]
             self.assertEqual(note['sourceName'], feature['properties']['name'])
@@ -149,6 +149,13 @@ class SkiPolygonTests(unittest.TestCase):
                 self.assertTrue(extent.covers(shape(tirol[member['id']]['geometry'])))
         self.assertIn('not a largest-resorts ranking', notes['metadata']['selection'])
         self.assertEqual(notes['metadata']['license'], 'CC BY 4.0')
+
+    def test_zillertal_group_spans_the_valley(self):
+        notes = json.loads((folder / 'annotations.json').read_text())['annotations']
+        note = next(n for n in notes if n['title'] == 'Zillertal')
+        self.assertEqual(note['featureId'], 'tiris:93')
+        self.assertEqual(set(note['featureIds']), {'tiris:98', 'tiris:93', 'tiris:48', 'tiris:23', 'tiris:21', 'tiris:45', 'tiris:20', 'tiris:57', 'tiris:44'})
+        self.assertEqual(len(note['members']), 9)
 
     def test_tirol_geometries_are_unchanged(self):
         if args.tirol_source is None:

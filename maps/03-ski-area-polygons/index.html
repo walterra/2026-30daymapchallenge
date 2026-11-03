@@ -11,8 +11,8 @@
   <script defer src="../../assets/searchable-select.js?v=2"></script>
   <script defer src="../../assets/vendor/d3/d3.v4.13.0.min.js"></script>
   <script defer src="../../assets/vendor/d3-annotation/d3-annotation.v2.5.1.min.js"></script>
-  <script defer src="annotations.js?v=political-2"></script>
-  <script defer src="map.js?v=political-2"></script>
+  <script defer src="annotations.js?v=layout-2"></script>
+  <script defer src="map.js?v=layout-4"></script>
 </head>
 <body>
   <main>
@@ -32,8 +32,8 @@
       <div class="map-card">
         <div class="toolbar"><h2>Austria <span>· ski-area outlines</span></h2><div><button id="koessen" type="button" disabled>Hochkössen</button><button id="solden" type="button" disabled>Sölden</button><button id="overview" type="button" disabled>All Austria</button></div></div>
         <div id="map" role="region" aria-label="Interactive map of ski-area polygons associated with Austria" aria-describedby="map-description"></div>
-        <div class="annotation-links" role="group" aria-label="Explore the annotated examples"><span>Follow the callouts:</span><button type="button" data-annotation-feature="tiris:72" disabled>St. Anton</button><button type="button" data-annotation-feature="tiris:102" disabled>Ötztal / Sölden</button><button type="button" data-annotation-feature="tiris:77" disabled>Kitzbühel</button></div>
-        <p class="annotation-context">Three familiar ski-area clusters. Circles highlight groups of Tirol’s 2011 planning polygons—not new boundaries, resort-size measurements or an exhaustive regional inventory.</p>
+        <div class="annotation-links" role="group" aria-label="Explore the annotated examples"><span>Follow the callouts:</span><button type="button" data-annotation-feature="tiris:72" disabled>St. Anton</button><button type="button" data-annotation-feature="tiris:102" disabled>Ötztal / Sölden</button><button type="button" data-annotation-feature="tiris:93" disabled>Zillertal</button><button type="button" data-annotation-feature="tiris:77" disabled>Kitzbühel</button></div>
+        <p class="annotation-context">Four familiar ski-area clusters. Circles highlight groups of Tirol’s 2011 planning polygons—not new boundaries, resort-size measurements or an exhaustive regional inventory.</p>
         <div class="map-legend" role="group" aria-label="Map legend"><span><i class="swatch" aria-hidden="true"></i> OpenSkiData outline</span><span><i class="swatch tirol" aria-hidden="true"></i> Tirol planning boundary · 2011</span><span><i class="swatch selected" aria-hidden="true"></i> Selected record</span></div>
         <p class="map-caption">Solid gray lines: national borders; fine dashed lines: Austrian states. Color identifies ski-area source, not resort size. Zoom to read the shapes. Sources can overlap: darker patches do not mean more skiing, and the two record counts must not be added as a resort census.</p>
       </div>
@@ -57,7 +57,7 @@
     </section>
     <section class="notes" aria-labelledby="reading">
       <h2 id="reading">An outline is not a piste.</h2>
-      <p id="map-description">Teal polygons are OpenSkiData’s mapped ski-area outlines. Violet polygons are official Tirol planning boundaries with a 2011 reference date. The neutral political basemap shows Austria and neighboring countries, with fine dashed Austrian state boundaries and scale-aware country, state and city labels. Selecting a record highlights its full source geometry, including any cross-border parts. Toggle the sources to compare them. Circle callouts highlight groups around St. Anton (Rendl and Albonagrat), Ötztal / Sölden (Sölden, Gurgl and Vent), and Kitzbühel (Hahnenkamm, Horn, Bichlalm and Jochberg–Pass Thurn). Matching buttons zoom to each group; the inspector identifies its reference polygon.</p>
+      <p id="map-description">Teal polygons are OpenSkiData’s mapped ski-area outlines. Violet polygons are official Tirol planning boundaries with a 2011 reference date. The neutral political basemap shows Austria and neighboring countries, with fine dashed Austrian state boundaries and scale-aware country, state and city labels. Selecting a record highlights its full source geometry, including any cross-border parts. Toggle the sources to compare them. Circle callouts highlight groups around St. Anton (Rendl and Albonagrat), Ötztal / Sölden (Sölden, Gurgl and Vent), Zillertal (Spieljoch, Hochzillertal, Zell, Gerlosstein, Mayrhofen and Tux), and Kitzbühel (Hahnenkamm, Horn, Bichlalm and Jochberg–Pass Thurn). Matching buttons zoom to each group; the inspector identifies its reference polygon.</p>
       <p>A ski-area outline can include forest, rock, buildings and land between pistes. It is not a measurement of skiable terrain, cleared land, ownership, or a legal resort boundary. Some records overlap or represent parts of larger connected areas.</p>
       <p><strong>Missing geometry is not missing skiing.</strong> Of 375 source records tagged as operating downhill areas with an Austrian country association, 188 have Polygon or MultiPolygon geometry. The other <span id="omitted-count">187</span> are points and are not converted into invented polygons. Some of those ski areas can be represented by the independent Tirol layer. Neither source’s record count is a count of unique resorts; overlaps are retained, not deduplicated.</p>
       <p><strong>Sölden is included through Tirol.</strong> The official polygon is named <em>Ötztaler Gletscher</em>. It contains OpenSkiData’s Sölden reference point; 219 of 223 associated piste records intersect it. This supports the association—not a claim that the older planning envelope equals today’s operational footprint. Both names remain searchable.</p>

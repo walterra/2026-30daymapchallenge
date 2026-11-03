@@ -18,7 +18,7 @@ window.skiMapAnnotations = function ({ map, annotations, isVisible, inspect }) {
     svg.setAttribute('width', size.x); svg.setAttribute('height', size.y);
     const compact = size.x < 600;
     const margin = compact ? 12 : 65;
-    const column = (size.x - 2 * margin) / 3;
+    const column = (size.x - 2 * margin) / annotations.length;
     const wrap = Math.min(compact ? 100 : 155, column - 12);
     function project(spec) {
       const [west, south, east, north] = spec.bounds;
@@ -32,7 +32,7 @@ window.skiMapAnnotations = function ({ map, annotations, isVisible, inspect }) {
       const { p } = project(spec);
       return isVisible(spec) && p.x >= 8 && p.x <= size.x - 8 && p.y >= 8 && p.y <= size.y - 30;
     });
-    // Rebuild just three notes so wrapping and positions follow the viewport.
+    // Rebuild the editorial notes so wrapping and positions follow the viewport.
     root.selectAll('*').remove();
     const notes = visible.map(spec => {
       const index = annotations.indexOf(spec);
@@ -43,7 +43,8 @@ window.skiMapAnnotations = function ({ map, annotations, isVisible, inspect }) {
         id: spec.featureId, x: p.x, y: p.y, dx: nx - p.x, dy: ny - p.y,
         color: '#54416e',
         note: { title: spec.title, label: compact ? spec.compactLabel : spec.label, wrap, align: 'left', orientation: 'topBottom', padding: 6, bgPadding: 5 },
-        subject: { radius, radiusPadding: 3 }
+        subject: { radius, radiusPadding: 3 },
+        connector: { type: 'line' }
       };
     });
     root.call(d3.annotation().type(d3.annotationCalloutCircle).annotations(notes));

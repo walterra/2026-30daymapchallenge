@@ -13,9 +13,10 @@ folder = Path(__file__).resolve().parents[1] / 'maps/03-ski-area-polygons/data'
 source = json.loads((folder / 'tirol-boundaries.geojson').read_text())
 features = {f['properties']['id']: f for f in source['features']}
 examples = [
-    {'featureId': 'tiris:72', 'sourceName': 'Rendl - St. Anton a.A.', 'title': 'St. Anton', 'featureIds': ['tiris:72', 'tiris:74', 'tiris:31'], 'label': 'Rendl and the Albonagrat planning areas.', 'compactLabel': 'Rendl + Albonagrat'},
-    {'featureId': 'tiris:102', 'sourceName': 'Ötztaler Gletscher', 'title': 'Ötztal / Sölden', 'featureIds': ['tiris:102', 'tiris:40', 'tiris:37', 'tiris:6'], 'label': 'Sölden, Gurgl and Vent: a cluster along the valley.', 'compactLabel': 'Sölden, Gurgl, Vent'},
-    {'featureId': 'tiris:77', 'sourceName': 'Hahnenkamm - Ehrenbachhöhe', 'title': 'Kitzbühel', 'featureIds': ['tiris:77', 'tiris:79', 'tiris:1', 'tiris:55'], 'label': 'Hahnenkamm, Horn and the areas toward Pass Thurn.', 'compactLabel': 'Hahnenkamm + Horn'},
+    {'featureId': 'tiris:72', 'sourceName': 'Rendl - St. Anton a.A.', 'title': 'St. Anton', 'featureIds': ['tiris:72', 'tiris:74', 'tiris:31'], 'label': 'Rendl and the Albonagrat planning areas.', 'compactLabel': 'Rendl'},
+    {'featureId': 'tiris:102', 'sourceName': 'Ötztaler Gletscher', 'title': 'Ötztal / Sölden', 'featureIds': ['tiris:102', 'tiris:40', 'tiris:37', 'tiris:6'], 'label': 'Sölden, Gurgl and Vent: a cluster along the valley.', 'compactLabel': 'Gurgl + Vent'},
+    {'featureId': 'tiris:93', 'sourceName': 'Hochzillertal - Kaltenbach - Aschau', 'title': 'Zillertal', 'featureIds': ['tiris:98', 'tiris:93', 'tiris:48', 'tiris:23', 'tiris:21', 'tiris:45', 'tiris:20', 'tiris:57', 'tiris:44'], 'label': 'Spieljoch, Hochzillertal, Zell, Mayrhofen and the Tux valley.', 'compactLabel': 'Zell + Tux'},
+    {'featureId': 'tiris:77', 'sourceName': 'Hahnenkamm - Ehrenbachhöhe', 'title': 'Kitzbühel', 'featureIds': ['tiris:77', 'tiris:79', 'tiris:1', 'tiris:55'], 'label': 'Hahnenkamm, Horn and the areas toward Pass Thurn.', 'compactLabel': 'Horn + Thurn'},
 ]
 for example in examples:
     feature = features[example['featureId']]
@@ -32,4 +33,4 @@ for example in examples:
     example['dataset'] = 'tirol'
 output = {'annotations': examples, 'metadata': {'selection': 'Editorial examples requested by the map author; not a largest-resorts ranking.', 'anchors': 'Interior points identify reference records; circle centers and radii are derived at runtime from the projected bounds of each reviewed polygon group. Circles are visual highlights, not resort boundaries.', 'meaning': 'Circle callouts group nearby Tirol planning polygons with reference date 2011-10-30. Membership is editorial, not an exhaustive resort or valley inventory.', 'attribution': source['metadata']['attribution'], 'license': 'CC BY 4.0', 'licenseUrl': 'https://creativecommons.org/licenses/by/4.0/'}}
 (folder / 'annotations.json').write_text(json.dumps(output, ensure_ascii=False, indent=2) + '\n')
-print('Prepared 3 regional circle callouts with verified polygon-group bounds; no size-ranking claim.')
+print(f'Prepared {len(examples)} regional circle callouts with verified polygon-group bounds; no size-ranking claim.')
