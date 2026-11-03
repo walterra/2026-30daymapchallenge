@@ -47,6 +47,7 @@ window.skiMapAnnotations = function ({ map, annotations, isVisible, inspect }) {
       };
     });
     root.call(d3.annotation().type(d3.annotationCalloutCircle).annotations(notes));
+    map.fire('storyannotationslayout');
   }
   function update() { if (frame === undefined) frame = requestAnimationFrame(draw); }
   map.on('move zoomend resize layeradd layerremove', update);

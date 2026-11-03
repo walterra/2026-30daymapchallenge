@@ -73,6 +73,10 @@ summary { font-weight: 600; cursor: pointer; padding-block: .5rem; }
 .leaflet-popup-content a, .leaflet-control-attribution a { color: #086572; }
 .leaflet-tile-pane { filter: grayscale(1); opacity: .55; }
 .country-label { color: #61736e; letter-spacing: .1em; text-transform: uppercase; font-size: 10px; text-align: center; white-space: nowrap; }
+.political-label { color: #65716d; font: 11px/20px system-ui, sans-serif; text-align: center; pointer-events: none; white-space: nowrap; }
+.political-label span { text-shadow: 0 0 3px #fafbf8, 0 0 3px #fafbf8; }
+.political-label.country-reference { font-size: 10px; text-transform: uppercase; letter-spacing: .1em; color: #6a746f; }
+.political-label.state-reference { font-size: 10px; font-style: italic; color: #6c7872; }
 .city-label { color: #425b59; font-size: 10px; line-height: 1.1; text-align: left; white-space: nowrap; text-shadow: 0 0 3px #fff, 0 0 3px #fff; }
 @media (max-width: 1050px) {
  .explorer { grid-template-columns: minmax(0, 1fr) 245px; gap: 1rem; }

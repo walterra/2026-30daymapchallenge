@@ -2,8 +2,8 @@
 const status = document.querySelector('#status');
 async function start() {
   if (!window.L || !window.searchableSelect) throw new Error('Local map library unavailable.');
-  const [areas, coverage, context, austria, cities, tirol, annotationData] = await Promise.all(
-    ['ski-areas.geojson', 'coverage.json', 'context.geojson', 'austria.geojson', 'cities.geojson', 'tirol-boundaries.geojson', 'annotations.json'].map(async name => {
+  const [areas, coverage, context, austria, tirol, annotationData, stateBorders, referenceLabels] = await Promise.all(
+    ['ski-areas.geojson', 'coverage.json', 'context.geojson', 'austria.geojson', 'tirol-boundaries.geojson', 'annotations.json', 'state-borders.geojson', 'reference-labels.geojson'].map(async name => {
       const response = await fetch('data/' + name);
       if (!response.ok) throw new Error(name + ' could not be loaded (HTTP ' + response.status + ').');
       return response.json();
@@ -18,23 +18,45 @@ async function start() {
   const dataset = feature => feature.properties.dataset === 'tirol' ? 'tirol' : 'openskidata';
   const sourceLabel = feature => dataset(feature) === 'tirol' ? 'Tirol planning boundary · 2011' : 'OpenSkiData outline · snapshot 2026-11-02';
   const map = L.map('map', { preferCanvas: true, scrollWheelZoom: false, zoomSnap: .25 });
-  for (const [name, zIndex] of [['context', 250], ['resorts', 420]]) {
+  for (const [name, zIndex] of [['context', 250], ['political-labels', 310], ['resorts', 420]]) {
     map.createPane(name); map.getPane(name).style.zIndex = zIndex;
   }
   map.getPane('context').style.pointerEvents = 'none';
   const basemap = L.geoJSON(context, {
     pane: 'context', interactive: false,
-    style: f => ({ color: '#bacbc1', weight: .7, fillColor: f.properties.iso === 'AUT' ? '#e5ede7' : '#f4f6f2', fillOpacity: 1 })
+    style: f => ({ color: '#c8cecb', weight: .7, fillColor: f.properties.iso === 'AUT' ? '#f0f2ef' : '#f8f9f6', fillOpacity: 1 })
   }).addTo(map);
-  const border = L.geoJSON(austria, { pane: 'context', interactive: false, style: { color: '#829a8d', weight: 1.3, fill: false } }).addTo(map);
+  const border = L.geoJSON(austria, { pane: 'context', interactive: false, style: { color: '#9ca8a5', weight: 1.1, fill: false } }).addTo(map);
   const countryBounds = border.getBounds();
   map.attributionControl.addAttribution('Data: <a href="https://openskidata.org/">OpenSkiData</a> · © <a href="https://www.openstreetmap.org/copyright">OSM contributors</a> · <a href="https://skimap.org/">Skimap.org</a> · <a href="https://whosonfirst.org/">Who’s On First</a> · © <a href="https://mapterhorn.com/">Mapterhorn</a> · Tirol: <a href="https://www.arcgis.com/home/item.html?id=9fb23fac39034eadaff8054fdd35cbf6">Land Tirol – tiris</a> (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>) · Context: <a href="https://www.naturalearthdata.com/">Natural Earth</a>');
   L.control.scale({ imperial: false, position: 'bottomleft', maxWidth: 100 }).addTo(map);
-  for (const city of cities.features) {
-    const [lon, lat] = city.geometry.coordinates;
-    const label = document.createElement('span'); label.textContent = city.properties.name;
-    L.marker([lat, lon], { interactive: false, keyboard: false, icon: L.divIcon({ className: 'city-label', html: label, iconSize: [65, 18], iconAnchor: [-4, 7] }) }).addTo(map);
+  L.geoJSON(stateBorders, { pane: 'context', interactive: false,
+    style: { color: '#b1bcb7', weight: .7, opacity: .9, dashArray: '2 4', fill: false }
+  }).addTo(map);
+  map.getPane('political-labels').style.pointerEvents = 'none';
+  const politicalLabels = referenceLabels.features.sort((a, b) => a.properties.priority - b.properties.priority).map(feature => {
+    const label = document.createElement('span'); label.textContent = feature.properties.name;
+    const [lon, lat] = feature.geometry.coordinates;
+    const marker = L.marker([lat, lon], { pane: 'political-labels', interactive: false, keyboard: false,
+      icon: L.divIcon({ className: 'political-label ' + feature.properties.kind + '-reference', html: label, iconSize: [160, 20], iconAnchor: [80, 10] })
+    }).addTo(map);
+    return { feature, marker };
+  });
+  function updatePoliticalLabels() {
+    const occupied = Array.from(map.getContainer().querySelectorAll('.annotation-note-content, .leaflet-control-zoom, .leaflet-popup-content-wrapper')).map(node => node.getBoundingClientRect());
+    const extent = map.getContainer().getBoundingClientRect();
+    for (const { feature, marker } of politicalLabels) {
+      const element = marker.getElement(); if (!element) continue;
+      element.setAttribute('aria-hidden', 'true'); element.style.display = '';
+      const rect = element.querySelector('span').getBoundingClientRect();
+      const collides = occupied.some(b => rect.left < b.right + 8 && rect.right > b.left - 8 && rect.top < b.bottom + 5 && rect.bottom > b.top - 5);
+      const outside = rect.left < extent.left + 7 || rect.right > extent.right - 7 || rect.top < extent.top + 7 || rect.bottom > extent.bottom - 22;
+      if (map.getZoom() < feature.properties.minZoom || collides || outside) element.style.display = 'none';
+      else occupied.push(rect);
+    }
   }
+  map.on('moveend zoomend resize storyannotationslayout', () => requestAnimationFrame(updatePoliticalLabels));
+  map.whenReady(() => requestAnimationFrame(updatePoliticalLabels));
   const background = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 18, attribution: 'Tiles © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   });

@@ -70,10 +70,24 @@ Source region labels, operating status, official websites and upstream source id
 
 Public-domain Natural Earth data, kept separate from the ODbL ski-area dataset:
 - 1:10m admin-0 countries: https://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_0_countries.zip
-- 1:50m populated places: https://naciscdn.org/naturalearth/50m/cultural/ne_50m_populated_places.zip
+- 1:10m admin-1 states/provinces: https://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_1_states_provinces.zip
+- 1:10m populated places: https://naciscdn.org/naturalearth/10m/cultural/ne_10m_populated_places.zip
+- Original preparation input (legacy single-city file, no longer rendered): https://naciscdn.org/naturalearth/50m/cultural/ne_50m_populated_places.zip
 - Terms: https://www.naturalearthdata.com/about/terms-of-use/
 
-Neighboring countries are clipped and simplified only for background rendering. Austria's separate outline and the supplied Vienna reference label provide geographic orientation. The background is not used to validate or clip resort polygons.
+Neighboring countries are clipped and simplified only for background rendering. The neutral, tile-free political basemap adds shared internal boundaries for **all nine Austrian states**: adjacent boundaries are intersected, unioned and line-merged before simplification, so shared edges are drawn once rather than as independent polygon outlines. National borders are solid; state borders are fine dashed lines. The separate Austria outline remains the overview extent.
+
+Scale-aware country, state and city labels use public-domain Natural Earth positions (nine Austrian city records). Label collisions, clipped labels and collisions with annotation text or controls are suppressed. Labels sit beneath resort geometry and callouts, never above them. The background is not used to validate, classify or clip resort polygons.
+
+Reproduce this additional context:
+
+```sh
+curl -L --fail https://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_1_states_provinces.zip -o /tmp/ne_10m_admin_1_states_provinces.zip
+curl -L --fail https://naciscdn.org/naturalearth/10m/cultural/ne_10m_populated_places.zip -o /tmp/ne_10m_populated_places.zip
+uv run scripts/prepare-political-basemap.py --states /tmp/ne_10m_admin_1_states_provinces.zip --places /tmp/ne_10m_populated_places.zip
+```
+
+Outputs: `data/state-borders.geojson` and `data/reference-labels.geojson`, approximately 32 KB combined. Metadata records public-domain licensing and source hashes. These are topology-aware GeoJSON linework and label files, not a required TopoJSON runtime or an external map-tile service.
 
 Optional street-map tiles come from OpenStreetMap with visible attribution:
 https://operations.osmfoundation.org/policies/tiles/
@@ -149,7 +163,7 @@ Leaflet 1.9.4 is vendored with its BSD-2-Clause license. Native controls, labele
 
 ## Verification · 2026-11-03
 
-- 14 ski-map tests passed, including exact geometry/source-name fidelity against both cached input downloads, valid geometries, separate IDs/licenses, the Sölden alias, its piste-record audit and all three annotation groups/source names and enclosing geographic bounds.
+- 15 ski-map tests passed, including exact geometry/source-name fidelity against both cached input downloads, valid geometries, separate IDs/licenses, the Sölden alias, its piste-record audit all three annotation groups/source names and enclosing geographic bounds, and the political basemap’s nine-state/nine-city accounting and valid line geometry.
 - Existing 10 home-distance and 7 water-data tests passed.
 - Both JavaScript files passed `node --check`; site-resource and whitespace checks passed.
 - Browser checks at 1440px, 390px and 320px: no horizontal overflow; source toggles, hidden-source activation, Sölden search/native selection, no-match/Escape behavior and overview reset checked. No browser errors in the final clean session.

@@ -110,6 +110,24 @@ class SkiPolygonTests(unittest.TestCase):
         self.assertEqual([audit[k] for k in ['associatedRecords', 'intersectingRecords', 'fullyContainedRecords']], [223, 219, 212])
         self.assertEqual(len(audit['runsSHA256']), 64)
 
+    def test_political_basemap_context(self):
+        borders = json.loads((folder / 'state-borders.geojson').read_text())
+        self.assertEqual(borders['metadata']['stateCount'], 9)
+        self.assertEqual(borders['metadata']['license'], 'Public domain')
+        lines = shape(borders['geometry'])
+        self.assertIn(lines.geom_type, ('LineString', 'MultiLineString'))
+        self.assertTrue(lines.is_valid)
+        self.assertFalse(lines.is_empty)
+        labels = json.loads((folder / 'reference-labels.geojson').read_text())['features']
+        counts = Counter(f['properties']['kind'] for f in labels)
+        self.assertEqual(counts['state'], 9)
+        self.assertEqual(counts['city'], 9)
+        self.assertTrue({'Vienna', 'Innsbruck', 'Salzburg'}.issubset({f['properties']['name'] for f in labels}))
+        for f in labels:
+            lon, lat = f['geometry']['coordinates']
+            self.assertTrue(8 <= lon <= 19 and 45 <= lat <= 51)
+            self.assertGreaterEqual(f['properties']['minZoom'], 0)
+
     def test_annotation_anchors_and_source_names(self):
         from shapely.geometry import Point
         notes = json.loads((folder / 'annotations.json').read_text())
