@@ -2,6 +2,14 @@
 (async () => {
   const assert = (condition, message) => { if (!condition) throw new Error(message); };
   const svg = document.querySelector('#map');
+  const saved = await fetch('data/bubble-layouts.json').then(r => r.json());
+  const savedIndices = new Map(saved.nodes.map((n, i) => [`${n.cityIndex}:${n.marketIndex}`, i]));
+  const matchesSaved = mode => Array.from(document.querySelectorAll('.dot')).every(element => {
+    const n = element.__data__;
+    const position = saved.layouts[mode][savedIndices.get(`${n.cityIndex}:${n.marketIndex}`)];
+    return position === null ? getComputedStyle(element).display === 'none'
+      : +element.getAttribute('cx') === position[0] && +element.getAttribute('cy') === position[1];
+  });
   assert(svg.dataset.settled === 'true', 'Wait for the force layout to settle before testing');
   const waitForLayout = async () => {
     const start = performance.now();
@@ -19,7 +27,8 @@
   const allDots = Array.from(document.querySelectorAll('.dot'));
   const framedCount = allDots.filter(e => inFrame(e.__data__)).length;
   const foreignCount = allDots.filter(e => inFrame(e.__data__) && !e.__data__.domestic).length;
-  assert(+svg.dataset.layoutCount === framedCount, 'Unfiltered simulation must contain only framed pairs');
+  assert(+svg.dataset.layoutCount === framedCount, 'Unfiltered saved layout must contain only framed pairs');
+  assert(matchesSaved('all'), 'All-mode coordinates must match the saved artifact exactly');
   const dots = Array.from(document.querySelectorAll('.dot'));
   assert(dots.length === 5321, 'Every non-missing individual-country pair must be present');
   assert(dots.filter(e => e.__data__.value === 0).length === 144, 'Reported zeros must not be dropped');
@@ -49,22 +58,33 @@
   filter.dispatchEvent(new Event('change'));
   await waitForLayout();
   assert(+svg.dataset.layoutCount === foreignCount, 'Filtered simulation must omit domestic and out-of-frame pairs');
-  assert(+svg.dataset.layoutDomesticCount === 0, 'No domestic pair may participate in collision forces');
+  assert(+svg.dataset.layoutDomesticCount === 0, 'Foreign-only layout must exclude domestic pairs');
+  assert(matchesSaved('foreign'), 'Foreign-mode coordinates must match the saved artifact exactly');
   assert(document.querySelectorAll('.dot.selected').length === 97, 'Framed Dutch outbound coverage must be 97');
   assert(dots.every(e => (getComputedStyle(e).display === 'none') === (e.__data__.domestic || !inFrame(e.__data__))), 'Filter must hide domestic pairs across every origin');
   assert(dots.some(e => e.__data__.market === 'Germany' && e.__data__.domestic && getComputedStyle(e).display === 'none'), 'German domestic bubbles must also be hidden');
   dots.forEach(e => assert(e.getAttribute('r') === before.get(e)[2], 'Filtering must preserve the global radius scale'));
   assert(dots.some(e => !e.__data__.domestic && Math.abs(+e.getAttribute('cx') - +before.get(e)[0]) > 1), 'Remaining bubbles must repack into the released collision space');
-  // Rapid toggles must cancel obsolete animation batches.
+  // Rapid toggles synchronously load the latest saved composition.
   filter.checked = false;
   filter.dispatchEvent(new Event('change'));
   filter.checked = originalFilter;
   filter.dispatchEvent(new Event('change'));
   await waitForLayout();
-  assert(+svg.dataset.layoutCount === (originalFilter ? foreignCount : framedCount), 'Latest filter state must own the final layout');
+  assert(+svg.dataset.layoutCount === (originalFilter ? foreignCount : framedCount), 'Latest filter state must select the saved layout');
   origin.value = original;
   origin.dispatchEvent(new Event('change'));
+  if (innerWidth > 800) {
+    const map = svg.getBoundingClientRect();
+    const table = document.querySelector('.layout aside').getBoundingClientRect();
+    assert(Math.abs(map.height - table.height) < 1, 'Map and table must have matching viewport heights');
+    assert(map.height <= innerHeight * .85, 'Panels should fit within a reasonable viewport height');
+    const oldScroll = scrollY;
+    window.scrollTo(0, 0);
+    assert(svg.getBoundingClientRect().height === map.height, 'Panel height must not depend on page scroll position');
+    window.scrollTo(0, oldScroll);
+  }
   return { result: 'pass', bubbles: dots.length, reportedZeros: 144,
-    maxDisplacement: Math.round(Math.max(...dots.map(e => Math.hypot(e.__data__.x - e.__data__.ax, e.__data__.y - e.__data__.ay)))),
+    maxDisplacement: Math.round(Math.max(...dots.filter(e => getComputedStyle(e).display !== 'none').map(e => Math.hypot(e.__data__.x - e.__data__.ax, e.__data__.y - e.__data__.ay)))),
     overflow: document.documentElement.scrollWidth > innerWidth };
 })();

@@ -21,17 +21,17 @@ Reference studied: [D3 / Mike Bostock, Clustered Bubbles](https://observablehq.c
 - Its destination's projected coordinates are its fixed x/y attractor (`forceX` and `forceY`, strength 0.14), replacing the example's free-moving group centroid.
 - Deterministic spiral seeds avoid coincident starting positions.
 - `forceCollide` uses bubble radius + 0.35 map units, strength 1, two iterations.
-- Each layout runs 320 ticks, in batches of eight per animation frame, then freezes. Only visible nodes participate in attraction and collision.
+- `scripts/prepare-travel-layouts.js` runs each layout for 320 ticks offline using the vendored D3, then writes `data/bubble-layouts.json`. Only included nodes participate in attraction and collision. The browser never runs forces.
 - Collision displacement is diagrammatic, not a new geographic location. Selecting or hovering a bubble draws a line back to its actual city attractor.
 - Source selection changes only highlighting, paint order and the selected-source ranked list. It never filters nodes, reruns the layout, rescales radii or colours destinations by country.
 - All unselected origins have the same neutral grey fill.
-- The domestic filter hides matching-country pairs across all origins, not just the selected one. It also filters the ranking and missing-count denominator. Changing the filter rebuilds the simulation using only visible nodes, releasing excluded bubbles’ collision space. Deterministic seeds are restored and obsolete animation batches are cancelled. Toggling repacks the remaining bubbles without rescaling radii; changing the source alone still preserves positions.
+- The domestic filter hides matching-country pairs across all origins, not just the selected one. It also filters the ranking and missing-count denominator. The two layouts are prepared separately: 5,205 framed pairs with domestic stays and 5,060 without. Excluded nodes occupy no collision space in the foreign-only layout. Toggling synchronously loads the corresponding saved positions without simulation or radius changes. Each entry uses stable city/market indices, with null positions for excluded pairs. Source and generator SHA-256 digests make stale artifacts detectable in tests. Regenerate after changing data, projection, frame, size scale or force configuration.
 
 This replaces the earlier four-cluster visitor-profile view. The prepared `map-data.json` retains the earlier statistical profile fields for reproducibility, but the current renderer does not use them. Geographic bubble grouping is not a statistical tourism segmentation.
 
 ## Bubble size and interaction
 
-Radius is `max(0.65, 15 × sqrt(person-nights / global maximum))` in a fixed 1,000 × 1,000 SVG viewBox. Above the minimum, circle area is proportional to bednights. Tiny counts and reported zeros use a visibility floor, explicitly disclosed on the page; they are not area-proportional. The global scale is unchanged across origins.
+Radius is `max(0.65, 15 × sqrt(person-nights / global maximum))` in a canonical 1,000 × 850 SVG composition. Above the minimum, circle area is proportional to bednights. Tiny counts and reported zeros use a visibility floor, explicitly disclosed on the page; they are not area-proportional. The global scale is unchanged across origins. On desktop, map and table share a height of `min(760px, 84dvh)`, independent of header space or scroll position. Scrolling down to this section is normal; the ranking then scrolls internally within its fixed-height panel. The canonical viewBox scales uniformly with `preserveAspectRatio="xMidYMid meet"`; map geometry, radii, anchors and leader lines stay aligned, without repacking on resize. Different aspect ratios can leave unused space around the composition. Narrow layouts stack the panels.
 
 Bubble hover/click displays the source, destination, count and reporting definition. The origin selector and ranked destination buttons provide keyboard-accessible equivalents. Neutral circles remain inspectable, even when they belong to another source. The SVG has a text description; explanatory copy, missing-data counts and downloadable data remain available.
 
@@ -69,21 +69,23 @@ python3 scripts/prepare-travel-clusters.py /tmp/tourmis-cities1000.zip
 curl -fL https://naciscdn.org/naturalearth/10m/physical/ne_10m_land.zip -o /tmp/ne_10m_land.zip
 uv run scripts/prepare-travel-land.py /tmp/ne_10m_land.zip
 python3 scripts/test-travel-clusters.py
+node scripts/prepare-travel-layouts.js
+node --test scripts/test-travel-layouts.js
 node --check maps/04-travel-clusters/map.js
 python3 scripts/check-site.py
 python3 -m http.server 8044 --bind 127.0.0.1
 ```
 
-Open `/maps/04-travel-clusters/`, wait for “Layout settled”, then run the browser regression script:
+Open `/maps/04-travel-clusters/`, wait for “Saved layout”, then run the browser regression script:
 
 ```sh
 agent-browser eval --stdin < scripts/check-travel-bubbles.js
 ```
 
-Runtime dependencies: local D3 v4.13.0 (BSD-3-Clause; `assets/vendor/d3/LICENSE`) and shared theme files. No build step, credentials, remote API, tiles or external runtime requests. Preparation uses Python; basemap preparation uses pinned pyshp and Shapely via uv.
+Runtime dependencies: local D3 v4.13.0 (BSD-3-Clause; `assets/vendor/d3/LICENSE`) and shared theme files. No build step, credentials, remote API, tiles or external runtime requests. Force-layout preparation uses Node.js and the existing vendored D3; no packages need installing. Other preparation uses Python; basemap preparation uses pinned pyshp and Shapely via uv.
 
 ## Assistance and checks
 
 Substantial AI assistance: authenticated data extraction, normalization, geocoding, clustering experiments, map code, documentation and checks. Travel counts are real reported values, not illustrative observations. Force displacement is purely visual.
 
-Checks performed on this revision: five standard-library dataset regression tests passed; JavaScript syntax, site/link checks and `git diff --check` passed. Headed-browser force-layout regression passed for all 5,321 pairs, 144 zero markers, source-only highlighting, unchanged positions/radii across Germany/China/Netherlands selections, finite geometry and anchor inspection. Maximum observed bubble displacement in the tested layout: 31 SVG map units. Desktop 1280×900 screenshot reviewed; narrow 375×812 layout had no horizontal overflow and retained all bubbles. Narrow axe audit: zero violations, one incomplete contrast review; no claim of complete accessibility conformance. Browser console produced no messages. Original-provider attribution and cross-city comparability remain publication gates.
+Checks performed on the saved-layout revision: four Node tests passed (source/generator freshness, exact coordinate reproduction, stable keys and mode coverage, absence of runtime force/resize simulation). Five Python dataset tests, JavaScript syntax, site/link checks and `git diff --check` passed. Headed-browser interaction regression passed for source highlighting, both filter modes, inspection and matching panel heights. Resizing from 1280×900 to 375×812 retained identical saved coordinates and radii with no horizontal overflow; console produced no messages. Earlier axe checks found zero violations with an incomplete contrast review; no claim of complete accessibility conformance. Original-provider attribution and cross-city comparability remain publication gates.
