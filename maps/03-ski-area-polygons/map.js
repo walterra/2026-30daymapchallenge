@@ -230,7 +230,7 @@ async function start() {
     stroke: layer.options.stroke !== false, width: layer.options.weight || 1,
     dash: typeof layer.options.dashArray === 'string' ? layer.options.dashArray.split(/\s+/).map(Number) : []
   }));
-  const story = skiMapAnnotations({ map, rows: displayRows, cities: referenceLabels.features.filter(feature => feature.properties.required), marks: labelMarks, shapes: labelShapes, onHover: updateLinkedHighlight });
+  const story = skiMapAnnotations({ map, rows: displayRows, cities: referenceLabels.features.filter(feature => feature.properties.required), marks: labelMarks, shapes: labelShapes, land: regionContext.features.map(feature => feature.geometry), onHover: updateLinkedHighlight });
   const rankRows = new Map(displayRows.map(row => [row.id, row]));
   const buttons = Array.from(document.querySelectorAll('.ranking-row'));
   let renderedId;

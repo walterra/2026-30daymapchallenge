@@ -3,12 +3,16 @@
  * occupancy, minimum leader length, and adaptive margins to retain all ten.
  */
 'use strict';
-window.skiMapAnnotations = function ({ map, rows, cities = [], marks = [], shapes = {}, onHover = () => {} }) {
+window.skiMapAnnotations = function ({ map, rows, cities = [], marks = [], shapes = {}, land = [], onHover = () => {} }) {
   if (!window.d3?.annotation || !window.SkiLabelLayout) throw Error('Local annotation/layout libraries unavailable');
   const { OccupancyBitmap, consecutive, connected, outwardCost } = SkiLabelLayout;
   const container = map.getContainer(), scene = container.closest('.map-scene');
   const svg = d3.select(scene).append('svg').attr('class', 'map-annotations').attr('aria-hidden', 'true');
   const root = svg.append('g');
+  // Non-rendering geometry for independent, rendered-leader regressions.
+  const obstaclePaths = svg.append('defs').attr('class', 'label-polygon-obstacles')
+    .selectAll('path').data(rows.flatMap(row => (shapes[row.id] || []).map(geometry => ({ id: row.id, label: row.label, geometry })))).enter().append('path')
+    .attr('data-resort-id', row => row.id).attr('data-resort-name', row => row.label);
   let frame, selectedId, nodes = [];
   function color() {
     for (const { row, group } of nodes) group.classList.toggle('is-map-active', row.id === selectedId);
@@ -100,41 +104,76 @@ window.skiMapAnnotations = function ({ map, rows, cities = [], marks = [], shape
         }
         context.restore(); paintCities(context);
       });
+      // Keep ownership separate: a leader may attach to its own footprint,
+      // but no part of it may pass through another ranked resort.
+      const polygonMasks = rows.map(row => raster(context => {
+        context.lineWidth = 1.2;
+        for (const geometry of shapes[row.id] || []) {
+          context.beginPath(); drawGeometry(context, geometry, padding);
+          context.fill('evenodd'); context.stroke();
+        }
+      }));
+      const foreignMasks = polygonMasks.map((_, own) => SkiLabelLayout.foreignObstacles(polygonMasks, own));
       const vertices = rows.map(row => Array.from(new Map((shapes[row.id] || []).flatMap(geometry => flatten(geometry.coordinates).map(coordinate => project(coordinate, padding))).map(point => [point.x + ':' + point.y, point])).values()));
       const bounds = vertices.map(points => ({ left: Math.min(...points.map(p => p.x)), right: Math.max(...points.map(p => p.x)), top: Math.min(...points.map(p => p.y)), bottom: Math.max(...points.map(p => p.y)) }));
+      const centers = bounds.map((b, id) => {
+        const p = SkiLabelLayout.polygonCenter(polygonMasks[id], { left: b.left * scale, right: b.right * scale, top: b.top * scale, bottom: b.bottom * scale });
+        return { x: p.x / scale, y: p.y / scale };
+      });
+      const landMask = raster(context => {
+        for (const geometry of land) { context.beginPath(); drawGeometry(context, geometry, padding); context.fill('evenodd'); }
+      });
+      const localVerticalCenters = centers.map((center, id) => {
+        const neighbors = centers.map((point, other) => ({ ...point, other })).filter(point => point.other !== id)
+          .sort((a, b) => (a.x - center.x) ** 2 + (a.y - center.y) ** 2 - ((b.x - center.x) ** 2 + (b.y - center.y) ** 2)).slice(0, 3);
+        return neighbors.reduce((sum, neighbor) => sum + neighbor.y, 0) / neighbors.length;
+      });
       const centreCity = cities.find(city => city.properties.name === 'Innsbruck');
       const core = centreCity ? project(centreCity.geometry.coordinates, padding) : { x: size.x / 2, y: padding + size.y / 2 };
       container.dataset.antiGravityCenter = centreCity?.properties.name || 'none';
       const pixel = p => ({ x: p.x * scale, y: p.y * scale });
       const labels = rows.map((row, id) => {
         const metric = metrics[id], box = bounds[id], candidates = [];
+        const leaderClearance = new Map();
+        const verticalDirection = Math.sign(centers[id].y - localVerticalCenters[id]);
+        const clearLeader = (point, target, guard) => {
+          const key = target.x + ':' + target.y + ':' + guard.x + ':' + guard.y;
+          if (!leaderClearance.has(key)) leaderClearance.set(key, !foreignMasks[id].line(pixel(point), pixel(target), scale * .6) && !foreignMasks[id].line(pixel(target), pixel(guard), scale * .6));
+          return leaderClearance.get(key);
+        };
         const cx = (box.left + box.right) / 2, cy = (box.top + box.bottom) / 2;
         const reference = project(row.mapReference.coordinates, padding);
         const targets = [[box.left, box.top], [cx, box.top], [box.right, box.top], [box.right, cy], [box.right, box.bottom], [cx, box.bottom], [box.left, box.bottom], [box.left, cy]];
         const points = [reference, ...targets.map(([x, y]) => vertices[id].reduce((best, p) => (p.x - x) ** 2 + (p.y - y) ** 2 < (best.x - x) ** 2 + (best.y - y) ** 2 ? p : best))];
-        const unique = Array.from(new Map((size.x < 620 ? [...points, ...vertices[id]] : points).map(point => [point.x + ':' + point.y, point])).values());
+        // Sample placement origins, not geometry: collision masks and anchor
+        // selection still retain every original projected boundary vertex.
+        const stride = Math.max(1, Math.ceil(vertices[id].length / 12));
+        const samples = size.x < 340 ? vertices[id] : size.x < 620 ? vertices[id].filter((_, i) => i % stride === 0) : [];
+        const unique = Array.from(new Map([...points, ...samples].map(point => [point.x + ':' + point.y, point])).values());
         const origins = [...unique.map(point => ({ left: point.x, right: point.x, top: point.y, bottom: point.y })), box];
         const seen = new Set();
         const directions = [[1, -1], [1, 0], [1, 1], [0, -1], [0, 1], [-1, -1], [-1, 0], [-1, 1]];
         directions.sort((a, b) => ((b[0] * (cx - core.x) + b[1] * (cy - core.y)) / Math.hypot(...b)) - ((a[0] * (cx - core.x) + a[1] * (cy - core.y)) / Math.hypot(...a)));
         for (const gap of [minimum + 6, minimum + 12, minimum + 24, minimum + 44, minimum + 72, minimum + 110, minimum + 160, minimum + 210]) for (const [dx, dy] of directions) for (const origin of origins) for (const slide of (size.x < 620 && (!dx || !dy) ? [-1.5, -1, -.5, 0, .5, 1, 1.5] : [0])) {
-          const left = (dx > 0 ? origin.right + gap : dx < 0 ? origin.left - gap - metric.width : (origin.left + origin.right - metric.width) / 2) + (!dx ? slide * metric.width : 0);
-          const top = (dy > 0 ? origin.bottom + gap : dy < 0 ? origin.top - gap - metric.height : (origin.top + origin.bottom - metric.height) / 2) + (!dy ? slide * metric.height : 0);
+          const proposedLeft = (dx > 0 ? origin.right + gap : dx < 0 ? origin.left - gap - metric.width : (origin.left + origin.right - metric.width) / 2) + (!dx ? slide * metric.width : 0);
+          const proposedTop = (dy > 0 ? origin.bottom + gap : dy < 0 ? origin.top - gap - metric.height : (origin.top + origin.bottom - metric.height) / 2) + (!dy ? slide * metric.height : 0);
+          const left = size.x < 620 ? Math.max(8, Math.min(size.x - metric.width - 8, proposedLeft)) : proposedLeft;
+          const top = size.x < 620 ? Math.max(8, Math.min(height - metric.height - 8, proposedTop)) : proposedTop;
           const key = left + ':' + top;
           if (seen.has(key)) continue; seen.add(key);
           const rect = { left, right: left + metric.width, top, bottom: top + metric.height };
           if (left < 8 || top < 8 || rect.right > size.x - 8 || rect.bottom > height - 8) continue;
-          let anchor, end, distanceSquared = Infinity;
-          for (const point of vertices[id]) {
-            const target = { x: Math.max(rect.left - 6, Math.min(rect.right + 6, point.x)), y: Math.max(rect.top - 6, Math.min(rect.bottom + 6, point.y)) };
-            const length = (point.x - target.x) ** 2 + (point.y - target.y) ** 2;
-            if (length < distanceSquared) { anchor = point; end = target; distanceSquared = length; }
-          }
-          const distance = Math.sqrt(distanceSquared);
-          if (distance < minimum) continue;
           const pixelRect = { left: (rect.left - 3) * scale, right: (rect.right + 3) * scale, top: (rect.top - 3) * scale, bottom: (rect.bottom + 3) * scale };
-          const placementCost = outwardCost(rect, { x: cx, y: cy }, core, distance);
-          if (!base.rectangle(pixelRect)) candidates.push({ rect, anchor, end, distance, placementCost, gap, slide, direction: directions.findIndex(pair => pair[0] === dx && pair[1] === dy), pixelRect, pixelAnchor: pixel(anchor), pixelEnd: pixel(end) });
+          if (base.rectangle(pixelRect)) continue;
+          const anchor = centers[id];
+          const guard = { x: Math.max(rect.left, Math.min(rect.right, anchor.x)), y: Math.max(rect.top, Math.min(rect.bottom, anchor.y)) };
+          const fullDistance = Math.hypot(anchor.x - guard.x, anchor.y - guard.y), distance = fullDistance - 6;
+          const end = { x: anchor.x + (guard.x - anchor.x) * distance / fullDistance, y: anchor.y + (guard.y - anchor.y) * distance / fullDistance };
+          if (distance < minimum || !clearLeader(anchor, end, guard)) continue;
+          const mapOverlap = SkiLabelLayout.mapCoverage(landMask, pixelRect);
+          const placementCost = outwardCost(rect, centers[id], core, distance)
+            + SkiLabelLayout.verticalCost(rect, centers[id], localVerticalCenters[id], 8000) + mapOverlap * 45000;
+          candidates.push({ rect, anchor, end, distance, placementCost, gap, slide, verticalDirection, mapOverlap, sourceCenter: centers[id], preserveVerticalOrder: size.x >= 620 && centers[id].x < core.x, pixelConnection: [pixel(anchor), pixel(end), pixel(guard)], direction: directions.findIndex(pair => pair[0] === dx && pair[1] === dy), pixelRect, pixelAnchor: pixel(anchor), pixelEnd: pixel(end) });
         }
         candidates.sort((a, b) => a.placementCost - b.placementCost);
         const cells = new Set(), variants = new Map();
@@ -145,11 +184,12 @@ window.skiMapAnnotations = function ({ map, rows, cities = [], marks = [], shape
           if (cells.has(key) || count >= 2) return false;
           cells.add(key); variants.set(variant, count + 1); return true;
         });
-        return { id, candidates: diverse };
+        return { id, verticalDirection, candidates: diverse };
       });
       const constrained = rows.map((_, i) => i).sort((a, b) => size.x < 340 ? metrics[b].height * metrics[b].width - metrics[a].height * metrics[a].width : size.x < 620 ? bounds[a].left + bounds[a].right - bounds[b].left - bounds[b].right : labels[a].candidates.length - labels[b].candidates.length || metrics[b].height * metrics[b].width - metrics[a].height * metrics[a].width);
-      const seed = connected(labels, cityMask, constrained, scale, size.x < 620 ? 128 : 48);
+      const seed = connected(labels, cityMask, constrained, scale, size.x < 620 ? 300 : 64, size.x < 620);
       container.dataset.bitmapSeedCount = String(seed.length);
+      container.dataset.verticalDirections = JSON.stringify(labels.map(label => label.verticalDirection));
       const preferred = labels.map(label => {
         const first = seed.find(item => item.id === label.id);
         return first ? { ...label, candidates: [first, ...label.candidates] } : label;
@@ -173,6 +213,8 @@ window.skiMapAnnotations = function ({ map, rows, cities = [], marks = [], shape
       return;
     }
     delete container.dataset.layoutFailure;
+    obstaclePaths.attr('d', row => (row.geometry.type === 'Polygon' ? row.geometry.coordinates : row.geometry.coordinates.flat())
+      .map(ring => ring.map((coordinate, i) => { const p = project(coordinate, padding); return `${i ? 'L' : 'M'}${p.x},${p.y}`; }).join('') + 'Z').join(''));
     root.call(d3.annotation().type(d3.annotationCallout).annotations(renderData));
     nodes = root.selectAll('g.annotation').nodes().map((group, i) => {
       const row = rows[i], content = group.querySelector('.annotation-note-content');
@@ -190,6 +232,8 @@ window.skiMapAnnotations = function ({ map, rows, cities = [], marks = [], shape
       const note = group.querySelector('.annotation-note'), matrix = note.transform.baseVal.consolidate()?.matrix;
       const current = content.getBoundingClientRect();
       note.setAttribute('transform', `translate(${(matrix?.e || 0) + sceneRect.left + placed.rect.left - current.left},${(matrix?.f || 0) + sceneRect.top + placed.rect.top - current.top})`);
+      group.dataset.verticalDirection = String(placed.verticalDirection);
+      group.dataset.mapOverlap = String(placed.mapOverlap);
       group.dataset.labelBank = placed.rect.top + metrics[placed.id].height / 2 < padding + map.getSize().y / 2 ? 'top' : 'bottom';
       group.querySelector('.annotation-connector path').setAttribute('d', placed.leader.map((p, i) => `${i ? 'L' : 'M'}${p.x - placed.anchor.x},${p.y - placed.anchor.y}`).join(''));
     }
@@ -198,6 +242,7 @@ window.skiMapAnnotations = function ({ map, rows, cities = [], marks = [], shape
     container.dataset.layoutReady = 'true';
     container.dataset.layoutMs = (performance.now() - started).toFixed(1);
     container.dataset.labelAlgorithm = 'occupancy-bitmap-connected-outward';
+    container.dataset.anchorMode = 'polygon-interior-center';
     map.fire('storyannotationslayout');
   }
   function update() { if (frame === undefined) frame = requestAnimationFrame(draw); }

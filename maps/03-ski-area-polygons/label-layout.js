@@ -72,12 +72,55 @@
     }
     return placed;
   }
+  function polygonCenter(mask, bounds) {
+    const left = Math.max(0, Math.floor(bounds.left) - 2), top = Math.max(0, Math.floor(bounds.top) - 2);
+    const width = Math.min(mask.width, Math.ceil(bounds.right) + 2) - left, height = Math.min(mask.height, Math.ceil(bounds.bottom) + 2) - top;
+    const distances = new Float32Array(width * height);
+    let sumX = 0, sumY = 0, count = 0;
+    for (let y = 1; y < height - 1; y++) for (let x = 1; x < width - 1; x++) {
+      const px = left + x, py = top + y;
+      if (mask.data[py * mask.stride + (px >>> 5)] & (1 << (px & 31))) { distances[y * width + x] = 1e6; sumX += x; sumY += y; count++; }
+    }
+    for (let y = 1; y < height - 1; y++) for (let x = 1; x < width - 1; x++) {
+      const i = y * width + x;
+      if (distances[i]) distances[i] = Math.min(distances[i], distances[i - 1] + 1, distances[i - width] + 1, distances[i - width - 1] + Math.SQRT2, distances[i - width + 1] + Math.SQRT2);
+    }
+    let best, score = -Infinity;
+    for (let y = height - 2; y > 0; y--) for (let x = width - 2; x > 0; x--) {
+      const i = y * width + x; if (!distances[i]) continue;
+      distances[i] = Math.min(distances[i], distances[i + 1] + 1, distances[i + width] + 1, distances[i + width + 1] + Math.SQRT2, distances[i + width - 1] + Math.SQRT2);
+      const value = distances[i] - .01 * Math.hypot(x - sumX / count, y - sumY / count);
+      if (value > score) { score = value; best = { x: left + x + .5, y: top + y + .5 }; }
+    }
+    return best;
+  }
+  function mapCoverage(mask, rect) {
+    let occupied = 0;
+    for (let y = 0; y < 4; y++) for (let x = 0; x < 4; x++) {
+      const px = Math.floor(rect.left + (x + .5) * (rect.right - rect.left) / 4), py = Math.floor(rect.top + (y + .5) * (rect.bottom - rect.top) / 4);
+      if (mask.rectangle({ left: px, right: px + 1, top: py, bottom: py + 1 })) occupied++;
+    }
+    return occupied / 16;
+  }
+  function foreignObstacles(masks, own) {
+    const result = new OccupancyBitmap(masks[own].width, masks[own].height);
+    for (let id = 0; id < masks.length; id++) if (id !== own) {
+      for (let word = 0; word < result.data.length; word++) result.data[word] |= masks[id].data[word];
+    }
+    return result;
+  }
   // Soft outward preference, balanced against squared leader length.
   function outwardCost(rect, origin, centre, distance, strength = 1000) {
     const vx = origin.x - centre.x, vy = origin.y - centre.y;
     const lx = (rect.left + rect.right) / 2 - origin.x, ly = (rect.top + rect.bottom) / 2 - origin.y;
     const alignment = (vx * lx + vy * ly) / (Math.hypot(vx, vy) * Math.hypot(lx, ly) || 1);
     return distance ** 2 + strength * (1 - alignment);
+  }
+  function verticalCost(rect, origin, localCenterY, strength = 4000) {
+    const dy = (rect.top + rect.bottom) / 2 - origin.y;
+    const dx = (rect.left + rect.right) / 2 - origin.x;
+    const alignment = Math.sign(origin.y - localCenterY) * dy / (Math.hypot(dx, dy) || 1);
+    return strength * (1 - alignment);
   }
   // Bounded forward checking proposes alternatives. Final placement still
   // rasterizes each accepted label and leader consecutively.
@@ -92,15 +135,28 @@
     }
     return true;
   }
-  function connected(labels, cityMask, order, scale = 1, budgetMs = 100) {
+  const connectionSegments = candidate => {
+    const points = candidate.pixelConnection || [candidate.pixelAnchor, candidate.pixelEnd];
+    return points.slice(1).map((point, i) => [points[i], point]);
+  };
+  function geographicOrderConflict(a, b) {
+    if (!a.preserveVerticalOrder || !b.preserveVerticalOrder) return false;
+    const sourceDy = a.sourceCenter.y - b.sourceCenter.y;
+    const labelDy = (a.rect.top + a.rect.bottom - b.rect.top - b.rect.bottom) / 2;
+    return Math.abs(sourceDy) >= 6 && sourceDy * labelDy < -1;
+  }
+  const connectionConflict = (a, b) => geographicOrderConflict(a, b) || overlaps(a.pixelRect, b.pixelRect)
+    || connectionSegments(a).some(([p, q]) => cuts(p, q, b.pixelRect) || connectionSegments(b).some(([r, s]) => intersects(p, q, r, s)))
+    || connectionSegments(b).some(([p, q]) => cuts(p, q, a.pixelRect));
+  function connected(labels, cityMask, order, scale = 1, budgetMs = 100, leastConstraining = false) {
     let key = 0;
-    const options = labels.map(label => label.candidates.filter(candidate => !cityMask.line(candidate.pixelAnchor, candidate.pixelEnd, scale * .6)).map(candidate => ({ ...candidate, id: label.id, key: key++ })));
+    const options = labels.map(label => label.candidates.filter(candidate => connectionSegments(candidate).every(([a, b]) => !cityMask.line(a, b, scale * .6))).map(candidate => ({ ...candidate, id: label.id, key: key++ })));
     const conflict = new Map(), keyRange = key;
     const scratch = new OccupancyBitmap(cityMask.width, cityMask.height);
     function words(candidate) {
       if (candidate.words) return candidate.words;
       scratch.rectangle(candidate.pixelRect, true);
-      scratch.line(candidate.pixelAnchor, candidate.pixelEnd, scale * .6, true, ATTACHMENT_PIXELS * scale);
+      connectionSegments(candidate).forEach(([a, b], i) => scratch.line(a, b, scale * .6, true, i ? 0 : ATTACHMENT_PIXELS * scale));
       const touched = new Set();
       for (let i = 0; i < scratch.journal.length; i += 2) touched.add(scratch.journal[i]);
       candidate.words = Uint32Array.from([...touched].sort((a, b) => a - b).flatMap(index => [index, scratch.data[index]]));
@@ -118,18 +174,31 @@
     function collides(a, b) {
       const key = Math.min(a.key, b.key) * keyRange + Math.max(a.key, b.key);
       if (conflict.has(key)) return conflict.get(key);
-      const value = overlaps(a.pixelRect, b.pixelRect) || cuts(a.pixelAnchor, a.pixelEnd, b.pixelRect) || cuts(b.pixelAnchor, b.pixelEnd, a.pixelRect) || intersects(a.pixelAnchor, a.pixelEnd, b.pixelAnchor, b.pixelEnd) || pixelOverlap(a, b);
+      const value = connectionConflict(a, b) || pixelOverlap(a, b);
       conflict.set(key, value); return value;
     }
     const now = () => typeof performance === 'undefined' ? Date.now() : performance.now();
     const started = now(); let visits = 0, stopped = false;
     function visit(domains, placed) {
       if (!domains.length) return placed;
-      if (++visits > 4000 || now() - started > budgetMs) { stopped = true; return null; }
+      if (++visits > 20000 || now() - started > budgetMs) { stopped = true; return null; }
       const chosen = domains.reduce((a, b) => a.pool.length <= b.pool.length ? a : b);
       const remaining = domains.filter(domain => domain !== chosen);
-      for (const candidate of chosen.pool) {
+      const directions = new Map();
+      const sample = leastConstraining ? chosen.pool.filter(candidate => {
+        const count = directions.get(candidate.direction) || 0; directions.set(candidate.direction, count + 1); return count < 3;
+      }) : chosen.pool;
+      const choices = leastConstraining ? sample.map(candidate => {
         const next = remaining.map(domain => ({ id: domain.id, pool: domain.pool.filter(p => !collides(candidate, p)) }));
+        return { candidate, next, freedom: next.reduce((sum, domain) => sum + Math.log(domain.pool.length), 0) };
+      }).filter(choice => choice.next.every(domain => domain.pool.length)).sort((a, b) => b.freedom - a.freedom || a.candidate.placementCost - b.candidate.placementCost) : chosen.pool.map(candidate => ({ candidate }));
+      if (leastConstraining) {
+        const included = new Set(sample);
+        choices.push(...chosen.pool.filter(candidate => !included.has(candidate)).map(candidate => ({ candidate })));
+      }
+      for (const choice of choices) {
+        const { candidate } = choice;
+        const next = choice.next || remaining.map(domain => ({ id: domain.id, pool: domain.pool.filter(p => !collides(candidate, p)) }));
         if (next.some(domain => !domain.pool.length)) continue;
         const result = visit(next, [...placed, candidate]);
         if (result) return result;
@@ -138,6 +207,15 @@
       return null;
     }
     const placed = visit(order.map(id => ({ id, pool: options[id] })), []) || [];
+    // Improve the complete layout, not merely the first feasible packing.
+    for (let pass = 0; pass < 2 && placed.length === labels.length; pass++) {
+      for (const item of placed.slice().sort((a, b) => (b.placementCost || 0) - (a.placementCost || 0))) {
+        for (const candidate of options.find(pool => pool[0]?.id === item.id) || []) {
+          if ((candidate.placementCost || 0) >= (item.placementCost || 0)) break;
+          if (placed.every(other => other === item || !collides(candidate, other))) { placed[placed.indexOf(item)] = candidate; break; }
+        }
+      }
+    }
     connected.debug = { depth: placed.length, visits, stopped };
     return placed;
   }
@@ -147,10 +225,10 @@
     const started = now(), maxChecks = options.maxChecks || 6000, maxMs = options.maxMs || 75;
     const occupied = new OccupancyBitmap(base.width, base.height), placed = [];
     let checks = 0, backtracks = 0, stopped = false;
-    const pools = labels.map(label => label.candidates.filter(p => !base.rectangle(p.pixelRect) && !cities.line(p.pixelAnchor, p.pixelEnd, scale * .6)));
+    const pools = labels.map(label => label.candidates.filter(p => !base.rectangle(p.pixelRect) && connectionSegments(p).every(([a, b]) => !cities.line(a, b, scale * .6))));
     const clear = p => {
       if (++checks > maxChecks || (checks % 64 === 0 && now() - started > maxMs)) { stopped = true; return false; }
-      return !occupied.rectangle(p.pixelRect) && !occupied.line(p.pixelAnchor, p.pixelEnd, scale * .6, false, ATTACHMENT_PIXELS * scale) && !placed.some(other => cuts(p.pixelAnchor, p.pixelEnd, other.pixelRect) || cuts(other.pixelAnchor, other.pixelEnd, p.pixelRect) || intersects(p.pixelAnchor, p.pixelEnd, other.pixelAnchor, other.pixelEnd));
+      return !occupied.rectangle(p.pixelRect) && connectionSegments(p).every(([a, b], i) => !occupied.line(a, b, scale * .6, false, i ? 0 : ATTACHMENT_PIXELS * scale)) && !placed.some(other => connectionConflict(p, other));
     };
     function visit(remaining) {
       if (!remaining.length) return true;
@@ -169,7 +247,7 @@
         if (!clear(p)) { if (stopped) return false; continue; }
         const checkpoint = occupied.checkpoint();
         occupied.rectangle(p.pixelRect, true);
-        occupied.line(p.pixelAnchor, p.pixelEnd, scale * .6, true, ATTACHMENT_PIXELS * scale);
+        connectionSegments(p).forEach(([a, b], i) => occupied.line(a, b, scale * .6, true, i ? 0 : ATTACHMENT_PIXELS * scale));
         placed.push({ ...p, id: labels[selected].id, leader: [p.anchor, p.end] });
         if (visit(rest)) return true;
         placed.pop(); occupied.rollback(checkpoint); backtracks++;
@@ -180,5 +258,5 @@
     const complete = visit(order);
     return { placed: complete ? placed : [], complete, checks, backtracks, available: pools.map(pool => pool.length), elapsed: now() - started };
   }
-  root.SkiLabelLayout = { OccupancyBitmap, greedy, consecutive, connected, outwardCost };
+  root.SkiLabelLayout = { OccupancyBitmap, greedy, consecutive, connected, outwardCost, verticalCost, foreignObstacles, polygonCenter, mapCoverage, geographicOrderConflict };
 })(typeof window === 'undefined' ? globalThis : window);

@@ -12,7 +12,39 @@
   if (map.dataset.layoutReady !== 'true' || map.dataset.layoutFailure) errors.push('No completed layout for the current viewport');
   if (map.dataset.antiGravityCenter !== 'Innsbruck') errors.push('Outward preference must use the actual Innsbruck reference');
   const expectedNotes = Number(map.dataset.annotationCount);
+  const obstacles = Array.from(scene.querySelectorAll('.label-polygon-obstacles path'), path => ({ id: path.dataset.resortId, name: path.dataset.resortName, path: new Path2D(path.getAttribute('d')) }));
+  if (new Set(obstacles.map(obstacle => obstacle.id)).size !== 10) errors.push('Expected ten owner-specific polygon obstacles');
+  const context = document.createElement('canvas').getContext('2d');
+  const connections = [];
+  for (const group of groups) {
+    const leader = group.querySelector('.annotation-connector path');
+    const svgInverse = leader.ownerSVGElement.getScreenCTM().inverse();
+    const matrix = leader.getScreenCTM(), length = leader.getTotalLength();
+    const start = leader.getPointAtLength(0).matrixTransform(matrix), end = leader.getPointAtLength(length).matrixTransform(matrix);
+    const box = group.querySelector('.annotation-note-content').getBoundingClientRect();
+    const guard = { x: Math.max(box.left, Math.min(box.right, start.x)), y: Math.max(box.top, Math.min(box.bottom, start.y)) };
+    connections.push({ name: group.querySelector('title')?.textContent, points: [start, end, guard] });
+    const center = start.matrixTransform(svgInverse);
+    context.lineWidth = 2;
+    if (!obstacles.some(obstacle => obstacle.id === group.dataset.resortId && (context.isPointInPath(obstacle.path, center.x, center.y, 'evenodd') || context.isPointInStroke(obstacle.path, center.x, center.y)))) errors.push('Leader does not start in its own polygon: ' + group.querySelector('title')?.textContent);
+    for (const obstacle of obstacles) {
+      if (obstacle.id === group.dataset.resortId) continue;
+      for (let distance = 0; distance <= length; distance += .5) {
+        const p = leader.getPointAtLength(distance).matrixTransform(matrix).matrixTransform(svgInverse);
+        if (context.isPointInPath(obstacle.path, p.x, p.y, 'evenodd')) {
+          errors.push((group.querySelector('title')?.textContent || group.dataset.resortId) + ' leader crosses polygon: ' + obstacle.name); break;
+        }
+      }
+    }
+  }
   if (expectedNotes !== 10 || notes.length !== expectedNotes) errors.push('Expected all ' + expectedNotes + ' fixed-map callouts; found ' + notes.length + '. Wait for the map to finish rendering.');
+  const orientation = (a, b, c) => (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x);
+  for (let i = 0; i < connections.length; i++) for (let j = i + 1; j < connections.length; j++) {
+    for (let a = 1; a < connections[i].points.length; a++) for (let b = 1; b < connections[j].points.length; b++) {
+      const [p, q] = connections[i].points.slice(a - 1, a + 1), [r, s] = connections[j].points.slice(b - 1, b + 1);
+      if (orientation(p, q, r) * orientation(p, q, s) < -1e-6 && orientation(r, s, p) * orientation(r, s, q) < -1e-6) errors.push('Connected leader/label paths cross: ' + connections[i].name + ' / ' + connections[j].name);
+    }
+  }
   const legend = map.closest('.map-card').querySelector('.source-legend')?.getBoundingClientRect();
   const overlaps = (a, b, gap = 0) => a.left < b.right + gap && a.right > b.left - gap && a.top < b.bottom + gap && a.bottom > b.top - gap;
   const strokes = groups.flatMap(group => Array.from(group.querySelectorAll('.annotation-connector path, .annotation-subject path, .annotation-note path')).flatMap(path => {
@@ -62,5 +94,5 @@
   if (Math.abs((geo.top + geo.bottom) / 2 - (extent.top + extent.bottom) / 2) > 1) errors.push('Geographic view is not vertically centered');
   if (document.documentElement.scrollWidth > innerWidth) errors.push('horizontal page overflow');
   if (errors.length) throw new Error(errors.join('\n'));
-  return { status: 'pass', viewport: innerWidth, annotationNotes: notes.length, visibleBasemapLabels: labels.map(n => n.textContent), checks: ['note bounds', 'note separation', 'cross-callout strokes', 'basemap text versus notes/connectors/circles', 'basemap separation', 'page overflow'] };
+  return { status: 'pass', viewport: innerWidth, annotationNotes: notes.length, visibleBasemapLabels: labels.map(n => n.textContent), checks: ['note bounds', 'note separation', 'cross-callout strokes', 'leaders versus foreign resort polygons', 'full leader-to-label connections', 'polygon-center anchors', 'basemap text versus notes/connectors/circles', 'basemap separation', 'page overflow'] };
 })()

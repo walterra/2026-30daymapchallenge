@@ -6,7 +6,7 @@ const vm = require('node:vm');
 const path = require('node:path');
 const context = vm.createContext({});
 vm.runInContext(fs.readFileSync(path.join(__dirname, '../maps/03-ski-area-polygons/label-layout.js'), 'utf8'), context);
-const { OccupancyBitmap: Bitmap, greedy, connected, consecutive, outwardCost } = context.SkiLabelLayout;
+const { OccupancyBitmap: Bitmap, greedy, connected, consecutive, outwardCost, foreignObstacles, polygonCenter, mapCoverage, verticalCost, geographicOrderConflict } = context.SkiLabelLayout;
 const rect = (left, top, right, bottom) => ({ left, top, right, bottom });
 
 test('empty bitmap and half-open touching edges', () => {
@@ -95,6 +95,56 @@ test('outward preference follows the supplied center, with a finite distance tra
   assert.ok(Number.isFinite(outwardCost(rect(45, 45, 55, 55), centre, centre, 20)));
 });
 
+test('leaders exempt their own polygon, not another resort along the route', () => {
+  const kitzski = new Bitmap(100, 80), saalbach = new Bitmap(100, 80);
+  kitzski.rectangle(rect(10, 10, 30, 30), true);
+  saalbach.rectangle(rect(40, 10, 60, 30), true);
+  const obstacles = foreignObstacles([kitzski, saalbach], 0);
+  assert.equal(obstacles.line({ x: 20, y: 20 }, { x: 80, y: 20 }, .6), true);
+  assert.equal(obstacles.line({ x: 20, y: 20 }, { x: 20, y: 70 }, .6), false);
+  assert.equal(kitzski.rectangle(rect(20, 20, 21, 21)), true);
+});
+test('overlapping ownership must not erase another resort from the obstacle mask', () => {
+  const own = new Bitmap(80, 60), other = new Bitmap(80, 60);
+  own.rectangle(rect(10, 10, 40, 30), true);
+  other.rectangle(rect(30, 10, 60, 30), true);
+  const obstacles = foreignObstacles([own, other], 0);
+  assert.equal(obstacles.rectangle(rect(35, 15, 36, 16)), true);
+  assert.equal(obstacles.rectangle(rect(15, 15, 16, 16)), false);
+});
+
+test('polygon centers stay central and inside concave footprints', () => {
+  const box = new Bitmap(100, 80); box.rectangle(rect(20, 10, 80, 50), true);
+  const center = polygonCenter(box, rect(20, 10, 80, 50));
+  assert.ok(Math.abs(center.x - 50) <= 1 && Math.abs(center.y - 30) <= 1);
+  const concave = new Bitmap(80, 80);
+  for (const r of [rect(10, 10, 20, 60), rect(40, 10, 50, 60), rect(10, 50, 50, 60)]) concave.rectangle(r, true);
+  const p = polygonCenter(concave, rect(10, 10, 50, 60));
+  for (const [dx, dy] of [[0, 0], [3, 0], [-3, 0], [0, 3], [0, -3]]) assert.equal(concave.rectangle(rect(p.x + dx, p.y + dy, p.x + dx + .1, p.y + dy + .1)), true);
+});
+test('basemap coverage and local latitude provide soft surrounding preferences', () => {
+  const land = new Bitmap(100, 80); land.rectangle(rect(20, 10, 80, 50), true);
+  assert.equal(mapCoverage(land, rect(30, 20, 40, 30)), 1);
+  assert.equal(mapCoverage(land, rect(1, 1, 9, 9)), 0);
+  const source = { x: 40, y: 30 };
+  assert.ok(verticalCost(rect(35, 1, 45, 11), source, 40) < verticalCost(rect(35, 60, 45, 70), source, 40));
+});
+test('nearby western labels cannot exchange their geographic latitude order', () => {
+  const north = { preserveVerticalOrder: true, sourceCenter: { y: 20 }, rect: rect(0, 60, 20, 70) };
+  const south = { preserveVerticalOrder: true, sourceCenter: { y: 40 }, rect: rect(30, 10, 50, 20) };
+  assert.equal(geographicOrderConflict(north, south), true);
+  assert.equal(geographicOrderConflict({ ...north, rect: rect(0, 0, 20, 10) }, south), false);
+});
+test('the hidden gap between a leader and its label blocks crossings too', () => {
+  const empty = new Bitmap(100, 100);
+  const a = option(rect(50, 35, 70, 45), { x: 10, y: 40 }, { x: 40, y: 40 });
+  a.pixelConnection = [a.pixelAnchor, a.pixelEnd, { x: 50, y: 40 }];
+  const b = option(rect(40, 74, 49, 90), { x: 45, y: 10 }, { x: 45, y: 70 });
+  const labels = [{ id: 0, candidates: [a] }, { id: 1, candidates: [b] }];
+  assert.equal(connected(labels, empty, [0, 1], 1, 1000).length, 0);
+  assert.equal(consecutive(empty, empty, labels, [0, 1], 1, { maxMs: 1000 }).complete, false);
+});
+
 function option(box, anchor, end, cost = 1) {
   return { rect: box, pixelRect: box, anchor, pixelAnchor: anchor, end, pixelEnd: end, distance: Math.hypot(end.x - anchor.x, end.y - anchor.y), placementCost: cost, direction: 0 };
 }
@@ -110,6 +160,7 @@ test('consecutive placement backtracks instead of accepting a leader through a l
   assert.ok(result.backtracks > 0);
   assert.equal(result.placed.find(p => p.id === 0).rect.top, 50);
   assert.equal(connected(labels, empty, [0, 1], 1, 1000).length, 2);
+  assert.equal(connected(labels, empty, [0, 1], 1, 1000, true).length, 2);
 });
 test('crossing leaders are rejected, including crossings inside the attachment tolerance', () => {
   const empty = new Bitmap(128, 128);
