@@ -29,6 +29,23 @@ Reference studied: [D3 / Mike Bostock, Clustered Bubbles](https://observablehq.c
 
 This replaces the earlier four-cluster visitor-profile view. The prepared `map-data.json` retains the earlier statistical profile fields for reproducibility, but the current renderer does not use them. Geographic bubble grouping is not a statistical tourism segmentation.
 
+## Selected-source bundled connections
+
+Decision: implement a small geographic hierarchy preparer and use the already-vendored `d3.curveBundle.beta(0.82)` renderer. No new library, build dependency or runtime force algorithm is added.
+
+Research:
+- [D3 hierarchical edge bundling](https://observablehq.com/@d3/hierarchical-edge-bundling): shared hierarchical control paths with a bundle curve. This is the closest pattern for one selected source; our geographic hierarchy is independently constructed rather than copied from the notebook.
+- [d3.ForceBundle](https://github.com/upphiminn/d3.ForceBundle): geometric compatibility and iterative subdivision forces; repository licence verified as GPL-2.0 via GitHub API. Rejected to avoid an additional iterative algorithm and licence integration for this small single-source view.
+- [flowmap.gl](https://flowmap.gl/docs/intro/): deck.gl/WebGL and automatic location clustering; repository licence verified as Apache-2.0. Useful for larger interactive flow applications, but unnecessarily large for this local SVG page. Location clustering is not the same as edge bundling.
+
+`prepare-travel-origins.py` extracts GeoNames PPLC (capital/seat) records from the same CC BY 4.0 cities1000 extract used for destinations, choosing the most populous if several exist. `country-anchors.json` preserves names, IDs and coordinates. Israel explicitly uses Tel Aviv (GeoNames 293397) as a representative-city fallback because this extract has no IL-coded PPLC; this is not a capital designation. A representative country point is a schematic proxy, not an observed traveller departure city. The dataset records residence country only.
+
+`prepare-travel-flows.js` prepares separate domestic-included and foreign-only connections for all 61 origin markets. Eligible targets are in-frame cities with positive reported counts; zero and missing values have no flow line. Each source's targets are partitioned into eight 45° direction sectors. Within sectors, recursive median splits along the longest projected axis create spatial branches, stopping at four targets or depth four. Shared hubs are 75% towards each group's unweighted centroid from the parent. The saved point chains start at the representative source and end at exact geographic city anchors, not displaced bubbles. The browser merely draws the selected source's point chains with D3's bundle curve. Line widths are uniform; overlapping branches appear darker, but branch darkness is not a quantitative volume scale.
+
+Sources outside the geographic frame use a clearly labelled schematic map-edge entry in the projected direction of their representative point. That point is an off-map proxy, not a border crossing, airport or actual transit location. All connection geometry is schematic and may cross land, sea or other lines: it must not be interpreted as observed routes, roads, flights or travel corridors.
+
+The flow toggle changes only connections, not bubbles. Source selection changes the displayed connections and source label; the domestic filter switches the matching saved bundle. Bubble/table selection emphasizes the corresponding connection. Data, bubble-layout, representative-anchor and flow-generator SHA-256 hashes are recorded for freshness tests. Regenerate flows after regenerating bubble layouts or changing representative points or branching parameters.
+
 ## Bubble size and interaction
 
 Radius is `max(0.65, 15 × sqrt(person-nights / global maximum))` in a canonical 1,000 × 850 SVG composition. Above the minimum, circle area is proportional to bednights. Tiny counts and reported zeros use a visibility floor, explicitly disclosed on the page; they are not area-proportional. The global scale is unchanged across origins. On desktop, map and table share a height of `min(760px, 84dvh)`, independent of header space or scroll position. Scrolling down to this section is normal; the ranking then scrolls internally within its fixed-height panel. The canonical viewBox scales uniformly with `preserveAspectRatio="xMidYMid meet"`; map geometry, radii, anchors and leader lines stay aligned, without repacking on resize. Different aspect ratios can leave unused space around the composition. Narrow layouts stack the panels.
@@ -41,7 +58,7 @@ Coordinates: [GeoNames cities1000](https://download.geonames.org/export/dump/cit
 
 The preparation script matches normalized primary/alternate names within the map extent, with explicit ambiguity overrides. All 154 output name/country/place combinations were reviewed. Bruges, Cologne, Bienne, Porto and other ambiguous names have reviewed overrides; GeoNames IDs are retained. Madeira uses Funchal and Haarlemmermeer uses Hoofddorp as representative points rather than exact reporting-area centroids.
 
-Land: Natural Earth 1:10m, [public domain](https://www.naturalearthdata.com/about/terms-of-use/), clipped to include northern Europe and simplified by 0.015 degrees with preserved topology. No political borders are drawn. The map uses a Europe-centred Lambert azimuthal equal-area projection, centred at 10°E, 49°N, implemented with D3’s spherical `geoAzimuthalEqualArea`. This reduces northern area exaggeration compared with Mercator. It is not an exact ellipsoidal EPSG:3035 transformation. All four geographic frame edges are sampled before fitting, so projection curvature is accounted for. Neither displaced bubble centres nor bubble areas describe geographic extents.
+Land: Natural Earth 1:10m, [public domain](https://www.naturalearthdata.com/about/terms-of-use/), clipped to include northern Europe and simplified by 0.015 degrees with preserved topology. No political borders are drawn. The map uses a Europe-centred Lambert azimuthal equal-area projection, centred at 10°E, 49°N, implemented with D3’s spherical `geoAzimuthalEqualArea`. This reduces northern area exaggeration compared with Mercator. It is not an exact ellipsoidal EPSG:3035 transformation. Projection fitting uses the projected footprint of all 147 eligible destination points, rather than the empty corners of their geographic bounding box. This is approximately 28% closer than the previous fit, while retaining all destinations, including Madeira, Trondheim and Rēzekne. Eligibility bounds are unchanged; 30 canonical units of padding leave space for bubble groups. Neither displaced bubble centres nor bubble areas describe geographic extents.
 
 ## Interpretation limits
 
@@ -70,7 +87,9 @@ curl -fL https://naciscdn.org/naturalearth/10m/physical/ne_10m_land.zip -o /tmp/
 uv run scripts/prepare-travel-land.py /tmp/ne_10m_land.zip
 python3 scripts/test-travel-clusters.py
 node scripts/prepare-travel-layouts.js
-node --test scripts/test-travel-layouts.js
+python3 scripts/prepare-travel-origins.py /tmp/tourmis-cities1000.zip
+node scripts/prepare-travel-flows.js
+node --test scripts/test-travel-layouts.js scripts/test-travel-flows.js
 node --check maps/04-travel-clusters/map.js
 python3 scripts/check-site.py
 python3 -m http.server 8044 --bind 127.0.0.1
@@ -80,6 +99,7 @@ Open `/maps/04-travel-clusters/`, wait for “Saved layout”, then run the brow
 
 ```sh
 agent-browser eval --stdin < scripts/check-travel-bubbles.js
+agent-browser eval --stdin < scripts/check-travel-flows.js
 ```
 
 Runtime dependencies: local D3 v4.13.0 (BSD-3-Clause; `assets/vendor/d3/LICENSE`) and shared theme files. No build step, credentials, remote API, tiles or external runtime requests. Force-layout preparation uses Node.js and the existing vendored D3; no packages need installing. Other preparation uses Python; basemap preparation uses pinned pyshp and Shapely via uv.
@@ -88,4 +108,4 @@ Runtime dependencies: local D3 v4.13.0 (BSD-3-Clause; `assets/vendor/d3/LICENSE`
 
 Substantial AI assistance: authenticated data extraction, normalization, geocoding, clustering experiments, map code, documentation and checks. Travel counts are real reported values, not illustrative observations. Force displacement is purely visual.
 
-Checks performed on the saved-layout revision: four Node tests passed (source/generator freshness, exact coordinate reproduction, stable keys and mode coverage, absence of runtime force/resize simulation). Five Python dataset tests, JavaScript syntax, site/link checks and `git diff --check` passed. Headed-browser interaction regression passed for source highlighting, both filter modes, inspection and matching panel heights. Resizing from 1280×900 to 375×812 retained identical saved coordinates and radii with no horizontal overflow; console produced no messages. Earlier axe checks found zero violations with an incomplete contrast review; no claim of complete accessibility conformance. Original-provider attribution and cross-city comparability remain publication gates.
+Checks performed on the saved-layout revision: four Node tests passed (source/generator freshness, exact coordinate reproduction, stable keys and mode coverage, absence of runtime force/resize simulation). Five Python dataset tests, JavaScript syntax, site/link checks and `git diff --check` passed. Headed-browser interaction regression passed for source highlighting, both filter modes, inspection and matching panel heights. Resizing from 1280×900 to 375×812 retained identical saved coordinates and radii with no horizontal overflow; console produced no messages. Earlier axe checks found zero violations with an incomplete contrast review; no claim of complete accessibility conformance. Bundled-flow revision checks: eight combined Node tests passed, including exact flow regeneration, source/layout freshness, eligible positive-edge coverage, fixed endpoints and shared branches. Browser flow checks passed for Netherlands, United States and Germany in both domestic modes, the off-map source label, and the connections toggle. Narrow 375×812 layout had no horizontal overflow; the console produced no messages. JavaScript syntax, site/link checks and diff whitespace checks passed. Original-provider attribution and cross-city comparability remain publication gates.

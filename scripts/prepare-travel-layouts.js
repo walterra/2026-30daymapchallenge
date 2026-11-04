@@ -17,12 +17,9 @@ function prepare(source) {
   const data = JSON.parse(source);
   const c = CONFIG;
   const inFrame = city => city.lon >= c.bounds[0][0] && city.lon <= c.bounds[1][0] && city.lat >= c.bounds[0][1] && city.lat <= c.bounds[1][1];
-  const framePoints = [];
-  for (let i = 0; i <= 100; i++) {
-    const lon = c.bounds[0][0] + (c.bounds[1][0] - c.bounds[0][0]) * i / 100;
-    const lat = c.bounds[0][1] + (c.bounds[1][1] - c.bounds[0][1]) * i / 100;
-    framePoints.push([lon, c.bounds[0][1]], [lon, c.bounds[1][1]], [c.bounds[0][0], lat], [c.bounds[1][0], lat]);
-  }
+  // Fit the occupied geographic footprint, not empty projected bbox corners.
+  // The eligibility bounds stay unchanged; no destinations are dropped.
+  const framePoints = data.cities.filter(inFrame).map(city => [city.lon, city.lat]);
   const projection = d3.geoAzimuthalEqualArea().rotate(c.rotate).fitExtent([[c.padding, c.padding], [c.width - c.padding, c.height - c.padding]], {type: 'MultiPoint', coordinates: framePoints});
   const markets = Array.from(new Set(data.cities.flatMap(city => Object.keys(city.nights)))).filter(m => !aggregates.has(m) && !m.startsWith('Other ')).sort();
   const names = new Intl.DisplayNames(['en'], {type: 'region'});
