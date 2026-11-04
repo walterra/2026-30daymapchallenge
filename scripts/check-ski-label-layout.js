@@ -9,9 +9,11 @@
   const groups = Array.from(scene.querySelectorAll('g.annotation'));
   const notes = groups.map(group => ({ group, rect: group.querySelector('.annotation-note-content').getBoundingClientRect() }));
   const errors = [];
+  if (map.dataset.layoutReady !== 'true' || map.dataset.layoutFailure) errors.push('No completed layout for the current viewport');
+  if (map.dataset.antiGravityCenter !== 'Innsbruck') errors.push('Outward preference must use the actual Innsbruck reference');
   const expectedNotes = Number(map.dataset.annotationCount);
   if (expectedNotes !== 10 || notes.length !== expectedNotes) errors.push('Expected all ' + expectedNotes + ' fixed-map callouts; found ' + notes.length + '. Wait for the map to finish rendering.');
-  const legend = map.querySelector('.source-legend')?.getBoundingClientRect();
+  const legend = map.closest('.map-card').querySelector('.source-legend')?.getBoundingClientRect();
   const overlaps = (a, b, gap = 0) => a.left < b.right + gap && a.right > b.left - gap && a.top < b.bottom + gap && a.bottom > b.top - gap;
   const strokes = groups.flatMap(group => Array.from(group.querySelectorAll('.annotation-connector path, .annotation-subject path, .annotation-note path')).flatMap(path => {
     const matrix = path.getScreenCTM();
@@ -22,9 +24,10 @@
   }));
   const crosses = (points, rect, gap = 0) => points.some(p => p.x > rect.left - gap && p.x < rect.right + gap && p.y > rect.top - gap && p.y < rect.bottom + gap);
   const paths = groups.flatMap(group => Array.from(group.querySelectorAll('.annotation-connector path')).map(path => {
-    const numbers = path.getAttribute('d').match(/-?\d+(?:\.\d+)?(?:e[+-]?\d+)?/gi).map(Number);
     const matrix = path.getScreenCTM(), points = [];
-    for (let i = 0; i < numbers.length; i += 2) points.push(new DOMPoint(numbers[i], numbers[i + 1]).matrixTransform(matrix));
+    const length = path.getTotalLength();
+    for (let d = 0; d < length; d += 3) points.push(path.getPointAtLength(d).matrixTransform(matrix));
+    points.push(path.getPointAtLength(length).matrixTransform(matrix));
     return points;
   }));
   const cross = (p, q, r) => (q.x - p.x) * (r.y - p.y) - (q.y - p.y) * (r.x - p.x);
@@ -52,6 +55,11 @@
     if (strokes.some(stroke => crosses(stroke.points, rect, 1))) errors.push('connector/circle crosses basemap label: ' + label.textContent);
     for (let j = 0; j < i; j++) if (overlaps(rect, labelRects[j], 2)) errors.push('basemap labels overlap: ' + label.textContent);
   });
+  const cityNames = labels.map(node => node.textContent);
+  for (const city of ['Bregenz', 'Innsbruck', 'Salzburg']) if (!cityNames.includes(city)) errors.push('Missing city label: ' + city);
+  if (!groups.some(group => group.dataset.labelBank === 'top') || !groups.some(group => group.dataset.labelBank === 'bottom')) errors.push('Labels must surround the geographic view');
+  const geo = map.getBoundingClientRect();
+  if (Math.abs((geo.top + geo.bottom) / 2 - (extent.top + extent.bottom) / 2) > 1) errors.push('Geographic view is not vertically centered');
   if (document.documentElement.scrollWidth > innerWidth) errors.push('horizontal page overflow');
   if (errors.length) throw new Error(errors.join('\n'));
   return { status: 'pass', viewport: innerWidth, annotationNotes: notes.length, visibleBasemapLabels: labels.map(n => n.textContent), checks: ['note bounds', 'note separation', 'cross-callout strokes', 'basemap text versus notes/connectors/circles', 'basemap separation', 'page overflow'] };

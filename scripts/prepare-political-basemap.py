@@ -60,8 +60,8 @@ assert lines.geom_type in ('LineString', 'MultiLineString') and not lines.is_emp
 metadata = {'source': 'Natural Earth 1:10m admin-1 states/provinces and populated places; existing admin-0 country context', 'license': 'Public domain', 'licenseUrl': 'https://www.naturalearthdata.com/about/terms-of-use/', 'stateCount': 9, 'states': [p['name_en'] or p['name'] for p, _ in states], 'method': 'Intersect shared Austrian state boundaries; union linework before simplifying. No ski-area geometry or classification changes.', 'sourceSHA256': {'states': hashlib.sha256(args.states.read_bytes()).hexdigest(), 'places': hashlib.sha256(args.places.read_bytes()).hexdigest()}}
 (folder / 'state-borders.geojson').write_text(json.dumps({'type': 'Feature', 'properties': {'kind': 'shared-state-boundaries'}, 'geometry': mapping(lines), 'metadata': metadata}, separators=(',', ':')) + '\n')
 labels = []
-def label(name, point, kind, min_zoom, priority):
-    labels.append({'type': 'Feature', 'geometry': mapping(point), 'properties': {'name': name, 'kind': kind, 'minZoom': min_zoom, 'priority': priority}})
+def label(name, point, kind, min_zoom, priority, required=False):
+    labels.append({'type': 'Feature', 'geometry': mapping(point), 'properties': {'name': name, 'kind': kind, 'minZoom': min_zoom, 'priority': priority, 'required': required}})
 for p, g in states:
     point = Point(p['longitude'], p['latitude'])
     if not g.covers(point):
@@ -76,8 +76,9 @@ for p, g in records(args.places):
     if p.get('ADM0_A3') != 'AUT':
         continue
     name = p.get('NAME_EN') or p['NAME']
-    min_zoom = 0 if name == 'Vienna' else 7 if name in ('Innsbruck', 'Salzburg') else 8 if p['SCALERANK'] <= 7 else 9
-    label(name, g, 'city', min_zoom, 0 if name == 'Vienna' else 30)
+    required = name in ('Bregenz', 'Innsbruck', 'Salzburg')
+    min_zoom = 0 if required or name == 'Vienna' else 8 if p['SCALERANK'] <= 7 else 9
+    label(name, g, 'city', min_zoom, -10 if required else 0 if name == 'Vienna' else 30, required)
     city_count += 1
 assert city_count == 9
 (folder / 'reference-labels.geojson').write_text(json.dumps({'type': 'FeatureCollection', 'features': labels, 'metadata': metadata}, ensure_ascii=False, separators=(',', ':')) + '\n')

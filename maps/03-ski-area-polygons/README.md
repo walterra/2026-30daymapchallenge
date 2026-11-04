@@ -140,19 +140,31 @@ Hosting needs only HTML, CSS, JavaScript and local data. No build, server API, c
 
 The map and chart emphasize the same ten reviewed resort areas. Six OpenSkiData outlines and five reviewed Tirol planning polygons (representing the other four ranked resorts) use the Cactus link color. The planning matches retain dashed borders and a visible 2011 qualification. The accent is reserved exclusively for the selected row, its geometry and local name label. Other mapped outlines are faint gray; unmatched historical Tirol planning boundaries are gray dashed outlines with no fill. The bottom-right legend distinguishes these roles and sits above attribution. Shapes locate resorts; only bar length encodes downhill kilometers.
 
-The initial national overview is intentionally incomplete rather than inventing shapes for point records. All 188 OpenSkiData polygons and 102 Tirol polygons are shown together. One persistent resort label connects the ranking to the map; the old four regional annotations are no longer rendered or fetched. The sources are delivered as separate datasets under their respective licenses.
+The fixed regional view frames Vorarlberg, Tirol and Salzburg. All ten ranked resort labels remain visible, without inventing shapes for point records. The old four regional annotations are no longer rendered or fetched. The original OpenSkiData and Tirol sources remain separate datasets under their respective licenses.
 
 ## Reviewed polygon fallbacks
 
 The four point-only ranking records have manually reviewed display associations: SkiWelt → `tiris:76` + `tiris:89`; Serfaus–Fiss–Ladis → `tiris:43`; Ischgl–Samnaun → `tiris:41` (partial); Sölden → `tiris:102`. Every source point is contained in its matched group. Across all 102 candidate planning features, the audit finds no other intersecting candidates for these four resorts beyond the accepted polygons. The evidence, exclusions, dates and reproduction are in [POLYGON-MATCH-REVIEW.md](POLYGON-MATCH-REVIEW.md). No source geometry is modified or merged, and ranking numbers remain unchanged.
 
-## Linked resort selection
+## Linked resort hover
 
-The first ranking row is selected on load. Hover, keyboard focus or tapping another row selects that resort. Selection persists in inter-row gaps and after horizontal exits. Leaving the entire chart above its top selects the first row; leaving below its bottom selects the last. Escape returns to the first row without moving the map. Exactly one row remains selected, with `aria-pressed` and a live textual status.
+Nothing is highlighted initially. Hovering a bar, ranked polygon or map label highlights the same resort in both views. Leaving clears the highlight; keyboard focus provides the corresponding chart interaction and Escape clears it. Hover changes color only, not label placement or geographic framing.
 
-[Susie Lu’s d3-annotation](https://d3-annotation.susielu.com/) draws one nearby name label with a short straight leader. The kilometer value is not duplicated on the map; a header badge identifies outline versus reference point. Six ranking records highlight their actual OpenSkiData polygon/MultiPolygon; four point-only records highlight reviewed Tirol planning polygons instead of reference dots. These are source-preserving display associations, not changes to the original point records or kilometer values. Ischgl–Samnaun is explicitly partial because Swiss planning geometry is not supplied. See [the manual review and evidence](POLYGON-MATCH-REVIEW.md), [crosswalk](data/polygon-matches.json) and [run-record audit](data/polygon-match-audit.json). No outline or area is invented for point records. OpenSkiData label anchors are actual source boundary vertices chosen near the supplied viewport center. Planning-match anchors are actual matched-polygon vertices nearest the original source point. These references are stored in the ODbL ranking JSON and checked against the original download. The historical four-group preparation files remain as unused research artifacts, not part of the page renderer.
+[Susie Lu’s d3-annotation](https://d3-annotation.susielu.com/) renders all ten permanent name labels with straight leaders. Kilometer values are not duplicated on the map. Six ranking records highlight their actual OpenSkiData polygon/MultiPolygon; four point-only records highlight reviewed Tirol planning polygons instead of reference dots. These are source-preserving display associations, not changes to the original point records or kilometer values. Ischgl–Samnaun is explicitly partial because Swiss planning geometry is not supplied. See [the manual review and evidence](POLYGON-MATCH-REVIEW.md), [crosswalk](data/polygon-matches.json) and [run-record audit](data/polygon-match-audit.json). No outline or area is invented for point records. OpenSkiData label anchors are actual source boundary vertices chosen near the supplied viewport center. Planning-match anchors are actual matched-polygon vertices nearest the original source point. These references are stored in the ODbL ranking JSON and checked against the original download. The historical four-group preparation files remain as unused research artifacts, not part of the page renderer.
 
-The national view stays fixed on selection, with no automatic pan or zoom. Re-selecting the same row skips repainting and label reconstruction, preventing flicker across gaps. Cactus styling follows the page theme. On wide screens the panels share a compact, equal-height row; all ten bars fit next to the map, with methodology below both cards. Narrow screens stack the panels. The visual SVG has a textual counterpart in the chart and live status.
+The regional view stays fixed during interaction, with no automatic pan or zoom; resizing refits the region and recalculates labels. Cactus styling follows the page theme. Wide screens place the chart beside the map; narrow screens stack them. The visual SVG has a textual counterpart in the chart and live status.
+
+### Occupancy bitmap and outward preference
+
+`label-layout.js` follows the raster occupancy approach in [Kittivorawong et al., FastLabels, VIS 2021, §§3–4](https://idl.cs.washington.edu/files/2021-FastLabels-VIS.pdf). Ranked resort geometry and city names are rasterized as label obstacles. Faint political/background context is not a hard obstacle. Each accepted label box **and its leader** is reserved before the next placement. Bitmap journals permit exact rollback without repeatedly copying a full canvas.
+
+Application extensions—not claims about the paper—include bounded forward checking to retain all ten labels, larger candidate rings, compact edge-sliding candidates and adaptive margins. Sparse raster-word intersections cache candidate conflicts. Full-segment tests reject actual leader crossings and text cuts, including within the eight-pixel attachment tolerance used for adjacent projected polygon boundaries. Leaders retain a minimum length of 32px when the map is at least 620px wide, otherwise 20px. City names remain anchored to their actual points.
+
+Innsbruck’s Natural Earth position is the center of a **soft outward preference**. Candidate cost combines squared leader length with angular alignment away from Innsbruck. This is a placement preference, not a force simulation: collision checks remain hard constraints, and hover never moves labels. Probe annotations are measured separately and never published; failed recalculation retains the last completed layout.
+
+Below 340px map width, three compact names are used: Saalbach–Hinterglemm, SkiWelt and Mayrhofen. Full resort names remain in the ranking, SVG tooltips and source data. This preserves readable 12px map labels rather than shrinking text or omitting resorts.
+
+Validation: `node --test scripts/test-label-layout.js` covers bitmap word boundaries, rollback, outward preference, bounded alternatives, near-parallel strokes and crossings near attachment points. `scripts/check-ski-label-layout.js` checks the actual rendered SVG, note separation, leaders, city names and page overflow.
 
 Vendored, version-pinned dependencies (no visitor-time CDN requests or new build step):
 - D3 **4.13.0**, BSD-3-Clause, with its license in `assets/vendor/d3/LICENSE`.
@@ -183,12 +195,20 @@ Outputs: `data/downhill-ranking.json` (values, source IDs, difficulty breakdowns
 
 Leaflet 1.9.4 is vendored with its BSD-2-Clause license and used only as a renderer. Drag, wheel, double-click, touch, box and keyboard zoom/pan are disabled; no zoom control, search or map-click popups are installed. Resort selection is driven by the accessible ranking buttons without moving the map. The map is not an unnecessary keyboard stop. Textual counts, legend, prose description and downloadable data supplement canvas rendering. The page theme toggle remains accessible. A ResizeObserver coalesces responsive refitting after layout settles and ignores temporary zero-sized containers. Map styling reacts to the page’s theme without changing source geometry.
 
-## Verification · 2026-11-03
+## Earlier verification · 2026-11-03
 
 - 22 ski-map tests passed: pinned source/geometry fidelity, valid geometries, separate licenses/IDs, Sölden’s association and piste audit, all four annotation groups and bounding boxes, political context accounting, and the fixed-presentation contract.
 - Eleven downhill-ranking tests, eight theme-preference tests, 10 home-distance tests and seven water-data tests passed, alongside the 22 ski-map tests (58 total).
 - Map and annotation JavaScript passed `node --check`; site-resource and whitespace checks passed.
-- The linked-selection, bar geometry, label-layout and fixed-map browser regressions passed in light/dark mode at 320, 390, 600, 760, 800, 960, 1024, 1100, 1280, 1440 and 1920px (22 combinations). These include every resort, gap stability, horizontal exits, top/bottom endpoint selection, keyboard/tap persistence, matching desktop card heights and all ten rows fitting without chart scrolling. One selected-resort note remains present; checks cover text bounds/separation, connector/circle collisions, basemap labels, four-role legend placement, attribution clearance, proportional geographic labels, Cactus background, absent explorer controls, and fixed view under synthetic drag/wheel/double-click/keyboard input.
+- The earlier renderer passed a 22-combination light/dark browser sweep. That sweep predates the permanent ten-label bitmap renderer and transient hover behavior; its persistent-selection expectations are no longer current.
+
+### Current annotation verification
+
+- 15 bitmap/preference/connector unit tests pass.
+- Rendered-label checks pass at 320, 390, 600, 768, 1024, 1100, 1280, 1440 and 1920px in both light and dark mode (18 combinations): all ten notes, note bounds/separation, actual leader paths, fixed city labels and page overflow.
+- Native pointer checks pass for bar, label and polygon linking, clearing on exit, and unchanged SVG label/leader geometry during hover. No browser errors were reported.
+- Observed placement was 26–48ms on wide maps, 98–215ms at ordinary narrow widths, and 436–474ms in the constrained 320px case. These are local browser observations, not performance guarantees.
+- Site-resource validation and `git diff --check` pass.
 - No sidebar, search, source switches, zoom control, popup or external tile requests remain. Ranking buttons drive persistent selection. The only page-level toggle is the light/dark theme.
 - Full-page captures and viewport changes were checked with ResizeObserver-based framing, including temporary-size guards. Final browser session: no console errors.
 - Axe WCAG 2 A/AA scan: no detected violations. Map/canvas contrast remains flagged for manual review; this is not a claim of full accessibility conformance.
@@ -196,7 +216,7 @@ Leaflet 1.9.4 is vendored with its BSD-2-Clause license and used only as a rende
 Run the rendered-layout regression in the named browser session after the map overview and labels settle:
 
 ```sh
-agent-browser wait --fn 'document.querySelector("#map").dataset.labelsReady === "true"'
+agent-browser wait --fn 'document.querySelector("#map").dataset.layoutReady === "true" && !document.querySelector("#map").dataset.layoutFailure'
 agent-browser eval --stdin < scripts/check-ski-label-layout.js
 agent-browser eval --stdin < scripts/check-ski-fixed-map.js
 agent-browser eval --stdin < scripts/check-downhill-chart.js

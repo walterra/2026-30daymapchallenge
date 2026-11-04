@@ -30,12 +30,12 @@
     if (map.dataset.activeKind === 'planning-outline') {
       planning++;
       if (JSON.stringify(matches.get(button.dataset.sourceId)?.polygonIds) !== map.dataset.activePolygonIds) throw Error('Wrong reviewed polygon selection');
-      if (!document.querySelector('.annotation-context').textContent.includes('2011')) throw Error('Missing historical qualification');
+      if (!document.querySelector('.comparison-caption').textContent.includes('2011')) throw Error('Missing historical qualification');
     } else if (map.dataset.activeKind === 'point') points++; else outlines++;
     if (map.dataset.view !== view) throw Error('Selection changed map framing');
     const note = group(button).querySelector('.annotation-note-content').getBoundingClientRect();
     const extent = scene.getBoundingClientRect();
-    const legend = map.querySelector('.source-legend').getBoundingClientRect();
+    const legend = map.closest('.map-card').querySelector('.source-legend').getBoundingClientRect();
     if (note.left < extent.left || note.right > extent.right || note.top < extent.top || note.bottom > extent.bottom) throw Error('Clipped selected label: ' + button.dataset.sourceId);
     if (note.left < legend.right && note.right > legend.left && note.top < legend.bottom && note.bottom > legend.top) throw Error('Selected label overlaps legend');
     if (matches.has(button.dataset.sourceId)) {
@@ -81,8 +81,8 @@
   if (innerWidth >= 1100) {
     const a = document.querySelector('.map-card').getBoundingClientRect();
     const c = chart.getBoundingClientRect();
-    if (Math.abs(a.top - c.top) > 1 || Math.abs(a.height - c.height) > 1) throw Error('Paired cards not aligned');
-    if (buttons.at(-1).getBoundingClientRect().bottom > a.bottom || chart.scrollHeight > chart.clientHeight + 1) throw Error('Ten bars do not fit alongside map');
+    if (a.right > c.left || c.top >= a.bottom || a.top >= c.bottom) throw Error('Views are not side by side');
+    if (buttons.at(-1).getBoundingClientRect().bottom > c.bottom + 1 || chart.scrollHeight > chart.clientHeight + 1) throw Error('Ten bars do not fit alongside map');
   }
   return { status: 'pass', width: innerWidth, theme: document.documentElement.dataset.theme, outlines, points, planning, defaultFirst: true, gapFlicker: false, horizontalExitRetains: true, topExitFirst: true, bottomExitLast: true, persistentFocusAndTap: true, fixedView: true };
 })()

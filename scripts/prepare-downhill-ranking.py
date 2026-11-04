@@ -106,9 +106,8 @@ def render(data):
     ticks = ''.join(f'<span style="left:{value / 3:.10f}%">{value}</span>' for value in range(0, 301, 50))
     return f'''    {START}
     <section class="downhill-ranking" aria-labelledby="ranking-title">
-      <h2 id="ranking-title">The longest mapped downhill networks</h2>
-      <p class="ranking-subtitle" id="ranking-description">Top 10 reviewed resort areas · mapped downhill km.</p>
-      <p class="ranking-interaction">Hover, focus or tap to select a resort. Selection stays visible.</p>
+      <h2 id="ranking-title">The longest mapped ski networks</h2>
+      <p class="ranking-subtitle" id="ranking-description">Downhill kilometers across ten reviewed resort areas.</p>
       <p id="ranking-map-status" class="visually-hidden" role="status"></p>
       <div class="ranking-plot" aria-describedby="ranking-description ranking-note">
         <div class="ranking-grid" aria-hidden="true"></div>
@@ -117,11 +116,12 @@ def render(data):
 {chr(10).join(rows)}
         </ol>
       </div>
-      <p class="ranking-caveat"><strong>Mapped km—not advertised piste totals.</strong> Regional ticket alliances and duplicate components excluded. This is a reviewed snapshot, not an official national ranking.</p>
+
     </section>
-    <div class="comparison-notes">
+    <p class="comparison-caption"><strong>Mapped kilometers, not advertised piste totals.</strong> Four areas use reviewed 2011 planning outlines; Ischgl–Samnaun coverage is partial.</p>
+    <details class="comparison-notes"><summary>How the comparison was made</summary>
       <p class="ranking-note" id="ranking-note"><strong>Length definition.</strong> Sum of mapped downhill statistics across difficulty classes; Nordic trails and lifts excluded. Full cross-border resort areas are retained, not clipped to Austria.</p>
-      <p class="ranking-source">Source: <a href="https://openskidata.org/">OpenSkiData</a> / © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>, snapshot downloaded 2 November 2026 (<a href="https://opendatacommons.org/licenses/odbl/1-0/">ODbL</a>). 355 of 375 qualifying records have downhill-length statistics; missing values are not zero. Tirol’s planning polygons are not used for these lengths.</p>
+      <p class="ranking-source"><span id="ranking-count">10</span> reviewed areas shown. Source: <a href="https://openskidata.org/">OpenSkiData</a> / © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>, snapshot downloaded 2 November 2026 (<a href="https://opendatacommons.org/licenses/odbl/1-0/">ODbL</a>). <span id="length-count">355</span> of 375 qualifying records have downhill-length statistics; <span id="missing-length-count">20</span> missing values are not zero. Tirol’s planning polygons are not used for these lengths.</p>
       <details class="ranking-method">
         <summary>Which records count as a resort area?</summary>
         <p>Named resort/destination areas are compared, not entire ticket alliances. Ski amadé, the broader Schladming–Dachstein and Oberstdorf–Kleinwalsertal regions, and the combined Damüls–Mellau–Faschina record are excluded. Lech/Zürs is not counted again alongside Ski Arlberg. The Austrian association of the Drei Zinnen record is uncertain, so it is excluded. These are editorial unit decisions, not an automatic or universally accepted resort classification.</p>
@@ -129,7 +129,7 @@ def render(data):
         <p>Grouping references: <a href="https://www.skiamade.com/en/ski-areas">Ski amadé</a> · <a href="https://www.schladming-dachstein.at/en/activities/skiing">Schladming–Dachstein</a> · <a href="https://www.kleinwalsertal.com/en/discover-kleinwalsertal/ski-resorts-kleinwalsertal">Kleinwalsertal</a> · <a href="https://www.damuels.at/en/winter/ski-area-of-damuels-mellau-and-faschina-1.html">Damüls / Faschina</a>.</p>
         <p><a href="data/downhill-ranking.csv">Download chart data (CSV)</a> · <a href="data/downhill-ranking.json">Values, calculation and candidate audit (JSON)</a> · <a href="data/ranking-review.json">Record-by-record review decisions</a></p>
       </details>
-    </div>
+    </details>
     {END}'''
 
 

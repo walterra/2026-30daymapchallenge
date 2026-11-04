@@ -3,7 +3,7 @@ const status = document.querySelector('#status');
 async function start() {
   if (!window.L) throw new Error('Local map library unavailable.');
   const [areas, coverage, context, austria, tirol, stateBorders, referenceLabels, ranking, matchReview, region, regionContext] = await Promise.all(
-    ['ski-areas.geojson', 'coverage.json', 'context.geojson', 'austria.geojson', 'tirol-boundaries.geojson', 'state-borders.geojson', 'reference-labels.geojson', 'downhill-ranking.json?v=linked-1', 'polygon-matches.json?v=reviewed-1', 'region-bounds.json', 'region-context.geojson'].map(async name => {
+    ['ski-areas.geojson', 'coverage.json', 'context.geojson', 'austria.geojson', 'tirol-boundaries.geojson', 'state-borders.geojson', 'reference-labels.geojson?v=regional-cities-1', 'downhill-ranking.json?v=linked-1', 'polygon-matches.json?v=reviewed-1', 'region-bounds.json', 'region-context.geojson'].map(async name => {
       const response = await fetch('data/' + name);
       if (!response.ok) throw new Error(name + ' could not be loaded (HTTP ' + response.status + ').');
       return response.json();
@@ -39,23 +39,28 @@ async function start() {
   const regionBounds = L.latLngBounds([south, west], [north, east]);
   container.dataset.region = region.states.join(', ');
   map.attributionControl.addAttribution('Data: <a href="https://openskidata.org/">OpenSkiData</a> · © <a href="https://www.openstreetmap.org/copyright">OSM contributors</a> · <a href="https://skimap.org/">Skimap.org</a> · <a href="https://whosonfirst.org/">Who’s On First</a> · © <a href="https://mapterhorn.com/">Mapterhorn</a> · Tirol: <a href="https://www.arcgis.com/home/item.html?id=9fb23fac39034eadaff8054fdd35cbf6">Land Tirol – tiris</a> (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>) · Context: <a href="https://www.naturalearthdata.com/">Natural Earth</a>');
-  L.control.scale({ imperial: false, position: 'bottomleft', maxWidth: 100 }).addTo(map);
+  const scale = L.control.scale({ imperial: false, position: 'bottomleft', maxWidth: 100 }).addTo(map);
+  const footer = container.closest('.map-card').querySelector('.map-footer');
+  footer.prepend(scale.getContainer());
+  footer.append(map.attributionControl.getContainer());
   const stateLayer = L.geoJSON(stateBorders, { pane: 'context', interactive: false,
     style: { color: '#b1bcb7', weight: .7, opacity: .9, dashArray: '2 4', fill: false }
   }).addTo(map);
   const politicalLabels = referenceLabels.features.sort((a, b) => a.properties.priority - b.properties.priority).map(feature => {
     const label = document.createElement('span'); label.textContent = feature.properties.name;
+    const html = document.createElement('div'); html.append(label);
+    if (feature.properties.required) {
+      const dot = document.createElement('i'); dot.className = 'city-dot';
+      html.prepend(dot);
+    }
     const [lon, lat] = feature.geometry.coordinates;
     const marker = L.marker([lat, lon], { pane: 'political-labels', interactive: false, keyboard: false,
-      icon: L.divIcon({ className: 'political-label ' + feature.properties.kind + '-reference', html: label, iconSize: [160, 20], iconAnchor: [80, 10] })
+      icon: L.divIcon({ className: 'political-label ' + feature.properties.kind + '-reference', html, iconSize: [160, 20], iconAnchor: [80, 10] })
     }).addTo(map);
     return { feature, marker };
   });
   function updatePoliticalLabels() {
-    const attribution = container.querySelector('.leaflet-control-attribution');
-    const legend = container.querySelector('.source-legend');
-    legend.style.bottom = (attribution ? attribution.getBoundingClientRect().height + 12 : 24) + 'px';
-    const occupied = Array.from(container.closest('.map-scene').querySelectorAll('.annotation-note-content, .source-legend')).map(node => node.getBoundingClientRect());
+    const occupied = Array.from(container.closest('.map-scene').querySelectorAll('.annotation-note-content')).map(node => node.getBoundingClientRect());
     const extent = container.getBoundingClientRect();
     const strokePoints = [];
     for (const path of container.closest('.map-scene').querySelectorAll('.annotation-connector path, .annotation-subject path, .annotation-note path')) {
@@ -66,12 +71,30 @@ async function start() {
     for (const { feature, marker } of politicalLabels) {
       const element = marker.getElement(); if (!element) continue;
       element.setAttribute('aria-hidden', 'true'); element.style.display = '';
-      const rect = element.querySelector('span').getBoundingClientRect();
-      const collides = occupied.some(b => rect.left < b.right + 8 && rect.right > b.left - 8 && rect.top < b.bottom + 5 && rect.bottom > b.top - 5);
-      const crossesStroke = strokePoints.some(p => p.x >= rect.left - 4 && p.x <= rect.right + 4 && p.y >= rect.top - 4 && p.y <= rect.bottom + 4);
-      const outside = rect.left < extent.left + 7 || rect.right > extent.right - 7 || rect.top < extent.top + 7 || rect.bottom > extent.bottom - 22;
-      if (map.getZoom() < feature.properties.minZoom || collides || crossesStroke || outside) element.style.display = 'none';
-      else occupied.push(rect);
+      const span = element.querySelector('span');
+      span.style.display = 'inline-block';
+      // City names stay attached to their true points; resort labels yield to them.
+      const offsets = feature.properties.required ? [[0, -14]] : [[0, 0]];
+      let placed = false;
+      for (const [x, y] of offsets) {
+        span.style.transform = `translate(${x}px,${y}px)`;
+        const rect = span.getBoundingClientRect();
+        const collides = occupied.some(b => rect.left < b.right + 8 && rect.right > b.left - 8 && rect.top < b.bottom + 5 && rect.bottom > b.top - 5);
+        const crossesStroke = strokePoints.some(p => p.x >= rect.left - 4 && p.x <= rect.right + 4 && p.y >= rect.top - 4 && p.y <= rect.bottom + 4);
+        const outside = rect.left < extent.left + 7 || rect.right > extent.right - 7 || rect.top < extent.top + 7 || rect.bottom > extent.bottom - 7;
+        if (map.getZoom() >= feature.properties.minZoom && !outside && (feature.properties.required || (!collides && !crossesStroke))) {
+          const line = element.querySelector('.city-reference-leader line');
+          if (line) {
+            const icon = element.getBoundingClientRect(), dotX = icon.left + 80, dotY = icon.top + 10;
+            const targetX = Math.max(rect.left, Math.min(rect.right, dotX));
+            const targetY = Math.max(rect.top, Math.min(rect.bottom, dotY));
+            line.setAttribute('x2', targetX - icon.left); line.setAttribute('y2', targetY - icon.top + 70);
+            line.style.display = Math.hypot(targetX - dotX, targetY - dotY) > 10 ? '' : 'none';
+          }
+          occupied.push(rect); placed = true; break;
+        }
+      }
+      if (!placed) element.style.display = 'none';
     }
   }
   let politicalFrame;
@@ -170,11 +193,7 @@ async function start() {
   new MutationObserver(applyMapTheme).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
   function fitOverview() {
     if (!container.clientWidth || !container.clientHeight) return;
-    if (container.clientWidth < 420) {
-      const credits = container.querySelector('.leaflet-control-attribution').getBoundingClientRect().height;
-      const legend = container.querySelector('.source-legend').getBoundingClientRect().height;
-      map.fitBounds(regionBounds, { paddingTopLeft: [16, 12], paddingBottomRight: [16, credits + legend + 24], animate: false });
-    } else map.fitBounds(regionBounds, { padding: [25, 25], animate: false });
+    map.fitBounds(regionBounds, { padding: [25, 25], animate: false });
   }
   fitOverview();
   for (const marker of referenceMarkers.values()) marker.addTo(map);
@@ -200,15 +219,22 @@ async function start() {
   });
   const center = map.getCenter();
   container.dataset.view = JSON.stringify([center.lat, center.lng, map.getZoom()]);
-  const story = skiMapAnnotations({ map, rows: displayRows });
+  const labelAreas = displayRows.map(row => row.planningMatch
+    ? row.planningMatch.polygonIds.reduce((bounds, id) => bounds.extend(planningLayers.get(id).getBounds()), L.latLngBounds([]))
+    : outlineLayers.get(row.id)?.getBounds()).filter(Boolean);
+  const labelShapes = Object.fromEntries(displayRows.map(row => [row.id, row.planningMatch
+    ? row.planningMatch.polygonIds.map(id => planningLayers.get(id).feature.geometry)
+    : [outlineLayers.get(row.id).feature.geometry]]));
+  const labelMarks = [...areaLayer.getLayers().filter(layer => rankedIds.has(layer.feature.properties.id)), ...tirolLayer.getLayers().filter(layer => matchedPlanningIds.has(layer.feature.properties.id))].map(layer => ({
+    geometry: layer.feature.geometry, fill: !!layer.options.fill && layer.options.fillOpacity > 0,
+    stroke: layer.options.stroke !== false, width: layer.options.weight || 1,
+    dash: typeof layer.options.dashArray === 'string' ? layer.options.dashArray.split(/\s+/).map(Number) : []
+  }));
+  const story = skiMapAnnotations({ map, rows: displayRows, cities: referenceLabels.features.filter(feature => feature.properties.required), marks: labelMarks, shapes: labelShapes, onHover: updateLinkedHighlight });
   const rankRows = new Map(displayRows.map(row => [row.id, row]));
   const buttons = Array.from(document.querySelectorAll('.ranking-row'));
-  const firstId = buttons[0].dataset.sourceId;
-  const lastId = buttons.at(-1).dataset.sourceId;
-  let selectedId = firstId;
   let renderedId;
-  function updateLinkedHighlight() {
-    const id = selectedId;
+  function updateLinkedHighlight(id = null) {
     for (const button of buttons) {
       button.classList.toggle('is-map-active', button.dataset.sourceId === id);
       button.setAttribute('aria-pressed', String(button.dataset.sourceId === id));
@@ -216,33 +242,36 @@ async function start() {
     if (id === renderedId) return;
     renderedId = id;
     activeRow = rankRows.get(id);
-    container.dataset.activeResort = activeRow ? activeRow.id : '';
-    container.dataset.activeKind = activeRow ? activeRow.mapReference.kind : '';
+    container.dataset.activeResort = activeRow?.id || '';
+    container.dataset.activeKind = activeRow?.mapReference.kind || '';
+    container.dataset.activePolygonIds = JSON.stringify(activeRow ? activeRow.planningMatch?.polygonIds || [activeRow.id] : []);
     applyMapTheme();
     story.setHighlight(activeRow);
-    container.dataset.activePolygonIds = JSON.stringify(activeRow.planningMatch?.polygonIds || (activeRow.mapReference.kind === 'outline' ? [activeRow.id] : []));
-    document.querySelector('#ranking-map-status').textContent = 'Map: ' + activeRow.label + '. ' + (activeRow.planningMatch ? 'Matched Tirol planning polygons, reference date 2011-10-30. ' + activeRow.planningMatch.qualification : activeRow.mapReference.kind === 'point' ? 'Supplied reference point; no OpenSkiData outline.' : 'Source outline highlighted.');
+    document.querySelector('#ranking-map-status').textContent = activeRow ? 'Map: ' + activeRow.label + '. ' + (activeRow.planningMatch ? 'Matched 2011 Tirol planning polygons. ' + activeRow.planningMatch.qualification : 'Source outline highlighted.') : '';
   }
+  const clear = id => { if (renderedId === id) updateLinkedHighlight(null); };
   for (const button of buttons) {
     const id = button.dataset.sourceId;
     button.disabled = false;
-    const select = () => { selectedId = id; updateLinkedHighlight(); };
-    button.addEventListener('pointerenter', event => { if (event.pointerType === 'mouse') select(); });
-    button.addEventListener('focus', select);
-    button.addEventListener('click', select);
+    button.addEventListener('pointerenter', event => { if (event.pointerType === 'mouse') updateLinkedHighlight(id); });
+    button.addEventListener('focus', () => updateLinkedHighlight(id));
+    button.addEventListener('blur', () => clear(id));
+    button.addEventListener('click', () => updateLinkedHighlight(id));
   }
-  document.querySelector('.downhill-ranking').addEventListener('pointerleave', event => {
-    if (event.pointerType !== 'mouse') return;
-    const bounds = event.currentTarget.getBoundingClientRect();
-    if (event.clientY <= bounds.top) selectedId = firstId;
-    else if (event.clientY >= bounds.bottom) selectedId = lastId;
-    // Horizontal exits and inter-row gaps preserve the last selected resort.
-    updateLinkedHighlight();
-  });
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape') { selectedId = firstId; updateLinkedHighlight(); }
-  });
-  updateLinkedHighlight();
+  document.querySelector('.downhill-ranking').addEventListener('pointerleave', () => updateLinkedHighlight(null));
+  // The shared canvas only hit-tests ranked features; background geometry is inert.
+  map.getPane('resorts').style.pointerEvents = 'auto';
+  for (const row of displayRows) {
+    const layers = row.planningMatch ? row.planningMatch.polygonIds.map(id => planningLayers.get(id)) : [outlineLayers.get(row.id)];
+    for (const layer of layers.filter(Boolean)) {
+      layer.options.interactive = true;
+      layer.on('mouseover', () => updateLinkedHighlight(row.id));
+      layer.on('mouseout', () => clear(row.id));
+    }
+  }
+  container.closest('.map-scene').addEventListener('pointerleave', () => updateLinkedHighlight(null));
+  document.addEventListener('keydown', event => { if (event.key === 'Escape') updateLinkedHighlight(null); });
+  updateLinkedHighlight(null);
   container.dataset.ready = 'true';
   status.hidden = true;
 }

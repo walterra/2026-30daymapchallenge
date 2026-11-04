@@ -25,11 +25,11 @@
       color = fill;
     }
   }
-  const caveat = chart.querySelector('.ranking-caveat');
-  if (!caveat || !caveat.textContent.includes('not an official national ranking')) errors.push('Missing visible ranking qualification');
+  const caveat = document.querySelector('.comparison-caption');
+  if (!caveat || !caveat.textContent.includes('not advertised piste totals')) errors.push('Missing shared qualification');
   else {
     const box = caveat.getBoundingClientRect();
-    if (box.height <= 0 || box.top < rows.at(-1).getBoundingClientRect().bottom || box.bottom > chart.getBoundingClientRect().bottom + 1) errors.push('Ranking qualification is not directly below the bars');
+    if (box.height <= 0 || box.top < Math.max(chart.getBoundingClientRect().bottom, document.querySelector('.map-card').getBoundingClientRect().bottom) - 1) errors.push('Qualification must follow both views');
   }
   if (rows.filter(row => row.classList.contains('is-map-active')).length > 1) errors.push('More than one active bar');
   if (document.documentElement.scrollWidth > innerWidth) errors.push('Page overflow');

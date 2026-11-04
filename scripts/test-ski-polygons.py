@@ -150,7 +150,7 @@ class SkiPolygonTests(unittest.TestCase):
         self.assertIn('dashArray', style)
         self.assertNotIn('--color-accent', style)
         page = (folder.parent / 'index.html').read_text()
-        self.assertIn('Where these ten are', page)
+        self.assertIn('Vorarlberg · Tirol · Salzburg', page)
         self.assertIn('OpenSkiData', page)
 
     def test_reviewed_planning_matches_cover_all_four_point_records(self):
@@ -209,6 +209,12 @@ class SkiPolygonTests(unittest.TestCase):
         self.assertIn("map.on('mapthemechange', color)", script)
         self.assertNotIn('root.selectAll', script)
         self.assertIn('map.fitBounds(regionBounds', (folder.parent / 'map.js').read_text())
+
+    def test_required_regional_city_labels(self):
+        labels = json.loads((folder / 'reference-labels.geojson').read_text())['features']
+        required = [f for f in labels if f['properties'].get('required')]
+        self.assertEqual({f['properties']['name'] for f in required}, {'Bregenz', 'Innsbruck', 'Salzburg'})
+        self.assertTrue(all(f['properties']['minZoom'] == 0 and f['properties']['kind'] == 'city' for f in required))
 
     def test_political_basemap_context(self):
         borders = json.loads((folder / 'state-borders.geojson').read_text())
