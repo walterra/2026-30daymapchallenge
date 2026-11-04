@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Explore 2024 visitor origins and destination clusters across selected European cities using TourMIS bednight statistics.">
+  <meta name="description" content="All reported origin-country and destination pairs as geographically attracted bubbles, with the selected origin highlighted.">
   <title>Shared destinations · Day 04</title>
   <script src="../../assets/theme.js?v=1"></script>
   <link rel="stylesheet" href="../../assets/style.css?v=theme-1">
@@ -16,30 +16,32 @@
   <main id="main">
     <p class="eyebrow">Day 04 · Clusters · Research PoC</p>
     <h1>Shared destinations</h1>
-    <p class="intro">Different origins. Familiar favourites. Explore where residents stayed in 2024, and which destinations share a similar visitor mix.</p>
+    <p class="intro">Every origin, together. Each bubble is a country’s overnight stays in one destination. Cities pull their bubbles together; choose an origin to trace its footprint. The map is framed by Madeira, Trondheim and Rēzekne.</p>
     <form class="controls" aria-label="Map settings" onsubmit="return false">
       <label>Visitors resident in <select id="origin"><option>Netherlands</option></select></label>
-      <label class="check"><input id="outbound" type="checkbox" checked> Foreign destinations only</label>
-      <label class="check"><input id="clustered" type="checkbox"> Only destinations with a cluster</label>
+      <label class="check"><input id="exclude-domestic" type="checkbox" checked> Exclude domestic stays (all origins)</label>
+      <p class="highlight-key"><span class="key-dot selected-key" aria-hidden="true"></span> Selected origin <span class="key-dot" aria-hidden="true"></span> All other origins</p>
     </form>
     <p id="status" role="status">Loading local data…</p>
     <div class="layout">
       <section class="map-panel" aria-label="Destination map">
-        <svg id="map" viewBox="0 0 1000 790" role="img" aria-labelledby="map-title map-desc">
-          <title id="map-title">Selected destination cities and visitor-profile clusters</title>
-          <desc id="map-desc">Circle area represents overnight stays for the selected origin. Colour represents visitor-mix cluster; grey means incomplete clustering data. The adjacent ranked list provides equivalent values and city details.</desc>
+        <svg id="map" viewBox="0 0 1000 1000" role="img" aria-labelledby="map-title map-desc">
+          <title id="map-title">Origin–destination bubbles clustered around city attractors</title>
+          <desc id="map-desc">All reported origin-country and destination pairs within the Madeira–Trondheim–Rēzekne frame are shown together. Bubbles are attracted to destination coordinates and displaced to avoid overlaps. Only the selected origin is highlighted; all other origins are grey. Area represents person-nights on one fixed scale, except a minimum visibility size for tiny and zero counts. The ranked list describes the selected origin’s destinations.</desc>
         </svg>
-        <p class="map-note">Circle <strong>area</strong> = person-nights · Colour = visitor-profile cluster<br>City points represent reporting areas, not precise accommodation locations.</p>
+        <p class="map-note">Bubble <strong>area</strong> ≈ person-nights · Accent = selected origin · Tiny dark dots = destination attractors · Lambert azimuthal equal-area projection<br>Frame: Madeira → Trondheim → Rēzekne. Destinations outside this frame are omitted from the map and ranking.<br>Bubbles are displaced for legibility, not additional travel locations. Hover a bubble or select a ranked destination to show its anchor.</p>
+        <p class="map-note" id="size-note"></p>
       </section>
       <aside aria-labelledby="ranking-title"><h2 id="ranking-title">Destinations</h2><p id="selection">Select a city in the map or list for details.</p><ol id="ranking"></ol></aside>
     </div>
-    <section aria-labelledby="clusters-title"><h2 id="clusters-title">Shared visitor profiles</h2><p>Four exploratory clusters compare the <strong>shares of eight origin markets</strong>, not city size. Domestic stays are included in these fixed profiles, even when hidden by the foreign-destination filter. Cluster names show their two largest average shares, not exclusive visitor groups.</p><div id="legend"></div></section>
+    <section aria-labelledby="clusters-title"><h2 id="clusters-title">Cities as attractors</h2><p>These are <strong>geographic bubble clusters</strong>, not country colours or statistical visitor segments. All source countries remain on the map when the source selection changes. The domestic-stay toggle hides every pair whose origin and destination countries match, not just the selected origin. Changing this filter repacks the remaining bubbles; changing only the source keeps positions fixed. The size scale stays fixed in both cases. Each destination attracts its own origin bubbles, while a collision force separates neighbouring bubbles. Dense clusters can spill away from the exact city point.</p></section>
     <details><summary>Coverage, method &amp; sources</summary>
       <p>This is a selected-destination PoC, not a complete ranking of Europe. TourMIS contains 154 reporting destinations in this extract, including Madeira and Tel Aviv. Blank cells are unknown, not zero. No missing counts are estimated.</p>
-      <p>Clusters use only the 103 destinations with counts for all eight markets: Netherlands, Germany, United Kingdom, France, Italy, Spain, United States and China. Shares are square-root transformed (Hellinger space), then grouped with deterministic four-means clustering. These are descriptive, experimental groups, not validated tourism segments. Unclustered destinations remain available in grey.</p>
-      <p>TourMIS “preferred definitions” mix hotels with all paid accommodation, and city with greater-city areas. Overlapping reporting areas must not be added together. Bednights measure person-nights, not unique travellers. The outbound filter uses destination country; overseas markets are still valid origins.</p>
+      <p>One bubble is drawn for every non-missing individual-country × destination count within the map frame. Continents, foreign/domestic totals and residual “Other” groups are excluded to avoid double counting. Reported zeros remain present at the minimum marker size; missing values are not invented. Domestic stays can be included by unchecking the filter. This view does not use the earlier eight-market statistical clusters.</p>
+      <p>Layout inspired by <a href="https://observablehq.com/@d3/clustered-bubbles">D3’s Clustered Bubbles</a>: fixed city-coordinate attraction replaces free-moving group centroids, with D3 collision forces. The layout and area scale are independent of source selection; tiny values use a disclosed minimum radius. Hover or select a bubble to reveal a line to its true destination anchor. The selected-source list provides keyboard access.</p>
+      <p>TourMIS “preferred definitions” mix hotels with all paid accommodation, and city with greater-city areas. Overlapping reporting areas must not be added together. Bednights measure person-nights, not unique travellers. Overseas markets remain valid origins; Madeira and Tel Aviv are reporting destinations in the extract.</p>
       <p>Data: extracted/adapted from <a href="https://www.tourmis.info/">TourMIS / CityDNA, ECM-J8</a>, annual 2024, retrieved 4 November 2026. © MU Vienna and contributing statistical providers. <a href="https://www.tourmis.info/material/TourMIS_DSGVO_txe.pdf">Reuse terms</a>. Individual provider attribution remains to be verified before treating this research PoC as publication-ready.</p>
-      <p>Coordinates: <a href="https://www.geonames.org/">GeoNames</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Madeira uses Funchal and Haarlemmermeer uses Hoofddorp as representative points. Land: Natural Earth, public domain. Local D3 v4, BSD-3-Clause. Substantial AI assistance: data extraction, geocoding, clustering, implementation and checks.</p>
+      <p>Coordinates: <a href="https://www.geonames.org/">GeoNames</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Madeira uses Funchal and Haarlemmermeer uses Hoofddorp as representative points. Land: Natural Earth, public domain. Projection: Europe-centred Lambert azimuthal equal-area, centred at 10°E, 49°N (D3’s spherical model; not an exact EPSG:3035 transformation). Local D3 v4, BSD-3-Clause. Substantial AI assistance: data extraction, geocoding, clustering, implementation and checks.</p>
       <p><a href="data/tourmis-2024.csv" download>Download adapted TourMIS CSV</a> · <a href="README.md">Preparation and limitations</a></p>
     </details>
     <noscript><p>JavaScript is required for the interactive map. The <a href="data/tourmis-2024.csv">CSV dataset</a> remains available.</p></noscript>

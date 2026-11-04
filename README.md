@@ -68,7 +68,7 @@ Use relative asset and navigation URLs so the site also works beneath a GitHub P
 
 ## Day 04 · Clusters — research PoC
 
-[Shared destinations](maps/04-travel-clusters/) maps 2024 TourMIS bednights across 154 reporting destinations, with an origin selector and outbound-only filter. Four exploratory clusters compare eight-market visitor profiles for 103 complete destinations; unclustered destinations remain visible in grey. The Netherlands view starts with 99 foreign destinations with reported counts. Mixed accommodation definitions, domestic influences on profiles and missing-data coverage are explicit. Individual provider attribution remains a publication gate. See the [preparation, terms and checks](maps/04-travel-clusters/README.md).
+[Shared destinations](maps/04-travel-clusters/) contains 5,321 reported individual-origin-country × destination pairs across 154 TourMIS reporting destinations. The map now frames 147 destinations between Madeira, Trondheim and Rēzekne; outside-frame records remain in the download, not in the force layout. Collision-separated bubbles are attracted to their destination coordinates. Only the selected source country is highlighted; source selection never changes bubble positions or the global size scale. Domestic stays are excluded by default across all origins. Netherlands shows 97 foreign destinations in this frame, or 103 when domestic stays are enabled. Mixed definitions, geographic displacement, the minimum marker size and missing-data coverage are explicit. Individual provider attribution remains a publication gate. See the [preparation, terms and checks](maps/04-travel-clusters/README.md).
 
 ## Saved for another day
 
