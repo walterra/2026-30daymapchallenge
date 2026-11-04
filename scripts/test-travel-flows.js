@@ -45,12 +45,19 @@ test('paths start at the representative source and end at true city anchors', ()
   }
 });
 
-test('bundles share control points; off-frame sources have labelled edge entries', () => {
+test('bundles share control points; only labels move to the viewport edge', () => {
   const edges = flows.layouts.foreign.Netherlands;
   const hubs = edges.filter(e => e.points.length > 2).map(e => e.points[1].join(','));
   assert(new Set(hubs).size < hubs.length / 2);
   assert.equal(flows.origins.Netherlands.offMap, false);
   assert.equal(flows.origins['United States'].offMap, true);
-  const [x, y] = flows.origins['United States'].point;
-  assert(Math.min(Math.abs(x - 20), Math.abs(x - 980), Math.abs(y - 20), Math.abs(y - 830)) < .001);
+  for (const market of ['United States', 'Turkiye', 'Ukraine']) {
+    const source = flows.origins[market];
+    assert.equal(source.offMap, true);
+    assert.deepEqual(source.point, source.projectedPoint);
+    assert(source.point[0] < 0 || source.point[0] > 1000 || source.point[1] < 0 || source.point[1] > 850);
+    const [x, y] = source.labelPoint;
+    assert(x >= 20 && x <= 980 && y >= 20 && y <= 830);
+    assert(Math.min(Math.abs(x - 20), Math.abs(x - 980), Math.abs(y - 20), Math.abs(y - 830)) < .001);
+  }
 });

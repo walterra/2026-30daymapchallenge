@@ -15,6 +15,14 @@
   let nodes, circles, data, saved, bounds, bundled, flowLayer, sourceLayer;
   const bundleLine = d3.line().curve(d3.curveBundle.beta(.82));
 
+  function visibleViewport() {
+    const element = svg.node();
+    const scale = Math.min(element.clientWidth / saved.config.width, element.clientHeight / saved.config.height);
+    const width = element.clientWidth / scale, height = element.clientHeight / scale;
+    return {left: (saved.config.width - width) / 2, top: (saved.config.height - height) / 2,
+      right: (saved.config.width + width) / 2, bottom: (saved.config.height + height) / 2, scale};
+  }
+
   function drawFlows() {
     flowLayer.selectAll('*').remove();
     sourceLayer.selectAll('*').remove();
@@ -26,14 +34,29 @@
     flowLayer.selectAll('path').data(edges).enter().append('path')
       .attr('class', 'flow').attr('data-city-index', d => d.cityIndex)
       .attr('d', d => bundleLine(d.points));
-    const [x, y] = source.point;
-    sourceLayer.append('circle').attr('class', 'source-point').attr('cx', x).attr('cy', y).attr('r', 5)
-      .append('title').text(`${market}: representative point at ${source.name}${source.offMap ? '; shown schematically at the map edge' : ''}. Not observed traveller departure locations.`);
-    sourceLayer.append('text').attr('class', 'source-label')
-      .attr('x', x + (x < saved.config.width / 2 ? 9 : -9)).attr('y', Math.max(25, y - 9))
+    const viewport = visibleViewport();
+    const offscreen = source.point[0] < viewport.left || source.point[0] > viewport.right
+      || source.point[1] < viewport.top || source.point[1] > viewport.bottom;
+    let [x, y] = source.point;
+    if (offscreen) {
+      const cx = saved.config.width / 2, cy = saved.config.height / 2;
+      const dx = x - cx, dy = y - cy, inset = 16 / viewport.scale;
+      const ratio = Math.min((viewport.right - cx - inset) / Math.max(Math.abs(dx), 1e-9),
+        (viewport.bottom - cy - inset) / Math.max(Math.abs(dy), 1e-9));
+      x = cx + dx * ratio; y = cy + dy * ratio;
+    }
+    if (!offscreen) {
+      sourceLayer.append('circle').attr('class', 'source-point').attr('cx', source.point[0]).attr('cy', source.point[1]).attr('r', 5)
+        .append('title').text(`${market}: representative point at ${source.name}. Not observed traveller departure locations.`);
+    }
+    const angle = Math.atan2(source.point[1] - saved.config.height / 2, source.point[0] - saved.config.width / 2);
+    const arrow = ['→', '↘', '↓', '↙', '←', '↖', '↑', '↗'][(Math.round(angle / (Math.PI / 4)) + 8) % 8];
+    sourceLayer.append('text').datum(source).attr('class', 'source-label').attr('data-offscreen', offscreen)
+      .attr('x', x + (x < saved.config.width / 2 ? 9 : -9)).attr('y', Math.max(viewport.top + 18 / viewport.scale, Math.min(viewport.bottom - 12 / viewport.scale, y - 9)))
       .attr('text-anchor', x < saved.config.width / 2 ? 'start' : 'end')
-      .text(`${market}${source.offMap ? ' (off-map)' : ''}`);
-    note.textContent = `${edges.length} schematic connections from ${market}. Representative country point: ${source.name}${source.offMap ? ' (outside this frame; entry marker placed at map edge)' : ''}. Bundles show relationships, not actual routes; line endpoints are city anchors, not displaced bubbles. Zero and missing counts have no flow line.`;
+      .text(`${market}${offscreen ? ` ${arrow}` : ''}`)
+      .append('title').text(`${market}: representative point at ${source.name}${offscreen ? ' lies outside the viewport; this label indicates its direction' : ''}. Not observed traveller departure locations.`);
+    note.textContent = `${edges.length} schematic connections from ${market}. Representative country point: ${source.name}${offscreen ? ' (outside the viewport; only its directional label is placed at the edge)' : ''}. Lines start at the true projected representative point. Bundles show relationships, not actual routes; line endpoints are city anchors, not displaced bubbles. Zero and missing counts have no flow line.`;
   }
   const inFrame = city => city.lon >= bounds[0][0] && city.lon <= bounds[1][0] && city.lat >= bounds[0][1] && city.lat <= bounds[1][1];
   const isVisible = node => node.position !== null;
@@ -95,7 +118,7 @@
     .then(([loaded, land, layouts, flows]) => {
       bundled = flows;
       data = loaded; saved = layouts; bounds = saved.config.bounds;
-      if (bundled.version !== 1) throw Error('Incompatible saved flows');
+      if (bundled.version !== 2) throw Error('Incompatible saved flows');
       bundleLine.curve(d3.curveBundle.beta(bundled.beta));
       if (saved.version !== 1 || saved.layouts.all.length !== saved.nodes.length || saved.layouts.foreign.length !== saved.nodes.length) throw Error('Incompatible saved layouts');
       const projection = d3.geoAzimuthalEqualArea().rotate(saved.projection.rotate)
@@ -104,7 +127,16 @@
       svg.attr('viewBox', `0 0 ${saved.config.width} ${saved.config.height}`).attr('preserveAspectRatio', 'xMidYMid meet');
       svg.append('path').datum(d3.geoGraticule().extent(bounds).step([10, 10])()).attr('class', 'graticule').attr('d', path);
       svg.append('path').datum(land).attr('class', 'land').attr('d', path);
-      flowLayer = svg.append('g').attr('class', 'flows').attr('aria-hidden', 'true');
+      const clipRect = svg.append('defs').append('clipPath').attr('id', 'flow-viewport-clip')
+        .attr('clipPathUnits', 'userSpaceOnUse').append('rect');
+      function resizeViewport() {
+        const v = visibleViewport();
+        clipRect.attr('x', v.left).attr('y', v.top).attr('width', v.right - v.left).attr('height', v.bottom - v.top);
+        if (sourceLayer) drawFlows();
+      }
+      resizeViewport();
+      flowLayer = svg.append('g').attr('class', 'flows').attr('aria-hidden', 'true')
+        .attr('clip-path', 'url(#flow-viewport-clip)');
       origin.replaceChildren(...saved.markets.map(m => { const option = document.createElement('option'); option.textContent = m; return option; }));
       origin.value = 'Netherlands';
       nodes = saved.nodes.map(entry => {
@@ -125,5 +157,6 @@
       showFlows.addEventListener('change', drawFlows);
       excludeDomestic.addEventListener('change', loadLayout);
       loadLayout();
+      new ResizeObserver(resizeViewport).observe(svg.node());
     }).catch(error => { status.textContent = `Unable to load the map: ${error.message}. Use the CSV download below or serve this directory over HTTP.`; });
 })();

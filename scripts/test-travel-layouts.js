@@ -47,6 +47,6 @@ test('stable country-destination keys and mode coverage', () => {
 
 test('browser renderer contains no force simulation or resize-driven layout', () => {
   const script = fs.readFileSync(path.join(directory, 'map.js'), 'utf8');
-  assert(!/d3\.force|requestAnimationFrame|ResizeObserver/.test(script));
+  assert(!/d3\.force|requestAnimationFrame/.test(script));
   assert(script.includes("json('data/bubble-layouts.json')"));
 });

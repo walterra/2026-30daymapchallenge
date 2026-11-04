@@ -7,7 +7,7 @@ select, button { font: inherit; }
 select { padding: .45rem; max-width: 100%; background: var(--color-global-bg, #fff); color: var(--color-global-text, #172635); }
 .layout { --panel-height: min(760px, 84dvh); display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 1.5rem; align-items: start; }
 .map-panel { min-width: 0; }
-#map { width: 100%; height: var(--panel-height); box-sizing: border-box; display: block; background: #e9f0f3; border: 1px solid #a9bac2; border-radius: 6px; }
+#map { width: 100%; height: var(--panel-height); box-sizing: border-box; display: block; overflow: hidden; background: #e9f0f3; border: 1px solid #a9bac2; border-radius: 6px; }
 .land { fill: #f8f7f2; stroke: #bac6cb; stroke-width: .5; }
 .graticule { fill: none; stroke: #b8cbd3; stroke-width: .5; }
 .dot { fill: #89959e; stroke: #fff; stroke-width: .2; fill-opacity: .7; cursor: pointer; }

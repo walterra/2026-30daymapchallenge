@@ -55,16 +55,17 @@ for (const market of saved.markets) {
   const country = marketCodes[market], representative = capitals[country];
   if (!representative) throw Error(`Missing representative point for ${market}`);
   const projected = projection([representative.lon, representative.lat]);
-  const offMap = !inside(representative);
-  let point = projected;
+  const offMap = projected[0] < 0 || projected[0] > saved.config.width || projected[1] < 0 || projected[1] > saved.config.height;
+  let labelPoint = projected;
   if (offMap) {
-    // Schematic map-edge entry in the projected direction of the country point.
+    // Only the label moves to an inset viewport edge; source geometry stays at
+    // the true projected coordinate, even far outside the viewport.
     const center = [saved.config.width / 2, saved.config.height / 2];
     const dx = projected[0] - center[0], dy = projected[1] - center[1];
     const factor = Math.min((center[0] - 20) / Math.max(Math.abs(dx), 1e-9), (center[1] - 20) / Math.max(Math.abs(dy), 1e-9));
-    point = [center[0] + dx * factor, center[1] + dy * factor];
+    labelPoint = [center[0] + dx * factor, center[1] + dy * factor];
   }
-  origins[market] = {...representative, point: point.map(round), projectedPoint: projected.map(round), offMap};
+  origins[market] = {...representative, point: projected.map(round), projectedPoint: projected.map(round), labelPoint: labelPoint.map(round), offMap};
   for (const mode of ['all', 'foreign']) {
     const destinations = data.cities.flatMap((city, cityIndex) => {
       const value = city.nights[market];
@@ -75,7 +76,7 @@ for (const market of saved.markets) {
   }
 }
 const hash = value => crypto.createHash('sha256').update(value).digest('hex');
-const output = {version: 1, beta: .82, sourceSha256: hash(dataText), layoutSha256: hash(layoutText), anchorsSha256: hash(anchorText),
+const output = {version: 2, beta: .82, sourceSha256: hash(dataText), layoutSha256: hash(layoutText), anchorsSha256: hash(anchorText),
   generatorSha256: hash(fs.readFileSync(__filename)), origins, layouts};
 fs.writeFileSync(path.join(directory, 'bundled-flows.json'), JSON.stringify(output) + '\n');
 console.log(`Saved geographic bundles for ${Object.keys(origins).length} source countries, both filter modes`);
