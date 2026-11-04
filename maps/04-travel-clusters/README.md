@@ -1,6 +1,6 @@
 # Day 4 — Travel clusters (data preparation)
 
-Map implementation is pending. This directory is not yet a completed entry.
+[Shared destinations](index.html) is a working research PoC: a local SVG map and ranked list with origin, outbound-only and complete-profile filters. It is linked in the gallery's research section, not presented as publication-ready.
 
 ## Source and retrieval
 
@@ -40,8 +40,33 @@ The extract contains 154 destination columns and 74 market rows, including count
 - Add coordinates and destination countries, inspect reporting coverage, check original provider attribution, and decide consistent-definition versus mixed-definition presentation before mapping or clustering.
 - Automated browser extraction, normalization script and documentation received substantial AI assistance. No illustrative travel counts were introduced.
 
+## Map preparation and dependencies
+
+Coordinates use the [GeoNames cities1000 extract](https://download.geonames.org/export/dump/cities1000.zip), retrieved 2026-11-04, licensed [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), verified in its [readme](https://download.geonames.org/export/dump/readme.txt). The full gazetteer is not committed. `scripts/prepare-travel-clusters.py` matches normalized primary/alternate names within the map extent, with explicit ambiguity overrides. All 154 output name/country/place combinations were reviewed; Bruges and Cologne required corrections, alongside Bienne, Porto and other ambiguous aliases. GeoNames IDs are retained in `map-data.json`. Madeira and Haarlemmermeer use Funchal and Hoofddorp as representative points rather than claiming city-boundary accuracy.
+
+```sh
+curl -fL https://download.geonames.org/export/dump/cities1000.zip -o /tmp/tourmis-cities1000.zip
+python3 scripts/prepare-travel-clusters.py /tmp/tourmis-cities1000.zip
+curl -fL https://naciscdn.org/naturalearth/10m/physical/ne_10m_land.zip -o /tmp/ne_10m_land.zip
+uv run scripts/prepare-travel-land.py /tmp/ne_10m_land.zip
+python3 scripts/test-travel-clusters.py
+node --check maps/04-travel-clusters/map.js
+python3 scripts/check-site.py
+```
+
+Clustering uses eight markets with comparatively broad coverage: Netherlands, Germany, United Kingdom, France, Italy, Spain, United States and China. Only 103 destinations with all eight non-missing counts and a positive sum qualify. Shares are normalized within those eight markets, square-root transformed (Hellinger space), and clustered using four-means with deterministic farthest-first initialization, at most 100 iterations. Cluster summaries are unweighted means of destination shares; two clusters can have the same leading markets despite different full profiles. Names include cluster numbers to distinguish them. Four is an exploratory choice, not a statistically validated optimum. Domestic stays are included in these fixed profiles, so domestic tourism can strongly influence clusters. The outbound filter changes circle/ranking eligibility, not the profiles.
+
+Circle area is proportional to the selected origin's bednights, rescaled per selection. True zero counts remain in the ranked list but produce zero-radius circles; missing values are excluded and counted separately. Grey destinations lack a complete clustering profile. The rank/list buttons provide keyboard-accessible equivalents to circle selection. On-screen circle colours are supplemented by cluster numbers in the list and textual details.
+
+The basemap is Natural Earth public-domain land, clipped to the full map extent and simplified by 0.015 degrees with preserved topology. It deliberately shows no political borders. Runtime dependencies are local D3 v4.13.0 (BSD-3-Clause; see `assets/vendor/d3/LICENSE`) and the shared theme files. There are no external runtime requests, tile servers, credentials or backend. Preparation alone uses Python; basemap preparation uses pinned pyshp and Shapely through uv. The browser needs no build step.
+
 ## Checks performed
 
-- Normalization executed successfully: 11,396 destination-market records.
-- Netherlands non-missing coverage counted: 105 destinations.
-- No map, responsive-layout, accessibility or console checks yet; no map exists.
+- Five standard-library data regression tests passed: reproducible CSV, coverage/counts, reviewed geocodes, cluster summaries, and CSV/map fidelity.
+- Normalization: 11,396 destination-market records; Netherlands coverage: 105 destinations, of which 99 are foreign destinations.
+- JavaScript syntax and repository site/link checks passed.
+- Headed browser: origin change, both filters, ranking selection and default restoration passed.
+- Desktop 1280×900 and narrow 375×812 layouts checked for horizontal overflow; none detected. Desktop screenshot reviewed; map description present.
+- Browser console produced no messages in the tested session.
+- Desktop axe: zero violations; colour contrast review incomplete for overlapping SVG labels and offscreen ranking items. This is not a claim of full accessibility conformance.
+- Individual-provider attribution and cross-city comparability remain publication gates.

@@ -1,0 +1,31 @@
+main { max-width: 1450px; }
+h1 { margin-bottom: .35em; }
+.intro { max-width: 760px; font-size: 1.15rem; }
+.controls { display: flex; flex-wrap: wrap; gap: 1.2rem; align-items: center; padding: 1rem 0; border-block: 1px solid #8886; }
+.controls label { display: flex; gap: .55rem; align-items: center; }
+select, button { font: inherit; }
+select { padding: .45rem; max-width: 100%; background: var(--color-global-bg, #fff); color: var(--color-global-text, #172635); }
+.layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 1.5rem; }
+.map-panel { min-width: 0; }
+#map { width: 100%; display: block; background: #e9f0f3; border: 1px solid #a9bac2; border-radius: 6px; }
+.land { fill: #f8f7f2; stroke: #bac6cb; stroke-width: .5; }
+.graticule { fill: none; stroke: #b8cbd3; stroke-width: .5; }
+.dot { stroke: #fff; stroke-width: 1.2; fill-opacity: .82; cursor: pointer; }
+.dot:hover, .dot.active { stroke: #111; stroke-width: 2.5; fill-opacity: 1; }
+.map-label { fill: #344651; font: 12px sans-serif; pointer-events: none; paint-order: stroke; stroke: #fff; stroke-width: 3px; }
+.map-note { font-size: .85rem; color: inherit; opacity: .85; }
+aside h2 { margin-top: 0; }
+#ranking { max-height: 590px; overflow-y: auto; padding-left: 2rem; }
+#ranking li { margin-bottom: .35rem; padding-right: .3rem; }
+#ranking button { width: 100%; border: 0; padding: .55rem .35rem; background: transparent; color: inherit; text-align: left; cursor: pointer; border-bottom: 1px solid #8884; }
+#ranking button:hover { background: #8882; }
+#ranking strong { float: right; font-variant-numeric: tabular-nums; }
+#ranking small { display: block; opacity: .8; }
+#selection { min-height: 5rem; font-size: .9rem; }
+#legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-block: 1rem 2rem; }
+.legend-item { border-left: 6px solid var(--cluster-color); padding: .6rem .8rem; background: #8881; }
+.legend-item p { margin: .25rem 0; font-size: .85rem; }
+details { padding: 1rem; border: 1px solid #8886; }
+summary { cursor: pointer; font-weight: bold; }
+button:focus-visible, select:focus-visible, input:focus-visible, summary:focus-visible { outline: 3px solid #167cb4; outline-offset: 3px; }
+@media (max-width: 800px) { .layout { grid-template-columns: 1fr; } #ranking { max-height: 350px; } #selection { min-height: 0; } .controls { align-items: start; flex-direction: column; } }
