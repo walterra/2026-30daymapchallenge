@@ -70,6 +70,10 @@ Use relative asset and navigation URLs so the site also works beneath a GitHub P
 
 [Shared destinations](maps/04-travel-clusters/) contains 5,321 reported individual-origin-country × destination pairs across 154 TourMIS reporting destinations. The map now frames 147 destinations between Madeira, Trondheim and Rēzekne; outside-frame records remain in the download, not in the force layout. Collision-separated bubbles are attracted to their destination coordinates. Only the selected source country is highlighted; source selection never changes bubble positions or the global size scale. Domestic stays are excluded by default across all origins. Netherlands shows 97 foreign destinations in this frame, or 103 when domestic stays are enabled. Mixed definitions, geographic displacement, the minimum marker size and missing-data coverage are explicit. Individual provider attribution remains a publication gate. See the [preparation, terms and checks](maps/04-travel-clusters/README.md).
 
+## Viewshed · Three.js research PoC
+
+[Into view](maps/05-viewshed/) animates a calculated 4.88 km OpenStreetMap walking route from Kössen Dorf to Taubenseehütte. A fixed top-down Three.js scene plays 99 precomputed terrain-only viewsheds over real Tirol elevation data on a 20 m analysis grid. Missing German terrain remains explicit. Local assets, no build step, play/pause and scrubbing, and a deterministic `window.viewshed.renderAt(timeSeconds)` capture API support future GIF rendering. Challenge day unassigned; Tirol application notification remains a publication action. See the [method, licenses and capture API](maps/05-viewshed/README.md).
+
 ## Saved for another day
 
 [Where the snow begins](maps/02-engineered-winter/) preserves the Tirol snowmaking-water prototype: 704 verified locations and 148 mapped snowmaking reservoirs. Its challenge day is unassigned and source reuse clearance remains unresolved. See its [method](maps/02-engineered-winter/README.md).

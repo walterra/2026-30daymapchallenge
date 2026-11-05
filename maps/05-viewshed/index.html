@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An animated terrain viewshed along a walking route from Kössen Dorf to Taubenseehütte. A Three.js research prototype.">
+  <title>Into view · Kössen to Taubenseehütte</title>
+  <script src="../../assets/theme.js?v=1"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../assets/theme.css?v=3">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div><a href="../../index.html">← all maps</a><span class="prototype">VIEWSHED / RESEARCH PROTOTYPE</span></div>
+    <button class="theme-toggle" data-theme-toggle type="button" aria-label="Dark theme" aria-pressed="false" hidden></button>
+  </header>
+  <main id="main">
+    <header class="intro">
+      <p class="eyebrow">Kössen, Tirol · 2026 #30DayMapChallenge</p>
+      <h1>Into view.</h1>
+      <p>From the village square to Taubenseehütte.<br>Follow the climb. Watch the landscape open up.</p>
+    </header>
+    <section aria-label="Animated viewshed map" class="experience">
+      <div id="map" role="img" aria-label="Top-down shaded terrain map. An orange walking route leads northeast from Kössen to Taubenseehütte. A pale yellow overlay shows terrain visible from the current route sample." aria-describedby="map-description">
+        <p id="loading" role="status">Loading terrain and visibility masks…</p>
+        <div class="map-heading"><span>KÖSSEN → TAUBENSEEHÜTTE</span><span id="map-distance">0.00 km</span></div>
+        <div class="north" aria-hidden="true">N<br>↑</div>
+        <div class="map-legend"><span><i class="visible-swatch"></i>Visible now</span><span><i class="route-swatch"></i>Walking route</span><span><i class="unknown-swatch"></i>No terrain data</span></div>
+        <div class="map-source">Datenquelle: Land Tirol - data.tirol.gv.at · © OpenStreetMap contributors</div>
+      </div>
+      <div class="transport">
+        <button id="play" type="button" disabled aria-label="Play animation">▶ Play</button>
+        <div class="scrub"><label for="timeline">Route progress <output id="progress">0%</output></label><input id="timeline" type="range" min="0" max="30" value="0" step="0.01" disabled></div>
+        <label class="speed">Speed<select id="speed" disabled><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label>
+        <button id="reset" type="button" disabled>↺ Reset</button>
+      </div>
+      <div class="readouts"><div><span>Distance walked</span><strong id="distance">—</strong></div><div><span>Ground elevation</span><strong id="elevation">—</strong></div><div><span>Terrain visible*</span><strong id="area">—</strong></div><div><span>Observer height</span><strong>1.7 m</strong></div></div>
+      <div class="profile-wrap"><span class="eyebrow">THE CLIMB / ground elevation</span><svg id="profile" viewBox="0 0 1000 100" role="img" aria-label="Elevation profile of the walking route"><path id="profile-area"/><path id="profile-line"/><line id="profile-cursor" y1="0" y2="100"/><circle id="profile-dot" r="5"/></svg><div class="profile-labels"><span>Kössen Dorf</span><span>Taubenseehütte</span></div></div>
+    </section>
+    <section class="notes" id="map-description">
+      <div><h2>A moving window onto the mountains.</h2><p>The marker follows a calculated walking route on real OpenStreetMap paths, not a recorded hike. At roughly 50 m intervals, the overlay changes to the terrain visible from that position. Marker movement is continuous; visibility changes in discrete steps.</p></div>
+      <div><h2>Terrain only. Not a hiking guide.</h2><p>20 m analysis grid, derived from Tirol’s 5 m terrain service. Trees, buildings, weather and Earth curvature are excluded. Dark blue-grey areas have no terrain data; rays stop there. German terrain and distant peaks beyond this extract are not included. *Visible area refers only to the modeled cells.</p></div>
+    </section>
+    <footer class="site-footer"><p><a href="README.md">Method, licenses & capture API</a> · <a href="data/route.geojson" download>Route GeoJSON (ODbL)</a></p><p>Three.js r170 · Local assets · Substantial AI assistance: data preparation, implementation and checks.</p></footer>
+  </main>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
