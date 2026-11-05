@@ -30,6 +30,7 @@
         <div class="map-legend"><span><i class="visible-swatch"></i>Visible now</span><span><i class="route-swatch"></i>Cycling route</span><span><i class="unknown-swatch"></i>No terrain data</span></div>
         <div class="map-source">Datenquelle: Land Tirol - data.tirol.gv.at · © OpenStreetMap contributors</div>
       </div>
+      <aside class="control-panel" aria-label="Playback controls and route statistics">
       <div class="transport">
         <button id="play" type="button" disabled aria-label="Play animation">▶ Play</button>
         <div class="scrub"><label for="timeline">Route progress <output id="progress">0%</output></label><input id="timeline" type="range" min="0" max="30" value="0" step="0.01" disabled></div>
@@ -38,6 +39,7 @@
       </div>
       <div class="readouts"><div><span>Distance cycled</span><strong id="distance">—</strong></div><div><span>Ground elevation</span><strong id="elevation">—</strong></div><div><span>Terrain visible*</span><strong id="area">—</strong></div><div><span>Observer height</span><strong>1.7 m</strong></div></div>
       <div class="profile-wrap"><span class="eyebrow">THE RIDE / ground elevation</span><svg id="profile" viewBox="0 0 1000 100" role="img" aria-label="Elevation profile of the cycling route"><path id="profile-area"/><path id="profile-line"/><line id="profile-cursor" y1="0" y2="100"/><circle id="profile-dot" r="5"/></svg><div class="profile-labels"><span>Kössen Dorf</span><span>Griesner Alm</span></div></div>
+      </aside>
     </section>
     <section class="notes" id="map-description">
       <div><h2>From an open valley into the mountains.</h2><p>A calculated 18.71 km cycling route begins at the same Kössen Dorf point as the Taubensee hike. It follows roads via Schwendt and Griesenau, then the asphalt Kaiserbachtal toll road to Griesner Alm. Visibility updates at roughly 150 m intervals. This is not a recorded ride or a traffic-free cycle trail: sections use roads with motor traffic.</p></div>

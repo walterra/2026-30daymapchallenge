@@ -49,6 +49,13 @@ function tube(points, radius, color, z) {
 }
 function resize() {
   if (!renderer) return;
+  if (!document.body.classList.contains('capture') && innerWidth > 900) {
+    const stage = document.querySelector('.experience');
+    // Document coordinates keep sizing stable while scrolling the method notes.
+    const top = stage.getBoundingClientRect().top + scrollY;
+    const size = Math.max(320, Math.floor(innerHeight - top - 24));
+    stage.style.setProperty('--map-size', `${size}px`);
+  }
   const width = captureSize?.width ?? $('map').clientWidth;
   const height = captureSize?.height ?? $('map').clientHeight;
   renderer.setSize(width, height, false);
@@ -219,7 +226,10 @@ async function init() {
   });
   $('timeline').addEventListener('input',()=>{pause();draw(Number($('timeline').value));});
   $('reset').addEventListener('click',()=>{pause();draw(0);});
-  new ResizeObserver(resize).observe($('map'));
+  const layoutObserver = new ResizeObserver(resize);
+  layoutObserver.observe($('map'));
+  layoutObserver.observe(document.querySelector('.intro'));
+  window.addEventListener('resize',resize);
   requestAnimationFrame(tick);
   return {duration,frameCount:data.frameCount,distance:data.distance};
 }

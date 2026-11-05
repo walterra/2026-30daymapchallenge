@@ -50,11 +50,30 @@
   assert(api.current.time === 30 && !api.current.playing, 'Playback must stop at endpoint, without looping');
   document.querySelector('#speed').value = '1';
   assert(document.documentElement.scrollWidth <= innerWidth, 'Page must not overflow horizontally');
+  const mapBounds = document.querySelector('#map').getBoundingClientRect();
+  const panelBounds = document.querySelector('.control-panel').getBoundingClientRect();
+  assert(Math.abs(mapBounds.width-mapBounds.height)<1,'Normal map must be square');
+  if (innerWidth>900) {
+    assert(panelBounds.left>=mapBounds.right-1,'Desktop controls must sit to the right of the map');
+    assert(Math.abs(panelBounds.top-mapBounds.top)<1,'Desktop columns must align at the top');
+    if (innerHeight>=600) {
+      const stage = document.querySelector('.experience').getBoundingClientRect();
+      assert(stage.top+scrollY>=0 && stage.bottom+scrollY<=innerHeight-16,'The complete desktop visualization must fit on screen with breathing room');
+    }
+    const widthBeforeScroll = mapBounds.width;
+    window.scrollBy(0,150);
+    await new Promise(requestAnimationFrame);
+    assert(Math.abs(document.querySelector('#map').getBoundingClientRect().width-widthBeforeScroll)<1,'Scrolling must not resize the map');
+    window.scrollTo(0,0);
+  } else {
+    assert(panelBounds.top>=mapBounds.bottom-1,'Narrow screens must stack controls below the map');
+  }
   const normal = {width:innerWidth,height:innerHeight};
   api.setCapture({width:960,height:720});
   const canvas = document.querySelector('#map canvas');
   assert(canvas.width === 960 && canvas.height === 720, 'Capture must have exact pixel dimensions');
   assert(document.body.classList.contains('capture'), 'Capture must hide surrounding interface');
+  assert(getComputedStyle(document.querySelector('.control-panel')).display==='none','Capture must hide the complete control panel');
   api.renderAt(15); const capture = api.png();
   api.renderAt(1); api.renderAt(15);
   assert(capture === api.png(), 'Fixed-size capture must be deterministic');

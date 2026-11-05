@@ -13,6 +13,14 @@ python3 -m http.server 8000
 
 No required build step, backend or remote runtime requests. Red + grayscale Cactus presentation matches the first variant. This entry imports its renderer and stylesheet from `../05-viewshed-01-taubensee/`; the vendored Three.js MIT dependency is shared there as well. Keep both entries together when deploying. Terrain, route and visibility data are local to this entry.
 
+## Layout
+
+Both variants use a square map on the left and a 320 px control panel on the right, containing playback, statistics and elevation profile. A compact two-column introduction and reduced header spacing leave more room for the visualization. On desktop, the map is sized from the actual remaining viewport height, with 24 px of space beneath the full visualization; short desktop screens also use more compact controls. Sizing uses document coordinates so scrolling the method notes does not grow or shrink the map. The page can still scroll to the notes/footer; no content is clipped to force a fit. At viewport widths of 900 px or less, controls stack below the still-square map. Capture mode hides the entire panel and preserves explicitly requested canvas dimensions, including non-square exports.
+
+Viewport-fit update checked at 1280 × 800 on both entries, 1280 × 720 on Taubensee, 1024 × 600 on Griesenau, and 390 × 844 on Griesenau. Desktop regression asserts that the entire visualization fits with at least 16 px of breathing room, and that scrolling does not change its size. Square geometry, controls, deterministic export, site resources and whitespace checks passed; browser error logs were empty. The 1280 × 800 composition was visually inspected.
+
+Layout regression checks passed for both variants at 1440 × 1100 and 390 × 844; the cycling variant also passed at 901 × 1000 and 320 × 740. Checks assert square map geometry, desktop/stacked panel positioning, no horizontal overflow and deterministic 960 × 720 capture. Desktop screenshot inspected. Narrow cycling-page axe scan: 0 violations, 0 incomplete checks; browser error log empty. Site resource checks and `git diff --check` passed.
+
 ## Cycling route and evidence
 
 - **18.71 km**, 1,353 route vertices; calculated from OpenStreetMap, not a GPS recording, surveyed cycle trail or official complete itinerary.
