@@ -1,4 +1,9 @@
 import * as THREE from './vendor/three.module.min.js';
+import {appearance,rgb} from './appearance.mjs';
+import {createPhotoPanel,createPhotoMarkers} from './photos.mjs';
+let updatePhoto = () => {};
+let photoData = {photos:[],radius:0};
+let photoMarkers;
 
 const $ = id => document.getElementById(id);
 const params = new URLSearchParams(location.search);
@@ -25,12 +30,12 @@ function routePosition(distance) {
     elevation: a[2] + (b[2] - a[2]) * t, index: i, t };
 }
 function world(x, y, z = 1) { return new THREE.Vector3(x + 0.5, data.height - y - 0.5, z); }
-function label(text, x, y, {size = 22, color = '#ffffff', offset = 0, weight = 'bold'} = {}) {
+function label(text, x, y, {size = 22, color = appearance.contextInk, offset = 0, weight = 'bold'} = {}) {
   const canvas = document.createElement('canvas');
   canvas.width = 3072; canvas.height = 288;
   const ctx = canvas.getContext('2d');
   ctx.font = `${weight} 96px monospace`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-  ctx.lineWidth = 12; ctx.strokeStyle = '#22272aee'; ctx.strokeText(text, 1536, 144);
+  ctx.lineWidth = 12; ctx.strokeStyle = appearance.contextHalo; ctx.strokeText(text, 1536, 144);
   ctx.fillStyle = color; ctx.fillText(text, 1536, 144);
   const texture = new THREE.CanvasTexture(canvas);
   texture.colorSpace = THREE.SRGBColorSpace;
@@ -41,18 +46,19 @@ function label(text, x, y, {size = 22, color = '#ffffff', offset = 0, weight = '
     x:sprite.position.x, y:sprite.position.y-offset, textFraction:ctx.measureText(text).width/canvas.width};
   sprite.renderOrder = 10; scene.add(sprite);
 }
-function regionLabel(region) {
-  // Regional lettering uses the same bold monospace as place labels, on an arc.
+function contextLabel(feature, kind = 'region') {
+  // Quiet basemap context: the same monospace family, lighter weight and wider tracking.
   // Rasterize well above display density; no external font dependency.
   const canvas = document.createElement('canvas');
   canvas.width = 3072; canvas.height = 768;
   const ctx = canvas.getContext('2d');
-  const fontSize = 220, tracking = 32, rise = 88;
-  ctx.font = `bold ${fontSize}px monospace`;
+  const fontSize = 220, tracking = kind === 'range' ? 88 : 54;
+  const rise = kind === 'range' ? 70 : 88;
+  ctx.font = `600 ${fontSize}px monospace`;
   ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-  ctx.fillStyle = '#d6d8d9'; ctx.strokeStyle = '#34393c'; ctx.lineWidth = 16;
+  ctx.fillStyle = appearance.contextInk; ctx.strokeStyle = appearance.contextHalo; ctx.lineWidth = 18;
   ctx.lineJoin = 'round';
-  const glyphs = [...region.name];
+  const glyphs = [...feature.name];
   const advances = glyphs.map(glyph=>ctx.measureText(glyph).width);
   const length = advances.reduce((sum,value)=>sum+value,0)+tracking*(glyphs.length-1);
   let distance = -length/2;
@@ -68,21 +74,25 @@ function regionLabel(region) {
   const texture = new THREE.CanvasTexture(canvas);
   texture.colorSpace = THREE.SRGBColorSpace;
   const sprite = new THREE.Sprite(new THREE.SpriteMaterial({
-    map:texture,depthTest:false,opacity:1,rotation:THREE.MathUtils.degToRad(8)
+    map:texture,depthTest:false,depthWrite:false,opacity:1,
+    rotation:THREE.MathUtils.degToRad(kind === 'range' ? 3 : 8)
   }));
-  sprite.name = region.name;
-  // Cartographic displacement keeps the lettering in the open valley,
-  // away from the Kössen settlement label and the cycling route.
-  sprite.position.copy(world(region.x-35,region.y+20,5));
-  sprite.userData.regionLabel = {fontSize,width:canvas.width,height:canvas.height};
-  sprite.renderOrder = 8; scene.add(sprite);
+  sprite.name = feature.name;
+  // Region sits in open valley; range lettering follows the northern ridge face.
+  sprite.position.copy(kind === 'range'
+    ? world(feature.x+60,feature.y-70,5)
+    : world(feature.x-35,feature.y+20,5));
+  sprite.userData.contextLabel = {kind,fontSize,width:canvas.width,height:canvas.height,
+    x:sprite.position.x,y:sprite.position.y};
+  // Preserve text contrast above the tint, but below routes and place names.
+  sprite.renderOrder = 2.5; scene.add(sprite);
 }
 function tube(points, radius, color, z) {
   // Linear curve: do not introduce off-path Catmull-Rom smoothing.
   const curve = new THREE.CurvePath();
   for (let i = 1; i < points.length; i++) curve.add(new THREE.LineCurve3(world(...points[i-1],z),world(...points[i],z)));
   const geometry = new THREE.TubeGeometry(curve, points.length * 3, radius, 6, false);
-  return new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({color, depthTest:false}));
+  return new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({color,depthTest:false,depthWrite:false,transparent:true}));
 }
 function resize() {
   if (!renderer) return;
@@ -93,6 +103,11 @@ function resize() {
     const size = Math.max(320, Math.floor(innerHeight - top - 24));
     stage.style.setProperty('--map-size', `${size}px`);
   }
+  const photoPanel = $('route-photos');
+  if (innerWidth > 900 && !document.body.classList.contains('capture')) {
+    const photoTop = photoPanel.getBoundingClientRect().top + scrollY;
+    photoPanel.style.setProperty('--photo-height', `${Math.max(64, Math.min(170, innerHeight - photoTop - 196))}px`);
+  } else photoPanel.style.removeProperty('--photo-height');
   const width = captureSize?.width ?? $('map').clientWidth;
   const height = captureSize?.height ?? $('map').clientHeight;
   const capturing = captureSize || document.body.classList.contains('capture');
@@ -111,11 +126,22 @@ function resize() {
   const unitsPerPixel = spanY / height;
   const placedLabels = [];
   for (const child of scene.children) {
-    const regional = child.userData.regionLabel;
-    if (regional) {
-      const fontPixels = THREE.MathUtils.clamp(width/26,15,25);
-      const scale = fontPixels/regional.fontSize*unitsPerPixel;
-      child.scale.set(regional.width*scale,regional.height*scale,1);
+    const context = child.userData.contextLabel;
+    if (context) {
+      const isRange = context.kind === 'range';
+      const fontPixels = isRange
+        ? THREE.MathUtils.clamp(width/24,15,24)
+        : THREE.MathUtils.clamp(width/32,14,20);
+      const scale = fontPixels/context.fontSize*unitsPerPixel;
+      child.scale.set(context.width*scale,context.height*scale,1);
+      child.position.y = isRange
+        ? Math.max(context.y,camera.position.y+camera.bottom+(width<500?130:105)*unitsPerPixel)
+        : context.y;
+      // Keep the longer range name inside the visible ridge window.
+      const halfTextWidth = child.scale.x*.46;
+      child.position.x = THREE.MathUtils.clamp(context.x,
+        camera.position.x+camera.left+halfTextWidth+8*unitsPerPixel,
+        camera.position.x+camera.right-halfTextWidth-8*unitsPerPixel);
       continue;
     }
     const labelStyle = child.userData.label;
@@ -140,6 +166,7 @@ function resize() {
   }
   marker?.scale.setScalar(unitsPerPixel);
   renderer.render(scene,camera);
+  photoMarkers?.layout();
 }
 function draw(time) {
   if (!state.ready) throw new Error('Wait for window.viewshed.ready before rendering.');
@@ -177,6 +204,8 @@ function draw(time) {
   $('profile-cursor').setAttribute('x1',profileX); $('profile-cursor').setAttribute('x2',profileX);
   $('profile-dot').setAttribute('cx',profileX);
   $('profile-dot').setAttribute('cy',95-(p.elevation-lo)/(hi-lo)*90);
+  updatePhoto(distance);
+  photoMarkers?.update(distance);
   renderer.render(scene,camera);
   return {time:seconds, frame, distance, elevation:p.elevation};
 }
@@ -190,63 +219,149 @@ function tick(now) {
   requestAnimationFrame(tick);
 }
 async function init() {
+  const bootStart = performance.now();
   const response = await fetch('data/manifest.json');
   if (!response.ok) throw new Error(`Terrain manifest: HTTP ${response.status}`);
   data = await response.json();
+  // Photographs are supplementary: a metadata failure must not disable the map.
+  try {
+    photoData = await createPhotoPanel();
+    updatePhoto = photoData.update;
+  }
+  catch (error) {
+    const message = document.querySelector('.photo-empty');
+    message.hidden = false;
+    message.textContent = 'Photographs unavailable. The terrain map remains usable.';
+    console.warn('Photo panel:', error);
+  }
   view = $('map').dataset.view ? JSON.parse($('map').dataset.view) : null;
   renderer = new THREE.WebGLRenderer({antialias:true, preserveDrawingBuffer:true, alpha:false});
   // resize() uses native density interactively and density 1 for exact-size exports.
   renderer.outputColorSpace = THREE.SRGBColorSpace;
-  renderer.setClearColor('#242728');
+  renderer.setClearColor(appearance.noData);
   if (Math.max(data.atlasColumns*data.width,data.atlasRows*data.height)>renderer.capabilities.maxTextureSize)
     throw new Error(`This GPU cannot load the visibility atlas pages (${data.width*data.atlasColumns} × ${data.height*data.atlasRows} pixels).`);
   renderer.domElement.setAttribute('aria-hidden','true');
   $('map').prepend(renderer.domElement);
   scene = new THREE.Scene(); camera = new THREE.OrthographicCamera(-1,1,1,-1,.1,200);
   const loader = new THREE.TextureLoader();
-  const terrain = await loader.loadAsync('data/terrain.png');
-  // One byte per atlas pixel instead of four: keep the expanded 20 m grid
-  // without multiplying GPU memory use by the number of color channels.
-  for (const file of data.atlasFiles) {
-    const source = await loader.loadAsync(`data/${file}`);
-    const canvas = document.createElement('canvas');
-    canvas.width = source.image.width; canvas.height = source.image.height;
-    const context = canvas.getContext('2d', {willReadFrequently:true});
-    context.drawImage(source.image,0,0);
-    const rgba = context.getImageData(0,0,canvas.width,canvas.height).data;
-    const red = new Uint8Array(canvas.width*canvas.height);
-    for (let i=0;i<red.length;i++) red[i]=rgba[i*4];
-    const texture = new THREE.DataTexture(red,canvas.width,canvas.height,THREE.RedFormat);
-    texture.minFilter = texture.magFilter = THREE.NearestFilter;
-    texture.generateMipmaps = false; texture.needsUpdate = true;
-    atlases.push(texture);
-    source.dispose(); source.source.data = null;
-    canvas.width = canvas.height = 0;
+  const loadTexture = async path => {
+    try { return await loader.loadAsync(path); }
+    catch { throw new Error(`Image failed to load: ${new URL(path,location.href).pathname}. Check the preview server and refresh.`); }
+  };
+  const [terrain,coverage] = await Promise.all([
+    loadTexture('data/relief.png'),loadTexture('data/coverage.png')
+  ]);
+  coverage.minFilter = coverage.magFilter = THREE.NearestFilter;
+  coverage.generateMipmaps = false;
+  const pageWidth = data.width*data.atlasColumns;
+  const pageHeight = data.height*data.atlasRows;
+  const compressedAtlases = typeof DecompressionStream === 'function' && params.get('atlas') !== 'png';
+  let loadedPages = 0;
+  const loadAtlas = async file => {
+    let red;
+    if (compressedAtlases) {
+      // Inflate directly to one byte per pixel: no image decode, canvas readback
+      // or full-atlas JavaScript channel-copy loop.
+      const path = `data/${file.replace(/\.png$/,'.bin.gz')}`;
+      const response = await fetch(path);
+      if (!response.ok) throw new Error(`Atlas ${path}: HTTP ${response.status}`);
+      const packed = await response.arrayBuffer();
+      const signature = new Uint8Array(packed,0,Math.min(2,packed.byteLength));
+      // Some static hosts transparently decompress gzip responses.
+      const raw = signature[0]===31 && signature[1]===139
+        ? await new Response(new Blob([packed]).stream().pipeThrough(new DecompressionStream('gzip'))).arrayBuffer()
+        : packed;
+      if (raw.byteLength!==pageWidth*pageHeight) throw new Error(`Invalid atlas byte length: ${path}`);
+      red = new Uint8Array(raw);
+    } else {
+      // Compatibility fallback for browsers without native gzip streams.
+      const source = await loadTexture(`data/${file}`);
+      const canvas = document.createElement('canvas');
+      canvas.width = source.image.width; canvas.height = source.image.height;
+      const context = canvas.getContext('2d', {willReadFrequently:true});
+      context.drawImage(source.image,0,0);
+      const rgba = context.getImageData(0,0,canvas.width,canvas.height).data;
+      red = new Uint8Array(canvas.width*canvas.height);
+      for (let i=0;i<red.length;i++) red[i]=rgba[i*4];
+      source.dispose(); source.source.data=null;
+      canvas.width=canvas.height=0;
+    }
+    const texture = new THREE.DataTexture(red,pageWidth,pageHeight,THREE.RedFormat);
+    texture.minFilter=texture.magFilter=THREE.NearestFilter;
+    texture.generateMipmaps=false; texture.needsUpdate=true;
+    $('loading').textContent=`Preparing visibility ${++loadedPages}/${data.atlasFiles.length}…`;
+    return texture;
+  };
+  // Two in flight balances startup latency against memory pressure on Safari.
+  for (let i=0;i<data.atlasFiles.length;i+=2) {
+    atlases.push(...await Promise.all(data.atlasFiles.slice(i,i+2).map(loadAtlas)));
   }
-  terrain.colorSpace = THREE.SRGBColorSpace;
-  const terrainMesh = new THREE.Mesh(new THREE.PlaneGeometry(data.width,data.height),new THREE.MeshBasicMaterial({map:terrain}));
+  state.atlasFormat = compressedAtlases ? 'gzip-red8' : 'png-fallback';
+  // Work in stored display-space gray values, matching the tested palette math.
+  terrain.colorSpace = THREE.NoColorSpace;
+  const terrainMesh = new THREE.Mesh(new THREE.PlaneGeometry(data.width,data.height),new THREE.ShaderMaterial({
+    uniforms:{terrain:{value:terrain},coverage:{value:coverage},
+      paper:{value:new THREE.Vector3(...rgb(appearance.basePaper))},
+      shadow:{value:new THREE.Vector3(...rgb(appearance.reliefShadow))},
+      reliefStrength:{value:appearance.reliefStrength},
+      missing:{value:new THREE.Vector3(...rgb(appearance.noData))},
+      hatchInk:{value:new THREE.Vector3(...rgb(appearance.noDataHatch))},
+      gridSize:{value:new THREE.Vector2(data.width,data.height)}},
+    vertexShader:'varying vec2 mapUV;void main(){mapUV=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}',
+    fragmentShader:`uniform sampler2D terrain;uniform sampler2D coverage;
+      uniform vec3 paper;uniform vec3 shadow;uniform float reliefStrength;uniform vec3 missing;uniform vec3 hatchInk;
+      uniform vec2 gridSize;varying vec2 mapUV;
+      void main(){
+        float known=step(0.5,texture2D(coverage,mapUV).r);
+        float slopeShade=texture2D(terrain,mapUV).r;
+        vec3 relief=mix(paper,shadow,(1.0-slopeShade)*reliefStrength);
+        vec2 cell=floor(mapUV*gridSize);
+        float hatch=1.0-step(1.0,mod(cell.x+cell.y,14.0));
+        gl_FragColor=vec4(mix(mix(missing,hatchInk,hatch),relief,known),1.0);
+      }`
+  }));
   terrainMesh.position.set(data.width/2,data.height/2,0); scene.add(terrainMesh);
   visibility = new THREE.Mesh(new THREE.PlaneGeometry(data.width,data.height),new THREE.ShaderMaterial({
-    uniforms:{atlas:{value:atlases[0]},frame:{value:0},columns:{value:data.atlasColumns},rows:{value:data.atlasRows},gridSize:{value:new THREE.Vector2(data.width,data.height)}},
+    uniforms:{atlas:{value:atlases[0]},coverage:{value:coverage},frame:{value:0},
+      fillColor:{value:new THREE.Vector3(...rgb(appearance.visibleFill))},
+      boundary:{value:new THREE.Vector3(...rgb(appearance.visibleBoundary))},
+      ink:{value:new THREE.Vector3(...rgb(appearance.unlitShade))},
+      fillOpacity:{value:appearance.fillOpacity},shadeOpacity:{value:appearance.shadeOpacity},
+      columns:{value:data.atlasColumns},rows:{value:data.atlasRows},gridSize:{value:new THREE.Vector2(data.width,data.height)}},
     transparent:true,depthWrite:false,
     vertexShader:'varying vec2 mapUV; void main(){mapUV=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}',
-    fragmentShader:`uniform sampler2D atlas;uniform float frame;uniform float columns;uniform float rows;uniform vec2 gridSize;varying vec2 mapUV;
-      void main(){vec2 pixel=(floor(vec2(mapUV.x,1.0-mapUV.y)*gridSize)+0.5)/gridSize;
-      vec2 uv=(vec2(mod(frame,columns),floor(frame/columns))+pixel)/vec2(columns,rows);
-      float visible=texture2D(atlas,uv).r;gl_FragColor=vec4(0.796,0.165,0.259,visible*0.46);}`
+    fragmentShader:`uniform sampler2D atlas;uniform sampler2D coverage;
+      uniform float frame;uniform float columns;uniform float rows;uniform vec2 gridSize;varying vec2 mapUV;
+      uniform vec3 fillColor;uniform vec3 boundary;uniform vec3 ink;uniform float fillOpacity;uniform float shadeOpacity;
+      float maskAt(vec2 offset){
+        vec2 cell=clamp(floor(vec2(mapUV.x,1.0-mapUV.y)*gridSize)+offset,vec2(0.0),gridSize-1.0);
+        vec2 uv=(vec2(mod(frame,columns),floor(frame/columns))+(cell+0.5)/gridSize)/vec2(columns,rows);
+        return step(0.5,texture2D(atlas,uv).r);
+      }
+      void main(){
+        float known=step(0.5,texture2D(coverage,mapUV).r);
+        float visible=maskAt(vec2(0.0));
+        vec4 adjacent=vec4(maskAt(vec2(-1.0,0.0)),maskAt(vec2(1.0,0.0)),maskAt(vec2(0.0,-1.0)),maskAt(vec2(0.0,1.0)));
+        float edge=visible*(1.0-min(min(adjacent.x,adjacent.y),min(adjacent.z,adjacent.w)));
+        // Outline inside the mask only. Isolated cells retain the light fill.
+        edge*=step(1.5,dot(adjacent,vec4(1.0)));
+        gl_FragColor=vec4(mix(ink,mix(fillColor,boundary,edge),visible),known*mix(shadeOpacity,mix(fillOpacity,1.0,edge),visible));
+      }`
   }));
-  visibility.position.set(data.width/2,data.height/2,1); scene.add(visibility);
+  visibility.position.set(data.width/2,data.height/2,1);
+  visibility.renderOrder = 2; scene.add(visibility);
   const pts = data.route.map(r=>[r[0],r[1]]);
-  const casing = tube(pts,3.0,'#fafafa',2); casing.renderOrder=2; scene.add(casing);
-  const routeMesh = tube(pts,1.7,'#cb2a42',3); routeMesh.renderOrder=3; scene.add(routeMesh);
+  const casing = tube(pts,3.0,'#fafafa',2); casing.renderOrder=3; scene.add(casing);
+  const routeMesh = tube(pts,1.7,'#cb2a42',3); routeMesh.renderOrder=4; scene.add(routeMesh);
   const geometry = new THREE.BufferGeometry();
   positions = new Float32Array((data.route.length+1)*3);
   geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));
-  completed = new THREE.Line(geometry,new THREE.LineBasicMaterial({color:'#651522',depthTest:false}));
-  completed.renderOrder=4; completed.frustumCulled=false; scene.add(completed);
+  completed = new THREE.Line(geometry,new THREE.LineBasicMaterial({color:'#651522',depthTest:false,depthWrite:false,transparent:true}));
+  completed.renderOrder=5; completed.frustumCulled=false; scene.add(completed);
   marker = new THREE.Group(); marker.renderOrder=15;
-  const halo = new THREE.Mesh(new THREE.CircleGeometry(7.5,32),new THREE.MeshBasicMaterial({color:'#ffffff',depthTest:false}));
-  const dot = new THREE.Mesh(new THREE.CircleGeometry(4.8,32),new THREE.MeshBasicMaterial({color:'#cb2a42',depthTest:false}));
+  const halo = new THREE.Mesh(new THREE.CircleGeometry(7.5,32),new THREE.MeshBasicMaterial({color:'#ffffff',depthTest:false,depthWrite:false,transparent:true}));
+  const dot = new THREE.Mesh(new THREE.CircleGeometry(4.8,32),new THREE.MeshBasicMaterial({color:'#cb2a42',depthTest:false,depthWrite:false,transparent:true}));
   dot.position.z=.1; halo.renderOrder=15;dot.renderOrder=16;
   marker.add(halo,dot); scene.add(marker);
   const first = data.route[0], last = data.route.at(-1);
@@ -256,23 +371,37 @@ async function init() {
     label(waypoint.name,waypoint.x,waypoint.y,{size:34,offset:18});
   }
   for (const region of data.regionLabels ?? []) {
-    regionLabel(region);
+    contextLabel(region);
   }
   for (const landmark of data.landmarks) {
-    label(landmark.name,landmark.x,landmark.y,{size:55,offset:view?34:-34});
+    if (landmark.name === 'WILDER KAISER') contextLabel(landmark,'range');
+    else label(landmark.name,landmark.x,landmark.y,{size:55,offset:view?34:-34});
   }
   // Scale bar is in the same metric space as the terrain.
-  const barX = view ? view.centerX-view.width/2+60 : 60;
+  const barX = view ? view.centerX+view.width/2-160 : 60;
   const barY = view ? view.centerY+view.height/2-130 : data.height-130;
-  const bar = new THREE.Line(new THREE.BufferGeometry().setFromPoints([world(barX,barY,5),world(barX+100,barY,5)]),new THREE.LineBasicMaterial({color:'#ffffff',depthTest:false}));
-  scene.add(bar); label('2 km',barX+50,barY,{size:36,offset:18});
+  const bar = new THREE.Line(new THREE.BufferGeometry().setFromPoints([world(barX,barY,5),world(barX+100,barY,5)]),new THREE.LineBasicMaterial({color:appearance.contextInk,depthTest:false,depthWrite:false,transparent:true}));
+  bar.renderOrder = 10; scene.add(bar); label('2 km',barX+50,barY,{size:36,offset:18});
   const elevations = data.route.map(r=>r[2]), lo = Math.min(...elevations)-30, hi = Math.max(...elevations)+30;
   const profile = data.route.map(r=>`${(r[3]/data.distance*1000).toFixed(2)},${(95-(r[2]-lo)/(hi-lo)*90).toFixed(2)}`);
   $('profile-line').setAttribute('d',`M${profile.join(' L')}`);
   $('profile-area').setAttribute('d',`M0,100 L${profile.join(' L')} L1000,100 Z`);
+  photoMarkers = createPhotoMarkers({
+    ...photoData,map:$('map'),profile:$('profile'),
+    onSelect(distance) {pause();draw(distance/data.distance*duration);},
+    pointAt(distance) {
+      const p=routePosition(distance);
+      return {
+        map:{x:(p.x+.5-camera.position.x-camera.left)/(camera.right-camera.left),
+          y:(camera.position.y+camera.top-(data.height-p.y-.5))/(camera.top-camera.bottom)},
+        profile:{x:distance/data.distance,y:(95-(p.elevation-lo)/(hi-lo)*90)/100}
+      };
+    }
+  });
   if (params.has('capture')) document.body.classList.add('capture');
   state.ready=true;
   resize(); draw(0);
+  state.startupMs = Math.round(performance.now()-bootStart);
   $('loading').hidden=true;
   for (const id of ['play','timeline','speed','reset']) $(id).disabled=false;
   $('play').addEventListener('click',()=>{
@@ -305,10 +434,15 @@ window.viewshed = {
       width:camera.right-camera.left,height:camera.top-camera.bottom};
   }
 };
-window.viewshed.ready = init().catch(error=>{
-  state.error=error.message;
+window.viewshed.ready = init();
+// Attach UI handling without creating another unhandled rejected promise.
+// Callers awaiting ready still receive the original rejection.
+window.viewshed.ready.catch(error=>{
+  state.ready=false;
+  state.error=error instanceof Error ? error.message : String(error);
   $('loading').hidden=false;
-  $('loading').textContent=`Unable to load the map: ${error.message}. Try a browser with WebGL support.`;
-  console.error(error);
-  throw error;
+  $('loading').setAttribute('role','alert');
+  $('loading').textContent=`Unable to load the map: ${state.error}`;
+  for (const id of ['play','timeline','speed','reset']) $(id).disabled=true;
+  console.error('Viewshed initialization failed:',error);
 });

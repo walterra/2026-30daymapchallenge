@@ -1,0 +1,50 @@
+{
+  "radius": 300,
+  "photos": [
+    {
+      "id": "post",
+      "title": "Gasthof zur Post · Kössen",
+      "alt": "The historic Gasthof zur Post in Kössen village.",
+      "date": "11 May 2017",
+      "author": "Braveheart",
+      "source": "https://commons.wikimedia.org/wiki/File:Gasthof_zur_Post,_K%C3%B6ssen.jpg",
+      "camera": [
+        12.406047,
+        47.66869
+      ],
+      "src": "../05-viewshed-01-taubensee/photos/post.jpg",
+      "distance": 30,
+      "offset": 70
+    },
+    {
+      "id": "schwendt",
+      "title": "Schwendt · looking north",
+      "alt": "Schwendt village and its parish church seen from the south.",
+      "date": "11 May 2017",
+      "author": "Braveheart",
+      "source": "https://commons.wikimedia.org/wiki/File:Ortsansicht_Schwendt.jpg",
+      "camera": [
+        12.382478,
+        47.615697
+      ],
+      "src": "../05-viewshed-01-taubensee/photos/schwendt.jpg",
+      "distance": 9630,
+      "offset": 2
+    },
+    {
+      "id": "chapel",
+      "title": "Memorial chapel · Kaiserbachtal",
+      "alt": "The chapel commemorating mountain victims in Kaiserbachtal.",
+      "date": "12 July 2020",
+      "author": "Sturmel",
+      "source": "https://commons.wikimedia.org/wiki/File:Kapelle_der_Bergtoten_im_Kaiserbachtal.jpg",
+      "camera": [
+        12.346236,
+        47.581111
+      ],
+      "src": "../05-viewshed-01-taubensee/photos/chapel.jpg",
+      "distance": 17420,
+      "offset": 55
+    }
+  ]
+}

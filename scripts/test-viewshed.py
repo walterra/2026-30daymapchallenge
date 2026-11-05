@@ -5,6 +5,9 @@ import math
 import pathlib
 import unittest
 import hashlib
+import gzip
+import tempfile
+from viewshed_relief import write_relief
 import numpy as np
 from PIL import Image
 
@@ -25,6 +28,12 @@ class TaubenseeData(unittest.TestCase):
                 cls.atlases.append(np.array(image))
         with Image.open(cls.data/'coverage.png') as image:
             cls.coverage = np.array(image) > 0
+
+    def test_packed_atlases_match_png_exactly(self):
+        for index,name in enumerate(self.m['atlasFiles']):
+            raw = gzip.decompress((self.data/name.replace('.png','.bin.gz')).read_bytes())
+            self.assertEqual(len(raw),self.atlases[index].size)
+            self.assertEqual(hashlib.sha256(raw).digest(),hashlib.sha256(self.atlases[index].tobytes()).digest())
 
     def test_metric_grid_and_texture_dimensions(self):
         m = self.m
@@ -122,6 +131,16 @@ class TaubenseeData(unittest.TestCase):
         self.assertIn('not an official centroid',region['placement'])
         self.assertTrue(region['source'].startswith('https://www.kaiserwinkl.com/'))
 
+    def test_relief_texture_preserves_shading(self):
+        with Image.open(self.data/'relief.png') as image:
+            self.assertEqual(image.mode,'L')
+            self.assertEqual(image.size,(self.m['width'],self.m['height']))
+            values = np.array(image)[self.coverage]
+        self.assertGreater(len(np.unique(values)),200)
+        self.assertGreater(float(values.std()),30)
+        self.assertEqual(int(values.max()),255)
+        self.assertLess(int(values.min()),50)
+
     def test_terrain_is_grayscale(self):
         with Image.open(self.data/'terrain.png') as image:
             rgb = np.array(image)
@@ -138,7 +157,7 @@ class GriesenauData(TaubenseeData):
         previous = json.loads((first/'manifest.json').read_text())
         self.assertEqual(self.m['route'][0],previous['route'][0])
         self.assertEqual(self.m['visibleCells'][0],previous['visibleCells'][0])
-        for name in ('terrain.png','coverage.png'):
+        for name in ('terrain.png','coverage.png','relief.png'):
             self.assertEqual(hashlib.sha256((self.data/name).read_bytes()).digest(),
                              hashlib.sha256((first/name).read_bytes()).digest())
         with Image.open(first/previous['atlasFiles'][0]) as image:
@@ -166,6 +185,29 @@ class GriesenauData(TaubenseeData):
             if tags.get('access') in {'private','no'} or tags.get('vehicle') in {'private','no'}: self.assertTrue(permit)
         # Last kilometers must run westwards into the valley, not stop at Griesenau.
         self.assertLess(m['route'][-1][0],m['waypointLabels'][-1]['x']-150)
+
+class ReliefPreparation(unittest.TestCase):
+    def make_relief(self,dem,valid):
+        with tempfile.TemporaryDirectory() as folder:
+            path = pathlib.Path(folder)/'relief.png'
+            write_relief(dem,valid,20,path)
+            with Image.open(path) as image: return np.array(image)
+
+    def test_flat_ground_is_paper_white_including_missing_border(self):
+        dem = np.full((12,12),500.0)
+        valid = np.ones_like(dem,dtype=bool)
+        valid[5,5] = False
+        self.assertTrue(np.all(self.make_relief(dem,valid)==255))
+
+    def test_real_slope_remains_shaded_without_boundary_cliffs(self):
+        y,x = np.mgrid[:12,:12]
+        dem = 500.0+x*40+y*10
+        valid = np.ones_like(dem,dtype=bool)
+        valid[5,5] = False
+        image = self.make_relief(dem,valid)
+        self.assertLess(int(image[2,2]),180)
+        self.assertEqual(int(image[5,5]),255)
+        self.assertEqual(int(image[5,6]),255)
 
 if __name__ == '__main__':
     unittest.main()

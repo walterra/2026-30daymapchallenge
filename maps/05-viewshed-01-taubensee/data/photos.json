@@ -1,0 +1,20 @@
+{
+  "radius": 150,
+  "photos": [
+    {
+      "id": "post",
+      "title": "Gasthof zur Post · Kössen",
+      "alt": "The historic Gasthof zur Post in Kössen village.",
+      "date": "11 May 2017",
+      "author": "Braveheart",
+      "source": "https://commons.wikimedia.org/wiki/File:Gasthof_zur_Post,_K%C3%B6ssen.jpg",
+      "camera": [
+        12.406047,
+        47.66869
+      ],
+      "src": "../05-viewshed-01-taubensee/photos/post.jpg",
+      "distance": 0,
+      "offset": 92
+    }
+  ]
+}

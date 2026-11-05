@@ -23,9 +23,25 @@
     assert(Math.abs(initialFraming.width-Math.max(manifest.width,manifest.height)*1.01)<1,'Hiking camera must retain its original full-terrain frame');
   }
   const frames = [];
+  const pixelProbe = document.createElement('canvas');
+  pixelProbe.width=interactiveCanvas.width; pixelProbe.height=interactiveCanvas.height;
+  const probe = pixelProbe.getContext('2d',{willReadFrequently:true});
+  const assertRedMarker = distance => {
+    let i=1;
+    while(i<manifest.route.length-1 && manifest.route[i][3]<distance)i++;
+    const a=manifest.route[i-1],b=manifest.route[i];
+    const t=Math.max(0,Math.min(1,(distance-a[3])/(b[3]-a[3]||1)));
+    const x=a[0]+(b[0]-a[0])*t,y=a[1]+(b[1]-a[1])*t;
+    const px=Math.floor(((x-initialFraming.centerX)/initialFraming.width+.5)*interactiveCanvas.width);
+    const py=Math.floor(((y-initialFraming.centerY)/initialFraming.height+.5)*interactiveCanvas.height);
+    probe.drawImage(interactiveCanvas,0,0);
+    const [r,g,blue]=probe.getImageData(px,py,1,1).data;
+    assert(r>160 && g<100 && blue<120,'Position marker must stay red above the blue overlay');
+  };
   for (const time of [0, 15, 30]) {
     const result = api.renderAt(time);
     frames.push(result.frame);
+    assertRedMarker(result.distance);
     assert(result.time === time, 'Requested time must be exact');
     assert(JSON.stringify(api.framing)===JSON.stringify(initialFraming),'Camera must remain fixed throughout playback');
     assert(!api.current.playing, 'Capture must pause interactive playback');
@@ -96,5 +112,5 @@
   api.renderAt(1); api.renderAt(15);
   assert(capture === api.png(), 'Fixed-size capture must be deterministic');
   assert(capture.startsWith('data:image/png;base64,'), 'Export must be a PNG');
-  return {result:'pass', viewport:normal, pixelRatio:density, frames, deterministic:true, capture:[canvas.width,canvas.height]};
+  return {result:'pass', viewport:normal, pixelRatio:density, frames, atlasFormat:api.state.atlasFormat,startupMs:api.state.startupMs,deterministic:true, capture:[canvas.width,canvas.height]};
 })();

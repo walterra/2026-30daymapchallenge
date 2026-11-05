@@ -6,6 +6,8 @@ import argparse, datetime, heapq, json, math, pathlib, urllib.request
 import xml.etree.ElementTree as ET
 import numpy as np
 from PIL import Image
+from viewshed_relief import write_relief
+from viewshed_atlases import pack_atlas
 from pyproj import Transformer
 import rasterio
 from rasterio.warp import reproject, Resampling
@@ -211,6 +213,7 @@ for i, (ox, oy) in enumerate(observer_grid):
 atlas_files = [f'viewsheds-{i}.png' for i in range(len(atlases))]
 for atlas, name in zip(atlases, atlas_files):
     atlas.save(OUT/name, optimize=True)
+    pack_atlas(atlas, OUT/name.replace('.png','.bin.gz'))
 (OUT/'viewsheds.png').unlink(missing_ok=True)
 # Neutral grayscale hillshade/height tint; red is reserved for visibility and route.
 safe = np.where(valid,dem,700)
@@ -221,6 +224,7 @@ low, high = np.array([159,159,159]), np.array([241,241,241])
 rgb = (low[None,None,:]*(1-t[:,:,None])+high[None,None,:]*t[:,:,None])*(.45+.55*light[:,:,None])
 rgb[~valid]=[36,39,40]
 Image.fromarray(rgb.astype('uint8')).save(OUT/'terrain.png')
+write_relief(dem, valid, 20, OUT/'relief.png')
 Image.fromarray((valid*255).astype('uint8')).save(OUT/'coverage.png')
 profile = [round(float(dem[round(y),round(x)]),1) for x,y in route_grid]
 destination = 'Griesner Alm' if cycling else 'Taubenseehütte'

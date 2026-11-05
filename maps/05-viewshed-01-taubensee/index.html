@@ -23,7 +23,7 @@
       <p><a href="./" aria-current="page">01 · Taubensee hike</a> / <a href="../05-viewshed-02-griesenau/">02 · Kaiserbachtal ride</a></p>
     </header>
     <section aria-label="Animated viewshed map" class="experience">
-      <div id="map" role="img" aria-label="Top-down grayscale terrain map. A red walking route sits in the upper right, from Kössen to Taubenseehütte. Wilder Kaiser stretches across the southwest. A muted red overlay shows terrain visible from the current route sample." aria-describedby="map-description">
+      <div id="map" role="group" aria-label="Top-down grayscale terrain map. A red walking route sits in the upper right, from Kössen to Taubenseehütte. Wilder Kaiser stretches across the southwest. Leafy-green areas with a dark green inner boundary show visible terrain. Light-gray land retains relief shading; pale hatching denotes missing terrain. Numbered photo markers jump to their route locations." aria-describedby="map-description">
         <p id="loading" role="status">Loading terrain and visibility masks…</p>
         <div class="map-heading"><span>KÖSSEN → TAUBENSEEHÜTTE</span><span id="map-distance">0.00 km</span></div>
         <div class="north" aria-hidden="true">N<br>↑</div>
@@ -39,11 +39,25 @@
       </div>
       <div class="readouts"><div><span>Distance walked</span><strong id="distance">—</strong></div><div><span>Ground elevation</span><strong id="elevation">—</strong></div><div><span>Terrain visible*</span><strong id="area">—</strong></div><div><span>Observer height</span><strong>1.7 m</strong></div></div>
       <div class="profile-wrap"><span class="eyebrow">THE CLIMB / ground elevation</span><svg id="profile" viewBox="0 0 1000 100" role="img" aria-label="Elevation profile of the walking route"><path id="profile-area"/><path id="profile-line"/><line id="profile-cursor" y1="0" y2="100"/><circle id="profile-dot" r="5"/></svg><div class="profile-labels"><span>Kössen Dorf</span><span>Taubenseehütte</span></div></div>
+      <section id="route-photos" class="route-photos" aria-label="Photographs near the selected route position">
+        <h2 class="eyebrow">NEAR THE TRACK / photographs</h2>
+        <p class="photo-empty" hidden>No photograph nearby. Explore the route to find more.</p>
+        <figure hidden>
+          <img width="640" height="427" alt="" decoding="async">
+          <p class="photo-error" hidden>Photograph unavailable.</p>
+          <figcaption>
+            <strong class="photo-title"></strong>
+            <span class="photo-context"></span>
+            <span class="photo-credit"><a class="photo-source"></a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · resized</span>
+          </figcaption>
+        </figure>
+        <p class="photo-note">Historical location photos, not a preview of modeled visibility.</p>
+      </section>
       </aside>
     </section>
     <section class="notes" id="map-description">
       <div><h2>A moving window onto the mountains.</h2><p>The marker follows a calculated walking route on real OpenStreetMap paths, not a recorded hike. At roughly 50 m intervals, the overlay changes to the terrain visible from that position. Marker movement is continuous; visibility changes in discrete steps.</p></div>
-      <div><h2>Terrain only. Not a hiking guide.</h2><p>20 m analysis grid, derived from Tirol’s 5 m terrain service. Trees, buildings, weather and Earth curvature are excluded. Charcoal areas have no terrain data; rays stop there. The view extends south and west to Wilder Kaiser, with visibility calculated up to 32 km. German terrain and peaks beyond this extract are not included. *Visible area refers only to the modeled cells.</p></div>
+      <div><h2>Terrain only. Not a hiking guide.</h2><p>20 m analysis grid, derived from Tirol’s 5 m terrain service. Trees, buildings, weather and Earth curvature are excluded. Pale hatched areas have no terrain data; rays stop there. The view extends south and west to Wilder Kaiser, with visibility calculated up to 32 km. German terrain and peaks beyond this extract are not included. *Visible area refers only to the modeled cells.</p></div>
     </section>
     <footer class="site-footer"><p><a href="README.md">Method, licenses & capture API</a> · <a href="data/route.geojson" download>Route GeoJSON (ODbL)</a></p><p>Three.js r170 · Local assets · Substantial AI assistance: data preparation, implementation and checks.</p></footer>
   </main>
