@@ -4,6 +4,7 @@ const $ = id => document.getElementById(id);
 const params = new URLSearchParams(location.search);
 let renderer, scene, camera, data, visibility, marker, completed, positions;
 let atlases = [];
+let view = null;
 let seconds = 0, playing = false, lastTick = 0, currentFrame = -1;
 let captureSize = null;
 const state = { ready: false, error: null };
@@ -24,20 +25,20 @@ function routePosition(distance) {
     elevation: a[2] + (b[2] - a[2]) * t, index: i, t };
 }
 function world(x, y, z = 1) { return new THREE.Vector3(x + 0.5, data.height - y - 0.5, z); }
-function label(text, x, y, {size = 22, color = '#ffffff', offset = 0} = {}) {
+function label(text, x, y, {size = 22, color = '#ffffff', offset = 0, weight = 'bold'} = {}) {
   const canvas = document.createElement('canvas');
-  canvas.width = 1024; canvas.height = 96;
+  canvas.width = 3072; canvas.height = 288;
   const ctx = canvas.getContext('2d');
-  ctx.font = 'bold 32px monospace'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-  ctx.lineWidth = 7; ctx.strokeStyle = '#22272aee'; ctx.strokeText(text, 512, 48);
-  ctx.fillStyle = color; ctx.fillText(text, 512, 48);
+  ctx.font = `${weight} 96px monospace`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.lineWidth = 12; ctx.strokeStyle = '#22272aee'; ctx.strokeText(text, 1536, 144);
+  ctx.fillStyle = color; ctx.fillText(text, 1536, 144);
   const texture = new THREE.CanvasTexture(canvas);
   texture.colorSpace = THREE.SRGBColorSpace;
   const sprite = new THREE.Sprite(new THREE.SpriteMaterial({map: texture, depthTest: false}));
   sprite.scale.set(size * 10.66, size, 1);
   sprite.position.copy(world(x, y, 5)); sprite.position.y += offset;
   sprite.userData.label = {pixels:size >= 50 ? 14 : 11, offset,
-    x:sprite.position.x, y:sprite.position.y-offset, textFraction:ctx.measureText(text).width/1024};
+    x:sprite.position.x, y:sprite.position.y-offset, textFraction:ctx.measureText(text).width/canvas.width};
   sprite.renderOrder = 10; scene.add(sprite);
 }
 function tube(points, radius, color, z) {
@@ -58,13 +59,18 @@ function resize() {
   }
   const width = captureSize?.width ?? $('map').clientWidth;
   const height = captureSize?.height ?? $('map').clientHeight;
+  const capturing = captureSize || document.body.classList.contains('capture');
+  renderer.setPixelRatio(capturing ? 1 : Math.min(window.devicePixelRatio || 1,3));
   renderer.setSize(width, height, false);
   const aspect = width / height;
   // Fixed map extent, never follows the marker. North remains up.
-  const spanY = Math.max(data.height, data.width / aspect) * 1.01;
+  const spanY = view
+    ? Math.max(view.height,view.width/aspect)
+    : Math.max(data.height,data.width/aspect)*1.01;
   camera.left = -spanY * aspect / 2; camera.right = spanY * aspect / 2;
   camera.top = spanY / 2; camera.bottom = -spanY / 2;
-  camera.position.set(data.width/2, data.height/2, 100);
+  if (view) camera.position.copy(world(view.centerX,view.centerY,100));
+  else camera.position.set(data.width/2,data.height/2,100);
   camera.updateProjectionMatrix();
   const unitsPerPixel = spanY / height;
   const placedLabels = [];
@@ -144,8 +150,9 @@ async function init() {
   const response = await fetch('data/manifest.json');
   if (!response.ok) throw new Error(`Terrain manifest: HTTP ${response.status}`);
   data = await response.json();
+  view = $('map').dataset.view ? JSON.parse($('map').dataset.view) : null;
   renderer = new THREE.WebGLRenderer({antialias:true, preserveDrawingBuffer:true, alpha:false});
-  renderer.setPixelRatio(1); // Same pixel output on Retina and non-Retina machines.
+  // resize() uses native density interactively and density 1 for exact-size exports.
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.setClearColor('#242728');
   if (Math.max(data.atlasColumns*data.width,data.atlasRows*data.height)>renderer.capabilities.maxTextureSize)
@@ -205,12 +212,17 @@ async function init() {
   for (const waypoint of data.waypointLabels ?? []) {
     label(waypoint.name,waypoint.x,waypoint.y,{size:34,offset:18});
   }
+  for (const region of data.regionLabels ?? []) {
+    label(region.name,region.x,region.y,{size:55,color:'#e0e0e0',weight:'400'});
+  }
   for (const landmark of data.landmarks) {
-    label(landmark.name,landmark.x,landmark.y,{size:55,offset:-34});
+    label(landmark.name,landmark.x,landmark.y,{size:55,offset:view?34:-34});
   }
   // Scale bar is in the same metric space as the terrain.
-  const bar = new THREE.Line(new THREE.BufferGeometry().setFromPoints([world(60,data.height-130,5),world(160,data.height-130,5)]),new THREE.LineBasicMaterial({color:'#ffffff',depthTest:false}));
-  scene.add(bar); label('2 km',110,data.height-130,{size:36,offset:18});
+  const barX = view ? view.centerX-view.width/2+60 : 60;
+  const barY = view ? view.centerY+view.height/2-130 : data.height-130;
+  const bar = new THREE.Line(new THREE.BufferGeometry().setFromPoints([world(barX,barY,5),world(barX+100,barY,5)]),new THREE.LineBasicMaterial({color:'#ffffff',depthTest:false}));
+  scene.add(bar); label('2 km',barX+50,barY,{size:36,offset:18});
   const elevations = data.route.map(r=>r[2]), lo = Math.min(...elevations)-30, hi = Math.max(...elevations)+30;
   const profile = data.route.map(r=>`${(r[3]/data.distance*1000).toFixed(2)},${(95-(r[2]-lo)/(hi-lo)*90).toFixed(2)}`);
   $('profile-line').setAttribute('d',`M${profile.join(' L')}`);
@@ -243,7 +255,12 @@ window.viewshed = {
     $('map').style.width=`${width}px`;$('map').style.height=`${height}px`;resize();draw(seconds);
   },
   png(){if(!state.ready)throw new Error('Wait for viewshed.ready');return renderer.domElement.toDataURL('image/png');},
-  get current(){return {time:seconds,frame:currentFrame,playing};}
+  get current(){return {time:seconds,frame:currentFrame,playing};},
+  get framing(){
+    if(!state.ready) return null;
+    return {centerX:camera.position.x-.5,centerY:data.height-camera.position.y-.5,
+      width:camera.right-camera.left,height:camera.top-camera.bottom};
+  }
 };
 window.viewshed.ready = init().catch(error=>{
   state.error=error.message;

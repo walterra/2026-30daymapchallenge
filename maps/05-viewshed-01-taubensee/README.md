@@ -10,6 +10,20 @@ Viewport-fit update checked at 1280 × 800 on both entries, 1280 × 720 on Taube
 
 Layout regression checks passed for both variants at 1440 × 1100 and 390 × 844; the cycling variant also passed at 901 × 1000 and 320 × 740. Checks assert square map geometry, desktop/stacked panel positioning, no horizontal overflow and deterministic 960 × 720 capture. Desktop screenshot inspected. Narrow cycling-page axe scan: 0 violations, 0 incomplete checks; browser error log empty. Site resource checks and `git diff --check` passed.
 
+## Kaiserwinkl regional label
+
+**Kaiserwinkl** is the Tirol holiday region comprising **Kössen, Walchsee, Schwendt and Rettenschöss**, between the Chiemgau Alps and the Kaiser mountains. Here “Kaiser” refers to the Kaisergebirge; “Winkl” is a regional form of “Winkel”, a corner or nook. “The corner by the Kaiser mountains” is a plain-language gloss, not a documented historical naming account.
+
+Sources checked: [the official tourism board’s Kössen page](https://www.kaiserwinkl.com/de/koessen-tirol.html), which names the four municipalities, and [the regional overview](https://de.wikipedia.org/wiki/Kaiserwinkl), which identifies the namesake Kaisergebirge and geographic setting. No historical naming dates are inferred.
+
+A neutral, lighter-weight **KAISERWINKL** label is placed over the valley west of Kössen, between Kössen and Walchsee (12.355° E, 47.657° N). This is a cartographic placement inside the region, not a surveyed centroid or an administrative boundary. Both manifests record the anchor and source, and the preparation script preserves it on regeneration. The label is part of the Three.js scene, so it is included in PNG captures.
+
+## High-density text rendering
+
+Interactive WebGL rendering uses the display’s pixel ratio, capped at 3×, while keeping CSS map dimensions and label sizes unchanged. Label textures are 3072 × 288 pixels with 96 px source glyphs and a finer outline. Terrain and visibility data resolutions are unchanged. Explicit capture mode still uses pixel ratio 1 for exact requested output dimensions; increase the requested capture size for higher-resolution exports.
+
+Verified at 1280 × 800 / 2× density on both entries, 390 × 844 / 3× density on cycling, and 1280 × 800 / 1× density on hiking. Tests verify physical canvas resolution and unchanged exact 960 × 720 deterministic captures. A 2× desktop screenshot was visually inspected. All 18 data tests, site/resource checks, module syntax and whitespace checks passed; browser error logs were empty.
+
 ## What is real, and what is modeled
 
 - Real Land Tirol elevation data and real OpenStreetMap street/path geometry.
@@ -69,7 +83,7 @@ const pngDataURL = window.viewshed.png();
 
 - `ready` resolves only after textures and the first frame have rendered.
 - `renderAt(t)` returns time, viewshed frame index, distance and elevation. Repeating the same time restores the same scene, independent of previous playback.
-- `setCapture` sets exact canvas dimensions and a clean composition. Pixel ratio is always 1, independent of device density.
+- `setCapture` sets exact canvas dimensions and a clean composition. Capture pixel ratio is 1, independent of device density; interactive rendering instead follows device density up to 3×.
 - `png()` exports **the canvas only**, with route, labels and scale bar. DOM title, progress, legend and source footer are not baked into that PNG. For an attributed GIF, capture the map element/full capture viewport or add attribution during encoding.
 - `?capture=1` hides the surrounding page and sizes the map to the viewport. For this mode use browser screenshots at a fixed viewport size; they include the title, legend and source credits.
 - `viewshed.current` exposes `{time, frame, playing}`; `viewshed.state` exposes readiness/error.
@@ -83,7 +97,7 @@ Substantial AI assistance: source research, OSM path calculation, elevation extr
 
 Checks performed:
 
-- `uv run --with numpy --with pillow scripts/test-viewshed.py`: 16 tests passed across both variants, including atlas page dimensions, route endpoints and metric distances, sample spacing, observer-cell visibility, frame variation, no visible cells outside known coverage, upper-right hiking-route framing, coverage and changing visibility at Wilder Kaiser, grayscale terrain, and cycling-access/waypoint checks.
+- `uv run --with numpy --with pillow scripts/test-viewshed.py`: 18 tests passed across both variants, including atlas page dimensions, route endpoints and metric distances, sample spacing, observer-cell visibility, frame variation, no visible cells outside known coverage, upper-right hiking-route framing, coverage and changing visibility at Wilder Kaiser, grayscale terrain, and cycling-access/waypoint checks.
 - `python3 scripts/check-site.py`: passed, including local HTML resources across the repository.
 - `node --input-type=module --check < maps/05-viewshed-01-taubensee/app.js` and `git diff --check`: passed.
 - Served with `python3 -m http.server 8000`. Chromium via agent-browser: `scripts/check-viewshed.js` passed at 1200 × 900, 390 × 844 and 320 × 740. Checks cover start/middle/end, repeatable PNG pixels, seeks across all four atlas pages, red timeline accent, seek/clamping/invalid input, play/pause/reset/end-stop, no horizontal overflow, and exact 960 × 720 capture size.

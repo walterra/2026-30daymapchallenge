@@ -174,6 +174,13 @@ for landmark in landmarks:
     point = grid(np.array([project.transform(landmark['lon'],landmark['lat'])]))[0]
     landmark['x'], landmark['y'] = map(float, point)
     landmark['elevation'] = round(float(dem[round(point[1]),round(point[0])]),1)
+# Regional label placement within the valley, not an official region centroid.
+region_labels = [{'name':'KAISERWINKL','lon':12.355,'lat':47.657,
+                  'source':'https://www.kaiserwinkl.com/de/koessen-tirol.html',
+                  'placement':'Cartographic regional label; not an official centroid'}]
+for region in region_labels:
+    point = grid(np.array([project.transform(region['lon'],region['lat'])]))[0]
+    region['x'],region['y'] = (round(float(value),3) for value in point)
 # Broad rectangular terrain window around the Kaiser, for coverage regressions.
 kx, ky = landmarks[0]['x'], landmarks[0]['y']
 kaiser_slice = (slice(round(ky)-70,round(ky)+70),slice(round(kx)-200,round(kx)+200))
@@ -232,7 +239,7 @@ meta = {'width':width,'height':height,'cellSize':20,'crs':'EPSG:32633','west':we
         'route':[[round(x,3),round(y,3),z,round(d,2)] for (x,y),z,d in zip(route_grid,profile,cumulative)],
         'observers':[[round(x,3),round(y,3),round(float(dem[round(y),round(x)]),1),round(float(d),2)] for (x,y),d in zip(observer_grid,sample_distances)],
         'atlasFiles':atlas_files,'atlasPageSize':page_size,'analysisRadius':radius,'rayCount':ray_count,
-        'landmarks':landmarks,'kaiserVisibleCells':kaiser_visible_counts,
+        'regionLabels':region_labels,'landmarks':landmarks,'kaiserVisibleCells':kaiser_visible_counts,
         'kaiserWindow':{'x':round(kx)-200,'y':round(ky)-70,'width':400,'height':140},
         'visibleCells':visible_counts,'distance':round(float(cumulative[-1]),2),
         'generated':datetime.date.today().isoformat(),'terrainURL':url,'osmURLs':['https://api.openstreetmap.org/api/0.6/map?bbox='+b for b in boxes]}

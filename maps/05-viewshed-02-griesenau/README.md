@@ -21,6 +21,28 @@ Viewport-fit update checked at 1280 × 800 on both entries, 1280 × 720 on Taube
 
 Layout regression checks passed for both variants at 1440 × 1100 and 390 × 844; the cycling variant also passed at 901 × 1000 and 320 × 740. Checks assert square map geometry, desktop/stacked panel positioning, no horizontal overflow and deterministic 960 × 720 capture. Desktop screenshot inspected. Narrow cycling-page axe scan: 0 violations, 0 incomplete checks; browser error log empty. Site resource checks and `git diff --check` passed.
 
+## Kaiserwinkl regional label
+
+**Kaiserwinkl** is the Tirol holiday region comprising **Kössen, Walchsee, Schwendt and Rettenschöss**, between the Chiemgau Alps and the Kaiser mountains. Here “Kaiser” refers to the Kaisergebirge; “Winkl” is a regional form of “Winkel”, a corner or nook. “The corner by the Kaiser mountains” is a plain-language gloss, not a documented historical naming account.
+
+Sources checked: [the official tourism board’s Kössen page](https://www.kaiserwinkl.com/de/koessen-tirol.html), which names the four municipalities, and [the regional overview](https://de.wikipedia.org/wiki/Kaiserwinkl), which identifies the namesake Kaisergebirge and geographic setting. No historical naming dates are inferred.
+
+A neutral, lighter-weight **KAISERWINKL** label is placed over the valley west of Kössen, between Kössen and Walchsee (12.355° E, 47.657° N). This is a cartographic placement inside the region, not a surveyed centroid or an administrative boundary. Both manifests record the anchor and source, and the preparation script preserves it on regeneration. The label is part of the Three.js scene, so it is included in PNG captures.
+
+## High-density text rendering
+
+Interactive WebGL rendering uses the display’s pixel ratio, capped at 3×, while keeping CSS map dimensions and label sizes unchanged. Label textures are 3072 × 288 pixels with 96 px source glyphs and a finer outline. Terrain and visibility data resolutions are unchanged. Explicit capture mode still uses pixel ratio 1 for exact requested output dimensions; increase the requested capture size for higher-resolution exports.
+
+Verified at 1280 × 800 / 2× density on both entries, 390 × 844 / 3× density on cycling, and 1280 × 800 / 1× density on hiking. Tests verify physical canvas resolution and unchanged exact 960 × 720 deterministic captures. A 2× desktop screenshot was visually inspected. All 18 data tests, site/resource checks, module syntax and whitespace checks passed; browser error logs were empty.
+
+## Cycling camera
+
+Only this entry uses a tighter, route-centered viewport: a **790 × 790 cell (15.8 × 15.8 km)** frame centered at grid coordinates **735, 480**. It is approximately **1.4× closer** than the original full-terrain view. The complete cycling route retains padding on every side, with Kaiserbachtal and the northern Wilder Kaiser slopes still in view. The camera remains fixed during playback; non-square captures expand the frame to preserve its extent. The scale bar is repositioned inside the tighter view. The hiking entry retains its original camera.
+
+Framing is configured in this entry’s `#map` element via `data-view`, not in the shared terrain or visibility data. Changing the camera does not recompute visibility or change the total modeled visible-area statistic, which can include offscreen terrain. `window.viewshed.framing` reports the current center and extents in grid-cell coordinates.
+
+Camera regressions passed at 1280 × 800 for both entries and 390 × 844 for cycling: unchanged hiking extent, tighter cycling extent, full route within padded bounds, fixed camera during animation and deterministic capture. Site/whitespace checks passed and browser error logs were empty. Desktop framing was visually inspected.
+
 ## Cycling route and evidence
 
 - **18.71 km**, 1,353 route vertices; calculated from OpenStreetMap, not a GPS recording, surveyed cycle trail or official complete itinerary.
@@ -40,7 +62,7 @@ The downloadable ODbL route includes each OSM node ID and each consecutive segme
 
 ## Visibility
 
-Same metric terrain grid and fixed southwest-expanded composition as the Taubensee variant: **20 m**, EPSG:32633, approximately **22.6 × 21.8 km** including Wilder Kaiser. North stays up; the camera does not follow the rider.
+Same metric terrain grid as the Taubensee variant, with its own tighter camera: **20 m**, EPSG:32633, approximately **22.6 × 21.8 km** including Wilder Kaiser. North stays up; the camera does not follow the rider.
 
 **126 independently calculated viewsheds**, at approximately **150 m** route intervals. Eye height is modeled as 1.7 m above ground; it is not measured rider eye height. Each observer uses 16,384 rays, 10 m radial steps, nearest-cell terrain and a 32 km search radius. Missing terrain terminates a ray. Visibility changes discretely at the nearest route sample; the marker moves continuously at constant presentation speed over 30 seconds. The 30 seconds are animation time, not ride duration.
 

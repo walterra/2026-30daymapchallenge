@@ -112,6 +112,16 @@ class TaubenseeData(unittest.TestCase):
             self.assertGreater(m['kaiserVisibleCells'][frame],0)
         self.assertGreater(max(m['kaiserVisibleCells'])-min(m['kaiserVisibleCells']),1000)
 
+    def test_regional_label_position(self):
+        region = self.m['regionLabels'][0]
+        self.assertEqual(region['name'],'KAISERWINKL')
+        self.assertEqual((region['lon'],region['lat']),(12.355,47.657))
+        self.assertTrue(self.coverage[round(region['y']),round(region['x'])])
+        self.assertLess(region['x'],self.m['route'][0][0])
+        self.assertLess(region['y'],self.m['landmarks'][0]['y'])
+        self.assertIn('not an official centroid',region['placement'])
+        self.assertTrue(region['source'].startswith('https://www.kaiserwinkl.com/'))
+
     def test_terrain_is_grayscale(self):
         with Image.open(self.data/'terrain.png') as image:
             rgb = np.array(image)

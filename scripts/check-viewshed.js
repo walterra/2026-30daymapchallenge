@@ -5,11 +5,29 @@
   await api.ready;
   const manifest = await fetch('data/manifest.json').then(response=>response.json());
   const lastFrame = manifest.frameCount-1;
+  const mapElement = document.querySelector('#map');
+  const interactiveCanvas = mapElement.querySelector('canvas');
+  const density = Math.min(window.devicePixelRatio || 1,3);
+  assert(interactiveCanvas.width===Math.floor(mapElement.clientWidth*density) && interactiveCanvas.height===Math.floor(mapElement.clientHeight*density),'Interactive canvas must use Retina backing resolution');
+  assert(manifest.regionLabels?.some(region=>region.name==='KAISERWINKL'),'Both maps must carry the researched region label');
+  const initialFraming = api.framing;
+  const customView = document.querySelector('#map').dataset.view;
+  if (customView) {
+    const view = JSON.parse(customView);
+    assert(initialFraming.centerX===view.centerX && initialFraming.centerY===view.centerY,'Cycling camera must use its own route-centered frame');
+    assert(initialFraming.width<manifest.width*.75,'Cycling view must be zoomed in');
+    for (const [x,y] of manifest.route) {
+      assert(Math.abs(x-initialFraming.centerX)<initialFraming.width*.4 && Math.abs(y-initialFraming.centerY)<initialFraming.height*.4,'Entire route must remain inside the centered view with padding');
+    }
+  } else {
+    assert(Math.abs(initialFraming.width-Math.max(manifest.width,manifest.height)*1.01)<1,'Hiking camera must retain its original full-terrain frame');
+  }
   const frames = [];
   for (const time of [0, 15, 30]) {
     const result = api.renderAt(time);
     frames.push(result.frame);
     assert(result.time === time, 'Requested time must be exact');
+    assert(JSON.stringify(api.framing)===JSON.stringify(initialFraming),'Camera must remain fixed throughout playback');
     assert(!api.current.playing, 'Capture must pause interactive playback');
     assert(+document.querySelector('#timeline').value === time, 'Scrubber must track capture time');
   }
@@ -78,5 +96,5 @@
   api.renderAt(1); api.renderAt(15);
   assert(capture === api.png(), 'Fixed-size capture must be deterministic');
   assert(capture.startsWith('data:image/png;base64,'), 'Export must be a PNG');
-  return {result:'pass', viewport:normal, frames, deterministic:true, capture:[canvas.width,canvas.height]};
+  return {result:'pass', viewport:normal, pixelRatio:density, frames, deterministic:true, capture:[canvas.width,canvas.height]};
 })();
