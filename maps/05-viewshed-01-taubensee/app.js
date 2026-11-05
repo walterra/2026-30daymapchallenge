@@ -41,6 +41,42 @@ function label(text, x, y, {size = 22, color = '#ffffff', offset = 0, weight = '
     x:sprite.position.x, y:sprite.position.y-offset, textFraction:ctx.measureText(text).width/canvas.width};
   sprite.renderOrder = 10; scene.add(sprite);
 }
+function regionLabel(region) {
+  // Regional lettering uses the same bold monospace as place labels, on an arc.
+  // Rasterize well above display density; no external font dependency.
+  const canvas = document.createElement('canvas');
+  canvas.width = 3072; canvas.height = 768;
+  const ctx = canvas.getContext('2d');
+  const fontSize = 220, tracking = 32, rise = 88;
+  ctx.font = `bold ${fontSize}px monospace`;
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillStyle = '#d6d8d9'; ctx.strokeStyle = '#34393c'; ctx.lineWidth = 16;
+  ctx.lineJoin = 'round';
+  const glyphs = [...region.name];
+  const advances = glyphs.map(glyph=>ctx.measureText(glyph).width);
+  const length = advances.reduce((sum,value)=>sum+value,0)+tracking*(glyphs.length-1);
+  let distance = -length/2;
+  glyphs.forEach((glyph,i)=>{
+    const x = distance+advances[i]/2;
+    const u = x/(length/2);
+    const y = canvas.height/2+rise*u*u;
+    const tangent = 2*rise*u/(length/2);
+    ctx.save(); ctx.translate(canvas.width/2+x,y); ctx.rotate(Math.atan(tangent));
+    ctx.strokeText(glyph,0,0); ctx.fillText(glyph,0,0); ctx.restore();
+    distance += advances[i]+tracking;
+  });
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  const sprite = new THREE.Sprite(new THREE.SpriteMaterial({
+    map:texture,depthTest:false,opacity:1,rotation:THREE.MathUtils.degToRad(8)
+  }));
+  sprite.name = region.name;
+  // Cartographic displacement keeps the lettering in the open valley,
+  // away from the Kössen settlement label and the cycling route.
+  sprite.position.copy(world(region.x-35,region.y+20,5));
+  sprite.userData.regionLabel = {fontSize,width:canvas.width,height:canvas.height};
+  sprite.renderOrder = 8; scene.add(sprite);
+}
 function tube(points, radius, color, z) {
   // Linear curve: do not introduce off-path Catmull-Rom smoothing.
   const curve = new THREE.CurvePath();
@@ -75,6 +111,13 @@ function resize() {
   const unitsPerPixel = spanY / height;
   const placedLabels = [];
   for (const child of scene.children) {
+    const regional = child.userData.regionLabel;
+    if (regional) {
+      const fontPixels = THREE.MathUtils.clamp(width/26,15,25);
+      const scale = fontPixels/regional.fontSize*unitsPerPixel;
+      child.scale.set(regional.width*scale,regional.height*scale,1);
+      continue;
+    }
     const labelStyle = child.userData.label;
     if (!labelStyle) continue;
     const size = labelStyle.pixels * 3 * unitsPerPixel;
@@ -213,7 +256,7 @@ async function init() {
     label(waypoint.name,waypoint.x,waypoint.y,{size:34,offset:18});
   }
   for (const region of data.regionLabels ?? []) {
-    label(region.name,region.x,region.y,{size:55,color:'#e0e0e0',weight:'400'});
+    regionLabel(region);
   }
   for (const landmark of data.landmarks) {
     label(landmark.name,landmark.x,landmark.y,{size:55,offset:view?34:-34});
