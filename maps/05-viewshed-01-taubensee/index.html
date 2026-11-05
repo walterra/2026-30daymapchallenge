@@ -9,20 +9,21 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="../../assets/theme.css?v=3">
 </head>
-<body>
+<body class="viewshed-page">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
-    <div><a href="../../index.html">← all maps</a><span class="prototype">VIEWSHED / RESEARCH PROTOTYPE</span></div>
+    <div><a href="../../index.html">← all maps</a><span class="prototype">VIEWSHED 01 / HIKING</span></div>
     <button class="theme-toggle" data-theme-toggle type="button" aria-label="Dark theme" aria-pressed="false" hidden></button>
   </header>
   <main id="main">
     <header class="intro">
       <p class="eyebrow">Kössen, Tirol · 2026 #30DayMapChallenge</p>
       <h1>Into view.</h1>
-      <p>From the village square to Taubenseehütte.<br>Follow the climb. Watch the landscape open up.</p>
+      <p>From the village square to Taubenseehütte.<br>Follow the climb. Watch the Wilder Kaiser come into view.</p>
+      <p><a href="./" aria-current="page">01 · Taubensee hike</a> / <a href="../05-viewshed-02-griesenau/">02 · Kaiserbachtal ride</a></p>
     </header>
     <section aria-label="Animated viewshed map" class="experience">
-      <div id="map" role="img" aria-label="Top-down shaded terrain map. An orange walking route leads northeast from Kössen to Taubenseehütte. A pale yellow overlay shows terrain visible from the current route sample." aria-describedby="map-description">
+      <div id="map" role="img" aria-label="Top-down grayscale terrain map. A red walking route sits in the upper right, from Kössen to Taubenseehütte. Wilder Kaiser stretches across the southwest. A muted red overlay shows terrain visible from the current route sample." aria-describedby="map-description">
         <p id="loading" role="status">Loading terrain and visibility masks…</p>
         <div class="map-heading"><span>KÖSSEN → TAUBENSEEHÜTTE</span><span id="map-distance">0.00 km</span></div>
         <div class="north" aria-hidden="true">N<br>↑</div>
@@ -40,7 +41,7 @@
     </section>
     <section class="notes" id="map-description">
       <div><h2>A moving window onto the mountains.</h2><p>The marker follows a calculated walking route on real OpenStreetMap paths, not a recorded hike. At roughly 50 m intervals, the overlay changes to the terrain visible from that position. Marker movement is continuous; visibility changes in discrete steps.</p></div>
-      <div><h2>Terrain only. Not a hiking guide.</h2><p>20 m analysis grid, derived from Tirol’s 5 m terrain service. Trees, buildings, weather and Earth curvature are excluded. Dark blue-grey areas have no terrain data; rays stop there. German terrain and distant peaks beyond this extract are not included. *Visible area refers only to the modeled cells.</p></div>
+      <div><h2>Terrain only. Not a hiking guide.</h2><p>20 m analysis grid, derived from Tirol’s 5 m terrain service. Trees, buildings, weather and Earth curvature are excluded. Charcoal areas have no terrain data; rays stop there. The view extends south and west to Wilder Kaiser, with visibility calculated up to 32 km. German terrain and peaks beyond this extract are not included. *Visible area refers only to the modeled cells.</p></div>
     </section>
     <footer class="site-footer"><p><a href="README.md">Method, licenses & capture API</a> · <a href="data/route.geojson" download>Route GeoJSON (ODbL)</a></p><p>Three.js r170 · Local assets · Substantial AI assistance: data preparation, implementation and checks.</p></footer>
   </main>

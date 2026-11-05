@@ -3,6 +3,8 @@
   const assert = (condition, message) => { if (!condition) throw new Error(message); };
   const api = window.viewshed;
   await api.ready;
+  const manifest = await fetch('data/manifest.json').then(response=>response.json());
+  const lastFrame = manifest.frameCount-1;
   const frames = [];
   for (const time of [0, 15, 30]) {
     const result = api.renderAt(time);
@@ -11,7 +13,17 @@
     assert(!api.current.playing, 'Capture must pause interactive playback');
     assert(+document.querySelector('#timeline').value === time, 'Scrubber must track capture time');
   }
-  assert(frames.join(',') === '0,49,98', 'Expected sample frames at start, midpoint and end');
+  assert(frames.join(',') === [0,Math.round(lastFrame/2),lastFrame].join(','), 'Expected sample frames at start, midpoint and end');
+  const boundaries = [lastFrame];
+  for (let cut=manifest.atlasPageSize;cut<=lastFrame;cut+=manifest.atlasPageSize) boundaries.push(cut-1,cut);
+  for (const frame of boundaries) {
+    const time = frame*30/lastFrame;
+    assert(api.renderAt(time).frame === frame,'Atlas boundary must select the requested global frame');
+    const png = api.png();
+    api.renderAt(0); api.renderAt(time);
+    assert(png === api.png(),'Seeking across atlas pages must restore identical pixels');
+  }
+  assert(['rgb(203, 42, 66)','rgb(237, 113, 132)'].includes(getComputedStyle(document.querySelector('#timeline')).accentColor), 'Timeline must use the red page accent');
   api.renderAt(0); const first = api.png();
   api.renderAt(15); const middle = api.png();
   assert(first !== middle, 'Visibility and marker must change along the route');
