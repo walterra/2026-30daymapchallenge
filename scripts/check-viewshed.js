@@ -89,6 +89,7 @@
   assert(Math.abs(mapBounds.width-mapBounds.height)<1,'Normal map must be square');
   if (innerWidth>900) {
     assert(panelBounds.left>=mapBounds.right-1,'Desktop controls must sit to the right of the map');
+    assert(document.querySelector('.experience').getBoundingClientRect().width>=innerWidth-50,'Desktop visualization must use the available page width');
     assert(Math.abs(panelBounds.top-mapBounds.top)<1,'Desktop columns must align at the top');
     if (innerHeight>=600) {
       const stage = document.querySelector('.experience').getBoundingClientRect();

@@ -2,7 +2,7 @@
 
 ## Route photographs
 
-A proximity-triggered photograph card sits below the elevation profile. The hike currently has the Kössen start photo; the ride adds Schwendt and the Kaiserbachtal memorial chapel. All three local photos are CC BY-SA 4.0, with visible author/source/license credits. See [photo sources, preparation, matching method and AI assistance](../05-viewshed-01-taubensee/photos/README.md). Add future candidates to each entry’s `data/photos.json`; selection uses along-route distance windows (150 m walking, 300 m cycling), not modeled visibility.
+A proximity-triggered photograph card sits below the elevation profile. The hike has the Kössen start photo and three owner-permission upper-route photos; the ride now has ten verified CC BY-SA 4.0 photos, adding Schwendt church, the Kohlental panorama, Griesenau chapel, Kaiserbach, the valley road, Fischbachalm and a Wilder Kaiser view to the initial three. All three local photos are CC BY-SA 4.0, with visible author/source/license credits. See [photo sources, preparation, matching method and AI assistance](../05-viewshed-01-taubensee/photos/README.md). Add future candidates to each entry’s `data/photos.json`; selection uses along-route distance windows (150 m walking, 300 m cycling), not modeled visibility.
 
 
 Second static Three.js viewshed prototype, in `05-viewshed-02-griesenau`. Starts at **the identical Kössen Dorf OSM node** as [01 · Taubensee](../05-viewshed-01-taubensee/), then follows a calculated cycling route via Schwendt and Griesenau into Kaiserbachtal, ending at Griesner Alm.

@@ -27,16 +27,23 @@
       const image=panel.querySelector('img');
       await image.decode();
       assert(!panel.querySelector('figure').hidden,`${photo.id}: card visible`);
+      assert(getComputedStyle(panel.querySelector('figure')).borderTopWidth==='0px',`${photo.id}: no inherited dashed figure border`);
       assert(image.naturalWidth>0 && image.alt,`${photo.id}: accessible local photo loaded`);
+      if(innerWidth>=1200 && innerHeight>=720) assert(image.getBoundingClientRect().height>=100,`${photo.id}: wide dashboard provides a large photo`);
       assert(panel.querySelector('.photo-title').textContent===photo.title,`${photo.id}: title`);
-      assert(panel.querySelector('.photo-source').href===photo.source,`${photo.id}: credit`);
+      assert(panel.querySelector('.photo-source').href===new URL(photo.source,location.href).href,`${photo.id}: credit`);
+      assert(panel.querySelector('.photo-license').textContent===photo.license,`${photo.id}: correct per-photo rights label`);
+      assert(panel.querySelector('.photo-license').href===new URL(photo.licenseUrl,location.href).href,`${photo.id}: correct rights link`);
     }
     const profilePin=controls.find(pin=>pin.dataset.photoLocation==='profile');
     assert(Math.abs(parseFloat(profilePin.style.left)-photo.distance/distance*100)<1e-4,`${photo.id}: chart stop matches distance axis`);
     const stop=photo.distance+radius+1;
     if(stop<distance) {
       api.renderAt(stop/distance*api.duration);
-      assert(panel.querySelector('figure').hidden,`${photo.id}: hides outside proximity radius`);
+      const nearest=photos.filter(candidate=>Math.abs(candidate.distance-stop)<=radius)
+        .sort((a,b)=>Math.abs(a.distance-stop)-Math.abs(b.distance-stop))[0];
+      assert(panel.querySelector('figure').hidden===!nearest,`${photo.id}: proximity window selects a neighbor or empty state`);
+      if(nearest) assert(panel.querySelector('.photo-title').textContent===nearest.title,`${photo.id}: switches to nearest neighboring stop`);
       assert(controls.every(control=>control.getAttribute('aria-pressed')==='false'),`${photo.id}: clears stale selection`);
     }
   }
@@ -46,7 +53,10 @@
   await new Promise(requestAnimationFrame);
   assert(JSON.stringify(api.framing)===JSON.stringify(before),'Resize without dimension changes preserves camera');
   api.renderAt(30);
-  assert(panel.querySelector('figure').hidden,'No stale photo at the destination');
+  const destinationPhoto=photos.filter(photo=>Math.abs(photo.distance-distance)<=radius)
+    .sort((a,b)=>Math.abs(a.distance-distance)-Math.abs(b.distance-distance))[0];
+  assert(panel.querySelector('figure').hidden===!destinationPhoto,'Destination shows only a nearby photo');
+  if(destinationPhoto) assert(panel.querySelector('.photo-title').textContent===destinationPhoto.title,'Destination selects the nearest photo');
   document.getElementById('reset').click();
   assert(!panel.querySelector('figure').hidden,'Reset restores start photo');
   const timeline=document.getElementById('timeline');

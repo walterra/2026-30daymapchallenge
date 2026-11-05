@@ -100,9 +100,14 @@ function resize() {
     const stage = document.querySelector('.experience');
     // Document coordinates keep sizing stable while scrolling the method notes.
     const top = stage.getBoundingClientRect().top + scrollY;
-    const size = Math.max(320, Math.floor(innerHeight - top - 24));
-    stage.style.setProperty('--map-size', `${size}px`);
+    const heightBudget = Math.floor(innerHeight-top-24);
+    const widthBudget = Math.floor(stage.clientWidth-360);
+    const size = Math.max(320,Math.min(heightBudget,widthBudget));
+    stage.style.setProperty('--map-size',`${size}px`);
   }
+  const dashboard=document.querySelector('.control-panel');
+  const wideThreshold=innerHeight<=650?440:560;
+  dashboard.classList.toggle('wide-dashboard',innerWidth>900 && dashboard.clientWidth>=wideThreshold);
   const photoPanel = $('route-photos');
   if (innerWidth > 900 && !document.body.classList.contains('capture')) {
     const photoTop = photoPanel.getBoundingClientRect().top + scrollY;

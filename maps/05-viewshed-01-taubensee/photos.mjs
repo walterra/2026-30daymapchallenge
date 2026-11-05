@@ -35,6 +35,9 @@ export async function createPhotoPanel() {
     const source = panel.querySelector('.photo-source');
     source.textContent = `Photo: ${photo.author}`;
     source.href = photo.source;
+    const license = panel.querySelector('.photo-license');
+    license.textContent = photo.license;
+    license.href = photo.licenseUrl;
   };
   return {photos, radius, update};
 }

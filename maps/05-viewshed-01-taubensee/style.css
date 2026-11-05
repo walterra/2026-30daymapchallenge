@@ -1,8 +1,8 @@
 * { box-sizing: border-box; }
 body.viewshed-page { margin:0; padding:0 24px; --color-accent:#cb2a42; }
 :root[data-theme="dark"] body.viewshed-page { --color-accent:#ed7184; }
-main, .site-header { max-width:1280px; margin:auto; }
-body.viewshed-page .site-header { max-width:1280px; padding:0; margin:16px auto 10px; display:flex; justify-content:space-between; align-items:center; }
+main, .site-header { max-width:none; margin:auto; }
+body.viewshed-page .site-header { max-width:none; padding:0; margin:16px auto 10px; display:flex; justify-content:space-between; align-items:center; }
 .site-header>div { display:flex; align-items:center; gap:30px; }
 .prototype, .eyebrow { font-size:11px; letter-spacing:.12em; }
 body.viewshed-page .intro { max-width:none; }
@@ -11,8 +11,10 @@ body.viewshed-page .intro { max-width:none; }
 body.viewshed-page .intro h1 { grid-column:1; grid-row:2; font-size:32px; line-height:1.15; margin:0 0 6px; }
 .intro > p:nth-of-type(2) { grid-column:2; grid-row:2/4; align-self:center; margin:0; font-size:14px; line-height:1.6; }
 .intro p:last-child { grid-column:1; grid-row:3; margin:0; font-size:12px; line-height:1.6; }
-.experience { display:grid; grid-template-columns:minmax(0,1fr) 320px; width:min(100%,calc(var(--map-size, 65svh) + 322px)); margin-inline:auto; align-items:start; border:1px solid var(--site-line); }
-.control-panel { min-width:0; align-self:stretch; border-left:1px dashed var(--site-line); }
+.experience { display:grid; grid-template-columns:var(--map-size,65svh) minmax(0,1fr); width:100%; height:calc(var(--map-size,65svh) + 2px); align-items:stretch; border:1px solid var(--site-line); }
+.control-panel { min-width:0; min-height:0; height:100%; display:flex; flex-direction:column; border-left:1px dashed var(--site-line); }
+.control-panel > .transport, .control-panel > .readouts, .control-panel > .profile-wrap { flex-shrink:0; }
+.control-panel > .route-photos { flex:1; min-height:0; }
 #map { position:relative; width:100%; aspect-ratio:1; height:auto; min-width:0; background:#fbfbfb; color:#fafafa; overflow:hidden; }
 #map canvas { display:block; width:100%; height:100%; }
 .map-heading, .north, .map-legend, .map-source { position:absolute; z-index:1; pointer-events:none; }
@@ -50,7 +52,8 @@ input[type=range] { width:100%; accent-color:var(--color-accent); cursor:pointer
 .photo-profile-plot #profile { display:block; margin-top:0; }
 .photo-profile-plot + .profile-labels { margin-top:12px; }
 .photo-map-markers, .photo-profile-markers { position:absolute; inset:0; pointer-events:none; }
-.photo-map-markers { z-index:2; }
+.photo-map-markers { display:contents; }
+.photo-map-markers .photo-pin { z-index:2; }
 .photo-pin { position:absolute; display:grid; place-items:center; width:32px; height:32px;
   min-width:32px; min-height:32px; padding:4px; border:0; background:transparent;
   box-shadow:none; line-height:1; transform:translate(-50%,-50%); pointer-events:auto;
@@ -65,7 +68,7 @@ input[type=range] { width:100%; accent-color:var(--color-accent); cursor:pointer
 .photo-pin[hidden] { display:none; }
 .route-photos { padding:12px 18px 14px; border-top:1px dashed var(--site-line); }
 .route-photos h2 { margin:0 0 10px; font-weight:400; }
-.route-photos figure { margin:0; }
+.route-photos figure { margin:0; border:0; }
 .route-photos img { display:block; width:100%; height:var(--photo-height,170px); object-fit:contain; background:var(--site-line); }
 .route-photos [hidden] { display:none; }
 .route-photos figcaption { padding-top:8px; font-size:11px; line-height:1.5; }
@@ -83,7 +86,7 @@ body.capture>.site-header, body.capture .intro, body.capture .transport,
 body.capture .readouts, body.capture .profile-wrap, body.capture .notes,
 body.capture .site-footer, body.capture>.skip-link { display:none; }
 body.capture main { max-width:none; }
-body.capture .experience { display:block; width:100%; margin:0; border:0; }
+body.capture .experience { display:block; width:100%; height:auto; margin:0; border:0; }
 body.capture .control-panel, body.capture .photo-map-markers { display:none; }
 body.capture #map { min-height:0; height:100vh; aspect-ratio:auto; }
 @media(min-width:901px) and (max-height:850px) {
@@ -111,11 +114,25 @@ body.capture #map { min-height:0; height:100vh; aspect-ratio:auto; }
   .route-photos img { height:64px; }
   .route-photos figcaption { font-size:9px; line-height:1.35; }
 }
+.control-panel.wide-dashboard { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); grid-template-rows:auto auto minmax(0,1fr); }
+.wide-dashboard > .transport { grid-column:1; grid-row:1; }
+.wide-dashboard > .readouts { grid-column:2; grid-row:1; border-left:1px dashed var(--site-line); border-bottom:1px dashed var(--site-line); }
+.wide-dashboard > .profile-wrap { grid-column:1/-1; grid-row:2; padding-top:10px; }
+.wide-dashboard > .route-photos { grid-column:1/-1; grid-row:3; display:flex; flex-direction:column; }
+.control-panel.wide-dashboard .route-photos figure { display:flex; flex-direction:column; flex:1; min-height:0; }
+.control-panel.wide-dashboard .route-photos img { flex:1; width:100%; height:0; min-height:64px; background:var(--site-hover); }
+.control-panel.wide-dashboard .route-photos figcaption { flex-shrink:0; padding-top:8px; font-size:11px; line-height:1.5; }
+.control-panel.wide-dashboard .route-photos h2 { flex-shrink:0; }
+.control-panel.wide-dashboard .route-photos .photo-note { display:block; flex-shrink:0; }
+@media(min-width:901px) and (max-height:650px) {
+  .control-panel.wide-dashboard .route-photos figcaption { font-size:9px; line-height:1.35; }
+  .control-panel.wide-dashboard .route-photos .photo-note { display:none; }
+}
 @media(max-width:900px) {
   .intro { display:block; padding-bottom:16px; }
   .intro > p:nth-of-type(2) { margin:8px 0; }
-  .experience { width:100%; grid-template-columns:minmax(0,1fr); }
-  .control-panel { border-left:0; border-top:1px dashed var(--site-line); }
+  .experience { width:100%; height:auto; grid-template-columns:minmax(0,1fr); }
+  .control-panel { height:auto; border-left:0; border-top:1px dashed var(--site-line); }
   .transport { grid-template-columns:auto minmax(0,1fr) auto auto; }
   .transport .scrub { grid-column:2; grid-row:1; }
   .transport .speed { grid-column:3; grid-row:1; }

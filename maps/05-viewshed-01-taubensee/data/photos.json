@@ -14,7 +14,67 @@
       ],
       "src": "../05-viewshed-01-taubensee/photos/post.jpg",
       "distance": 0,
-      "offset": 92
+      "offset": 92,
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Gasthof_zur_Post%2C_K%C3%B6ssen.jpg"
+    },
+    {
+      "id": "moosen-winter",
+      "title": "Moosen pastures · winter",
+      "alt": "Snow-covered pastures and alpine huts beneath forested slopes and a snow-capped mountain.",
+      "date": "2023-01-14",
+      "author": "Project author",
+      "source": "../05-viewshed-01-taubensee/photos/README.md#moosen-winter",
+      "camera": [
+        12.418430555555554,
+        47.690011111111104
+      ],
+      "src": "../05-viewshed-01-taubensee/photos/moosen-winter.jpg",
+      "distance": 4170,
+      "offset": 3,
+      "license": "Used with permission",
+      "licenseUrl": "../05-viewshed-01-taubensee/photos/README.md#owner-permission",
+      "originalFile": "B7250706-63D7-4B8F-80C2-918B0B4BBEB2.jpeg",
+      "locationMethod": "Original EXIF GPS projected onto the nearest hiking-route segment"
+    },
+    {
+      "id": "moosen-autumn",
+      "title": "Above Moosen · autumn",
+      "alt": "A walker follows a gravel track through autumn pastures, with a mountain ridge in the distance.",
+      "date": "2022-10-23",
+      "author": "Project author",
+      "source": "../05-viewshed-01-taubensee/photos/README.md#moosen-autumn",
+      "camera": [
+        12.420069444444444,
+        47.690216666666664
+      ],
+      "src": "../05-viewshed-01-taubensee/photos/moosen-autumn.jpg",
+      "distance": 4328,
+      "offset": 120,
+      "license": "Used with permission",
+      "licenseUrl": "../05-viewshed-01-taubensee/photos/README.md#owner-permission",
+      "originalFile": "IMG_7059.jpeg",
+      "locationMethod": "Original EXIF GPS projected onto the nearest hiking-route segment"
+    },
+    {
+      "id": "taubensee-terrace",
+      "title": "Taubenseehütte · terrace view",
+      "alt": "Wooden terrace tables and a railing overlook the valley and distant mountain ridges under a cloudy sky.",
+      "date": "2022-12-31",
+      "author": "Project author",
+      "source": "../05-viewshed-01-taubensee/photos/README.md#taubensee-terrace",
+      "camera": [
+        12.419858333333332,
+        47.69351111111111
+      ],
+      "src": "../05-viewshed-01-taubensee/photos/taubensee-terrace.jpg",
+      "distance": 4870,
+      "offset": 9,
+      "license": "Used with permission",
+      "licenseUrl": "../05-viewshed-01-taubensee/photos/README.md#owner-permission",
+      "originalFile": "IMG_7476.jpeg",
+      "locationMethod": "Original EXIF GPS projected onto the nearest hiking-route segment"
     }
   ]
 }

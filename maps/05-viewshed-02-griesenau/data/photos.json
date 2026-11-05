@@ -14,7 +14,29 @@
       ],
       "src": "../05-viewshed-01-taubensee/photos/post.jpg",
       "distance": 30,
-      "offset": 70
+      "offset": 70,
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Gasthof_zur_Post%2C_K%C3%B6ssen.jpg"
+    },
+    {
+      "id": "schwendt-church",
+      "title": "Schwendt · St Ägidius church",
+      "alt": "The white parish church of St Ägidius in Schwendt, seen from the southeast.",
+      "date": "2017-05-11",
+      "author": "Braveheart",
+      "source": "https://commons.wikimedia.org/wiki/File:Pfarrkirche_Schwendt_01.jpg",
+      "camera": [
+        12.392583,
+        47.631183
+      ],
+      "src": "../05-viewshed-01-taubensee/photos/schwendt-church.jpg",
+      "distance": 6730,
+      "offset": 49,
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/2/24/Pfarrkirche_Schwendt_01.jpg",
+      "locationMethod": "Commons camera coordinates projected onto the nearest route segment"
     },
     {
       "id": "schwendt",
@@ -29,7 +51,105 @@
       ],
       "src": "../05-viewshed-01-taubensee/photos/schwendt.jpg",
       "distance": 9630,
-      "offset": 2
+      "offset": 2,
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/1/19/Ortsansicht_Schwendt.jpg"
+    },
+    {
+      "id": "kohlamweg",
+      "title": "Kohlental · near Kohlamweg",
+      "alt": "Meadows and farm buildings beneath a wooded mountain ridge between Schwendt and Griesenau.",
+      "date": "2017-08-03",
+      "author": "Michielverbeek",
+      "source": "https://commons.wikimedia.org/wiki/File:Tussen_Griesenau_en_Schwendt,_panorama_vanaf_de_Kohlamweg_foto5_2017-08-03_14.27.jpg",
+      "camera": [
+        12.379444,
+        47.595833
+      ],
+      "src": "../05-viewshed-01-taubensee/photos/kohlamweg.jpg",
+      "distance": 12100,
+      "offset": 184,
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Tussen_Griesenau_en_Schwendt%2C_panorama_vanaf_de_Kohlamweg_foto5_2017-08-03_14.27.jpg",
+      "locationMethod": "Commons camera coordinates projected onto the nearest route segment"
+    },
+    {
+      "id": "griesenau-chapel",
+      "title": "Griesenau · roadside chapel",
+      "alt": "The small painted roadside chapel at Griesenau.",
+      "date": "2017-05-11",
+      "author": "Braveheart",
+      "source": "https://commons.wikimedia.org/wiki/File:Kapelle_Griesenau,_Kirchdorf_in_Tirol_01.jpg",
+      "camera": [
+        12.388277,
+        47.58168
+      ],
+      "src": "../05-viewshed-01-taubensee/photos/griesenau-chapel.jpg",
+      "distance": 13829,
+      "offset": 4,
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/2/20/Kapelle_Griesenau%2C_Kirchdorf_in_Tirol_01.jpg",
+      "locationMethod": "Commons camera coordinates projected onto the nearest route segment"
+    },
+    {
+      "id": "kaiserbach",
+      "title": "Kaiserbach · entering the valley",
+      "alt": "A broad stony stream bed bordered by forest at the entrance to Kaiserbachtal.",
+      "date": "2016-06-27",
+      "author": "Chmee2",
+      "source": "https://commons.wikimedia.org/wiki/File:Naturschutzgebiet_Kaiserbachtal_am_Wilden_Kaiser_in_Kirchdorf_in_Tirol_in_2016_(1).JPG",
+      "camera": [
+        12.373236,
+        47.579017
+      ],
+      "src": "../05-viewshed-01-taubensee/photos/kaiserbach.jpg",
+      "distance": 15189,
+      "offset": 17,
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Naturschutzgebiet_Kaiserbachtal_am_Wilden_Kaiser_in_Kirchdorf_in_Tirol_in_2016_%281%29.JPG",
+      "locationMethod": "Commons camera coordinates projected onto the nearest route segment"
+    },
+    {
+      "id": "kaiser-valley-road",
+      "title": "Kaiserbachtal · road into the mountains",
+      "alt": "The valley road runs beneath forested slopes and cloud-covered limestone cliffs.",
+      "date": "2016-06-27",
+      "author": "Chmee2",
+      "source": "https://commons.wikimedia.org/wiki/File:Naturschutzgebiet_Kaiserbachtal_am_Wilden_Kaiser_in_Kirchdorf_in_Tirol_in_2016_(5).JPG",
+      "camera": [
+        12.364781,
+        47.581625
+      ],
+      "src": "../05-viewshed-01-taubensee/photos/kaiser-valley-road.jpg",
+      "distance": 15914,
+      "offset": 4,
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/5/5b/Naturschutzgebiet_Kaiserbachtal_am_Wilden_Kaiser_in_Kirchdorf_in_Tirol_in_2016_%285%29.JPG",
+      "locationMethod": "Commons camera coordinates projected onto the nearest route segment"
+    },
+    {
+      "id": "fischbachalm",
+      "title": "Fischbachalm · valley road",
+      "alt": "The paved valley road approaches Fischbachalm below cloud-covered mountains.",
+      "date": "2016-06-27",
+      "author": "Chmee2",
+      "source": "https://commons.wikimedia.org/wiki/File:Alpengasthaus_Fischbachalm_in_naturschutzgebiet_Kaiserbachtal_am_Wilden_Kaiser_in_Kirchdorf_in_Tirol_in_2016_(6).JPG",
+      "camera": [
+        12.348494,
+        47.581956
+      ],
+      "src": "../05-viewshed-01-taubensee/photos/fischbachalm.jpg",
+      "distance": 17220,
+      "offset": 0,
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/8/83/Alpengasthaus_Fischbachalm_in_naturschutzgebiet_Kaiserbachtal_am_Wilden_Kaiser_in_Kirchdorf_in_Tirol_in_2016_%286%29.JPG",
+      "locationMethod": "Commons camera coordinates projected onto the nearest route segment"
     },
     {
       "id": "chapel",
@@ -44,7 +164,29 @@
       ],
       "src": "../05-viewshed-01-taubensee/photos/chapel.jpg",
       "distance": 17420,
-      "offset": 55
+      "offset": 55,
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/1/18/Kapelle_der_Bergtoten_im_Kaiserbachtal.jpg"
+    },
+    {
+      "id": "kaiser-road-view",
+      "title": "Wilder Kaiser · from the valley road",
+      "alt": "Clouds hang between steep limestone mountain faces above the trees of Kaiserbachtal.",
+      "date": "2016-06-27",
+      "author": "Chmee2",
+      "source": "https://commons.wikimedia.org/wiki/File:Kaiser_Mountains_as_view_from_naturschutzgebiet_Kaiserbachtal_in_Tirol_in_2016_(1).JPG",
+      "camera": [
+        12.3359,
+        47.580092
+      ],
+      "src": "../05-viewshed-01-taubensee/photos/kaiser-road-view.jpg",
+      "distance": 18227,
+      "offset": 4,
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/6/66/Kaiser_Mountains_as_view_from_naturschutzgebiet_Kaiserbachtal_in_Tirol_in_2016_%281%29.JPG",
+      "locationMethod": "Commons camera coordinates projected onto the nearest route segment"
     }
   ]
 }
