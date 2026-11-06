@@ -76,6 +76,10 @@ Use relative asset and navigation URLs so the site also works beneath a GitHub P
 
 [Into the Kaiser](maps/05-viewshed-02-griesenau/) is the second variant: an 18.71 km calculated cycling route from the identical Kössen Dorf start, via Schwendt and Griesenau, then into Kaiserbachtal to Griesner Alm. It shares the first variant’s renderer and red/grayscale styling, with 126 independently computed viewsheds at approximately 150 m intervals. This is not a traffic-free cycleway; source-tag checks and one explicit valley-road access exception are documented in the [cycling method](maps/05-viewshed-02-griesenau/README.md). “Griesenau Alm” is interpreted as Griesner Alm at the head of the valley, not Griesenau village.
 
+## Day 06 · Vintage — research PoC
+
+[Ships of the ancient seas](maps/06-vintage-wrecks/) expands the vintage chart to Europe, northern waters and the Mediterranean. Its default 334 records combine fourteen reviewed Viking/ancient highlights with 320 Oxford-derived EMODnet records (CC BY 4.0), after one explicit grouped-site replacement. Original Viking find locations are distinguished from museums; ship burials, deliberate losses and wrecks have different symbols. Association, find-type, search and overlapping-date filters retain unknown dates and cultural uncertainty. A paginated keyboard-accessible register exposes every record. The original seven later wrecks remain optional. Local Wikidata coordinates (CC0), Natural Earth coastlines (public domain) and the existing D3 renderer need no build step. This is partial archaeological coverage, not an exhaustive inventory or navigation product. See the [sources, licences, preparation and limitations](maps/06-vintage-wrecks/README.md).
+
 ## Saved for another day
 
 [Where the snow begins](maps/02-engineered-winter/) preserves the Tirol snowmaking-water prototype: 704 verified locations and 148 mapped snowmaking reservoirs. Its challenge day is unassigned and source reuse clearance remains unresolved. See its [method](maps/02-engineered-winter/README.md).

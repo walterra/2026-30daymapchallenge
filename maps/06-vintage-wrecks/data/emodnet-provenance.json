@@ -1,0 +1,12 @@
+{
+  "retrieved": "2026-11-06",
+  "catalogue": "https://emodnet.ec.europa.eu/geonetwork/srv/api/records/e965088b-a265-4517-84df-c49b156af8a7",
+  "request": "https://ows.emodnet-humanactivities.eu/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=emodnet%3Aheritageshipwrecks&outputFormat=application%2Fjson&count=5000&srsName=EPSG%3A4326&CQL_FILTER=source_inf+ILIKE+%27%25Oxford%25%27",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "licenseEvidence": "Catalogue use constraints explicitly state Creative Commons CC-BY 4.0.",
+  "credit": "This data was downloaded from the EMODnet Portal (https://emodnet.ec.europa.eu/en/). The data originator is AND-International.",
+  "originalProvider": "University of Oxford \u2013 The Oxford Roman Economy Project; Strauss, J. (2013), Shipwrecks Database, version 1.0.",
+  "records": 321,
+  "note": "This WFS subset is not the complete Oxford database. The 2017 Excel file is not redistributed."
+}

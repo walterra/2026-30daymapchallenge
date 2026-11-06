@@ -1,0 +1,133 @@
+:root { color-scheme:light dark; }
+body.wrecks-page { margin:0; padding:24px; }
+.wrecks-page main { max-width:1280px; width:100%; margin:auto; }
+.wrecks-page .site-header, .wrecks-page .site-footer { max-width:1280px; padding-inline:0; }
+.wrecks-page .site-header { margin:0 auto 20px; }
+.intro { margin:24px 0 20px; }
+.intro h1 { margin:4px 0 10px; }
+.intro p { max-width:80ch; }
+.view-controls { display:flex; flex-wrap:wrap; gap:6px 16px; margin:12px 0 18px; }
+.view-controls button { border:0; border-bottom:2px solid transparent; background:none; color:inherit; padding:6px 0; font:inherit; font-size:12px; cursor:pointer; }
+.view-controls button[aria-pressed="true"] { color:var(--color-accent); border-bottom-color:currentColor; }
+.filter-row { display:grid; grid-template-columns:1.2fr 1fr 1.5fr auto; gap:14px; align-items:end; }
+.filter-row label, .date-row label { display:grid; gap:4px; min-width:0; font-size:11px; }
+.filter-row select, .filter-row input, .date-row input[type="number"] { box-sizing:border-box; width:100%; min-width:0; padding:8px; font:inherit; font-size:12px; background:var(--site-surface); color:inherit; border:1px solid var(--site-line); border-radius:0; }
+#reset, .pagination button { font:inherit; font-size:11px; padding:8px 10px; min-height:34px; cursor:pointer; }
+.date-controls { margin-top:12px; font-size:11px; }
+.date-controls summary { cursor:pointer; width:fit-content; padding:5px 0; }
+.date-row { display:grid; grid-template-columns:130px 130px 1fr 1fr; gap:14px; margin-top:10px; align-items:center; }
+.date-row .check { display:flex; align-items:center; gap:8px; padding:5px 0; }
+#date-help { max-width:105ch; color:var(--site-muted); }
+#date-error { color:var(--color-accent); }
+.result-line { display:flex; flex-wrap:wrap; justify-content:space-between; gap:0 20px; margin:14px 0 16px; font-size:10px; color:var(--site-muted); }
+.result-line p { margin:0; }
+.atlas { display:grid; grid-template-columns:minmax(0,800px) minmax(300px,1fr); align-items:start; gap:28px; }
+figure.chart { --paper:#efe2c2; --ink:#493b2a; position:relative; margin:0; padding:20px 16px 14px; border:1px solid #8f7b57; background:radial-gradient(ellipse at 35% 28%,#faf2d9aa,transparent 70%),var(--paper); color:var(--ink); box-shadow:inset 0 0 65px #8f6e2c22; }
+.chart-title { text-align:center; font-family:Georgia,'Times New Roman',serif; color:#493b2a; }
+.chart-title p { margin:0; font-size:11px; letter-spacing:.2em; }
+.chart-title h2 { color:#493b2a; font:normal clamp(30px,4vw,44px)/1.2 Georgia,'Times New Roman',serif; margin:3px 0 8px; }
+#map { display:block; width:100%; height:auto; max-height:720px; overflow:visible; margin:5px 0 0; }
+#map text { font-family:Georgia,'Times New Roman',serif; fill:#493b2a; }
+#map .place { font-size:16px; letter-spacing:2px; font-style:italic; paint-order:stroke; stroke:#f5eacc; stroke-width:5px; }
+#map .grid-label { font-size:11px; }
+#map .north-label { font-size:19px; }
+#map .background-wreck { fill:#8d382b; fill-opacity:.55; cursor:pointer; stroke:transparent; stroke-width:5; }
+#map .wreck { cursor:pointer; }
+#map .wreck circle, #map .wreck path { fill:#f9efd7; stroke:#8d382b; stroke-width:1.8; }
+#map .wreck text { font-size:12px; text-anchor:middle; dominant-baseline:central; fill:#8d382b; font-weight:bold; pointer-events:none; }
+#map .wreck[aria-pressed="true"] circle, #map .wreck[aria-pressed="true"] path { fill:#8d382b; }
+#map .wreck[aria-pressed="true"] text { fill:#fff4db; }
+#map .wreck:focus-visible { outline:3px solid #493b2a; outline-offset:5px; }
+#map .badge-leader { stroke:#8d382b; stroke-width:.8; opacity:.8; }
+#map .anchor-dot { fill:#8d382b; }
+#map .selection-leader { stroke:#8d382b; stroke-width:1; fill:none; }
+#map .selection-label { font-size:17px; paint-order:stroke; stroke:#f5eacc; stroke-width:5px; font-style:italic; }
+.chart figcaption { margin:5px 0 0; padding:10px 0 0; border-top:1px solid #8f7b5777; font:11px/1.7 Georgia,'Times New Roman',serif; text-align:center; color:#493b2a; }
+.legend-key { color:#8d382b; font-size:13px; }
+#empty { color:#493b2a; font:14px/1.6 Georgia,serif; text-align:center; padding:15px; }
+.atlas aside { min-width:0; padding:12px 0; }
+.atlas aside h2 { font-size:16px; }
+.register-intro { font-size:11px; }
+#register { list-style:none; padding:0; margin:14px 0; }
+#register li { margin:0; border-bottom:1px dashed var(--site-line); }
+#register button { width:100%; min-height:45px; border:0; border-left:3px solid transparent; padding:10px 6px; display:grid; grid-template-columns:24px minmax(0,1fr) 100px; gap:6px; align-items:center; text-align:left; background:none; color:inherit; font:inherit; font-size:11px; cursor:pointer; }
+#register button[aria-pressed="true"] { border-left-color:#a24c39; background:#b88b4c15; font-weight:bold; }
+#register button:hover { background:#b88b4c22; }
+#register button:focus-visible { outline:2px solid var(--color-accent,#b14732); outline-offset:2px; }
+#register .year { text-align:right; font-size:10px; font-weight:normal; line-height:1.4; }
+#register .number { font-family:Georgia,serif; color:var(--color-accent,#a24c39); }
+.pagination { display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:24px; }
+#register-page { text-align:center; font-size:10px; color:var(--site-muted); }
+#wreck-detail { border-top:2px solid #a24c39; padding-top:14px; }
+#wreck-detail h2 { font:italic 26px/1.3 Georgia,'Times New Roman',serif; margin:10px 0; }
+#wreck-detail p, #wreck-detail summary { font-size:11px; }
+#wreck-detail .association { color:var(--site-muted); }
+#wreck-detail .location-note { padding:10px; border:1px dashed var(--site-line); font-size:10px; }
+#wreck-detail summary { cursor:pointer; }
+#wreck-detail .detail-credit { font-size:10px; color:var(--site-muted); }
+#coordinate-source { display:block; }
+.sources { line-height:1.9; }
+.wrecks-page figure.ship-photo { margin:14px 0 20px; padding:0; border:0; }
+.ship-photo-frame { display:grid; place-items:center; min-height:140px; background:#efe2c2; border:1px solid #8f7b5766; }
+.ship-photo-frame img { display:block; width:100%; height:240px; object-fit:contain; filter:sepia(1); }
+#ship-photo-status { margin:16px; font-size:11px; color:#493b2a; }
+.wrecks-page .ship-photo figcaption { padding:9px 0 0; margin:0; border:0; color:inherit; font:10px/1.6 var(--site-font); }
+.ship-photo figcaption p { margin:0 0 5px; }
+.ship-photo-kind { font-weight:600; color:var(--color-accent-2); }
+.ship-photo-attribution, .ship-photo-treatment { color:var(--site-muted); }
+.notes { margin-top:28px; max-width:110ch; font-size:12px; }
+/* Desktop working area: every navigation panel stays beside the map. */
+body.dashboard-mode { padding:14px 20px; }
+.dashboard-mode main, .dashboard-mode .site-header, .dashboard-mode .site-footer { max-width:none; }
+.dashboard-mode .site-header { margin:0 0 10px; align-items:center; }
+.dashboard-mode .site-header > div { display:flex; align-items:center; gap:24px; }
+.dashboard-mode .site-title { font-size:16px; }
+.dashboard-mode .site-nav { margin:0; font-size:11px; }
+.dashboard-mode .theme-toggle { height:28px; min-height:28px; }
+.dashboard-mode .intro { display:grid; grid-template-columns:max-content 1fr; gap:2px 18px; align-items:center; max-width:none; margin:4px 0 8px; }
+.dashboard-mode .intro .eyebrow { grid-column:1/-1; font-size:10px; margin:0; }
+.dashboard-mode .intro h1 { font-size:20px; margin:0; }
+.dashboard-mode .intro > p:last-child { max-width:none; font-size:11px; line-height:1.4; margin:0; }
+.dashboard-mode .view-controls { margin:4px 0 8px; }
+.dashboard-mode .view-controls button { padding:4px 0; font-size:11px; }
+.dashboard-mode .filter-row { gap:10px; }
+.dashboard-mode .filter-row select, .dashboard-mode .filter-row input { padding:6px 8px; }
+.dashboard-mode .date-controls { margin-top:3px; }
+.dashboard-mode .date-controls summary { padding:2px 0; }
+.dashboard-mode .result-line { margin:7px 0 9px; }
+.dashboard-mode .atlas { height:var(--dashboard-height,calc(100svh - 250px)); min-height:0; grid-template-columns:minmax(0,1.35fr) minmax(240px,.65fr) minmax(300px,1fr); gap:16px; align-items:stretch; }
+.dashboard-mode .chart { display:flex; flex-direction:column; box-sizing:border-box; height:100%; min-height:0; padding:10px 8px; overflow:hidden; }
+.dashboard-mode .chart-title p:first-child { display:none; }
+.dashboard-mode .chart-title h2 { font-size:25px; margin:0 0 3px; }
+.dashboard-mode .chart-title p { font-size:9px; }
+.dashboard-mode #map { flex:1; width:100%; height:0; min-height:0; max-height:none; margin:3px 0; }
+.dashboard-mode #map .place { font-size:23px; letter-spacing:1px; }
+.dashboard-mode #map .grid-label { font-size:15px; }
+.dashboard-mode #map .selection-label { font-size:23px; }
+.dashboard-mode .chart figcaption { flex:none; padding-top:5px; font-size:9px; line-height:1.4; }
+.dashboard-mode .chart figcaption br { display:none; }
+.dashboard-mode .chart figcaption br::after { content:' '; }
+.dashboard-mode .legend-key { font-size:10px; }
+.dashboard-mode .register-panel, .dashboard-mode .inspect-panel { height:100%; min-height:0; box-sizing:border-box; padding:6px 0; }
+.dashboard-mode .register-panel { display:flex; flex-direction:column; }
+.dashboard-mode .register-panel h2, .dashboard-mode .inspection-heading { flex:none; font-size:14px; margin:0 0 6px; }
+.dashboard-mode .register-intro { flex:none; font-size:10px; line-height:1.5; margin:0 0 6px; }
+.dashboard-mode #register { flex:1; min-height:0; overflow-y:auto; overscroll-behavior:contain; margin:5px 0 8px; scrollbar-gutter:stable; }
+.dashboard-mode #register button { min-height:42px; padding:8px 5px; grid-template-columns:22px minmax(0,1fr) 86px; font-size:11px; }
+.dashboard-mode #register .year { font-size:9px; }
+.dashboard-mode .pagination { flex:none; margin:0; gap:4px; }
+.dashboard-mode .pagination button { padding:6px; min-height:32px; }
+.dashboard-mode .inspect-panel { overflow-y:auto; overscroll-behavior:contain; padding-right:6px; scrollbar-gutter:stable; overflow-wrap:anywhere; }
+.dashboard-mode figure.ship-photo { margin:6px 0 12px; }
+.dashboard-mode .ship-photo-frame { min-height:100px; }
+.dashboard-mode .ship-photo-frame img { height:clamp(100px,calc(var(--dashboard-height) * .32),220px); }
+.dashboard-mode #wreck-detail { padding-top:8px; }
+.dashboard-mode #wreck-detail h2 { font-size:23px; margin:6px 0; }
+.dashboard-mode #wreck-detail p { margin:7px 0; }
+.dashboard-mode #wreck-detail .eyebrow { font-size:10px; }
+.dashboard-mode #wreck-detail .location-note { padding:8px; }
+.inspect-panel { min-width:0; }
+@media(max-width:999px) { .inspect-panel { padding:0; } }
+
+@media(max-width:999px) { .atlas { grid-template-columns:minmax(0,1fr); gap:12px; } #map { max-height:760px; } .atlas aside { padding:0; } #register button { font-size:13px; } .filter-row { grid-template-columns:1fr 1fr; } .date-row { grid-template-columns:1fr 1fr; } }
+@media(max-width:480px) { body.wrecks-page { padding:16px; } figure.chart { padding:18px 6px 12px; } .chart-title p { font-size:9px; letter-spacing:.1em; } .chart figcaption { font-size:10px; } #map .place { font-size:24px; letter-spacing:1px; } #map .selection-label { font-size:25px; } #map .grid-label { font-size:18px; } #map .wreck text { font-size:18px; } .view-controls { gap:5px 12px; } .view-controls button { font-size:11px; } .filter-row { gap:10px; } .search-label { grid-column:1/-1; } #reset { width:fit-content; } }

@@ -1,0 +1,1465 @@
+{
+  "retrieved": "2026-11-06",
+  "source": "Wikimedia Commons Action API: query, prop=imageinfo, iiprop=url|extmetadata. Individual file licences, not the website footer.",
+  "files": {
+    "Osebergskipet 2016.jpg": {
+      "pageid": 54937245,
+      "ns": 6,
+      "title": "File:Osebergskipet 2016.jpg",
+      "imagerepository": "local",
+      "imageinfo": [
+        {
+          "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Osebergskipet_2016.jpg/960px-Osebergskipet_2016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumbwidth": 960,
+          "thumbheight": 689,
+          "responsiveUrls": {
+            "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Osebergskipet_2016.jpg/1920px-Osebergskipet_2016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+          },
+          "thumbattribs": {
+            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Osebergskipet_2016.jpg/960px-Osebergskipet_2016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "decoding": "async",
+            "loading": "lazy",
+            "width": 960,
+            "height": 689,
+            "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Osebergskipet_2016.jpg/1920px-Osebergskipet_2016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+          },
+          "url": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Osebergskipet_2016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "descriptionurl": "https://commons.wikimedia.org/wiki/File:Osebergskipet_2016.jpg",
+          "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=54937245",
+          "extmetadata": {
+            "DateTime": {
+              "value": "2017-01-10 22:23:18",
+              "source": "mediawiki-metadata",
+              "hidden": ""
+            },
+            "ObjectName": {
+              "value": "Osebergskipet 2016",
+              "source": "mediawiki-metadata"
+            },
+            "CommonsMetadataExtension": {
+              "value": 1.2,
+              "source": "extension",
+              "hidden": ""
+            },
+            "Categories": {
+              "value": "Oseberg ship|Self-published work|FoP-Norway|Files with coordinates missing SDC location of creation|Norway photographs taken on 2016-11-30",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "Assessments": {
+              "value": "valued",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "GPSLatitude": {
+              "value": "59.904806",
+              "source": "commons-desc-page"
+            },
+            "GPSLongitude": {
+              "value": "10.684580",
+              "source": "commons-desc-page"
+            },
+            "GPSMapDatum": {
+              "value": "WGS-84",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "ImageDescription": {
+              "value": "The Oseberg ship on display at the Viking ship museum, Oslo.",
+              "source": "commons-desc-page"
+            },
+            "DateTimeOriginal": {
+              "value": "2016-11-30 14:29:57",
+              "source": "commons-desc-page"
+            },
+            "Credit": {
+              "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+              "source": "commons-desc-page"
+            },
+            "Artist": {
+              "value": "<a href=\"//commons.wikimedia.org/wiki/User:Peulle\" title=\"User:Peulle\">Petter Ulleland</a>",
+              "source": "commons-desc-page"
+            },
+            "LicenseShortName": {
+              "value": "CC BY-SA 4.0",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "UsageTerms": {
+              "value": "Creative Commons Attribution-Share Alike 4.0",
+              "source": "commons-desc-page"
+            },
+            "AttributionRequired": {
+              "value": "true",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "LicenseUrl": {
+              "value": "https://creativecommons.org/licenses/by-sa/4.0",
+              "source": "commons-desc-page"
+            },
+            "Copyrighted": {
+              "value": "True",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "Restrictions": {
+              "value": "",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "License": {
+              "value": "cc-by-sa-4.0",
+              "source": "commons-templates",
+              "hidden": ""
+            }
+          }
+        }
+      ]
+    },
+    "Gokstadskipet1.jpg": {
+      "pageid": 839681,
+      "ns": 6,
+      "title": "File:Gokstadskipet1.jpg",
+      "imagerepository": "local",
+      "imageinfo": [
+        {
+          "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/Gokstadskipet1.jpg/960px-Gokstadskipet1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumbwidth": 960,
+          "thumbheight": 1280,
+          "responsiveUrls": {
+            "2": "https://upload.wikimedia.org/wikipedia/commons/5/53/Gokstadskipet1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+          },
+          "thumbattribs": {
+            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/Gokstadskipet1.jpg/960px-Gokstadskipet1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "decoding": "async",
+            "loading": "lazy",
+            "width": 960,
+            "height": 1280,
+            "srcset": "https://upload.wikimedia.org/wikipedia/commons/5/53/Gokstadskipet1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled 2x"
+          },
+          "url": "https://upload.wikimedia.org/wikipedia/commons/5/53/Gokstadskipet1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "descriptionurl": "https://commons.wikimedia.org/wiki/File:Gokstadskipet1.jpg",
+          "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=839681",
+          "extmetadata": {
+            "DateTime": {
+              "value": "2006-06-04 20:12:12",
+              "source": "mediawiki-metadata",
+              "hidden": ""
+            },
+            "ObjectName": {
+              "value": "Gokstadskipet1",
+              "source": "mediawiki-metadata"
+            },
+            "CommonsMetadataExtension": {
+              "value": 1.2,
+              "source": "extension",
+              "hidden": ""
+            },
+            "Categories": {
+              "value": "Gokstad ship|Taken with Canon Digital IXUS 500|2005 in Oslo|Self-published work",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "Assessments": {
+              "value": "",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "ImageDescription": {
+              "value": "Gokstadskipet, Vikingskipmuseet, Oslo",
+              "source": "commons-desc-page"
+            },
+            "DateTimeOriginal": {
+              "value": "2005",
+              "source": "commons-desc-page"
+            },
+            "Credit": {
+              "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+              "source": "commons-desc-page"
+            },
+            "Artist": {
+              "value": "Karamell",
+              "source": "commons-desc-page"
+            },
+            "LicenseShortName": {
+              "value": "CC BY-SA 2.5",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "UsageTerms": {
+              "value": "Creative Commons Attribution-Share Alike 2.5",
+              "source": "commons-desc-page"
+            },
+            "AttributionRequired": {
+              "value": "true",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "LicenseUrl": {
+              "value": "https://creativecommons.org/licenses/by-sa/2.5",
+              "source": "commons-desc-page"
+            },
+            "Copyrighted": {
+              "value": "True",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "Restrictions": {
+              "value": "",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "License": {
+              "value": "cc-by-sa-2.5",
+              "source": "commons-templates",
+              "hidden": ""
+            }
+          }
+        }
+      ]
+    },
+    "TuneShip.jpg": {
+      "pageid": 2103257,
+      "ns": 6,
+      "title": "File:TuneShip.jpg",
+      "imagerepository": "local",
+      "imageinfo": [
+        {
+          "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/TuneShip.jpg/960px-TuneShip.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumbwidth": 960,
+          "thumbheight": 720,
+          "responsiveUrls": {
+            "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/TuneShip.jpg/1920px-TuneShip.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+          },
+          "thumbattribs": {
+            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/TuneShip.jpg/960px-TuneShip.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "decoding": "async",
+            "loading": "lazy",
+            "width": 960,
+            "height": 720,
+            "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/TuneShip.jpg/1920px-TuneShip.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+          },
+          "url": "https://upload.wikimedia.org/wikipedia/commons/9/9f/TuneShip.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "descriptionurl": "https://commons.wikimedia.org/wiki/File:TuneShip.jpg",
+          "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=2103257",
+          "extmetadata": {
+            "DateTime": {
+              "value": "2007-05-13 13:53:37",
+              "source": "mediawiki-metadata",
+              "hidden": ""
+            },
+            "ObjectName": {
+              "value": "TuneShip",
+              "source": "mediawiki-metadata"
+            },
+            "CommonsMetadataExtension": {
+              "value": 1.2,
+              "source": "extension",
+              "hidden": ""
+            },
+            "Categories": {
+              "value": "Tune ship|Self-published work|Norway photographs taken on 2006-08-22",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "Assessments": {
+              "value": "",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "ImageDescription": {
+              "value": "The Tune viking ship in the <a href=\"https://en.wikipedia.org/wiki/en:Viking_Ship_Museum_in_Oslo\" class=\"extiw\" title=\"w:en:Viking Ship Museum in Oslo\">Viking Ship Museum in Oslo</a>.",
+              "source": "commons-desc-page"
+            },
+            "DateTimeOriginal": {
+              "value": "2006-08-22",
+              "source": "commons-desc-page"
+            },
+            "Credit": {
+              "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+              "source": "commons-desc-page"
+            },
+            "Artist": {
+              "value": "<a href=\"//commons.wikimedia.org/wiki/User:China_Crisis\" title=\"User:China Crisis\">China Crisis</a>",
+              "source": "commons-desc-page"
+            },
+            "LicenseShortName": {
+              "value": "CC BY-SA 2.5",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "UsageTerms": {
+              "value": "Creative Commons Attribution-Share Alike 2.5",
+              "source": "commons-desc-page"
+            },
+            "AttributionRequired": {
+              "value": "true",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "LicenseUrl": {
+              "value": "https://creativecommons.org/licenses/by-sa/2.5",
+              "source": "commons-desc-page"
+            },
+            "Copyrighted": {
+              "value": "True",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "Restrictions": {
+              "value": "",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "License": {
+              "value": "cc-by-sa-2.5",
+              "source": "commons-templates",
+              "hidden": ""
+            }
+          }
+        }
+      ]
+    },
+    "Ladbyskibet.jpg": {
+      "pageid": 17203,
+      "ns": 6,
+      "title": "File:Ladbyskibet.jpg",
+      "imagerepository": "local",
+      "imageinfo": [
+        {
+          "thumburl": "https://upload.wikimedia.org/wikipedia/commons/7/75/Ladbyskibet.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+          "thumbwidth": 960,
+          "thumbheight": 682,
+          "thumbattribs": {
+            "src": "https://upload.wikimedia.org/wikipedia/commons/7/75/Ladbyskibet.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+            "decoding": "async",
+            "loading": "lazy",
+            "width": 960,
+            "height": 682
+          },
+          "url": "https://upload.wikimedia.org/wikipedia/commons/7/75/Ladbyskibet.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "descriptionurl": "https://commons.wikimedia.org/wiki/File:Ladbyskibet.jpg",
+          "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=17203",
+          "extmetadata": {
+            "DateTime": {
+              "value": "2004-11-23 10:35:09",
+              "source": "mediawiki-metadata",
+              "hidden": ""
+            },
+            "ObjectName": {
+              "value": "Ladbyskibet",
+              "source": "mediawiki-metadata"
+            },
+            "CommonsMetadataExtension": {
+              "value": 1.2,
+              "source": "extension",
+              "hidden": ""
+            },
+            "Categories": {
+              "value": "GFDL|Taken with Canon EOS 300D|Files with no machine-readable author|Files with no machine-readable source|License migration redundant|Media missing infobox template|Self-published work|Files with coordinates missing SDC location of creation|Ladbyskibet (ship)",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "Assessments": {
+              "value": "",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "GPSLatitude": {
+              "value": "55.445250",
+              "source": "commons-desc-page"
+            },
+            "GPSLongitude": {
+              "value": "10.615150",
+              "source": "commons-desc-page"
+            },
+            "GPSMapDatum": {
+              "value": "WGS-84",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "LicenseShortName": {
+              "value": "CC BY-SA 3.0",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "UsageTerms": {
+              "value": "Creative Commons Attribution-Share Alike 3.0",
+              "source": "commons-desc-page"
+            },
+            "AttributionRequired": {
+              "value": "true",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "LicenseUrl": {
+              "value": "http://creativecommons.org/licenses/by-sa/3.0/",
+              "source": "commons-desc-page"
+            },
+            "Copyrighted": {
+              "value": "True",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "Restrictions": {
+              "value": "",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "License": {
+              "value": "cc-by-sa-3.0",
+              "source": "commons-templates",
+              "hidden": ""
+            }
+          }
+        }
+      ]
+    },
+    "Skuldelev 1, Viking Ship Museum 2017-08-18.jpg": {
+      "pageid": 67406139,
+      "ns": 6,
+      "title": "File:Skuldelev 1, Viking Ship Museum 2017-08-18.jpg",
+      "index": 1,
+      "imagerepository": "local",
+      "imageinfo": [
+        {
+          "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Skuldelev_1%2C_Viking_Ship_Museum_2017-08-18.jpg/960px-Skuldelev_1%2C_Viking_Ship_Museum_2017-08-18.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumbwidth": 800,
+          "thumbheight": 1200,
+          "responsiveUrls": {
+            "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Skuldelev_1%2C_Viking_Ship_Museum_2017-08-18.jpg/1920px-Skuldelev_1%2C_Viking_Ship_Museum_2017-08-18.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+          },
+          "thumbattribs": {
+            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Skuldelev_1%2C_Viking_Ship_Museum_2017-08-18.jpg/960px-Skuldelev_1%2C_Viking_Ship_Museum_2017-08-18.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "decoding": "async",
+            "loading": "lazy",
+            "width": 800,
+            "height": 1200,
+            "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Skuldelev_1%2C_Viking_Ship_Museum_2017-08-18.jpg/1920px-Skuldelev_1%2C_Viking_Ship_Museum_2017-08-18.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+          },
+          "url": "https://upload.wikimedia.org/wikipedia/commons/2/29/Skuldelev_1%2C_Viking_Ship_Museum_2017-08-18.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "descriptionurl": "https://commons.wikimedia.org/wiki/File:Skuldelev_1,_Viking_Ship_Museum_2017-08-18.jpg",
+          "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=67406139",
+          "extmetadata": {
+            "DateTime": {
+              "value": "2018-03-16 17:33:30",
+              "source": "mediawiki-metadata",
+              "hidden": ""
+            },
+            "ObjectName": {
+              "value": "Skuldelev 1, Viking Ship Museum 2017-08-18",
+              "source": "mediawiki-metadata"
+            },
+            "CommonsMetadataExtension": {
+              "value": 1.2,
+              "source": "extension",
+              "hidden": ""
+            },
+            "Categories": {
+              "value": "Information field template with formatting|Uploaded with LrMediaWiki|Files with coordinates missing SDC location of creation|Photographs by User:Colin|Skuldelev 1 (ship, 1030)",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "Assessments": {
+              "value": "",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "GPSLatitude": {
+              "value": "55.650858",
+              "source": "commons-desc-page"
+            },
+            "GPSLongitude": {
+              "value": "12.081348",
+              "source": "commons-desc-page"
+            },
+            "GPSMapDatum": {
+              "value": "WGS-84",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "ImageDescription": {
+              "value": "<a href=\"https://en.wikipedia.org/wiki/Skuldelev_ships\" class=\"extiw\" title=\"en:Skuldelev ships\">Skuldelev 1</a> ship, <a href=\"https://en.wikipedia.org/wiki/Viking_Ship_Museum_(Roskilde)\" class=\"extiw\" title=\"en:Viking Ship Museum (Roskilde)\">Viking Ship Museum at Roskilde</a>.",
+              "source": "commons-desc-page"
+            },
+            "DateTimeOriginal": {
+              "value": "2017-08-18 13:53:58",
+              "source": "commons-desc-page"
+            },
+            "Credit": {
+              "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+              "source": "commons-desc-page"
+            },
+            "Artist": {
+              "value": "<a href=\"//commons.wikimedia.org/wiki/User:Colin\" title=\"User:Colin\">Colin</a>",
+              "source": "commons-desc-page"
+            },
+            "Attribution": {
+              "value": "\u00a9 <a href=\"//commons.wikimedia.org/wiki/User:Colin\" title=\"User:Colin\">User:Colin</a>\u00a0/\u00a0<a href=\"//commons.wikimedia.org/wiki/Main_Page\" title=\"Main Page\">Wikimedia Commons</a>",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "LicenseShortName": {
+              "value": "CC BY-SA 4.0",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "UsageTerms": {
+              "value": "Creative Commons Attribution-Share Alike 4.0",
+              "source": "commons-desc-page"
+            },
+            "AttributionRequired": {
+              "value": "true",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "LicenseUrl": {
+              "value": "https://creativecommons.org/licenses/by-sa/4.0",
+              "source": "commons-desc-page"
+            },
+            "Copyrighted": {
+              "value": "True",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "Restrictions": {
+              "value": "",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "License": {
+              "value": "cc-by-sa-4.0",
+              "source": "commons-templates",
+              "hidden": ""
+            }
+          }
+        }
+      ]
+    },
+    "Haithabu Schiffsmodell.jpg": {
+      "pageid": 3798769,
+      "ns": 6,
+      "title": "File:Haithabu Schiffsmodell.jpg",
+      "imagerepository": "local",
+      "imageinfo": [
+        {
+          "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Haithabu_Schiffsmodell.jpg/960px-Haithabu_Schiffsmodell.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumbwidth": 960,
+          "thumbheight": 757,
+          "responsiveUrls": {
+            "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Haithabu_Schiffsmodell.jpg/1920px-Haithabu_Schiffsmodell.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+          },
+          "thumbattribs": {
+            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Haithabu_Schiffsmodell.jpg/960px-Haithabu_Schiffsmodell.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "decoding": "async",
+            "loading": "lazy",
+            "width": 960,
+            "height": 757,
+            "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Haithabu_Schiffsmodell.jpg/1920px-Haithabu_Schiffsmodell.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+          },
+          "url": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Haithabu_Schiffsmodell.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "descriptionurl": "https://commons.wikimedia.org/wiki/File:Haithabu_Schiffsmodell.jpg",
+          "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=3798769",
+          "extmetadata": {
+            "DateTime": {
+              "value": "2008-03-30 11:46:18",
+              "source": "mediawiki-metadata",
+              "hidden": ""
+            },
+            "ObjectName": {
+              "value": "Haithabu Schiffsmodell",
+              "source": "mediawiki-metadata"
+            },
+            "CommonsMetadataExtension": {
+              "value": 1.2,
+              "source": "extension",
+              "hidden": ""
+            },
+            "Categories": {
+              "value": "Models of ships in Germany|Interior of Wikinger Museum Haithabu|Self-published work|PD-self|Models of watercraft in display cases|Hedeby 1 (ship, 985)",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "Assessments": {
+              "value": "",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "ImageDescription": {
+              "value": "Modell des Wikingerlangschiffs in Haithabu",
+              "source": "commons-desc-page"
+            },
+            "DateTimeOriginal": {
+              "value": "2008",
+              "source": "commons-desc-page"
+            },
+            "Credit": {
+              "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+              "source": "commons-desc-page"
+            },
+            "Artist": {
+              "value": "--<a href=\"//commons.wikimedia.org/w/index.php?title=User:Xocolatl&amp;action=edit&amp;redlink=1\" class=\"new\" title=\"User:Xocolatl (page does not exist)\">Xocolatl</a> 11:46, 30 March 2008 (UTC)",
+              "source": "commons-desc-page"
+            },
+            "LicenseShortName": {
+              "value": "Public domain",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "UsageTerms": {
+              "value": "Public domain",
+              "source": "commons-desc-page"
+            },
+            "AttributionRequired": {
+              "value": "false",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "Copyrighted": {
+              "value": "False",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "Restrictions": {
+              "value": "",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "License": {
+              "value": "pd",
+              "source": "commons-templates",
+              "hidden": ""
+            }
+          }
+        }
+      ]
+    },
+    "Kyrenia ship.jpg": {
+      "pageid": 1517044,
+      "ns": 6,
+      "title": "File:Kyrenia ship.jpg",
+      "imagerepository": "local",
+      "imageinfo": [
+        {
+          "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Kyrenia_ship.jpg/960px-Kyrenia_ship.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumbwidth": 960,
+          "thumbheight": 720,
+          "responsiveUrls": {
+            "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Kyrenia_ship.jpg/1920px-Kyrenia_ship.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+          },
+          "thumbattribs": {
+            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Kyrenia_ship.jpg/960px-Kyrenia_ship.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "decoding": "async",
+            "loading": "lazy",
+            "width": 960,
+            "height": 720,
+            "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Kyrenia_ship.jpg/1920px-Kyrenia_ship.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+          },
+          "url": "https://upload.wikimedia.org/wikipedia/commons/6/65/Kyrenia_ship.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "descriptionurl": "https://commons.wikimedia.org/wiki/File:Kyrenia_ship.jpg",
+          "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=1517044",
+          "extmetadata": {
+            "DateTime": {
+              "value": "2007-01-02 13:37:18",
+              "source": "mediawiki-metadata",
+              "hidden": ""
+            },
+            "ObjectName": {
+              "value": "Kyrenia ship",
+              "source": "mediawiki-metadata"
+            },
+            "CommonsMetadataExtension": {
+              "value": 1.2,
+              "source": "extension",
+              "hidden": ""
+            },
+            "Categories": {
+              "value": "Taken with Sony DSC-V3|Kyrenia shipwreck|License migration completed|GFDL-en",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "Assessments": {
+              "value": "",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "ImageDescription": {
+              "value": "The Kyrenia ship.",
+              "source": "commons-desc-page"
+            },
+            "DateTimeOriginal": {
+              "value": "2006",
+              "source": "commons-desc-page"
+            },
+            "Credit": {
+              "value": "<a href=\"https://en.wikipedia.org/wiki/Image:Cyprus_051.jpg\" class=\"extiw\" title=\"en:Image:Cyprus 051.jpg\">en:Image:Cyprus 051.jpg</a>",
+              "source": "commons-desc-page"
+            },
+            "Artist": {
+              "value": "<a href=\"https://en.wikipedia.org/wiki/User:Mgiganteus1\" class=\"extiw\" title=\"en:User:Mgiganteus1\">en:User:Mgiganteus1</a>",
+              "source": "commons-desc-page"
+            },
+            "Permission": {
+              "value": "<table style=\"width:100%; clear:both; text-align:center; margin:0.5em auto; background-color:var(--background-color-neutral-subtle, #f8f9fa); border:var(--border-subtle, 2px solid #c8ccd1); padding: 0; border-spacing: 8px; color:var(--color-base, #202122);\" dir=\"ltr\" class=\"layouttemplate licensetpl\" lang=\"en\">\n<tbody><tr>\n<td style=\"width:90px;\" rowspan=\"4\"><span class=\"skin-invert-image\" typeof=\"mw:File\"><span title=\"w:en:Creative Commons\"><img alt=\"w:en:Creative Commons\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/CC_some_rights_reserved.svg/120px-CC_some_rights_reserved.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"90\" height=\"36\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/CC_some_rights_reserved.svg/250px-CC_some_rights_reserved.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"744\" data-file-height=\"300\"></span></span><br><span class=\"skin-invert-image\" typeof=\"mw:File\"><span title=\"attribution\"><img alt=\"attribution\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/Cc-by_new.svg/40px-Cc-by_new.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"24\" height=\"24\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/Cc-by_new.svg/60px-Cc-by_new.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"80\" data-file-height=\"80\"></span></span> <span class=\"skin-invert-image\" typeof=\"mw:File\"><span title=\"share alike\"><img alt=\"share alike\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Cc-sa.svg/40px-Cc-sa.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"24\" height=\"24\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Cc-sa.svg/60px-Cc-sa.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"64\" data-file-height=\"64\"></span></span>\n</td>\n<td>This file is licensed under the <a href=\"https://en.wikipedia.org/wiki/en:Creative_Commons\" class=\"extiw\" title=\"w:en:Creative Commons\">Creative Commons</a> <a href=\"//creativecommons.org/licenses/by-sa/3.0/deed.en\" class=\"extiw\" title=\"creativecommons:by-sa/3.0/deed.en\">Attribution-Share Alike 3.0 Unported</a> license. Subject to <a href=\"https://en.wikipedia.org/wiki/Wikipedia:General_disclaimer\" class=\"extiw\" title=\"en:Wikipedia:General disclaimer\">disclaimers</a>.\n</td>\n<td style=\"width:90px;\" rowspan=\"4\">\n</td></tr>\n<tr style=\"text-align:center;\">\n<td>\n</td></tr>\n<tr style=\"text-align:left;\">\n<td>\n<dl><dd>You are free:\n<ul><li><b>to share</b> \u2013 to copy, distribute and transmit the work</li>\n<li><b>to remix</b> \u2013 to adapt the work</li></ul></dd>\n<dd>Under the following conditions:\n<ul><li><b>attribution</b> \u2013 You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.</li>\n<li><b>share alike</b> \u2013 If you remix, transform, or build upon the material, you must distribute your contributions under the <a href=\"https://creativecommons.org/share-your-work/licensing-considerations/compatible-licenses\" class=\"extiw\" title=\"ccorg:share-your-work/licensing-considerations/compatible-licenses\">same or compatible license</a> as the original.</li></ul></dd></dl>\n</td></tr>\n<tr style=\"text-align:center;\">\n<td><span style=\"font-size:90%;\">This licensing tag was added to this file as part of the GFDL <a href=\"https://meta.wikimedia.org/wiki/Licensing_update\" class=\"extiw\" title=\"meta:Licensing update\">licensing update</a>.</span><span class=\"licensetpl_link\" style=\"display:none;\">http://creativecommons.org/licenses/by-sa/3.0/</span><span class=\"licensetpl_short\" style=\"display:none;\">CC BY-SA 3.0</span><span class=\"licensetpl_long\" style=\"display:none;\">Creative Commons Attribution-Share Alike 3.0</span><span class=\"licensetpl_link_req\" style=\"display:none;\">true</span><span class=\"licensetpl_attr_req\" style=\"display:none;\">true</span>\n</td></tr></tbody></table>\n<table style=\"width:100%; clear:both; margin:0.5em auto; background-color: var(--background-color-neutral-subtle, #f9f9f9); color: var(--color-base, #202122); border: var(--border-subtle, 2px solid #e0e0e0); border-spacing: 8px; box-sizing: border-box; padding: 0;\" dir=\"ltr\" lang=\"en\" class=\"layouttemplate licensetpl\">\n<tbody><tr>\n<td><span class=\"noviewer\" typeof=\"mw:File\"><a href=\"//commons.wikimedia.org/wiki/File:Heckert_GNU_white.svg\" class=\"mw-file-description\" title=\"GNU head\"><img alt=\"GNU head\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Heckert_GNU_white.svg/120px-Heckert_GNU_white.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"64\" height=\"63\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Heckert_GNU_white.svg/250px-Heckert_GNU_white.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"535\" data-file-height=\"523\"></a></span>\n</td>\n<td>Permission is granted to copy, distribute and/or modify this document under the terms of the <b><a href=\"https://en.wikipedia.org/wiki/en:GNU_Free_Documentation_License\" class=\"extiw\" title=\"w:en:GNU Free Documentation License\">GNU Free Documentation License</a></b>, Version 1.2 or any later version published by the <a href=\"https://en.wikipedia.org/wiki/en:Free_Software_Foundation\" class=\"extiw\" title=\"w:en:Free Software Foundation\">Free Software Foundation</a>; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in the section entitled <i><a href=\"//commons.wikimedia.org/wiki/Commons:GNU_Free_Documentation_License,_version_1.2\" title=\"Commons:GNU Free Documentation License, version 1.2\">GNU Free Documentation License</a></i>. Subject to <a href=\"https://en.wikipedia.org/wiki/Wikipedia:General_disclaimer\" class=\"extiw\" title=\"en:Wikipedia:General disclaimer\">disclaimers</a>.<span class=\"licensetpl_link\" style=\"display:none;\">http://www.gnu.org/copyleft/fdl.html</span><span class=\"licensetpl_short\" style=\"display:none;\">GFDL</span><span class=\"licensetpl_long\" style=\"display:none;\">GNU Free Documentation License</span><span class=\"licensetpl_link_req\" style=\"display:none;\">true</span><span class=\"licensetpl_attr_req\" style=\"display:none;\">true</span>\n</td></tr></tbody></table>",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "LicenseShortName": {
+              "value": "CC BY-SA 3.0",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "UsageTerms": {
+              "value": "Creative Commons Attribution-Share Alike 3.0",
+              "source": "commons-desc-page"
+            },
+            "AttributionRequired": {
+              "value": "true",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "LicenseUrl": {
+              "value": "http://creativecommons.org/licenses/by-sa/3.0/",
+              "source": "commons-desc-page"
+            },
+            "Copyrighted": {
+              "value": "True",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "Restrictions": {
+              "value": "",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "License": {
+              "value": "cc-by-sa-3.0",
+              "source": "commons-templates",
+              "hidden": ""
+            }
+          }
+        }
+      ]
+    },
+    "Antikes Wrack von Antikythera 03.jpg": {
+      "pageid": 36588067,
+      "ns": 6,
+      "title": "File:Antikes Wrack von Antikythera 03.jpg",
+      "imagerepository": "local",
+      "imageinfo": [
+        {
+          "thumburl": "https://upload.wikimedia.org/wikipedia/commons/a/ae/Antikes_Wrack_von_Antikythera_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+          "thumbwidth": 960,
+          "thumbheight": 981,
+          "thumbattribs": {
+            "src": "https://upload.wikimedia.org/wikipedia/commons/a/ae/Antikes_Wrack_von_Antikythera_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+            "decoding": "async",
+            "loading": "lazy",
+            "width": 960,
+            "height": 981
+          },
+          "url": "https://upload.wikimedia.org/wikipedia/commons/a/ae/Antikes_Wrack_von_Antikythera_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "descriptionurl": "https://commons.wikimedia.org/wiki/File:Antikes_Wrack_von_Antikythera_03.jpg",
+          "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=36588067",
+          "extmetadata": {
+            "DateTime": {
+              "value": "2014-11-03 17:10:00",
+              "source": "mediawiki-metadata",
+              "hidden": ""
+            },
+            "ObjectName": {
+              "value": "Antikes Wrack von Antikythera 03",
+              "source": "mediawiki-metadata"
+            },
+            "CommonsMetadataExtension": {
+              "value": 1.2,
+              "source": "extension",
+              "hidden": ""
+            },
+            "Categories": {
+              "value": "Antikythera wreck|PD Old|Template Unknown (author)|CC-PD-Mark|PD-old missing SDC copyright status",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "Assessments": {
+              "value": "",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "ImageDescription": {
+              "value": "Vertreter der griechischen Regierung, der Besatzung und der Schwammtaucher auf dem Deck des griechischen Marineschiffs <i>Mykali</i> im Winter 1900/1901 \u00fcber dem Schiffswrack vor Antikythera",
+              "source": "commons-desc-page"
+            },
+            "DateTimeOriginal": {
+              "value": "1900/1901 (<a rel=\"nofollow\" class=\"external text\" href=\"http://www.astro.auth.gr/documents/diplomas/2012_Nikoli-Diploma-gr.pdf#91\">PDF</a>)",
+              "source": "commons-desc-page"
+            },
+            "Credit": {
+              "value": "<a rel=\"nofollow\" class=\"external text\" href=\"http://www.faszination-uhrwerk.de/m/m-antikythera-en.html\">The mechanism of Antikythera</a>",
+              "source": "commons-desc-page"
+            },
+            "Artist": {
+              "value": "Unknown author<span style=\"display: none;\">Unknown author</span>",
+              "source": "commons-desc-page"
+            },
+            "Permission": {
+              "value": "<table class=\"licensetpl\" style=\"display:none\">\n<tbody><tr>\n<td><span class=\"licensetpl_short\">Public domain</span><span class=\"licensetpl_long\">Public domain</span><span class=\"licensetpl_link_req\">false</span><span class=\"licensetpl_attr_req\">false</span>\n</td></tr></tbody></table>\n<table style=\"width: 100%; clear: both; margin: 0.5em auto; background-color: var(--background-color-progressive-subtle, #f7f8ff); color: var(--color-base, #202122); border: var(--border-subtle, 2px solid #8888aa); border-spacing: 8px; padding: 0px;\" dir=\"ltr\" class=\"layouttemplate\" lang=\"en\">\n<tbody><tr>\n<td rowspan=\"2\"><span typeof=\"mw:File\"><span title=\"Public domain\"><img alt=\"Public domain\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/PD-icon.svg/120px-PD-icon.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"64\" height=\"64\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/PD-icon.svg/250px-PD-icon.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"196\" data-file-height=\"196\"></span></span>\n</td>\n<td>\n<p>This work is in the <b><a href=\"https://en.wikipedia.org/wiki/public_domain\" class=\"extiw\" title=\"en:public domain\">public domain</a></b> in its country of origin and other countries and areas where the <a href=\"https://en.wikipedia.org/wiki/List_of_countries%27_copyright_lengths\" class=\"extiw\" title=\"w:List of countries' copyright lengths\">copyright term</a> is the author's <b>life plus 70 years or fewer</b>.\n</p>\n<hr>\n<span typeof=\"mw:File\"><span><img src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Dialog-warning.svg/40px-Dialog-warning.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"25\" height=\"25\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Dialog-warning.svg/60px-Dialog-warning.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"48\" data-file-height=\"48\"></span></span> <small>You must also include a <a href=\"//commons.wikimedia.org/wiki/Commons:Copyright_tags/Country-specific_tags#United_States_of_America\" title=\"Commons:Copyright tags/Country-specific tags\">United States public domain tag</a> to indicate why this work is in the public domain in the United States.<div class=\"navigation-not-searchable\">\u00a0Note that a few countries have copyright terms longer than 70 years: Mexico has 100 years, Jamaica has 95 years, Colombia has 80 years, and Guatemala and Samoa have 75 years. This image may <i>not</i> be in the public domain in these countries, which moreover do <i>not</i> implement the <a href=\"https://en.wikipedia.org/wiki/rule_of_the_shorter_term\" class=\"extiw\" title=\"w:rule of the shorter term\">rule of the shorter term</a>. Honduras has a general copyright term of 75 years, but it <i>does</i> implement the rule of the shorter term. Copyright may extend on works created by French who died for France in <a href=\"https://en.wikipedia.org/wiki/World_War_II\" class=\"extiw\" title=\"w:World War II\">World War II</a> (<a href=\"//commons.wikimedia.org/wiki/Commons:Copyright_rules_by_territory/France\" title=\"Commons:Copyright rules by territory/France\">more information</a>), Russians who served in <a href=\"https://en.wikipedia.org/wiki/Eastern_Front_(World_War_II)\" class=\"extiw\" title=\"w:Eastern Front (World War II)\">the Eastern Front of World War II</a> (known as the Great Patriotic War in Russia) and posthumously <a href=\"https://en.wikipedia.org/wiki/Rehabilitation_(Soviet)\" class=\"extiw\" title=\"w:Rehabilitation (Soviet)\">rehabilitated</a> victims of Soviet repressions (<a href=\"//commons.wikimedia.org/wiki/Template:PD-Russia\" title=\"Template:PD-Russia\">more information</a>).</div></small>\n</td></tr>\n<tr>\n<td colspan=\"2\" style=\"text-align:center;font-size:x-small;line-height:140%;\"><a href=\"https://creativecommons.org/publicdomain/mark/1.0/deed.en\" class=\"extiw\" title=\"ccorg:publicdomain/mark/1.0/deed.en\">This file has been identified as being free of known restrictions under copyright law, including all related and neighboring rights.</a>\n</td></tr></tbody></table><span class=\"licensetpl_link\" style=\"display:none;\">https://creativecommons.org/publicdomain/mark/1.0/</span><span class=\"licensetpl_short\" style=\"display:none;\">PDM</span><span class=\"licensetpl_long\" style=\"display:none;\">Creative Commons Public Domain Mark 1.0</span><span class=\"licensetpl_link_req\" style=\"display:none;\">false</span><span class=\"licensetpl_attr_req\" style=\"display:none;\">false</span>",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "LicenseShortName": {
+              "value": "Public domain",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "UsageTerms": {
+              "value": "Public domain",
+              "source": "commons-desc-page"
+            },
+            "AttributionRequired": {
+              "value": "false",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "Copyrighted": {
+              "value": "False",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "Restrictions": {
+              "value": "",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "License": {
+              "value": "pd",
+              "source": "commons-templates",
+              "hidden": ""
+            }
+          }
+        }
+      ]
+    },
+    "Madrague de Giens Roman shipwreck in the Museum of Ancient Seafaring in Mainz, Germany (48987720778).jpg": {
+      "pageid": 83634543,
+      "ns": 6,
+      "title": "File:Madrague de Giens Roman shipwreck in the Museum of Ancient Seafaring in Mainz, Germany (48987720778).jpg",
+      "index": 2,
+      "imagerepository": "local",
+      "imageinfo": [
+        {
+          "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Madrague_de_Giens_Roman_shipwreck_in_the_Museum_of_Ancient_Seafaring_in_Mainz%2C_Germany_%2848987720778%29.jpg/960px-Madrague_de_Giens_Roman_shipwreck_in_the_Museum_of_Ancient_Seafaring_in_Mainz%2C_Germany_%2848987720778%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumbwidth": 800,
+          "thumbheight": 600,
+          "responsiveUrls": {
+            "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Madrague_de_Giens_Roman_shipwreck_in_the_Museum_of_Ancient_Seafaring_in_Mainz%2C_Germany_%2848987720778%29.jpg/1920px-Madrague_de_Giens_Roman_shipwreck_in_the_Museum_of_Ancient_Seafaring_in_Mainz%2C_Germany_%2848987720778%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+          },
+          "thumbattribs": {
+            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Madrague_de_Giens_Roman_shipwreck_in_the_Museum_of_Ancient_Seafaring_in_Mainz%2C_Germany_%2848987720778%29.jpg/960px-Madrague_de_Giens_Roman_shipwreck_in_the_Museum_of_Ancient_Seafaring_in_Mainz%2C_Germany_%2848987720778%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "decoding": "async",
+            "loading": "lazy",
+            "width": 800,
+            "height": 600,
+            "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Madrague_de_Giens_Roman_shipwreck_in_the_Museum_of_Ancient_Seafaring_in_Mainz%2C_Germany_%2848987720778%29.jpg/1920px-Madrague_de_Giens_Roman_shipwreck_in_the_Museum_of_Ancient_Seafaring_in_Mainz%2C_Germany_%2848987720778%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+          },
+          "url": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Madrague_de_Giens_Roman_shipwreck_in_the_Museum_of_Ancient_Seafaring_in_Mainz%2C_Germany_%2848987720778%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "descriptionurl": "https://commons.wikimedia.org/wiki/File:Madrague_de_Giens_Roman_shipwreck_in_the_Museum_of_Ancient_Seafaring_in_Mainz,_Germany_(48987720778).jpg",
+          "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=83634543",
+          "extmetadata": {
+            "DateTime": {
+              "value": "2019-11-03 19:05:24",
+              "source": "mediawiki-metadata",
+              "hidden": ""
+            },
+            "ObjectName": {
+              "value": "Madrague de Giens Roman shipwreck in the Museum of Ancient Seafaring in Mainz, Germany (48987720778)",
+              "source": "mediawiki-metadata"
+            },
+            "CommonsMetadataExtension": {
+              "value": 1.2,
+              "source": "extension",
+              "hidden": ""
+            },
+            "Categories": {
+              "value": "Germany photographs taken on 2019-10-08|Museum f\u00fcr Antike Schifffahrt|Ancient shipwrecks|Flickr images reviewed by FlickreviewR 2|Files with coordinates missing SDC location of creation (49\u00b0 N, 8\u00b0 E)|Models of ancient Roman ships|Files from dronepicr Flickr stream|Flickr images missing SDC published in",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "Assessments": {
+              "value": "",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "GPSLatitude": {
+              "value": "49.993755",
+              "source": "commons-desc-page"
+            },
+            "GPSLongitude": {
+              "value": "8.281250",
+              "source": "commons-desc-page"
+            },
+            "GPSMapDatum": {
+              "value": "WGS-84",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "ImageDescription": {
+              "value": "Mainz",
+              "source": "commons-desc-page"
+            },
+            "DateTimeOriginal": {
+              "value": "2019-10-08 14:43",
+              "source": "commons-desc-page"
+            },
+            "Credit": {
+              "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/photos/132646954@N02/48987720778/\">Madrague de Giens Roman shipwreck in the Museum of Ancient Seafaring in Mainz, Germany</a>",
+              "source": "commons-desc-page"
+            },
+            "Artist": {
+              "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/132646954@N02\">dronepicr</a>",
+              "source": "commons-desc-page"
+            },
+            "LicenseShortName": {
+              "value": "CC BY 2.0",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "UsageTerms": {
+              "value": "Creative Commons Attribution 2.0",
+              "source": "commons-desc-page"
+            },
+            "AttributionRequired": {
+              "value": "true",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "LicenseUrl": {
+              "value": "https://creativecommons.org/licenses/by/2.0",
+              "source": "commons-desc-page"
+            },
+            "Copyrighted": {
+              "value": "True",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "Restrictions": {
+              "value": "",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "License": {
+              "value": "cc-by-2.0",
+              "source": "commons-templates",
+              "hidden": ""
+            }
+          }
+        }
+      ]
+    },
+    "MazarronIIg.jpg": {
+      "pageid": 6302471,
+      "ns": 6,
+      "title": "File:MazarronIIg.jpg",
+      "imagerepository": "local",
+      "imageinfo": [
+        {
+          "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/MazarronIIg.jpg/960px-MazarronIIg.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumbwidth": 960,
+          "thumbheight": 540,
+          "responsiveUrls": {
+            "2": "https://upload.wikimedia.org/wikipedia/commons/a/a0/MazarronIIg.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+          },
+          "thumbattribs": {
+            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/MazarronIIg.jpg/960px-MazarronIIg.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "decoding": "async",
+            "loading": "lazy",
+            "width": 960,
+            "height": 540,
+            "srcset": "https://upload.wikimedia.org/wikipedia/commons/a/a0/MazarronIIg.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled 2x"
+          },
+          "url": "https://upload.wikimedia.org/wikipedia/commons/a/a0/MazarronIIg.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "descriptionurl": "https://commons.wikimedia.org/wiki/File:MazarronIIg.jpg",
+          "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=6302471",
+          "extmetadata": {
+            "DateTime": {
+              "value": "2009-03-21 18:59:03",
+              "source": "mediawiki-metadata",
+              "hidden": ""
+            },
+            "ObjectName": {
+              "value": "MazarronIIg",
+              "source": "mediawiki-metadata"
+            },
+            "CommonsMetadataExtension": {
+              "value": 1.2,
+              "source": "extension",
+              "hidden": ""
+            },
+            "Categories": {
+              "value": "Taken with Panasonic Lumix DMC-LX1|Phoenician shipwrecks from Mazarr\u00f3n|Self-published work|PD-self|March 2009 in Cartagena, Spain|Spain photographs taken on 2009-03-21|Museums in Cartagena (Spain) photographed in 2009|Interior of the Museo Nacional de Arqueolog\u00eda Subacu\u00e1tica",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "Assessments": {
+              "value": "",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "ImageDescription": {
+              "value": "Reconstrucci\u00f3n del pecio fenicio Mazarr\u00f3n II en el Museo Nacional de Arqueolog\u00eda Subacu\u00e1tica de Cartagena (ARQUA).",
+              "source": "commons-desc-page"
+            },
+            "DateTimeOriginal": {
+              "value": "Taken on\u00a021 March 2009, 12:35",
+              "source": "commons-desc-page"
+            },
+            "Credit": {
+              "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+              "source": "commons-desc-page"
+            },
+            "Artist": {
+              "value": "<a href=\"//commons.wikimedia.org/wiki/User:Nanosanchez\" title=\"User:Nanosanchez\">Nanosanchez</a>",
+              "source": "commons-desc-page"
+            },
+            "LicenseShortName": {
+              "value": "Public domain",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "UsageTerms": {
+              "value": "Public domain",
+              "source": "commons-desc-page"
+            },
+            "AttributionRequired": {
+              "value": "false",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "Copyrighted": {
+              "value": "False",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "Restrictions": {
+              "value": "",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "License": {
+              "value": "pd",
+              "source": "commons-templates",
+              "hidden": ""
+            }
+          }
+        }
+      ]
+    },
+    "Carthago exhibition - Elephant Tusks with a Phoenician Inscription (49340888427).jpg": {
+      "pageid": 95607160,
+      "ns": 6,
+      "title": "File:Carthago exhibition - Elephant Tusks with a Phoenician Inscription (49340888427).jpg",
+      "index": 3,
+      "imagerepository": "local",
+      "imageinfo": [
+        {
+          "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Carthago_exhibition_-_Elephant_Tusks_with_a_Phoenician_Inscription_%2849340888427%29.jpg/960px-Carthago_exhibition_-_Elephant_Tusks_with_a_Phoenician_Inscription_%2849340888427%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumbwidth": 800,
+          "thumbheight": 389,
+          "responsiveUrls": {
+            "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Carthago_exhibition_-_Elephant_Tusks_with_a_Phoenician_Inscription_%2849340888427%29.jpg/1920px-Carthago_exhibition_-_Elephant_Tusks_with_a_Phoenician_Inscription_%2849340888427%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+          },
+          "thumbattribs": {
+            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Carthago_exhibition_-_Elephant_Tusks_with_a_Phoenician_Inscription_%2849340888427%29.jpg/960px-Carthago_exhibition_-_Elephant_Tusks_with_a_Phoenician_Inscription_%2849340888427%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "decoding": "async",
+            "loading": "lazy",
+            "width": 800,
+            "height": 389,
+            "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Carthago_exhibition_-_Elephant_Tusks_with_a_Phoenician_Inscription_%2849340888427%29.jpg/1920px-Carthago_exhibition_-_Elephant_Tusks_with_a_Phoenician_Inscription_%2849340888427%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+          },
+          "url": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Carthago_exhibition_-_Elephant_Tusks_with_a_Phoenician_Inscription_%2849340888427%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "descriptionurl": "https://commons.wikimedia.org/wiki/File:Carthago_exhibition_-_Elephant_Tusks_with_a_Phoenician_Inscription_(49340888427).jpg",
+          "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=95607160",
+          "extmetadata": {
+            "DateTime": {
+              "value": "2020-10-29 16:30:31",
+              "source": "mediawiki-metadata",
+              "hidden": ""
+            },
+            "ObjectName": {
+              "value": "Carthago exhibition - Elephant Tusks with a Phoenician Inscription (49340888427)",
+              "source": "mediawiki-metadata"
+            },
+            "CommonsMetadataExtension": {
+              "value": 1.2,
+              "source": "extension",
+              "hidden": ""
+            },
+            "Categories": {
+              "value": "Phoenician inscriptions in Spain|Ivory in Spain|Elephant tusks|Flickr images reviewed by FlickreviewR 2|Carthago exhibition|Phoenician shipwrecks",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "Assessments": {
+              "value": "",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "ImageDescription": {
+              "value": "<p>Ivory, end of the 7th Century.\n</p>\nElephant tusks from the Bajo de la Campana (a submerged site off the coast of Murcia, Spain) are part of the cargo of a Phoenician ship from the end of the 7th Century BC. Over 50 tusks have been recovered from the site, some with traders' marks, together with other remains showing Phoenician interest in raw materials from North Africa and the far West, and an active trade with the local communities.",
+              "source": "commons-desc-page"
+            },
+            "DateTimeOriginal": {
+              "value": "2019-09-27 17:01",
+              "source": "commons-desc-page"
+            },
+            "Credit": {
+              "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/photos/184393744@N06/49340888427/\">Elephant Tusks with a Phoenician Inscription</a>",
+              "source": "commons-desc-page"
+            },
+            "Artist": {
+              "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/184393744@N06\">Jamie Heath</a>",
+              "source": "commons-desc-page"
+            },
+            "LicenseShortName": {
+              "value": "CC BY 2.0",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "UsageTerms": {
+              "value": "Creative Commons Attribution 2.0",
+              "source": "commons-desc-page"
+            },
+            "AttributionRequired": {
+              "value": "true",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "LicenseUrl": {
+              "value": "https://creativecommons.org/licenses/by/2.0",
+              "source": "commons-desc-page"
+            },
+            "Copyrighted": {
+              "value": "True",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "Restrictions": {
+              "value": "",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "License": {
+              "value": "cc-by-2.0",
+              "source": "commons-templates",
+              "hidden": ""
+            }
+          }
+        }
+      ]
+    },
+    "Uluburun1.jpg": {
+      "pageid": 926638,
+      "ns": 6,
+      "title": "File:Uluburun1.jpg",
+      "imagerepository": "local",
+      "imageinfo": [
+        {
+          "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/75/Uluburun1.jpg/960px-Uluburun1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumbwidth": 960,
+          "thumbheight": 773,
+          "responsiveUrls": {
+            "2": "https://upload.wikimedia.org/wikipedia/commons/7/75/Uluburun1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+          },
+          "thumbattribs": {
+            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/75/Uluburun1.jpg/960px-Uluburun1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "decoding": "async",
+            "loading": "lazy",
+            "width": 960,
+            "height": 773,
+            "srcset": "https://upload.wikimedia.org/wikipedia/commons/7/75/Uluburun1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled 2x"
+          },
+          "url": "https://upload.wikimedia.org/wikipedia/commons/7/75/Uluburun1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "descriptionurl": "https://commons.wikimedia.org/wiki/File:Uluburun1.jpg",
+          "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=926638",
+          "extmetadata": {
+            "DateTime": {
+              "value": "2006-07-06 20:11:19",
+              "source": "mediawiki-metadata",
+              "hidden": ""
+            },
+            "ObjectName": {
+              "value": "Uluburun1",
+              "source": "mediawiki-metadata"
+            },
+            "CommonsMetadataExtension": {
+              "value": 1.2,
+              "source": "extension",
+              "hidden": ""
+            },
+            "Categories": {
+              "value": "GFDL|CC-BY-SA-2.5,2.0,1.0|Uluburun shipwreck|License migration redundant|Self-published work",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "Assessments": {
+              "value": "",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "ImageDescription": {
+              "value": "<p>Information\n</p>\n<ul><li>Description: Wooden model from the Shipwreck from Uluburun.</li>\n<li>Source: own work</li>\n<li>Date: June 2006</li>\n<li>Author: Martin Bahmann</li></ul>",
+              "source": "commons-desc-page"
+            },
+            "DateTimeOriginal": {
+              "value": "6 July 2006 (original upload date)",
+              "source": "commons-desc-page"
+            },
+            "Credit": {
+              "value": "<span class=\"int-own-work\">Self-photographed</span>",
+              "source": "commons-desc-page"
+            },
+            "Artist": {
+              "value": "<a href=\"https://de.wikipedia.org/wiki/User:Martin_Bahmann\" class=\"extiw\" title=\"de:User:Martin Bahmann\">Martin Bahmann</a>",
+              "source": "commons-desc-page"
+            },
+            "LicenseShortName": {
+              "value": "CC BY-SA 3.0",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "UsageTerms": {
+              "value": "Creative Commons Attribution-Share Alike 3.0",
+              "source": "commons-desc-page"
+            },
+            "AttributionRequired": {
+              "value": "true",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "LicenseUrl": {
+              "value": "http://creativecommons.org/licenses/by-sa/3.0/",
+              "source": "commons-desc-page"
+            },
+            "Copyrighted": {
+              "value": "True",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "Restrictions": {
+              "value": "",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "License": {
+              "value": "cc-by-sa-3.0",
+              "source": "commons-templates",
+              "hidden": ""
+            }
+          }
+        }
+      ]
+    },
+    "Nemi-Schiff.jpg": {
+      "pageid": 37706694,
+      "ns": 6,
+      "title": "File:Nemi-Schiff.jpg",
+      "imagerepository": "local",
+      "imageinfo": [
+        {
+          "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Nemi-Schiff.jpg/960px-Nemi-Schiff.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "thumbwidth": 960,
+          "thumbheight": 613,
+          "responsiveUrls": {
+            "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Nemi-Schiff.jpg/1920px-Nemi-Schiff.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+          },
+          "thumbattribs": {
+            "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Nemi-Schiff.jpg/960px-Nemi-Schiff.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+            "decoding": "async",
+            "loading": "lazy",
+            "width": 960,
+            "height": 613,
+            "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Nemi-Schiff.jpg/1920px-Nemi-Schiff.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+          },
+          "url": "https://upload.wikimedia.org/wikipedia/commons/0/08/Nemi-Schiff.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "descriptionurl": "https://commons.wikimedia.org/wiki/File:Nemi-Schiff.jpg",
+          "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=37706694",
+          "extmetadata": {
+            "DateTime": {
+              "value": "2015-01-06 18:15:20",
+              "source": "mediawiki-metadata",
+              "hidden": ""
+            },
+            "ObjectName": {
+              "value": "Nemi-Schiff",
+              "source": "mediawiki-metadata"
+            },
+            "CommonsMetadataExtension": {
+              "value": 1.2,
+              "source": "extension",
+              "hidden": ""
+            },
+            "Categories": {
+              "value": "Nemi ships|PD Old|Template Unknown (author)|CC-PD-Mark|PD-old missing SDC copyright status",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "Assessments": {
+              "value": "",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "ImageDescription": {
+              "value": "Das gr\u00f6\u00dfere der beiden Schiffe Caligulas",
+              "source": "commons-desc-page"
+            },
+            "DateTimeOriginal": {
+              "value": "1929",
+              "source": "commons-desc-page"
+            },
+            "Credit": {
+              "value": "Bilderwoche 1929",
+              "source": "commons-desc-page"
+            },
+            "Artist": {
+              "value": "Unknown author<span style=\"display: none;\">Unknown author</span>",
+              "source": "commons-desc-page"
+            },
+            "LicenseShortName": {
+              "value": "Public domain",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "UsageTerms": {
+              "value": "Public domain",
+              "source": "commons-desc-page"
+            },
+            "AttributionRequired": {
+              "value": "false",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "Copyrighted": {
+              "value": "False",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "Restrictions": {
+              "value": "",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "License": {
+              "value": "pd",
+              "source": "commons-templates",
+              "hidden": ""
+            }
+          }
+        }
+      ]
+    },
+    "Bardo Mahdia navire.JPG": {
+      "pageid": 7744422,
+      "ns": 6,
+      "title": "File:Bardo Mahdia navire.JPG",
+      "imagerepository": "local",
+      "imageinfo": [
+        {
+          "thumburl": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Bardo_Mahdia_navire.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+          "thumbwidth": 960,
+          "thumbheight": 649,
+          "thumbattribs": {
+            "src": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Bardo_Mahdia_navire.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+            "decoding": "async",
+            "loading": "lazy",
+            "width": 960,
+            "height": 649
+          },
+          "url": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Bardo_Mahdia_navire.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "descriptionurl": "https://commons.wikimedia.org/wiki/File:Bardo_Mahdia_navire.JPG",
+          "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=7744422",
+          "extmetadata": {
+            "DateTime": {
+              "value": "2009-09-06 08:18:00",
+              "source": "mediawiki-metadata",
+              "hidden": ""
+            },
+            "ObjectName": {
+              "value": "Bardo Mahdia navire",
+              "source": "mediawiki-metadata"
+            },
+            "CommonsMetadataExtension": {
+              "value": 1.2,
+              "source": "extension",
+              "hidden": ""
+            },
+            "Categories": {
+              "value": "Self-published work|Images by Pradigue|Reconstruction of the Mahdia shipwreck boat|Models of watercraft in display cases",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "Assessments": {
+              "value": "",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "ImageDescription": {
+              "value": "Reconstitution du navire de Mahdia au mus\u00e9e du Bardo, Tunisie",
+              "source": "commons-desc-page"
+            },
+            "DateTimeOriginal": {
+              "value": "2002",
+              "source": "commons-desc-page"
+            },
+            "Credit": {
+              "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+              "source": "commons-desc-page"
+            },
+            "Artist": {
+              "value": "<a href=\"//commons.wikimedia.org/wiki/User:Pradigue\" title=\"User:Pradigue\">Pascal Radigue</a>",
+              "source": "commons-desc-page"
+            },
+            "Permission": {
+              "value": "I, the copyright holder of this work, hereby publish it under the following license:",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "LicenseShortName": {
+              "value": "CC BY 3.0",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "UsageTerms": {
+              "value": "Creative Commons Attribution 3.0",
+              "source": "commons-desc-page"
+            },
+            "AttributionRequired": {
+              "value": "true",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "LicenseUrl": {
+              "value": "https://creativecommons.org/licenses/by/3.0",
+              "source": "commons-desc-page"
+            },
+            "Copyrighted": {
+              "value": "True",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "Restrictions": {
+              "value": "",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "License": {
+              "value": "cc-by-3.0",
+              "source": "commons-templates",
+              "hidden": ""
+            }
+          }
+        }
+      ]
+    }
+  }
+}
