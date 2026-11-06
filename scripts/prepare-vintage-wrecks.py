@@ -56,16 +56,26 @@ write('wrecks.geojson',collection(legacy,dict(title='Original seven historical w
 review=read('reviewed-ships.json'); entities=read('ancient-wikidata-source.json')['entities']; curated=[]
 replaced={x for r in review['records'] for x in r.get('replaces',[])}
 for number, record in enumerate(review['records'],1):
-    r=dict(record); e=entities[r['coordinateEntity']]
-    claim=e['claims']['P625'][r.pop('coordinateIndex')]
-    assert claim['rank']!='deprecated'
-    c=claim['mainsnak']['datavalue']['value']
-    r.update(number=number,sourceCategory='curated',featured=True,
+    r=dict(record)
+    if r.get('coordinateSourceRecord'):
+        sites=read('historic-find-sites.json')
+        site=next(f for f in sites['features'] if f['id']==r['coordinateSourceRecord'])
+        assert sites['provenance']['license']=='CC BY 4.0' and site['properties']['source_inf']=='Historic England'
+        lon,lat=site['geometry']['coordinates']; c=dict(longitude=lon,latitude=lat)
+        coordinate=dict(coordinateSource=sites['provenance']['source'],coordinateClaim=site['id'],
+                        coordinateRevision=site['properties']['yr_updated'],
+                        license='CC BY 4.0 coordinates (EMODnet / AND-International / Historic England); independently compiled factual annotations')
+    else:
+        e=entities[r['coordinateEntity']]
+        claim=e['claims']['P625'][r.pop('coordinateIndex')]
+        assert claim['rank']!='deprecated'
+        c=claim['mainsnak']['datavalue']['value']
+        coordinate=dict(coordinateSource=f'https://www.wikidata.org/wiki/{r["coordinateEntity"]}',
+                        coordinateClaim=claim['id'],coordinateRevision=e['lastrevid'],
+                        license='CC0 coordinates; independently compiled factual annotations')
+    r.update(**coordinate,number=number,sourceCategory='curated',featured=True,
              source=f'https://www.wikidata.org/wiki/{r["id"]}',
-             coordinateSource=f'https://www.wikidata.org/wiki/{r["coordinateEntity"]}',
-             coordinateClaim=claim['id'],coordinateRevision=e['lastrevid'],
-             license='CC0 coordinates; independently compiled factual annotations',
-             sourceDating=r['dateLabel'],period='Norse/Viking' if r['culture']=='viking' else r['culture'],
+             sourceDating=r['dateLabel'],period=r.get('period','Norse/Viking' if r['culture']=='viking' else r['culture']),
              reference='Source history reviewed 6 November 2026. No article prose copied; contextual images are separately licensed in photos.json.')
     curated.append(point(r,[round(c['longitude'],2),round(c['latitude'],2)]))
 
@@ -110,7 +120,7 @@ write('ships.geojson',collection(features,metadata))
 land=json.loads((ROOT/'maps/04-travel-clusters/data/land.geojson').read_text())
 write('land.geojson',dict(type='Feature',properties={**land['properties'],'clipBounds':[-26,26,47,73]},
     geometry=mapping(shape(land['geometry']).intersection(box(-26,26,47,73)))))
-inputs=['wikidata-source.json','ancient-wikidata-source.json','reviewed-ships.json','emodnet-source.geojson','emodnet-provenance.json']
+inputs=['wikidata-source.json','ancient-wikidata-source.json','reviewed-ships.json','emodnet-source.geojson','emodnet-provenance.json','historic-find-sites.json']
 inputs += [name for name in ['image-selection.json','commons-images.json','photos.json'] if (OUT/name).exists()]
 write('snapshot.json',dict(reviewed='2026-11-06',sha256={n:hashlib.sha256((OUT/n).read_bytes()).hexdigest() for n in inputs+['ships.geojson','land.geojson']},
     exclusions=['Oxford 2017 Excel: no redistribution licence verified; not bundled.','Gjellestad and Gozo: reviewed candidate Wikidata entities lacked direct find coordinates.','Klåstad ship: queried coordinate identifies its museum; not bundled.','Marsala Punic ship: original find coordinate not verified; unrelated medieval Marsala A remains as its own background record.']))

@@ -7,14 +7,14 @@ const filtered=(patch={})=>data.filter(f=>matches(f,{...DEFAULTS,...patch}));
 const ids=patch=>filtered(patch).map(f=>f.properties.id);
 
 test('default and three geographic views have explicit coverage',()=>{
-  assert.equal(filtered().length,334);
-  assert.equal(filtered({view:'north'}).length,6);
+  assert.equal(filtered().length,339);
+  assert.equal(filtered({view:'north'}).length,11);
   assert.equal(filtered({view:'med'}).length,328);
-  assert.equal(filtered({later:true}).length,341);
-  assert.equal(filtered({view:'north',later:true}).length,13);
+  assert.equal(filtered({later:true}).length,346);
+  assert.equal(filtered({view:'north',later:true}).length,18);
 });
 test('association filters reflect classifications, not cargo nationality',()=>{
-  for(const [culture,count] of Object.entries({viking:6,greek:17,roman:241,phoenician:3,other:67}))assert.equal(filtered({culture}).length,count,culture);
+  for(const [culture,count] of Object.entries({viking:6,greek:17,roman:241,phoenician:3,historic:5,other:67}))assert.equal(filtered({culture}).length,count,culture);
   assert.ok(ids({culture:'other'}).includes('Q573852'),'Uluburun remains uncertain');
   assert.ok(!ids({culture:'phoenician'}).includes('Q573852'));
   assert.ok(ids({culture:'roman'}).includes('Q2616711'),'Antikythera: Roman-period, not classified from Greek cargo');
@@ -23,10 +23,10 @@ test('association filters reflect classifications, not cargo nationality',()=>{
 test('ship burials and deliberate losses are not ordinary wrecks',()=>{
   assert.equal(filtered({kind:'burial'}).length,4);
   assert.equal(filtered({kind:'deliberate'}).length,2);
-  assert.equal(filtered({kind:'wreck'}).length,328);
+  assert.equal(filtered({kind:'wreck'}).length,333);
 });
 test('date filters use interval overlap, retain unknowns only explicitly',()=>{
-  assert.equal(filtered({unknown:false}).length,285);
+  assert.equal(filtered({unknown:false}).length,290);
   assert.equal(filtered({from:-2500,to:-2001,unknown:false}).length,0);
   assert.equal(filtered({from:-2500,to:-2001,unknown:true}).length,49);
   const overlap=ids({from:-65,to:-62,unknown:false});

@@ -7,11 +7,11 @@
   const view=name=>document.querySelector(`[data-view="${name}"]`).click();
   const input=(id,value)=>{const el=$(id);if(el.type==='checkbox')el.checked=value;else el.value=value;el.dispatchEvent(new Event('input',{bubbles:true}));};
   const checkCount=n=>assert(state().visible.length===n,`Expected ${n} records, got ${state().visible.length}`);
-  view('europe');checkCount(334);assert($('status').hidden,'No loading error');
-  assert(document.querySelectorAll('#map .wreck').length===14,'Fourteen reviewed badges');
+  view('europe');checkCount(339);assert($('status').hidden,'No loading error');
+  assert(document.querySelectorAll('#map .wreck').length===19,'Nineteen reviewed badges');
   assert(document.querySelectorAll('#register button').length===8,'Register is paginated');
   $('next').click();assert(state().page===1,'Next page');$('previous').click();assert(state().page===0,'Previous page');
-  view('north');checkCount(6);
+  view('north');checkCount(11);
   const northern=data.filter(f=>f.properties.region==='north');
   for(const f of northern){
     const p=f.properties;document.querySelector(`#register button[data-record="${p.id}"]`).click();
@@ -42,11 +42,11 @@
   checkCount(expected.length);assert(state().visible.includes('Q3589083'),'Date interval overlap includes Mahdia');
   const previous=JSON.stringify(state().visible);input('from-year',0);
   assert(!$('date-error').hidden&&JSON.stringify(state().visible)===previous,'Year zero rejected, previous chart preserved');
-  view('europe');input('later',true);checkCount(341);
+  view('europe');input('later',true);checkCount(346);
   input('search','Royal Charter');assert(state().visible.includes('Q1721414'),'Original later layer available');
   document.querySelector('#register button[data-record="Q1721414"]').click();assert($('detail-note').textContent.includes('1.8 km'),'Known legacy location conflict retained');
-  view('europe');checkCount(334);
+  view('europe');checkCount(339);
   assert(document.documentElement.scrollWidth<=innerWidth+1,'No horizontal page overflow');
   assert(!performance.getEntriesByType('resource').some(r=>new URL(r.name).origin!==location.origin),'Local runtime resources only');
-  return {pass:true,views:3,defaultRecords:334,fullRecords:341,viewport:[innerWidth,innerHeight],theme:document.documentElement.dataset.theme};
+  return {pass:true,views:3,defaultRecords:339,fullRecords:346,viewport:[innerWidth,innerHeight],theme:document.documentElement.dataset.theme};
 })();

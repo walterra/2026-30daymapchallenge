@@ -5,7 +5,7 @@
   const until=async fn=>{const end=performance.now()+8000;while(!fn()){if(performance.now()>end)throw new Error('Image load timed out');await new Promise(r=>setTimeout(r,25));}};
   const [photos,data]=await Promise.all(['photos.json','ships.geojson'].map(async file=>(await fetch('data/'+file)).json()));
   document.querySelector('[data-view="europe"]').click();
-  assert(photos.images.length===14,'Fourteen image records');
+  assert(photos.images.length===19,'Nineteen image records');
   const select=id=>document.querySelector(`#map .wreck[data-record="${id}"]`).dispatchEvent(new MouseEvent('click',{bubbles:true}));
   const ready=id=>$('ship-photo').dataset.record===id&&!$('ship-photo-image').hidden&&$('ship-photo-image').complete&&$('ship-photo-image').naturalWidth>0;
   for(const p of photos.images){
@@ -34,5 +34,5 @@
   assert(document.documentElement.scrollWidth<=innerWidth+1,'No horizontal overflow');
   assert(!performance.getEntriesByType('resource').some(r=>new URL(r.name).origin!==location.origin),'Local runtime images only');
   select('Q1190639');await until(()=>ready('Q1190639'));
-  return {pass:true,images:14,selected:'Nemi ships (2)',viewport:[innerWidth,innerHeight],theme:document.documentElement.dataset.theme};
+  return {pass:true,images:19,selected:'Nemi ships (2)',viewport:[innerWidth,innerHeight],theme:document.documentElement.dataset.theme};
 })();

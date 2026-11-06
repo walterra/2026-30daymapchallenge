@@ -14,8 +14,8 @@ DATA=read('ships.geojson'); FS=DATA['features']; BY_ID={f['properties']['id']:f 
 
 class VintageTests(unittest.TestCase):
     def test_counts_and_no_duplicate_ids(self):
-        self.assertEqual(len(FS),341);self.assertEqual(len(BY_ID),341)
-        self.assertEqual(sum(f['properties']['featured'] for f in FS),14)
+        self.assertEqual(len(FS),346);self.assertEqual(len(BY_ID),346)
+        self.assertEqual(sum(f['properties']['featured'] for f in FS),19)
         self.assertEqual(sum(f['properties']['sourceCategory']=='emodnet' for f in FS),320)
         self.assertEqual(sum(f['properties']['sourceCategory']=='later' for f in FS),7)
         self.assertEqual(sum(f['properties']['dateStart'] is None for f in FS),49)
@@ -42,6 +42,11 @@ class VintageTests(unittest.TestCase):
         for f in FS:
             p=f['properties']
             if not p['featured']:continue
+            if p.get('coordinateSourceRecord'):
+                source=next(x for x in read('historic-find-sites.json')['features'] if x['id']==p['coordinateSourceRecord'])
+                self.assertEqual(f['geometry']['coordinates'],[round(v,2) for v in source['geometry']['coordinates']])
+                self.assertIn('CC BY 4.0',p['license'])
+                continue
             e=raw[p['coordinateEntity']]
             c=next(c for c in e['claims']['P625'] if c['id']==p['coordinateClaim'])['mainsnak']['datavalue']['value']
             self.assertEqual(f['geometry']['coordinates'],[round(c['longitude'],2),round(c['latitude'],2)])
@@ -105,6 +110,17 @@ class VintageTests(unittest.TestCase):
         self.assertFalse(list(ENTRY.rglob('*.xlsx')))
         self.assertIn('not bundled',' '.join(read('snapshot.json')['exclusions']))
 
+    def test_historic_collection_uses_find_sites_and_event_dates(self):
+        expected={'Q219821':1628,'Q544894':1545,'Q1789811':1676,'Q20819337':1495,'Q907712':1380}
+        for qid,year in expected.items():
+            p=BY_ID[qid]['properties']
+            self.assertEqual(p['culture'],'historic');self.assertEqual(p['dateStart'],year)
+        self.assertEqual(BY_ID['Q219821']['properties']['coordinateEntity'],'Q791762')
+        self.assertEqual(BY_ID['Q544894']['geometry']['coordinates'],[-1.1,50.76])
+        self.assertEqual(BY_ID['Q907712']['properties']['coordinateEntity'],'Q72026188')
+        self.assertLess(BY_ID['Q907712']['geometry']['coordinates'][1],53.2)
+        self.assertIn('exact sinking year not established',BY_ID['Q907712']['properties']['dateBasis'])
+
     def test_nemi_is_two_inland_vessels_with_use_dates(self):
         p=BY_ID['Q1190639']['properties']
         self.assertEqual(p['vesselCount'],2)
@@ -117,7 +133,7 @@ class VintageTests(unittest.TestCase):
 
     def test_licensed_local_images_for_every_highlight(self):
         images=read('photos.json')['images'];source=read('commons-images.json')['files']
-        self.assertEqual(len(images),14)
+        self.assertEqual(len(images),19)
         self.assertEqual({p['id'] for p in images},{f['properties']['id'] for f in FS if f['properties']['featured']})
         for p in images:
             self.assertTrue(p['src'].startswith('photos/Q'))

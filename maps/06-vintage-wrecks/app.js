@@ -13,7 +13,7 @@ if(Object.hasOwn(VIEWS,requested))state.view=requested;
 const PAGE_SIZE=8;
 let all=[],visible=[],selected=null,page=0,projection,chart,selection,landData,photoPanel,pins=new Map();
 const kindNames={wreck:'Wreck',burial:'Ship burial',deliberate:'Deliberate loss'};
-const cultureNames={viking:'Norse / Viking',greek:'Greek / Hellenistic-associated',roman:'Roman-period',phoenician:'Phoenician-associated',other:'Other / uncertain',later:'Later historical wreck'};
+const cultureNames={viking:'Norse / Viking',greek:'Greek / Hellenistic-associated',roman:'Roman-period',phoenician:'Phoenician-associated',other:'Other / uncertain',historic:'Medieval / early modern',later:'Later historical wreck'};
 
 function svgText(parent,text,x,y,cls) {return parent.append('text').attr('x',x).attr('y',y).attr('class',cls).text(text);}
 function buildChart(land) {
@@ -120,7 +120,7 @@ function details() {
   $('history-source').href=p.historySource;$('history-source').textContent=p.sourceCategory==='emodnet'?'Oxford database':'Ship history';
   $('coordinate-source').hidden=!p.coordinateSource||p.coordinateSource===p.source;
   if(p.coordinateSource)$('coordinate-source').href=p.coordinateSource;
-  $('detail-credit').textContent=p.sourceCategory==='emodnet'?'EMODnet / AND-International; original provider: Oxford Roman Economy Project (Strauss 2013). CC BY 4.0.':'Wikidata coordinates: CC0. Historical annotations compiled from the linked sources.';
+  $('detail-credit').textContent=p.sourceCategory==='emodnet'?'EMODnet / AND-International; original provider: Oxford Roman Economy Project (Strauss 2013). CC BY 4.0.':p.coordinateSourceRecord?'Coordinates: EMODnet / AND-International / Historic England, CC BY 4.0. Historical annotations compiled independently.':'Wikidata coordinates: CC0. Historical annotations compiled from the linked sources.';
 }
 
 function register() {

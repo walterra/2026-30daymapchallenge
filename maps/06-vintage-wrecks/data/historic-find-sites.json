@@ -1,0 +1,67 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "heritageshipwrecks.30",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.10423202,
+          50.76390358
+        ]
+      },
+      "geometry_name": "the_geom",
+      "properties": {
+        "source_id": "1000075",
+        "country": "United Kingdom",
+        "name": "MARY ROSE",
+        "least_depth": 0.0,
+        "max_depth": 0.0,
+        "depth_info": "n/a",
+        "depth_prec": "n/a",
+        "object_length": 0.0,
+        "loc_prec": 0.0,
+        "site_area": 28.2374905939,
+        "sink_context": "Sank in 1545, whilst engaging a French invasion fleet.",
+        "sink_yr": "1545",
+        "dating": "1509",
+        "period": "n/a",
+        "statutory": "Protected wreck",
+        "obj_desc": "Fragments of the wreck remain on the seabed along with the spoil heaps and a large indentation left when the hull was raised.",
+        "ship_char": "n/a",
+        "obj_type": "Remains of the Henry VIII's flagship",
+        "est_tonnag": 0.0,
+        "place_orig": "n/a",
+        "place_dest": "n/a",
+        "artefacts": "n/a",
+        "coast_dist": 1856.23296711,
+        "source_inf": "Historic England",
+        "reference": "n/a",
+        "website1": "n/a",
+        "website2": "n/a",
+        "yr_updated": "2025",
+        "point_info": "Polygon centroid"
+      }
+    }
+  ],
+  "totalFeatures": 1,
+  "numberMatched": 1,
+  "numberReturned": 1,
+  "timeStamp": "2026-11-06T22:05:49.543Z",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:EPSG::4326"
+    }
+  },
+  "provenance": {
+    "source": "https://emodnet.ec.europa.eu/geonetwork/srv/api/records/e965088b-a265-4517-84df-c49b156af8a7",
+    "license": "CC BY 4.0",
+    "originator": "AND-International",
+    "originalProvider": "Historic England",
+    "retrieved": "2026-11-06",
+    "requestDescription": "WFS emodnet:heritageshipwrecks, EPSG:4326, CQL_FILTER name ILIKE '%Mary Rose%'",
+    "note": "Protected-site polygon centroid in the Solent, not the relocated museum hull."
+  }
+}
