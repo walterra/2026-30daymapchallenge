@@ -5,7 +5,7 @@
   const state=()=>window.vintage.state;
   const $=id=>document.getElementById(id);
   const view=name=>document.querySelector(`[data-view="${name}"]`).click();
-  const input=(id,value)=>{const el=$(id);if(el.type==='checkbox')el.checked=value;else el.value=value;el.dispatchEvent(new Event('input',{bubbles:true}));};
+  const input=(id,value)=>{const el=$(id);if(el.type==='checkbox')el.checked=value;else el.value=value;const event=el.tagName==='SELECT'||el.type==='checkbox'?'change':'input';el.dispatchEvent(new Event(event,{bubbles:true}));};
   const checkCount=n=>assert(state().visible.length===n,`Expected ${n} records, got ${state().visible.length}`);
   view('europe');checkCount(339);assert($('status').hidden,'No loading error');
   assert(document.querySelectorAll('#map .wreck').length===19,'Nineteen reviewed badges');
@@ -24,6 +24,13 @@
   pin.dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',bubbles:true}));assert(state().selected==='Q832395','Enter selects original Oseberg site');
   document.querySelector('#map .wreck[data-record="Q831457"]').dispatchEvent(new KeyboardEvent('keydown',{key:' ',bubbles:true}));assert(state().selected==='Q831457','Space selects grouped Skuldelev site');
   input('kind','burial');checkCount(4);input('kind','deliberate');checkCount(2);
+  input('kind','all');input('culture','historic');checkCount(5);
+  for(const id of ['Q219821','Q544894','Q1789811','Q20819337','Q907712']){
+    assert(state().visible.includes(id),'Historical highlight in its own collection');
+    document.querySelector(`#register button[data-record="${id}"]`).click();
+    assert(state().selected===id&&$('ship-photo').dataset.record===id,'Historical record and image selection synchronized');
+    if(id==='Q544894')assert($('detail-credit').textContent.includes('Historic England'),'Mary Rose coordinate licence exception credited');
+  }
   view('med');checkCount(328);
   input('culture','phoenician');checkCount(3);
   assert(state().visible.includes('Q2884899')&&!state().visible.includes('emodnet:8903'),'Mazarrón group not double counted');

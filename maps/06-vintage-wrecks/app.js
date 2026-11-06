@@ -174,7 +174,10 @@ try {
   const initial=visible.find(f=>f.properties.id===requestedShip);
   if(initial)select(initial);
   $('status').hidden=true;
-  for(const id of ['culture','kind','search','from-year','to-year','unknown','later'])$(id).addEventListener('input',readFilters);
+  for(const id of ['culture','kind','search','from-year','to-year','unknown','later']){
+    const control=$(id),event=control.tagName==='SELECT'||control.type==='checkbox'?'change':'input';
+    control.addEventListener(event,readFilters);
+  }
   $('reset').addEventListener('click',()=>{resetFilters();refresh();});
   for(const b of document.querySelectorAll('[data-view]'))b.addEventListener('click',()=>{state.view=b.dataset.view;resetFilters();refresh(true);});
   $('previous').addEventListener('click',()=>{page--;register();});$('next').addEventListener('click',()=>{page++;register();});
